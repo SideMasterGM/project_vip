@@ -1,0 +1,32 @@
+#AuthName "Side Master - Security"
+#AuthType Basic
+#AuthUserFile .htpasswd
+#Require valid-user
+
+#ErrorDocument 400 "/errors_server/400.php"
+#ErrorDocument 401 "/errors_server/401.php"
+#ErrorDocument 403 "/errors_server/403.php"
+#ErrorDocument 404 "/errors_server/404.php"
+#ErrorDocument 500 "/errors_server/500.php"
+
+options -Indexes
+
+#allow from 190.212.65.149
+#deny from 190.212.65.149
+#deny from all
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+
+AddDefaultCharset utf-8
+AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^http://sitio.com*/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://sitio.com*$ [NC]
+RewriteRule .*\.(gif|bmp|zip)$ - [F,NC] 
