@@ -95,6 +95,40 @@
 		    return false;
 	    }
 
+	    public function updateUserPassword($usr, $current_pwd, $new_pwd){
+	    	if ($this->VerifyUserPassword($usr, $current_pwd)){
+	    		
+	    		$Reason = $this->db->prepare('UPDATE vip_user '
+                . 'SET password = :new_pwd '
+                . 'WHERE username = :usr');
+
+		    	$Reason->bindValue(':new_pwd', password_hash($new_pwd, PASSWORD_DEFAULT));
+	        	$Reason->bindValue(':usr', $usr);
+
+	        	if ($this->addActivity($usr, "Actualización de contraseña"))
+			    	if ($Reason->execute())
+			    		return true;
+
+			    return -2;
+
+	    	} else {
+	    		return -1;
+	    	}
+
+	    	return false;
+	    }
+
+	    public function VerifyUserPassword($usr, $current_pwd){	    	
+	    	$stmt = $this->db->query("SELECT password FROM vip_user WHERE username='".$usr."';");
+	    
+	    	if ($stmt->rowCount() > 0)
+	    		while ($r = $stmt->fetch(\PDO::FETCH_ASSOC))
+	    			if (password_verify($current_pwd, $r['password']))
+	    				return true;
+	    	
+	    	return false;
+	    }
+
 	    public function updateUserPathImg($new_usr, $usr){
 	    	$Path = "users/".$this->CleanString($new_usr)."/img_perfil"."/";
 
