@@ -1,0 +1,379 @@
+<?php
+	header("Content-Type: text/html;charset=utf-8");
+
+	class PostgreSQL {
+		var $db;
+
+		function __construct($host, $port, $dbase, $user, $pass){
+			$cn = sprintf("host=%s;port=%s;dbname=%s;user=%s;password=%s", 
+				$host, $port, $dbase, $user, $pass);
+
+			if ($this->db = new PDO("pgsql:".$cn)){
+				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				
+				if (@$this->db->query("SET NAMES 'utf8'"))
+					return true;
+			}
+
+			return false;
+		}
+
+	    public function addActivity($usr, $activity){
+	    	$usr = $this->CleanString($usr);
+	    	
+	    	$Reason = $this->db->prepare("INSERT INTO vip_user_activity (username, activity, date_log, date_log_unix) VALUES (:username,:activity,:date_log,:date_log_unix)");
+
+	    	$Reason->bindValue(":username", $usr);
+	    	$Reason->bindValue(":activity", $activity);
+	    	$Reason->bindValue(":date_log", date('Y-n-j'));
+	    	$Reason->bindValue(":date_log_unix", time());
+
+	    	if ($Reason->execute())
+	    		return true;
+
+	    	return false;
+	    }
+
+	    public function addUserImgPerfil($usr, $folder, $src){
+	    	$src = $this->CleanString($src);
+
+	    	$QueryImgPerfil = $this->db->prepare("INSERT INTO vip_user_img_perfil (username, folder, src, date_log, date_log_unix) VALUES (:username,:folder,:src,:date_log,:date_log_unix)");
+
+	    	$QueryImgPerfil->bindValue(":username", $usr);
+	    	$QueryImgPerfil->bindValue(":folder", $folder);
+	    	$QueryImgPerfil->bindValue(":src", $src);
+	    	$QueryImgPerfil->bindValue(":date_log", date('Y-n-j'));
+	    	$QueryImgPerfil->bindValue(":date_log_unix", time());
+
+	    	if ($this->addActivity($usr, "Agregando nueva imagen de perfil:  ".$src))
+		    	if ($QueryImgPerfil->execute())
+		    		return true;
+
+	    	return false;
+	    }
+
+	    public function updateUser($new_usr, $usr){
+	    	$new_usr = $this->CleanString($new_usr);
+
+	    	$Reason = $this->db->prepare('UPDATE vip_user '
+                . 'SET username = :new_usr '
+                . 'WHERE username = :current_usr');
+
+	    	// bind values to the statement
+        	$Reason->bindValue(':new_usr', $new_usr);
+        	$Reason->bindValue(':current_usr', $usr);
+
+        	$path = "../../../../private/desktop0/users/";
+
+        	rename($path.$usr."/", $path.$new_usr."/");
+
+        	@session_start();
+        	@$_SESSION['usr'] = $new_usr;
+
+        	if ($this->addActivity($usr, "Nombre de usuario modificado de ".$usr." a ".$new_usr))
+		    	if ($Reason->execute())
+		    		if ($this->updateUserPathImg($new_usr, $usr))
+		    			return true;
+
+	    	return false;
+	    }
+
+	    public function updateUserEmail($usr, $email){
+	    	$email = $this->CleanString($email);
+
+	    	$Reason = $this->db->prepare('UPDATE vip_user_info '
+                . 'SET email = :email '
+                . 'WHERE username = :usr');
+
+	    	$Reason->bindValue(':email', $email);
+        	$Reason->bindValue(':usr', $usr);
+
+        	if ($this->addActivity($usr, "Actualización de E-Mail de ".$this->getUserEmail($usr)." a ".$email))
+		    	if ($Reason->execute())
+		    		return true;
+
+		    return false;
+	    }
+
+	    public function updateUserPathImg($new_usr, $usr){
+	    	$Path = "users/".$this->CleanString($new_usr)."/img_perfil"."/";
+
+	    	$Reason = $this->db->prepare('UPDATE vip_user_img_perfil '
+                . 'SET folder = :path '
+                . 'WHERE username = :usr');
+
+	    	$Reason->bindValue(':path', $Path);
+        	$Reason->bindValue(':usr', $new_usr);
+
+        	if ($this->addActivity($new_usr, "Cambio de ruta de almacenado de imágenes, migrada al directorio ".$new_usr." de ".$usr))
+		    	if ($Reason->execute())
+		    		return true;
+
+		    return false;
+	    }
+
+	    public function LoginUser($usr, $pwd){
+	    	$usr = $this->CleanString($usr);
+	    	$pwd = trim($pwd);
+
+			if (!get_magic_quotes_gpc())
+				$usr = addslashes($usr);
+
+			$usr = pg_escape_string($usr);
+	    	$stmt = $this->db->query("SELECT password FROM vip_user WHERE username='".$usr."';");
+
+	    	if ($stmt->rowCount() > 0)
+	    		while ($r = $stmt->fetch(\PDO::FETCH_ASSOC))
+	    			if (password_verify($pwd, $r['password']))
+	    				if ($this->addActivity($usr, "Inicio de sesión"))
+	    					if ($this->DirUser($usr))
+	    						return true;
+
+	    	return false;
+	    }
+
+	    public function DirUser($usr){
+	    	$path = "../../private/desktop0/users/";
+			if (!file_exists($path))
+				@mkdir($path, 0777);
+
+			$path .= $this->CleanString($usr)."/";
+			if (!file_exists($path))
+				@mkdir($path, 0777);
+
+			$path .= "img_perfil/";
+			if (!file_exists($path))
+				@mkdir($path, 0777);
+
+			return true;
+	    }
+
+	    public function getUserRowCount($usr){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user WHERE username='".$usr."'");
+	    	
+	    	return $stmt->rowCount();
+	    }
+
+	    public function getEmailRowCount($email){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_info WHERE email='".$email."'");
+	    	
+	    	return $stmt->rowCount();
+	    }
+
+	    public function getUserEmail($usr){
+	    	$stmt = $this->db->query("SELECT email FROM vip_user_info WHERE username='".$usr."'");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UserEmail = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UserEmail[] = [
+	    				'email' => $row['email']
+	    			];
+	    		}
+
+	    		foreach ($UserEmail as $value) {
+	    			return $value['email'];
+	    		}
+	    	}
+
+	    	return false;
+	    }
+
+	    public function getUserImgPerfil($usr, $Order, $Quantity){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_img_perfil WHERE username='".$usr."' ORDER BY id ".$Order." LIMIT ".$Quantity);
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UserImgPerfil = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UserImgPerfil[] = [
+	    				'id' 			=> $row['id'],
+	    				'username' 		=> $row['username'],
+	    				'folder'		=> $row['folder'],
+	    				'src'			=> $row['src'],
+	    				'date_log' 		=> $row['date_log'],
+	    				'date_log_unix' => $row['date_log_unix'] 
+	    			];
+	    		}
+
+	    		return $UserImgPerfil;
+	    	}
+
+	    	return false;
+	    }
+
+	    public function CleanString($str) {
+ 
+		    $str = trim($str);
+		 
+		    $str = str_replace(
+		        array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),
+		        array('a', 'a', 'a', 'a', 'a', 'A', 'A', 'A', 'A'),
+		        $str
+		    );
+		 
+		    $str = str_replace(
+		        array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ê', 'Ë'),
+		        array('e', 'e', 'e', 'e', 'E', 'E', 'E', 'E'),
+		        $str
+		    );
+		 
+		    $str = str_replace(
+		        array('í', 'ì', 'ï', 'î', 'Í', 'Ì', 'Ï', 'Î'),
+		        array('i', 'i', 'i', 'i', 'I', 'I', 'I', 'I'),
+		        $str
+		    );
+		 
+		    $str = str_replace(
+		        array('ó', 'ò', 'ö', 'ô', 'Ó', 'Ò', 'Ö', 'Ô'),
+		        array('o', 'o', 'o', 'o', 'O', 'O', 'O', 'O'),
+		        $str
+		    );
+		 
+		    $str = str_replace(
+		        array('ú', 'ù', 'ü', 'û', 'Ú', 'Ù', 'Û', 'Ü'),
+		        array('u', 'u', 'u', 'u', 'U', 'U', 'U', 'U'),
+		        $str
+		    );
+		 
+		    $str = str_replace(
+		        array('ñ', 'Ñ', 'ç', 'Ç'),
+		        array('n', 'N', 'c', 'C',),
+		        $str
+		    );
+		 
+		    // //Esta parte se encarga de eliminar cualquier caracter extraño
+		    // $str = str_replace(
+		    //     array("\", "¨", "º", "-", "~",
+		    //          "#", "@", "|", "!", """,
+		    //          "·", "$", "%", "&", "/",
+		    //          "(", ")", "?", "'", "¡",
+		    //          "¿", "[", "^", "<code>", "]",
+		    //          "+", "}", "{", "¨", "´",
+		    //          ">", "< ", ";", ",", ":",
+		    //          ".", " "),
+		    //     '',
+		    //     $str
+		    // );
+		 
+		    return $str;
+		}
+
+	    public function getSessionUser($Limit, $Order){
+	    	$stmt = $this->db->query("SELECT * FROM vip_info_user ORDER BY date_log_unix ".$Order." LIMIT ".$Limit);
+
+	    	if ($stmt->rowCount() > 0){
+	    		$dataProject = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$dataProject[] = [
+	    				'username' 		=> $row['username'],
+	    				'activity' 		=> $row['activity'],
+	    				'date_log' 		=> $row['date_log'],
+	    				'date_log_unix' => $row['date_log_unix'], 
+	    				'email'			=> $row['email']
+	    			];
+	    		}
+
+	    		return $dataProject;
+	    	}
+
+	    	return false;
+	    }
+
+	    public function getAllProject() {
+	        $stmt = $this->db->query("SELECT * FROM vip_proyecto");
+
+	        if ($stmt->rowCount() > 0){
+		        $dataProject = [];
+		        
+		        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+		            $dataProject[] = [
+		                'id_project' 					=> $row['id_project'],
+		                'nombre' 						=> $row['nombre'],
+		                'facultad_cur_escuela' 			=> $row['facultad_cur_escuela'],
+		                'objetivo_general' 				=> $row['objetivo_general'],
+		                'objetivo_especifico'			=> $row['objetivo_especifico'],
+		                'resultados_esperados' 			=> $row['resultados_esperados'],
+		                'fecha_aprobacion' 				=> $row['fecha_aprobacion'],
+		                'cod_dictamen_economico' 		=> $row['cod_dictamen_economico'],
+		                'nombre_instancia_aprobacion' 	=> $row['nombre_instancia_aprobacion']
+		            ];
+		        }
+
+		        return $dataProject;
+	        }
+	        return false;
+	    }
+
+	    public function addProject($dataProject){
+	        $sql = "INSERT INTO vip_proyecto(nombre, facultad_cur_escuela, objetivo_general, objetivo_especifico, resultados_esperados, fecha_aprobacion, cod_dictamen_economico, nombre_instancia_aprobacion) VALUES(:nombre,:facultad_cur_escuela,:objetivo_general,:objetivo_especifico,:resultados_esperados,:fecha_aprobacion,:cod_dictamen_economico,:nombre_instancia_aprobacion)";
+
+	        $stmt = $this->db->prepare($sql);
+	        
+	        $stmt->bindValue(':nombre', 					$dataProject['nombre']);
+	        $stmt->bindValue(':facultad_cur_escuela', 		$dataProject['facultad_cur_escuela']);
+	        $stmt->bindValue(':objetivo_general', 			$dataProject['objetivo_general']);
+	        $stmt->bindValue(':objetivo_especifico', 		$dataProject['objetivo_especifico']);
+	        $stmt->bindValue(':resultados_esperados', 		$dataProject['resultados_esperados']);
+	        $stmt->bindValue(':fecha_aprobacion', 			$dataProject['fecha_aprobacion']);
+	        $stmt->bindValue(':cod_dictamen_economico', 	$dataProject['cod_dictamen_economico']);
+	        $stmt->bindValue(':nombre_instancia_aprobacion',$dataProject['nombre_instancia_aprobacion']);
+	        
+	        if ($stmt->execute())
+	        	return true;
+	        
+	        return false;
+	    }
+
+	    public function is_session_started(){
+		    if ( php_sapi_name() !== 'cli' ) {
+		        if ( version_compare(phpversion(), '5.4.0', '>=') ) {
+		            return session_status() === PHP_SESSION_ACTIVE ? true : false;
+		        } else {
+		            return session_id() === '' ? false : true;
+		        }
+		    }
+		    return false;
+		}
+
+	    public function sessionDestroy(){
+	    	if (!isset($_SESSION))
+	    		@session_start();
+
+	    	if ($this->addActivity($_SESSION['usr'], "Cierre de sesión"))
+				@session_destroy();
+	    }
+	}
+
+	function SessionVerify(){
+		if (!isset($_SESSION))
+    		@session_start();
+
+    	if (!isset($_SESSION['session']) || $_SESSION['session'] == "No")
+    		return false;
+
+    	return true;
+	}
+
+	function CDB($db){
+		return new PostgreSQL("localhost", "5432", $db, "postgres", "Windows10");
+	}
+
+	//echo $ObjProject[0]['nombre'];
+
+	//include ("ShowData.php");
+	/*Datos del proyecto*/
+	/*$dataProject = array('nombre'						=> "InterCloud", 
+						'facultad_cur_escuela' 			=> "Ciencia y Tecnología", 
+						'objetivo_general'				=> "Mejorar el registro académico", 
+						'objetivo_especifico' 			=> "Establecer normas", 
+						'resultados_esperados' 			=> "Producción del producto desarrollado", 
+						'fecha_aprobacion' 				=> "09/02/2017", 
+						'cod_dictamen_economico' 		=> "0001", 
+						'nombre_instancia_aprobacion' 	=> "TheCodeBrain");
+	*/
+	/*Se registra un proyecto, retorna true o false*/
+	// $id = $CN->addProject($dataProject);
+?>
