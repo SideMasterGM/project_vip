@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<title>VIP-PS | UNAN - León</title>
+<title>VIP - PS | UNAN - León</title>
 <link href="source/img/logo.png" rel="shortcut icon" type="image/png">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
