@@ -733,7 +733,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyChgPasswordModal">Modificar contraseña</h4>
+                <h4 class="modal-title" id="MyChgPasswordModal"><i class="fa fa-pencil"></i> Modificar contraseña</h4>
             </div>
             <div class="modal-body">
                 <div class="panel-heading">
@@ -745,28 +745,36 @@
                             </span>
                             <span class="panel-title">Escriba la nueva contraseña para el usuario: </span>
                             
-                            <h5 id="h5_username" style="margin-left: 50px; background-color: #F0F0F0; padding: 4px; border-radius: 12px; width: -moz-max-content;">
-                                <?php
-                                    echo $_SESSION['username'];
-                                ?>
+                            <h5 id="h5_username" style="margin-left: 50px; background-color: #F0F0F0; padding: 10px; border-radius: 12px; width: -moz-max-content;">
+                                <i class="fa fa-key"></i>
+                                <?php echo @$_SESSION['usr']; ?>
                             </h5>
                         </div>
 
                         <div class="col-xs-4">
                             <?php
-                                $src_img_ext = $Conexion->query("SELECT * FROM img_perfil WHERE username='".$_SESSION['username']."' ORDER BY id DESC LIMIT 1;")->fetch_array(MYSQLI_ASSOC);
+                               if (is_array($QImg)){
+                                    foreach ($QImg as $value) {
+                                        ?>
+                                            <div style="background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>'); width: 80px; height:80px; border-radius: 50% 50%; background-size: 100% 100%; border: 3px solid lightgrey; float: right;">
+                                            </div>
+                                        <?php
+                                    }
+                                } else if (is_bool($QImg)) {
+                                    ?>
+                                        <div style="background: url('<?php echo "../".$src_img_ext['folder'].$src_img_ext['src']; ?>'); width: 80px; height:80px; border-radius: 50% 50%; background-size: 100% 100%; border: 3px solid lightgrey; float: right;">
+                                        </div>
+                                    <?php
+                                }
                             ?>
-                            <div style="background: url('<?php echo "../".$src_img_ext['folder'].$src_img_ext['src']; ?>'); width: 80px; height:80px; border-radius: 50% 50%; background-size: cover; border: 3px solid lightgrey; float: right;">
-                                
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <form id="ChgPassPerfilForm">
                     <input type="password" class="form-control" id="old_password" name="old_password" placeholder="* Escriba la contraseña actual" /><br/>
-                    <input type="password" class="form-control" id="new_passwordUser" name="new_passwordUser" placeholder="* Nueva clave de acceso" /><br/>
-                    <input type="password" class="form-control" id="repeat_new_passwordUser" name="repeat_new_passwordUser" placeholder="* Repita la clave de acceso" />
+                    <input type="password" class="form-control" id="new_passwordUser" name="new_passwordUser" placeholder="* Nueva contraseña" /><br/>
+                    <input type="password" class="form-control" id="repeat_new_passwordUser" name="repeat_new_passwordUser" placeholder="* Repita la contraseña" />
                 </form>
                 <div class="Incrustar_password">
                     
