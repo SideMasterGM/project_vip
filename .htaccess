@@ -26,7 +26,7 @@ RewriteRule ^(.*)$ $1.html
 AddDefaultCharset utf-8
 AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 
-RewriteEngine on
-RewriteCond %{HTTP_REFERER} !^http://sitio.com*/.*$ [NC]
-RewriteCond %{HTTP_REFERER} !^http://sitio.com*$ [NC]
-RewriteRule .*\.(gif|bmp|zip)$ - [F,NC] 
+#RewriteEngine on
+#RewriteCond %{HTTP_REFERER} !^http://sitio.com*/.*$ [NC]
+#RewriteCond %{HTTP_REFERER} !^http://sitio.com*$ [NC]
+#RewriteRule .*\.(gif|bmp|zip)$ - [F,NC] 
