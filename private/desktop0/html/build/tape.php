@@ -5,7 +5,7 @@
                 <i class="fa fa-bars icon"></i>
             </button>
             <ol class="breadcrumb navbar-breadcrumb">
-                <li class="active">VIP - PS | <b>UNAN - León</b></li>
+                <li class="active">VIP - PS | <b>Administración</b></li>
             </ol>
             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                 <i class="fa fa-th icon"></i>
@@ -38,7 +38,6 @@
                     </li>
                 </ul>
             </li>
-
 
             <li class="dropdown danger">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o fa-2x"></i> <?php echo $QuantityTotal; ?></a>
