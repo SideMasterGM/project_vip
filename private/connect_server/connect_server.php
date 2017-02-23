@@ -182,6 +182,18 @@
 			return true;
 	    }
 
+	    public function getUserSession(){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE activity='Inicio de sesión'");
+	    	
+	    	return $stmt->rowCount();
+	    }
+
+	    public function getUserCount(){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user");
+	    	
+	    	return $stmt->rowCount();
+	    }
+
 	    public function getUserRowCount($usr){
 	    	$stmt = $this->db->query("SELECT * FROM vip_user WHERE username='".$usr."'");
 	    	
