@@ -1,10 +1,3 @@
-<?php
-    // @session_start();
-    // if (@$_SESSION['login'] != 1){
-    //     header("Location: ../../");
-    // }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
