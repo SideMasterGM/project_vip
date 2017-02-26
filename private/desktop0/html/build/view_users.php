@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <div class="card-title">
                         	<div class="title">
-                        		Registro de usuarios
+                        		<i class="fa fa-pencil"></i> Registro de usuarios
                         	</div>
                         	<div class="icon-addAgent-right">
                         		<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo artículo" onclick="javascript: CreateUserNow();" ></i>
@@ -34,26 +34,21 @@
                                     <th>Contraseña cifrada</th>
                                 </tr>
                             </tfoot>
-
+                            <?php include ("private/desktop0/html/build/CalcDate.php"); ?>
                             <tbody id="tbody_listArticle">
                                 <?php
 
-                                	$GetUser = $Conexion->query("SELECT * FROM admin_info;");
-
-                                	while ($GetDataU = $GetUser->fetch_array(MYSQLI_ASSOC)){
-                                		?>
-                                			<tr onclick="javascript: OnItemClickTrUser(this);">
-                                                <td><?php echo $GetDataU['username']; ?></td>
-                                                <td><?php echo $GetDataU['email']; ?></td>
-                                                <td><?php echo $GetDataU['date_log']; ?></td>
-                                                <td><?php echo $GetDataU['date_log_unix']; ?></td>
-                                                <?php
-                                                	$GetPass = $Conexion->query("SELECT password FROM user_admin WHERE username='".$GetDataU['username']."';")->fetch_array(MYSQLI_ASSOC);
-                                                ?>
-                                                <td><?php echo $GetPass['password']; ?></td>
+                                    foreach ($CN->getUsersAll() as $value) {
+                                        ?>
+                                            <tr onclick="javascript: OnItemClickTrUser(this);">
+                                                <td><?php echo $value['username']; ?></td>
+                                                <td><?php echo $value['email']; ?></td>
+                                                <td><?php echo $value['date_log']; ?></td>
+                                                <td><?php echo nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
+                                                <td><?php echo $CN->getUserPwd($value['username']); ?></td>
                                              </tr>
-                                		<?php
-                                	}
+                                        <?php
+                                    }
                                 ?>
                             </tbody>
                         </table>
@@ -63,7 +58,7 @@
                     </form>
                 </div>
             </div>
-			<?php include ("build/modals.php"); ?>
+			<?php include ("private/desktop0/html/build/modals.php"); ?>
         </div>
     </div>
 </div>
