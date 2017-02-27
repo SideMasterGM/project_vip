@@ -200,6 +200,47 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    public function getUserPwd($usr){
+	    	$stmt = $this->db->query("SELECT password FROM vip_user WHERE username='".$usr."';");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'password' 	=> $row['password']
+	    			];
+	    		}
+
+	    		foreach ($UsersData as $value) {
+	    			return $value['password'];
+	    		}
+	    	}
+
+	    	return false;
+	    }
+
+	    public function getUsersAll(){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_info;");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'username' 		=> $row['username'],
+	    				'email' 		=> $row['email'],
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
 	    public function getEmailRowCount($email){
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_info WHERE email='".$email."'");
 	    	
