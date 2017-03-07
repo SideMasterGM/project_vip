@@ -25,13 +25,18 @@
 			$cn = sprintf("host=%s;port=%s;dbname=%s;user=%s;password=%s", 
 				$host, $port, $dbase, $user, $pass);
 
+			#Asignando la conexión a la variable local de este modelo: db.
 			if ($this->db = new PDO("pgsql:".$cn)){
-				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+				#Se establecen atributos a la conexión.
+				#Más información: http://php.net/manual/es/pdo.setattribute.php	
 				
+				#Consulta que establece las entradas de texto a UTF-8.
 				if (@$this->db->query("SET NAMES 'utf8'"))
 					return true;
 			}
 
+			#Si algún paso ha sido fallido o incorrecto, se retorna un booleano falso.
 			return false;
 		}
 
