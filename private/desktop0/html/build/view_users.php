@@ -37,7 +37,6 @@
                             <?php include ("private/desktop0/html/build/CalcDate.php"); ?>
                             <tbody id="tbody_listArticle">
                                 <?php
-
                                     foreach ($CN->getUsersAll() as $value) {
                                         ?>
                                             <tr onclick="javascript: OnItemClickTrUser(this);">
