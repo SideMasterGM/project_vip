@@ -34,6 +34,40 @@
 	    	return false;
 	    }
 
+	    public function addNewUser($usr, $pwd, $email, $usr_author){	    	
+	    	$q = "INSERT INTO vip_user (username, password) VALUES (:username,:password);";
+	    	$usr = $this->CleanString($usr);
+
+	    	$stmt = $this->db->prepare($q);
+
+	    	$stmt->bindValue(":username", $usr);
+	    	$stmt->bindValue(":password", password_hash($pwd, PASSWORD_DEFAULT));
+
+	    	if ($stmt->execute())
+	    		if ($this->addNewUserInfo($usr, $email))
+	    			if ($this->DirUser($usr))
+	    				if ($this->addActivity($usr_author, "Agregando nuevo usuario: ".$usr))
+	    					return true;
+
+	    	return false;
+	    }
+
+	    public function addNewUserInfo($usr, $email){
+	    	$q = "INSERT INTO vip_user_info (username, email, date_log, date_log_unix) VALUES (:username,:email,:date_log,:date_log_unix);";
+	    
+	    	$stmt = $this->db->prepare($q);
+
+	    	$stmt->bindValue(":username", 		$usr);
+	    	$stmt->bindValue(":email", 			$email);
+	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
+	    	$stmt->bindValue(":date_log_unix", 	time());
+
+	    	if ($stmt->execute())
+	    		return true;
+
+	    	return false;
+	    }
+
 	    public function addUserImgPerfil($usr, $folder, $src){
 	    	$src = $this->CleanString($src);
 
