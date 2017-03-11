@@ -1,19 +1,20 @@
 <?php
-	include ("../../connect_server/connect_server.php");
-	$username = $_POST['nombre_de_usuario'];
+	include ("../../../connect_server/connect_server.php");
+	$CN = CDB("vip");
 
-	$R = $Conexion->query("SELECT * FROM img_perfil WHERE username='".$username."';");
+	$QImg = $CN->getUserImgPerfil($_POST['nombre_de_usuario'], "DESC", 1);
 
-	if ($R->num_rows > 0){
-		$R = $R->fetch_array(MYSQLI_ASSOC);
-
-		?>
-			<div style="width: 230px; height: 230px; border-radius: 50% 50%; background: url('<?php echo "../".$R['folder'].$R['src']; ?>'); background-size:cover;"></div>
-		<?php
-
-	} else {
-		?>
-			<div style="width: 230px; height: 230px; border-radius: 50% 50%; background: url('../img/img-default/bg_default.jpg'); background-size:cover;"></div>
-		<?php
-	}
+	if (is_array($QImg)){
+        foreach ($QImg as $value) {
+            ?>
+                <div style="background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>'); width: 230px; height:230px; border-radius: 50% 50%; background-size: cover; border: 3px solid lightgrey; float: right;">
+                </div>
+            <?php
+        }
+    } else if (is_bool($QImg)) {
+        ?>
+            <div style="background: url('private/desktop0/img/img-default/bg_default.jpg'); width: 230px; height:230px; border-radius: 50% 50%; background-size: cover; border: 3px solid lightgrey; float: right;">
+            </div>
+        <?php
+    }
 ?>
