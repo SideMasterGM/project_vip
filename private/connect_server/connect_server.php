@@ -86,6 +86,17 @@
 	    	return false;
 	    }
 
+	    public function deleteUser($usr){
+	    	$Reason = $this->db->prepare('DELETE FROM vip_user '
+                . 'WHERE username = :usr');
+        	$Reason->bindValue(':usr', $usr);
+
+       		if ($Reason->execute())
+       			return true;
+
+        	return false;
+	    }
+
 	    public function updateUser($new_usr, $usr){
 	    	$new_usr = $this->CleanString($new_usr);
 
@@ -93,7 +104,6 @@
                 . 'SET username = :new_usr '
                 . 'WHERE username = :current_usr');
 
-	    	// bind values to the statement
         	$Reason->bindValue(':new_usr', $new_usr);
         	$Reason->bindValue(':current_usr', $usr);
 
