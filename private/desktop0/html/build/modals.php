@@ -805,7 +805,7 @@
                         <div class="col-xs-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Nombre de usuario, E-mail</h3>
+                                    <h3 class="panel-title"><i class="fa fa-tag" aria-hidden="true"></i> Nombre de usuario, E-mail</h3>
                                 </div>
                                 <div class="panel-body">
                                     <input type="text" class="form-control" name="Enter_UserName" id="Enter_UserName" placeholder="* Nombre de usuario" /><br/>
@@ -817,7 +817,7 @@
                          <div class="col-xs-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Escriba la clave</h3>
+                                    <h3 class="panel-title"><i class="fa fa-key" aria-hidden="true"></i> Escriba la clave</h3>
                                 </div>
                                 <div class="panel-body">
                                     <input type="password" class="form-control" name="Enter_PassWord" id="Enter_PassWord" placeholder="* Contraseña" /><br/>
@@ -895,11 +895,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyOpenModalDeleteLie">Eliminar usuario</h4>
+                <h4 class="modal-title" id="MyOpenModalDeleteLie"><span class="icon fa fa-trash"></span> Eliminar usuario</h4>
             </div>
             <div class="modal-body">
                 <p><b>¿Seguro que desea eliminar el usuario?</b></p>
-                <p>Si elimina el usuario, los artículos que este haya creado se eliminarán porque se encontrarán sin propietarios.</p>
+                <p>Si elimina el usuario, la actividad que este haya creado, se eliminará, ya que se encontrará sin propietario.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
