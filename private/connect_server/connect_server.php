@@ -18,13 +18,31 @@
 			return false;
 		}
 
-	    public function addActivity($usr, $activity){
+		/*
+			+-------+-----------------------------------------------------------+
+			|       Lista de códigos que representan actividades o eventos.      |
+			+-------+-----------------------------------------------------------+
+			| Code 	|	Descripción												|
+			+-------+-----------------------------------------------------------+
+			|  -1 	|	Apertura de cuenta										|
+			|   0 	|	Cierre de sesión										|
+			|   1 	|	Inicio de sesión										|
+			|   2 	|	Actualización del nombre de usuario						|
+			|   3 	|	Actualización de la contraseña							|
+			|   4 	|	Actualización del correo electrónico					|
+			|   5 	|	Actualización de la imagen de perfil					|
+			|   6 	|	Eliminación de un usuario								|
+			|   7 	|	Creación de un usuario									|
+			+-------+-----------------------------------------------------------+
+		*/
+	    public function addActivity($usr, $code, $description){
 	    	$usr = $this->CleanString($usr);
 	    	
-	    	$Reason = $this->db->prepare("INSERT INTO vip_user_activity (username, activity, date_log, date_log_unix) VALUES (:username,:activity,:date_log,:date_log_unix)");
+	    	$Reason = $this->db->prepare("INSERT INTO vip_user_activity (username, code, description, date_log, date_log_unix) VALUES (:username,:code,:description,:date_log,:date_log_unix)");
 
 	    	$Reason->bindValue(":username", $usr);
-	    	$Reason->bindValue(":activity", $activity);
+	    	$Reason->bindValue(":code", $code);
+	    	$Reason->bindValue(":description", $description);
 	    	$Reason->bindValue(":date_log", date('Y-n-j'));
 	    	$Reason->bindValue(":date_log_unix", time());
 
@@ -46,7 +64,7 @@
 	    	if ($stmt->execute())
 	    		if ($this->addNewUserInfo($usr, $email))
 	    			if ($this->DirUser($usr))
-	    				if ($this->addActivity($usr_author, "Agregando nuevo usuario: ".$usr))
+	    				if ($this->addActivity($usr_author, 7, "Agregando nuevo usuario: ".$usr))
 	    					return true;
 
 	    	return false;
@@ -79,7 +97,7 @@
 	    	$QueryImgPerfil->bindValue(":date_log", date('Y-n-j'));
 	    	$QueryImgPerfil->bindValue(":date_log_unix", time());
 
-	    	if ($this->addActivity($usr, "Agregando nueva imagen de perfil:  ".$src))
+	    	if ($this->addActivity($usr, 5, "Agregando nueva imagen de perfil:  ".$src))
 		    	if ($QueryImgPerfil->execute())
 		    		return true;
 
@@ -91,8 +109,10 @@
                 . 'WHERE username = :usr');
         	$Reason->bindValue(':usr', $usr);
 
-       		if ($Reason->execute())
-       			return true;
+        	@session_start();
+        	if ($this->addActivity(@$_SESSION['usr'], 6, "Eliminando al usuario: ".$usr))
+	       		if ($Reason->execute())
+	       			return true;
 
         	return false;
 	    }
@@ -114,7 +134,7 @@
         	@session_start();
         	@$_SESSION['usr'] = $new_usr;
 
-        	if ($this->addActivity($usr, "Nombre de usuario modificado de ".$usr." a ".$new_usr))
+        	if ($this->addActivity($usr, 2, "Nombre de usuario modificado de ".$usr." a ".$new_usr))
 		    	if ($Reason->execute())
 		    		if ($this->updateUserPathImg($new_usr, $usr))
 		    			return true;
@@ -132,7 +152,7 @@
 	    	$Reason->bindValue(':email', $email);
         	$Reason->bindValue(':usr', $usr);
 
-        	if ($this->addActivity($usr, "Actualización de E-Mail de ".$this->getUserEmail($usr)." a ".$email))
+        	if ($this->addActivity($usr, 4, "Actualización de E-Mail de ".$this->getUserEmail($usr)." a ".$email))
 		    	if ($Reason->execute())
 		    		return true;
 
@@ -149,7 +169,7 @@
 		    	$Reason->bindValue(':new_pwd', password_hash($new_pwd, PASSWORD_DEFAULT));
 	        	$Reason->bindValue(':usr', $usr);
 
-	        	if ($this->addActivity($usr, "Actualización de contraseña"))
+	        	if ($this->addActivity($usr, 3, "Actualización de contraseña"))
 			    	if ($Reason->execute())
 			    		return true;
 
@@ -183,9 +203,8 @@
 	    	$Reason->bindValue(':path', $Path);
         	$Reason->bindValue(':usr', $new_usr);
 
-        	if ($this->addActivity($new_usr, "Cambio de ruta de almacenado de imágenes, migrada al directorio ".$new_usr." de ".$usr))
-		    	if ($Reason->execute())
-		    		return true;
+	    	if ($Reason->execute())
+	    		return true;
 
 		    return false;
 	    }
@@ -203,7 +222,7 @@
 	    	if ($stmt->rowCount() > 0)
 	    		while ($r = $stmt->fetch(\PDO::FETCH_ASSOC))
 	    			if (password_verify($pwd, $r['password']))
-	    				if ($this->addActivity($usr, "Inicio de sesión"))
+	    				if ($this->addActivity($usr, 1, "Inicio de sesión"))
 	    					if ($this->DirUser($usr))
 	    						return true;
 
@@ -227,7 +246,7 @@
 	    }
 
 	    public function getUserSession(){
-	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE activity='Inicio de sesión'");
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE code=1");
 	    	
 	    	return $stmt->rowCount();
 	    }
@@ -473,7 +492,7 @@
 	    	if (!isset($_SESSION))
 	    		@session_start();
 
-	    	if ($this->addActivity($_SESSION['usr'], "Cierre de sesión"))
+	    	if ($this->addActivity($_SESSION['usr'], 0, "Cierre de sesión"))
 				@session_destroy();
 	    }
 	}
