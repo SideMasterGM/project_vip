@@ -65,7 +65,7 @@
                 <div class="card card-success">
                     <div class="card-header">
                         <div class="card-title">
-                            <div class="title"><i class="fa fa-comments-o"></i> Mensajes recientes</div>
+                            <div class="title"><i class="fa fa-bell-o"></i> Mi actividad</div>
                         </div>
                         <div class="clear-both"></div>
                     </div>
@@ -89,7 +89,7 @@
                 <div class="card card-success">
                     <div class="card-header">
                         <div class="card-title">
-                            <div class="title"><i class="fa fa-comments-o"></i> Mensajes favoritos</div>
+                            <div class="title"><i class="fa fa-dot-circle-o"></i> Actividad reciente</div>
                         </div>
                         <div class="clear-both"></div>
                     </div>
