@@ -12,7 +12,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="one__item">
-                    <a href="index">
+                    <a href="./">
                         <span class="icon fa fa-tachometer"></span><span class="title">Espacio de trabajo</span>
                     </a>
                 </li>
