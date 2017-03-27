@@ -875,7 +875,7 @@
                     </div>
                 </form>
 
-               <input type="hidden" id="objt_username" value="<?php echo $_SESSION['username']; ?>" />
+               <input type="hidden" id="objt_username" value="<?php echo @$_SESSION['usr']; ?>" />
 
             </div>
             <div class="modal-footer modal_footer_ya">
