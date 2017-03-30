@@ -7,8 +7,8 @@
                         <div class="card-body">
                             <i class="icon fa fa-inbox fa-4x"></i>
                             <div class="content">
-                                <div class="title">0</div>
-                                <div class="sub-title">Visitantes</div>
+                                <div class="title"><?php echo $CN->getUserSession(); ?></div>
+                                <div class="sub-title">Total de inicios de sesión</div>
                             </div>
                             <div class="clear-both"></div>
                         </div>
@@ -22,8 +22,8 @@
                             <!-- <i class="icon fa fa-comments fa-4x"></i> -->
                             <i class="icon fa fa-users fa-4x"></i>
                             <div class="content">
-                                <div class="title">0</div>
-                                <div class="sub-title">Usuarios</div>
+                                <div class="title"><?php echo $CN->getUserCount(); ?></div>
+                                <div class="sub-title">Usuarios Registrados</div>
                             </div>
                             <div class="clear-both"></div>
                         </div>
@@ -37,7 +37,7 @@
                             <i class="icon fa fa-tags fa-4x"></i>
                             <div class="content">
                                 <div class="title">0</div>
-                                <div class="sub-title">Artículos</div>
+                                <div class="sub-title">Proyectos</div>
                             </div>
                             <div class="clear-both"></div>
                         </div>
@@ -51,7 +51,7 @@
                             <i class="icon fa fa-user-secret fa-4x"></i>
                             <div class="content">
                                 <div class="title">0</div>
-                                <div class="sub-title">Agentes</div>
+                                <div class="sub-title">Coordinadores</div>
                             </div>
                             <div class="clear-both"></div>
                         </div>
