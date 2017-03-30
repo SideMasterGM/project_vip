@@ -6,7 +6,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Agregar nueva imagen de perfil</h4>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-camera"></i> Agregar nueva imagen de perfil</h4>
             </div>
             <div class="modal-body">
                 <form id="Form_SendImgPerfil" enctype="multipart/form-data">
@@ -21,7 +21,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- This is the modal window of the agents. -->
 <input type="hidden" class="add-agent-now" data-toggle="modal" data-target="#AddAgent"  />
