@@ -52,6 +52,52 @@
 	    	return false;
 	    }
 
+	    public function getMyActivity($Quantity){
+	    	@session_start();
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".@$_SESSION['usr']."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'username' 		=> $row['username'], 
+	    				'code' 			=> $row['code'], 
+	    				'description' 	=> $row['description'], 
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
+	    public function getActivityWithOutMe($Quantity){
+	    	@session_start();
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username!='".@$_SESSION['usr']."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'username' 		=> $row['username'], 
+	    				'code' 			=> $row['code'], 
+	    				'description' 	=> $row['description'], 
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
 	    public function addNewUser($usr, $pwd, $email, $usr_author){	    	
 	    	$q = "INSERT INTO vip_user (username, password) VALUES (:username,:password);";
 	    	$usr = $this->CleanString($usr);
