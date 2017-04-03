@@ -10,7 +10,7 @@
             return " - ";
         }
         
-        $periods         = array("segundo", "minuto", "hora", "día", "semana", "mes", "año", "decada");
+        $periods         = array("segundo", "minuto", "hora", "día", "semana", "mes", "año", "década");
         $lengths         = array("60","60","24","7","4.35","12","10");
 
         $now             = time();
@@ -25,7 +25,7 @@
             $tense         = "Hace";
         } else {
             $difference     = $unix_date - $now;
-            $tense         = "from now";
+            $tense         = "desde ahora";
         }
         
         for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
@@ -35,8 +35,11 @@
         $difference = round($difference);
         
         if($difference != 1) {
-            $periods[$j].= "s";
-        }
+            if ($periods[$j] == "mes")
+                $periods[$j].= "es";
+            else
+                $periods[$j].= "s";
+        } 
         
         return "{$tense} $difference $periods[$j]";
     }
