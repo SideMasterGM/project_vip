@@ -3,7 +3,7 @@
         <div class="side-menu-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                    <div class="icon fa fa-paper-plane"></div>
+                    <div class="icon fa fa-university"></div>
                     <div class="title">VIP - PS | UNAN - León</div>
                 </a>
                 <button type="button" class="navbar-expand-toggle pull-right visible-xs">
