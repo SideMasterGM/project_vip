@@ -77,7 +77,6 @@
                                 
                                 // $ConexMessage = $Conexion->query("SELECT * FROM sus_message ORDER BY id DESC LIMIT 4;");
                                 if (is_array($CN->getMyActivity(4))){
-                                    $counter = 1;
                                     foreach ($CN->getMyActivity(4) as $Activity) {
                                         $QImg = $CN->getUserImgPerfil($Activity['username'], "DESC", 1);
                                         $Path = "";
@@ -91,7 +90,7 @@
                                         }
 
                                         ?>
-                                            <a href="#" onclick="LoadMessage(<?php echo $Activity['username'].$counter; ?>);">
+                                            <a href="#" onclick="LoadMessage('<?php echo $Activity['date_log_unix']; ?>');">
                                                 <li>
                                                     <img src="<?php echo $Path; ?>" width="60px" height="60px" class="profile-img pull-left">
                                                
@@ -146,7 +145,6 @@
                             
                             <?php                                
                                 if (is_array($CN->getActivityWithOutMe(4))){
-                                    $counter = 1;
                                     foreach ($CN->getActivityWithOutMe(4) as $Activity) {
                                         $QImg = $CN->getUserImgPerfil($Activity['username'], "DESC", 1);
                                         $Path = "";
@@ -160,7 +158,7 @@
                                         }
 
                                         ?>
-                                            <a href="#" onclick="LoadMessage(<?php echo $Activity['username'].$counter; ?>);">
+                                            <a href="#" onclick="LoadMessage(<?php echo $Activity['date_log_unix']; ?>);">
                                                 <li>
                                                     <img src="<?php echo $Path; ?>" width="60px" height="60px" class="profile-img pull-left">
                                                
