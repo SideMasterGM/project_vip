@@ -114,8 +114,6 @@
                                         <?php
                                         $counter++;
                                     }
-                                    
-                                    
                                 } else if (is_bool($CN->getMyActivity(4))){
                                     echo "No hay actividad.";
                                 }
@@ -147,7 +145,6 @@
                         <ul class="message-list">
                             
                             <?php                                
-                                // $ConexMessage = $Conexion->query("SELECT * FROM sus_message ORDER BY id DESC LIMIT 4;");
                                 if (is_array($CN->getActivityWithOutMe(4))){
                                     $counter = 1;
                                     foreach ($CN->getActivityWithOutMe(4) as $Activity) {
@@ -186,8 +183,6 @@
                                         <?php
                                         $counter++;
                                     }
-                                    
-                                    
                                 } else if (is_bool($CN->getActivityWithOutMe(4))){
                                     echo "No hay actividad.";
                                 }
