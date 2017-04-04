@@ -111,7 +111,6 @@
                                                 </li>
                                             </a>
                                         <?php
-                                        $counter++;
                                     }
                                 } else if (is_bool($CN->getMyActivity(4))){
                                     echo "No hay actividad.";
@@ -179,7 +178,6 @@
                                                 </li>
                                             </a>
                                         <?php
-                                        $counter++;
                                     }
                                 } else if (is_bool($CN->getActivityWithOutMe(4))){
                                     echo "No hay actividad.";
