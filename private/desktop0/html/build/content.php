@@ -75,7 +75,6 @@
                             <?php
                                 include ("private/desktop0/html/build/CalcDate.php");
                                 
-                                // $ConexMessage = $Conexion->query("SELECT * FROM sus_message ORDER BY id DESC LIMIT 4;");
                                 if (is_array($CN->getMyActivity(4))){
                                     foreach ($CN->getMyActivity(4) as $Activity) {
                                         $QImg = $CN->getUserImgPerfil($Activity['username'], "DESC", 1);
