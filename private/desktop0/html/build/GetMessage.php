@@ -1,7 +1,31 @@
 <?php
-    include ("../../connect_server/connect_server.php");
+    include ("../../../connect_server/connect_server.php");
+    include ("CalcDate.php");
+
+    $CN = CDB("vip");
+    @session_start();
 
     $id = $_POST['IdMessage'];
+
+    if (is_array($CN->getActivity($id, 1))){
+        foreach ($CN->getActivity($id, 1) as $Activity) {
+            $QImg = $CN->getUserImgPerfil($Activity['username'], "DESC", 1);
+            $Path = "";
+
+            if (is_array($QImg)){
+                foreach ($QImg as $value) {
+                    $Path = "private/desktop0/".$value['folder'].$value['src'];
+                }
+            } else if (is_bool($QImg)) {
+                $Path = "private/desktop0/img/img-default/bg_default.jpg";
+            }
+
+
+
+        }
+    } else if (is_bool($CN->getActivity($id, 1))){
+        echo "Fail";
+    }
 
     $ThisMessage = $Conexion->query("SELECT * FROM sus_message WHERE id='".$id."' LIMIT 1;");
 
