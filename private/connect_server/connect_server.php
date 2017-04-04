@@ -52,6 +52,28 @@
 	    	return false;
 	    }
 
+	    public function getActivity($date_log_unix, $Quantity){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE date_log_unix='".$date_log_unix."' LIMIT ".$Quantity.";");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'username' 		=> $row['username'], 
+	    				'code' 			=> $row['code'], 
+	    				'description' 	=> $row['description'], 
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
 	    public function getMyActivity($Quantity){
 	    	@session_start();
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".@$_SESSION['usr']."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
@@ -307,6 +329,26 @@
 	    	$stmt = $this->db->query("SELECT * FROM vip_user WHERE username='".$usr."'");
 	    	
 	    	return $stmt->rowCount();
+	    }
+
+	    public function getActivityArgument($code){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity_argument WHERE code='".$code."';");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'activity' 	=> $row['activity']
+	    			];
+	    		}
+
+	    		foreach ($UsersData as $value) {
+	    			return $value['activity'];
+	    		}
+	    	}
+
+	    	return false;
 	    }
 
 	    public function getUserPwd($usr){
