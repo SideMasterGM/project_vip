@@ -39,33 +39,33 @@
                     </div>
                     <div class="col-xs-1">
                         <?php
-                            $GetIdAgent = $Conexion->query("SELECT id_agent FROM article WHERE id_art='".$ThisMessage['id_art']."';")->fetch_array(MYSQLI_ASSOC)['id_agent'];
-                            $GetNamesAgent = $Conexion->query("SELECT names, lastnames FROM agents WHERE id_agent='".$GetIdAgent."';")->fetch_array(MYSQLI_ASSOC);
+                            //$GetIdAgent = $Conexion->query("SELECT id_agent FROM article WHERE id_art='".$ThisMessage['id_art']."';")->fetch_array(MYSQLI_ASSOC)['id_agent'];
+                            //$GetNamesAgent = $Conexion->query("SELECT names, lastnames FROM agents WHERE id_agent='".$GetIdAgent."';")->fetch_array(MYSQLI_ASSOC);
                         ?>
-                        <i class="fa fa-user-secret fa-lg" title="<?php echo "Agente: ".$GetNamesAgent['names']." ".$GetNamesAgent['lastnames']; ?>" aria-hidden="true" style="cursor: pointer;"></i>
+                        <i class="fa fa-user-secret fa-lg" title="Nombre del agente" aria-hidden="true" style="cursor: pointer;"></i>
                     </div>
                     <div class="col-xs-1">
-                        <i class="fa fa-user fa-lg" title="<?php echo "Lo envía ".$ThisMessage['fullname']; ?>" aria-hidden="true" style="cursor: pointer;"></i>
+                        <i class="fa fa-user fa-lg" title="Lo envía alguien" aria-hidden="true" style="cursor: pointer;"></i>
                     </div>
                     <div class="col-xs-1">
-                        <i class="fa fa-phone-square fa-lg" title="<?php echo $ThisMessage['phone']; ?>" aria-hidden="true" style="cursor: pointer;"></i>
+                        <i class="fa fa-phone-square fa-lg" title="# de teléfono" aria-hidden="true" style="cursor: pointer;"></i>
                     </div>
                     <div class="col-xs-1">
-                        <i class="fa fa-comments fa-lg" title="<?php echo $ThisMessage['email'] ?>" aria-hidden="true" style="cursor: pointer;"></i>
+                        <i class="fa fa-comments fa-lg" title="Correo electrónico" aria-hidden="true" style="cursor: pointer;"></i>
                     </div>
                     <div class="col-xs-1">
-                        <i class="fa fa-globe fa-lg" title="<?php echo date("Y-m-d H:i", $ThisMessage['date_log_unix']); ?>" aria-hidden="true" style="cursor: pointer;"></i>
+                        <i class="fa fa-globe fa-lg" title="Hace algún tiempo" aria-hidden="true" style="cursor: pointer;"></i>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-3">
-                        <img src="<?php echo "../".$ImgArtMsg['folder'].$ImgArtMsg['src']; ?>" class="img_property" alt="Imagen de la propiedad" />
+                        <img src="<?php echo $Path; ?>" class="img_property" alt="Imagen de la propiedad" />
                     </div>
                     <div class="col-xs-9">
                         <blockquote class="blockquote-primary blockquote-rounded">
-                            <p style="text-align: justify; font-size: 13px;"><?php echo $ThisMessage['message']; ?></p>
-                            <footer>Enviado por <cite title="Source Title"><?php echo $ThisMessage['fullname']; ?></cite></footer>
+                            <p style="text-align: justify; font-size: 13px;">Mensaje</p>
+                            <footer>Enviado por <cite title="Source Title">Nombre completo</cite></footer>
                         </blockquote>
                     </div>
                 </div>
