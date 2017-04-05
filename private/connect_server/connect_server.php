@@ -266,7 +266,7 @@
 	    	return false;
 	    }
 
-	    public function updateActivityFavorite($usr, $email){
+	    public function updateUserEmail($usr, $email){
 	    	$email = $this->CleanString($email);
 
 	    	$Reason = $this->db->prepare('UPDATE vip_user_info '
@@ -283,7 +283,7 @@
 		    return false;
 	    }
 
-	    public function updateUserEmail($usr, $id_activity, $favorite){
+	    public function updateActivityFavorite($usr, $id_activity, $favorite){
 	    	$Reason = $this->db->prepare('UPDATE vip_user_activity '
                 . 'SET favorite = :favorite '
                 . 'WHERE id_activity = :id_activity');
