@@ -1,46 +1,56 @@
 <?php
-    include ("../../connect_server/connect_server.php");
+    include ("../../../connect_server/connect_server.php");
+    include ("CalcDate.php");
+
+    $CN = CDB("vip");
+    @session_start();
 
     $Id = $_POST['SDIdMessage'];
 
-    $All = $Conexion->query("SELECT * FROM answer_message WHERE id_msg='".$Id."' ORDER BY id DESC;");
+    if (is_array($CN->getActivityMessage($Id))){
+        foreach ($CN->getActivityMessage($Id) as $Activity) {
+            $QImg = $CN->getUserImgPerfil($Activity['username'], "DESC", 1);
+            $Path = "";
 
-    if ($All->num_rows > 0){
-        while ($Req = $All->fetch_array(MYSQLI_ASSOC)){
+            if (is_array($QImg)){
+                foreach ($QImg as $value) {
+                    $Path = "private/desktop0/".$value['folder'].$value['src'];
+                }
+            } else if (is_bool($QImg)) {
+                $Path = "private/desktop0/img/img-default/bg_default.jpg";
+            }
+
+            // $NameActivity = $CN->getActivityArgument($Activity['code']);
+
             ?>
                 <div class="modal-footer">
                     <div class="row">
                         <div class="col-xs-10">
-                            <span class="label label-default" style="float: left; font-size: 13px;" title="<?php echo $Req['username']; ?>" >Enviado por <b><?php echo substr($Req['username'], 0, 50); ?></b></span>
+                            <span class="label label-default" style="float: left; font-size: 13px;" title="<?php echo $Activity['username']; ?>" >Enviado por <b><?php echo substr($Activity['username'], 0, 50); ?></b></span>
                         </div>
 
-                        <?php
-                            $LoadDataAdmin = $Conexion->query("SELECT email FROM admin_info WHERE username='".$Req['username']."';")->fetch_array(MYSQLI_ASSOC);
-                            ?>
-                                <div class="col-xs-1">
-                                    <i class="fa fa-comments fa-lg" title="<?php echo $LoadDataAdmin['email'] ?>" aria-hidden="true" style="cursor: pointer;"></i>
-                                </div>
-                            <?php
-                        ?>
+                        <div class="col-xs-1">
+                            <i class="fa fa-comments fa-lg" title="<?php echo $CN->getUserEmail($Activity['username']); ?>" aria-hidden="true" style="cursor: pointer;"></i>
+                        </div>
 
                         <div class="col-xs-1">
-                            <i class="fa fa-globe fa-lg" title="<?php echo date("Y-m-d H:i", $Req['date_time_unix']); ?>" aria-hidden="true" style="cursor: pointer;"></i>
+                            <i class="fa fa-globe fa-lg" title="<?php echo date("Y-m-d H:i", $Activity['date_log_unix']); ?>" aria-hidden="true" style="cursor: pointer;"></i>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-xs-10">
                             <blockquote class="blockquote-rounded blockquote-reverse">
-                                <p style="text-align: justify; font-size: 13px;"><?php echo $Req['message']; ?></p>
+                                <p style="text-align: justify; font-size: 13px;"><?php echo $Activity['message']; ?></p>
 
                                 <?php
-                                    $DataContactUs = $Conexion->query("SELECT * FROM contact_us ORDER BY id DESC LIMIT 1;")->fetch_array(MYSQLI_ASSOC);
+                                    // $DataContactUs = $Conexion->query("SELECT * FROM contact_us ORDER BY id DESC LIMIT 1;")->fetch_array(MYSQLI_ASSOC);
                                 ?>
                                 <footer>
                                     <?php 
-                                        echo $DataContactUs['whoami']." <";
+                                        echo "Consultar a <";
                                         ?>
-                                            <cite title="Source Title"><?php echo $DataContactUs['email']; ?></cite>
+                                            <cite title="Source Title"><?php echo $CN->getUserEmail($Activity['username']); ?></cite>
                                         <?php 
                                         echo ">";
                                     ?> 
@@ -48,24 +58,13 @@
                             </blockquote>
                         </div>
                         <div class="col-xs-2">
-                            <?php
-                                $GetImgPerfilAdmin = $Conexion->query("SELECT folder, src FROM img_perfil WHERE username='".$Req['username']."' ORDER BY id DESC LIMIT 1;");
-
-                                if ($GetImgPerfilAdmin->num_rows > 0){
-                                    $GetImgPerfilAdmin = $GetImgPerfilAdmin->fetch_array(MYSQLI_ASSOC);
-                                    ?>
-                                        <img src="<?php echo "../".$GetImgPerfilAdmin['folder'].$GetImgPerfilAdmin['src']; ?>" class="img_property_answer" alt="Imagen de perfil Administrador" />
-                                    <?php
-                                } else {
-                                    ?>
-                                        <img src="../img/img-default/bg_default.jpg" class="img_property_answer" alt="Imagen de perfil Administrador" />
-                                    <?php
-                                }
-                            ?>
+                            <img src="<?php echo $Path; ?>" class="img_property_answer" alt="Imagen de perfil Administrador" />
+                            
                         </div>
                     </div>
                 </div>
             <?php
         }
+
     }
 ?>

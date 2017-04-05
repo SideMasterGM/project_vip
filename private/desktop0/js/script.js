@@ -724,7 +724,7 @@ function OnItemClickTrUser(value){
 
 	$(".Details_username").click();
 
-	$("#MyDetails_username").html("<span class='icon fa fa-user'></span> Usuario | "+username);
+	$("#MyDetails_username").html("<span class='icon fa fa-user'></span> Usuario | " + username);
 
 	$("#DataDel_UserName").val(username);
 	$("#nombre_de_usuario").val(username);

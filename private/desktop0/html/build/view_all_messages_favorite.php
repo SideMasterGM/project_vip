@@ -6,7 +6,6 @@
     @session_start();
 
     if (is_array($CN->getActivityWithOutMe(20))){
-        $counter = 1;
         foreach ($CN->getActivityWithOutMe(20) as $Activity) {
             $QImg = $CN->getUserImgPerfil($Activity['username'], "DESC", 1);
             $Path = "";
@@ -20,7 +19,7 @@
             }
 
             ?>
-                <a href="#" onclick="LoadMessage(<?php echo $Activity['username'].$counter; ?>);">
+                <a href="#" onclick="LoadMessage(<?php echo $Activity['id_activity']; ?>);">
                     <li>
                         <img src="<?php echo $Path; ?>" width="60px" height="60px" class="profile-img pull-left">
                    
@@ -41,7 +40,6 @@
                     </li>
                 </a>
             <?php
-            $counter++;
         }
     } else if (is_bool($CN->getActivityWithOutMe(20))){
         echo "No hay actividad.";

@@ -33,18 +33,20 @@
 			|   5 	|	Actualización de la imagen de perfil					|
 			|   6 	|	Eliminación de un usuario								|
 			|   7 	|	Creación de un usuario									|
+			|   10	|	Respuesta a una actividad								|
 			+-------+-----------------------------------------------------------+
 		*/
 	    public function addActivity($usr, $code, $description){
 	    	$usr = $this->CleanString($usr);
 	    	
-	    	$Reason = $this->db->prepare("INSERT INTO vip_user_activity (username, code, description, date_log, date_log_unix) VALUES (:username,:code,:description,:date_log,:date_log_unix)");
+	    	$Reason = $this->db->prepare("INSERT INTO vip_user_activity (username, code, description, date_log, date_log_unix, favorite) VALUES (:username,:code,:description,:date_log,:date_log_unix,:favorite)");
 
 	    	$Reason->bindValue(":username", $usr);
 	    	$Reason->bindValue(":code", $code);
 	    	$Reason->bindValue(":description", $description);
 	    	$Reason->bindValue(":date_log", date('Y-n-j'));
 	    	$Reason->bindValue(":date_log_unix", time());
+	    	$Reason->bindValue(":favorite", 0);
 
 	    	if ($Reason->execute())
 	    		return true;
@@ -52,19 +54,21 @@
 	    	return false;
 	    }
 
-	    public function getActivity($date_log_unix, $Quantity){
-	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE date_log_unix='".$date_log_unix."' LIMIT ".$Quantity.";");
+	    public function getActivity($id_activity, $Quantity){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE id_activity='".$id_activity."' LIMIT ".$Quantity.";");
 
 	    	if ($stmt->rowCount() > 0){
 	    		$UsersData = [];
 
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
+	    				'id_activity' 	=> $row['id_activity'], 
 	    				'username' 		=> $row['username'], 
 	    				'code' 			=> $row['code'], 
 	    				'description' 	=> $row['description'], 
 	    				'date_log' 		=> $row['date_log'], 
-	    				'date_log_unix' => $row['date_log_unix']
+	    				'date_log_unix' => $row['date_log_unix'],
+	    				'favorite' 		=> $row['favorite']
 	    			];
 	    		}
 
@@ -76,18 +80,20 @@
 
 	    public function getMyActivity($Quantity){
 	    	@session_start();
-	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".@$_SESSION['usr']."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".@$_SESSION['usr']."' ORDER BY id_activity DESC LIMIT ".$Quantity.";");
 
 	    	if ($stmt->rowCount() > 0){
 	    		$UsersData = [];
 
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
+	    				'id_activity' 	=> $row['id_activity'], 
 	    				'username' 		=> $row['username'], 
 	    				'code' 			=> $row['code'], 
 	    				'description' 	=> $row['description'], 
 	    				'date_log' 		=> $row['date_log'], 
-	    				'date_log_unix' => $row['date_log_unix']
+	    				'date_log_unix' => $row['date_log_unix'],
+	    				'favorite' 		=> $row['favorite']
 	    			];
 	    		}
 
@@ -106,11 +112,36 @@
 
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
+	    				'id_activity' 	=> $row['id_activity'], 
 	    				'username' 		=> $row['username'], 
 	    				'code' 			=> $row['code'], 
 	    				'description' 	=> $row['description'], 
 	    				'date_log' 		=> $row['date_log'], 
-	    				'date_log_unix' => $row['date_log_unix']
+	    				'date_log_unix' => $row['date_log_unix'], 
+	    				'favorite' 		=> $row['favorite'] 
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
+	    public function getActivityMessage($id_activity){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity_message WHERE id_activity='".$id_activity."' ORDER BY id DESC;");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'id' 			=> $row['id'], 
+	    				'id_activity' 	=> $row['id_activity'], 
+	    				'username' 		=> $row['username'], 
+	    				'message' 		=> $row['message'], 
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix'], 
 	    			];
 	    		}
 
@@ -134,6 +165,31 @@
 	    			if ($this->DirUser($usr))
 	    				if ($this->addActivity($usr_author, 7, "Agregando nuevo usuario: ".$usr))
 	    					return true;
+
+	    	return false;
+	    }
+
+	    public function addActivityMessage($usr, $id_activity, $message){
+	    	$q = "INSERT INTO vip_user_activity_message (id_activity, username, message, date_log, date_log_unix) VALUES (:id_activity,:username,:message,:date_log,:date_log_unix);";
+	    
+	    	$stmt = $this->db->prepare($q);
+
+	    	$stmt->bindValue(":id_activity", 	$id_activity);
+	    	$stmt->bindValue(":username", 		$usr);
+	    	$stmt->bindValue(":message", 		$message);
+	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
+	    	$stmt->bindValue(":date_log_unix", 	time());
+
+	    	$activity = $this->getActivity($id_activity, 1);
+	    	$activity_username = "";
+
+	    	foreach ($activity as $value) {
+	    		$activity_username = $value['username'];
+	    	}
+
+	    	if ($stmt->execute())
+	    		if ($this->addActivity($usr, 10, "Respondiendo a la actividad ".$id_activity." del usuario ".$activity_username))
+	    			return true;
 
 	    	return false;
 	    }
@@ -210,7 +266,7 @@
 	    	return false;
 	    }
 
-	    public function updateUserEmail($usr, $email){
+	    public function updateActivityFavorite($usr, $email){
 	    	$email = $this->CleanString($email);
 
 	    	$Reason = $this->db->prepare('UPDATE vip_user_info '
@@ -221,6 +277,27 @@
         	$Reason->bindValue(':usr', $usr);
 
         	if ($this->addActivity($usr, 4, "Actualización de E-Mail de ".$this->getUserEmail($usr)." a ".$email))
+		    	if ($Reason->execute())
+		    		return true;
+
+		    return false;
+	    }
+
+	    public function updateUserEmail($usr, $id_activity, $favorite){
+	    	$Reason = $this->db->prepare('UPDATE vip_user_activity '
+                . 'SET favorite = :favorite '
+                . 'WHERE id_activity = :id_activity');
+
+	    	$Reason->bindValue(':favorite', 	$favorite);
+        	$Reason->bindValue(':id_activity', 	$id_activity);
+
+        	if ($favorite == 1){
+        		$Message = "La actividad ".$id_activity.", se ha marcado como favorito.";
+        	} else if ($favorite == 0) {
+        		$Message = "La actividad ".$id_activity.", se ha desmarcado de los favoritos.";
+        	}
+
+        	if ($this->addActivity($usr, 9, $Message))
 		    	if ($Reason->execute())
 		    		return true;
 
@@ -345,6 +422,26 @@
 
 	    		foreach ($UsersData as $value) {
 	    			return $value['activity'];
+	    		}
+	    	}
+
+	    	return false;
+	    }
+
+	    public function getActivityFavorite($id_activity){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE id_activity='".$id_activity."';");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'favorite' 	=> $row['favorite']
+	    			];
+	    		}
+
+	    		foreach ($UsersData as $value) {
+	    			return $value['favorite'];
 	    		}
 	    	}
 

@@ -89,7 +89,7 @@
                                         }
 
                                         ?>
-                                            <a href="#" onclick="LoadMessage('<?php echo $Activity['date_log_unix']; ?>');">
+                                            <a href="#" onclick="LoadMessage('<?php echo $Activity['id_activity']; ?>');">
                                                 <li>
                                                     <img src="<?php echo $Path; ?>" width="60px" height="60px" class="profile-img pull-left">
                                                
@@ -156,7 +156,7 @@
                                         }
 
                                         ?>
-                                            <a href="#" onclick="LoadMessage(<?php echo $Activity['date_log_unix']; ?>);">
+                                            <a href="#" onclick="LoadMessage(<?php echo $Activity['id_activity']; ?>);">
                                                 <li>
                                                     <img src="<?php echo $Path; ?>" width="60px" height="60px" class="profile-img pull-left">
                                                

@@ -1,34 +1,26 @@
 <?php
-	include ("../../connect_server/connect_server.php");
+	include ("../../../connect_server/connect_server.php");
+    include ("CalcDate.php");
+
+    $CN = CDB("vip");
+    @session_start();
 
 	$Id = $_POST['ChangeIconFavId'];
 
-	$Fav = $Conexion->query("SELECT favorite FROM sus_message WHERE id='".$Id."';");
-
-	if ($Fav->num_rows > 0){
-		$FavActive = $Fav->fetch_array(MYSQLI_ASSOC);
-		if ($FavActive['favorite'] == "0" || $FavActive['favorite'] == ""){
-			$MakeQuery = $Conexion->query("UPDATE sus_message SET favorite='1' WHERE id='".$Id."';");
-			if ($MakeQuery){
-				echo "<i class='fa fa-star fa-lg' onclick='javascript: UpdateFavoriteMessage();' title='Agregado como favorito' aria-hidden='true' style='float: left; cursor: pointer;'></i>";
-			} else {
-				echo "Fail";
-			}
-		} else if ($FavActive['favorite'] == "1"){
-			$MakeQuery = $Conexion->query("UPDATE sus_message SET favorite='0' WHERE id='".$Id."';");
-			if ($MakeQuery){
-				echo "<i class='fa fa-star-half-o fa-lg' onclick='javascript: UpdateFavoriteMessage();' title='Agregar a favoritos' aria-hidden='true' style='float: left; cursor: pointer;'></i>";
-			} else {
-				echo "Fail";
-			}
-		}
-	} else {
-		$MakeQuery = $Conexion->query("UPDATE sus_message SET favorite='1' WHERE id='".$Id."';");
-		if ($MakeQuery){
+	$Fav = $CN->getActivityFavorite($Id);
+	
+	if ($Fav == "0" || $Fav == ""){
+		if ($CN->updateUserEmail(@$_SESSION['usr'], $Id, 1)){
 			echo "<i class='fa fa-star fa-lg' onclick='javascript: UpdateFavoriteMessage();' title='Agregado como favorito' aria-hidden='true' style='float: left; cursor: pointer;'></i>";
 		} else {
 			echo "Fail";
 		}
+	} else if ($Fav == "1"){
+		
+		if ($CN->updateUserEmail(@$_SESSION['usr'], $Id, 0)){
+			echo "<i class='fa fa-star-half-o fa-lg' onclick='javascript: UpdateFavoriteMessage();' title='Agregar a favoritos' aria-hidden='true' style='float: left; cursor: pointer;'></i>";
+		} else {
+			echo "Fail";
+		}
 	}
-	
 ?>
