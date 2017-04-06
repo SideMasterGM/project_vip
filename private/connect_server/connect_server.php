@@ -78,6 +78,25 @@
 	    	return false;
 	    }
 
+	    public function getActivityNotificationMessage($usr, $Quantity){
+	    	$stmt = $this->db->query("SELECT distinct(id_activity), date_log_unix FROM vip_user_activity_message WHERE username!='".$usr."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'id_activity' 	=> $row['id_activity'], 
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
 	    public function getMyActivity($Quantity){
 	    	@session_start();
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".@$_SESSION['usr']."' ORDER BY id_activity DESC LIMIT ".$Quantity.";");
@@ -388,6 +407,12 @@
 				@mkdir($path, 0777);
 
 			return true;
+	    }
+
+	    public function getActivityNotificationMessageCount($usr){
+	    	$stmt = $this->db->query("SELECT distinct(id_activity), date_log_unix FROM vip_user_activity_message WHERE username!='".$usr."';");
+	    	
+	    	return $stmt->rowCount();
 	    }
 
 	    public function getUserSession(){
