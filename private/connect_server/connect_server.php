@@ -97,6 +97,30 @@
 	    	return false;
 	    }
 
+	     public function getActivityNotificationFavorities($usr, $Quantity){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".$usr."' AND favorite=1 ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'id_activity' 	=> $row['id_activity'], 
+	    				'username' 		=> $row['username'], 
+	    				'code' 			=> $row['code'], 
+	    				'description' 	=> $row['description'], 
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix'], 
+	    				'favorite' 		=> $row['favorite']
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
 	    public function getMyActivity($Quantity){
 	    	@session_start();
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".@$_SESSION['usr']."' ORDER BY id_activity DESC LIMIT ".$Quantity.";");
@@ -407,6 +431,12 @@
 				@mkdir($path, 0777);
 
 			return true;
+	    }
+
+	    public function getActivityNotificationFavoritiesCount($usr){
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".$usr."' AND favorite=1;");
+	    	
+	    	return $stmt->rowCount();
 	    }
 
 	    public function getActivityNotificationMessageCount($usr){
