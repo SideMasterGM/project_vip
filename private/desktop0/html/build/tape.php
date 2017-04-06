@@ -20,11 +20,12 @@
             </li>
 
             <?php
+                $CN = CDB("vip");
                 //$QuantitySus = $Conexion->query("SELECT * FROM suscriptions WHERE viewed='No';")->num_rows;
                 $QuantitySus = 8;
                 //$QuantityMsg = $Conexion->query("SELECT * FROM sus_message;")->num_rows;
-                $QuantityMsg = 10;
-                $QuantityTotal = $QuantitySus + $QuantityMsg;  
+                $QuantityMsg = $CN->getActivityNotificationMessageCount(@$_SESSION['usr']);
+                $QuantityTotal = $QuantitySus + $QuantityMsg;
             ?>
 
             <li class="dropdown">
@@ -52,9 +53,9 @@
                                     <span class="badge"><?php echo $QuantitySus; ?></span> <i class="fa fa-exclamation-circle icon"></i> Nuevas suscripciones
                                 </li>
                             </a>
-                            <a href="./">
+                            <a href="#" onclick="CallModalActivityMessageMe();">
                                 <li class="list-group-item">
-                                    <span class="badge danger"><?php echo $QuantityMsg; ?></span> <i class="fa fa-comments icon"></i> Mensajes de posibles clientes
+                                    <span class="badge danger"><?php echo $QuantityMsg; ?></span> <i class="fa fa-comments icon"></i> Mensajes a mis actividades
                                 </li>
                             </a>
                             <!-- <a href="#">
