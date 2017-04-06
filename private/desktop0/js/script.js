@@ -908,6 +908,17 @@ function CallModalMessage(){
 	$(".ShowMSGSended").click();
 }
 
+/*Making test*/
+function CallModalActivityMessageMe(){
+	$.ajax({
+	    url: "private/desktop0/html/build/getActivityMessageMe.php",
+	    success: function(data){
+	    	$(".view_all_messages").html(data);	
+	    }
+  	});
+	$(".ShowMSGSended").click();
+}
+
 function UpdateFavoriteMessage(){
 	$.ajax({
 	    url: "private/desktop0/html/build/UpdateFavoriteMessage.php",
