@@ -22,7 +22,7 @@
             <?php
                 $CN = CDB("vip");
                 //$QuantitySus = $Conexion->query("SELECT * FROM suscriptions WHERE viewed='No';")->num_rows;
-                $QuantitySus = 8;
+                $QuantitySus = $CN->getActivityNotificationFavoritiesCount(@$_SESSION['usr']);
                 //$QuantityMsg = $Conexion->query("SELECT * FROM sus_message;")->num_rows;
                 $QuantityMsg = $CN->getActivityNotificationMessageCount(@$_SESSION['usr']);
                 $QuantityTotal = $QuantitySus + $QuantityMsg;
@@ -48,9 +48,9 @@
                     </li>
                     <li>
                         <ul class="list-group notifications">
-                            <a href="#" onclick="OpenListSuscriptions();">
+                            <a href="#" onclick="CallModalActivityFavorities();">
                                 <li class="list-group-item" >
-                                    <span class="badge"><?php echo $QuantitySus; ?></span> <i class="fa fa-exclamation-circle icon"></i> Nuevas suscripciones
+                                    <span class="badge"><?php echo $QuantitySus; ?></span> <i class="fa fa-star-half-o icon"></i> Actividades favoritas
                                 </li>
                             </a>
                             <a href="#" onclick="CallModalActivityMessageMe();">
