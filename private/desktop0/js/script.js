@@ -919,6 +919,16 @@ function CallModalActivityMessageMe(){
 	$(".ShowMSGSended").click();
 }
 
+function CallModalActivityFavorities(){
+	$.ajax({
+	    url: "private/desktop0/html/build/getActivityFavorities.php",
+	    success: function(data){
+	    	$(".view_all_messages").html(data);	
+	    }
+  	});
+	$(".ShowMSGSended").click();
+}
+
 function UpdateFavoriteMessage(){
 	$.ajax({
 	    url: "private/desktop0/html/build/UpdateFavoriteMessage.php",
