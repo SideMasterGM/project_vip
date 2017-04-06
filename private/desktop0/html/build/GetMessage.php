@@ -74,14 +74,21 @@
                     <div class="ChangeIconFavorite">
 
                         <?php
+
                             $QFav = $Activity['favorite'];
-                            if ($QFav == "0" || $QFav == ""){
+                            if ($Activity['username'] == @$_SESSION['usr']){
+                                if ($QFav == "0" || $QFav == ""){
+                                    ?>
+                                        <i class="fa fa-star-half-o fa-lg" onclick="javascript: UpdateFavoriteMessage();" title="Agregar a favoritos" aria-hidden="true" style="float: left; cursor: pointer;"></i>
+                                    <?php
+                                } else {
+                                     ?>
+                                        <i class="fa fa-star fa-lg" onclick="javascript: UpdateFavoriteMessage();" title="Agregado como favorito" aria-hidden="true" style="float: left; cursor: pointer;"></i>
+                                    <?php
+                                }
+                            } else {
                                 ?>
                                     <i class="fa fa-star-half-o fa-lg" onclick="javascript: UpdateFavoriteMessage();" title="Agregar a favoritos" aria-hidden="true" style="float: left; cursor: pointer;"></i>
-                                <?php
-                            } else {
-                                 ?>
-                                    <i class="fa fa-star fa-lg" onclick="javascript: UpdateFavoriteMessage();" title="Agregado como favorito" aria-hidden="true" style="float: left; cursor: pointer;"></i>
                                 <?php
                             }
                         ?>
