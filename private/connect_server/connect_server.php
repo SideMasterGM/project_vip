@@ -427,9 +427,15 @@
 			if (!file_exists($path))
 				@mkdir($path, 0777);
 
+			$path_project = $path;
+
 			$path .= "img_perfil/";
 			if (!file_exists($path))
 				@mkdir($path, 0777);
+
+			$path_project .= "project_img/";
+			if (!file_exists($path_project))
+				@mkdir($path_project, 0777);
 
 			return true;
 	    }
@@ -736,7 +742,102 @@
 	    	if ($this->addActivity($_SESSION['usr'], 0, "Cierre de sesión"))
 				@session_destroy();
 	    }
+
+	    /*-------------------------------------------------*/
+
+	    public function getProjectFacCurEsc(){
+	    	$stmt = $this->db->query("SELECT * FROM facultades;");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$UsersData[] = [
+	    				'codigo_facultad' 	=> $row['codigo_facultad'], 
+	    				'nombrefac' 		=> $row['nombrefac']
+	    			];
+	    		}
+
+	    		return $UsersData;
+	    	}
+
+	    	return false;
+	    }
+
+	    public function getTmpImg(){
+	    	$stmt = $this->db->query("SELECT * FROM vip_tmp_img;");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$getData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$getData[] = [
+	    				'id' 			=> $row['id'], 
+	    				'folder' 		=> $row['folder'], 
+	    				'src' 			=> $row['src'],
+	    				'date_log' 		=> $row['date_log'],
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		return $getData;
+	    	}
+
+	    	return false;
+	    }
+
+	    public function deleteTmpImg($src){
+	    	$Reason = $this->db->prepare('DELETE FROM vip_tmp_img '
+                . 'WHERE src = :src');
+        	$Reason->bindValue(':src', $src);
+
+        	if ($Reason->execute())
+	       		return true;
+
+        	return false;
+	    }
+
+	    public function getTmpImgUnique($usr, $src){
+	    	$stmt = $this->db->query("SELECT * FROM vip_tmp_img WHERE src='".$src."' AND username='".$usr."' LIMIT 1;");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$getData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$getData[] = [
+	    				'id' 			=> $row['id'], 
+	    				'folder' 		=> $row['folder'], 
+	    				'src' 			=> $row['src'],
+	    				'date_log' 		=> $row['date_log'],
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		return $getData;
+	    	}
+
+	    	return false;
+	    }
+
+		public function addTmpImg($usr, $folder, $src){
+	    	$q = "INSERT INTO vip_tmp_img (username, folder, src, date_log, date_log_unix) VALUES (:username,:folder,:src,:date_log,:date_log_unix);";
+	    
+	    	$stmt = $this->db->prepare($q);
+
+	    	$stmt->bindValue(":username", 		$usr);
+	    	$stmt->bindValue(":folder", 		$folder);
+	    	$stmt->bindValue(":src", 			$src);
+	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
+	    	$stmt->bindValue(":date_log_unix", 	time());
+
+	    	if ($stmt->execute())
+	    		return true;
+
+	    	return false;
+	    }
+
 	}
+
 
 	function SessionVerify(){
 		if (!isset($_SESSION))
