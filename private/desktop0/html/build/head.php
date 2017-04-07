@@ -13,6 +13,7 @@
 <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
 <!-- CSS Libs -->
 <link rel="stylesheet" type="text/css" href="private/desktop0/lib/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="private/desktop0/js/jquery-ui.css">
 
 <!-- <link rel="stylesheet" type="text/css" href="private/desktop0/lib/css/font-awesome.min.css"> -->
 <link rel="stylesheet" type="text/css" href="private/desktop0/lib/css/fa/css/font-awesome.css">
