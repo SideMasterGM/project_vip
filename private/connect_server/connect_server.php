@@ -33,6 +33,7 @@
 			|   5 	|	Actualización de la imagen de perfil					|
 			|   6 	|	Eliminación de un usuario								|
 			|   7 	|	Creación de un usuario									|
+			|   9 	|	Señalar una actividad como favorito						|
 			|   10	|	Respuesta a una actividad								|
 			+-------+-----------------------------------------------------------+
 		*/
