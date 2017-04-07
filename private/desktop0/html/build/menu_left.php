@@ -19,14 +19,14 @@
 
                 <li class="panel panel-default dropdown option_article__item">
                     <a data-toggle="collapse" href="#dropdown-option-articles">
-                        <span class="icon fa fa-pencil-square-o"></span><span class="title">Artículos</span>
+                        <span class="icon fa fa-pencil-square-o"></span><span class="title">Proyectos</span>
                     </a>
                     <!-- Dropdown level 1 -->
                     <div id="dropdown-option-articles" class="panel-collapse collapse">
                         <div class="panel-body">
                             <ul class="nav navbar-nav">
-                                <li><a href="create_article">Escribir artículo</a></li>
-                                <li><a href="articles">Listar artículos</a></li>
+                                <li><a href="project">Nuevo proyecto</a></li>
+                                <li><a href="projects">Listar proyectos</a></li>
                             </ul>
                         </div>
                     </div>
