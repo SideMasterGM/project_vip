@@ -188,7 +188,7 @@
                                                     <div>
 
                                                     <?php
-                                                        $CNEx = CDB("vip");
+                                                        $CNEx = CDB("all");
 
                                                         ?>
                                                             <select id="select_comunidad_poblacion" style="width: 100%;">
