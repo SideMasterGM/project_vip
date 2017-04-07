@@ -3,8 +3,8 @@
 	$CN = CDB("vip");
 	@session_start();
 
-	if (is_array($CN->getTmpImg())){
-		foreach ($CN->getTmpImg() as $value) {
+	if (is_array($CN->getTmpImg(@$_SESSION['usr']))){
+		foreach ($CN->getTmpImg(@$_SESSION['usr']) as $value) {
 			?>
 				<div class="container_imgnow">
 					<img onclick="javascript: OptionsImageSelected(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
