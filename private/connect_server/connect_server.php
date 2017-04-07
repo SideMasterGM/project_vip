@@ -764,8 +764,8 @@
 	    	return false;
 	    }
 
-	    public function getTmpImg(){
-	    	$stmt = $this->db->query("SELECT * FROM vip_tmp_img;");
+	    public function getTmpImg($usr){
+	    	$stmt = $this->db->query("SELECT * FROM vip_tmp_img WHERE username='".$usr."';");
 
 	    	if ($stmt->rowCount() > 0){
 	    		$getData = [];
@@ -773,6 +773,7 @@
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$getData[] = [
 	    				'id' 			=> $row['id'], 
+	    				'username' 		=> $row['username'], 
 	    				'folder' 		=> $row['folder'], 
 	    				'src' 			=> $row['src'],
 	    				'date_log' 		=> $row['date_log'],
