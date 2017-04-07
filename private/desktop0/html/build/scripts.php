@@ -14,3 +14,4 @@
 <script type="text/javascript" src="private/desktop0/js/index.js"></script>
 <script type="text/javascript" src="private/desktop0/js/modal.js"></script>
 <script type="text/javascript" src="private/desktop0/js/script.js"></script>
+<script type="text/javascript" src="private/desktop0/js/jquery-ui.js"></script>
