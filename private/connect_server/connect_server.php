@@ -745,11 +745,31 @@
 
 	    /*-------------------------------------------------*/
 
+	    public function getProjectComunidad(){
+	    	$stmt = $this->db->query("SELECT * FROM municipios;");
+
+	    	if ($stmt->rowCount() > 0){
+	    		$getData = [];
+
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			$getData[] = [
+	    				'cod_muni' 		=> $row['cod_muni'], 
+	    				'nombre_muni' 	=> $row['nombre_muni'],
+	    				'cod_dpto' 		=> $row['cod_dpto']
+	    			];
+	    		}
+
+	    		return $getData;
+	    	}
+
+	    	return false;
+	    }
+
 	    public function getProjectFacCurEsc(){
 	    	$stmt = $this->db->query("SELECT * FROM facultades;");
 
 	    	if ($stmt->rowCount() > 0){
-	    		$UsersData = [];
+	    		$getData = [];
 
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
