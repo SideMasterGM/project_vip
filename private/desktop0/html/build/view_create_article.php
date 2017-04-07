@@ -73,31 +73,21 @@
                                                     <div>
 
                                                     <?php
-                                                        $ExAgentUser = $Conexion->query("SELECT DISTINCT username FROM agents;");
+                                                        $CNEx = CDB("all");
 
                                                         ?>
-                                                            <select id="select_agent" style="width: 100%;">
+                                                            <select id="select_fac_cur_esc" style="width: 100%;">
+                                                                <optgroup label="Lista de centros">
                                                         <?php
 
-                                                        while ($RExAgentUser = $ExAgentUser->fetch_array(MYSQLI_ASSOC)){
+                                                        foreach ($CNEx->getProjectFacCurEsc() as $value) {
                                                             ?>
-                                                                <optgroup label="Registrado por <?php echo $RExAgentUser['username']; ?>">
-
-                                                                <?php
-                                                                    $NewQAgents = $Conexion->query("SELECT * FROM agents WHERE username='".$RExAgentUser['username']."';");
-
-                                                                    while ($RNewQAgents = $NewQAgents->fetch_array(MYSQLI_ASSOC)){
-                                                                        ?>
-                                                                            <option value="<?php echo $RNewQAgents['id_agent']; ?>"><?php echo $RNewQAgents['names']; ?></option>
-                                                                        <?php
-
-                                                                    }
-                                                                ?>
-                                                                </optgroup>
-                                                            <?php
+                                                                <option value="<?php echo $value['codigo_facultad']; ?>"><?php echo $value['nombrefac']; ?></option>
+                                                            <?php                                                              
                                                         }
 
                                                         ?>
+                                                                </optgroup>
                                                             </select>
                                                         <?php
                                                     ?>
@@ -116,10 +106,10 @@
 
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Localización</h3>
+                                                    <h3 class="panel-title">Fecha de aprobación</h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                     <input type="text" class="form-control" id="fecha_aprobacion" placeholder="* Ciudad departamental" onclick="javascript: Calldatepicker();"/><br/>
+                                                     <input type="text" class="form-control" id="fecha_aprobacion" placeholder="* Fecha" onclick="javascript: Calldatepicker();"/><br/>
                                                 </div>
                                             </div>
                                          </div>
@@ -168,21 +158,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">Tipo de negocio</h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div>
-                                                        <select id="select_business_type" style="width: 100%;">
-                                                            <optgroup label="Tipo de negocio">
-                                                               <option value="Venta">Venta</option>
-                                                               <option value="Alquiler">Alquiler</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
@@ -217,7 +192,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="panel panel-default">
+                                            <!-- <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Estado de la propiedad</h3>
                                                 </div>
@@ -232,7 +207,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                          </div>
 
                                          <div class="col-xs-4">
@@ -249,98 +224,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">Salas</h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div>
-                                                        <select id="select_living_room" style="width: 100%;">
-                                                            <optgroup label="Salas">
-                                                               <option value="0">0</option>
-                                                               <option value="1">1</option>
-                                                               <option value="2">2</option>
-                                                               <option value="3">3</option>
-                                                               <option value="4">4</option>
-                                                               <option value="5">5</option>
-                                                               <option value="6">6</option>
-                                                               <option value="7">7</option>
-                                                               <option value="8">8</option>
-                                                               <option value="9">9</option>
-                                                               <option value="10">10</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">Estacionamientos</h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div>
-                                                        <select id="select_parking" style="width: 100%;">
-                                                            <optgroup label="Estacionamientos">
-                                                               <option value="0">0</option>
-                                                               <option value="1">1</option>
-                                                               <option value="2">2</option>
-                                                               <option value="3">3</option>
-                                                               <option value="4">4</option>
-                                                               <option value="5">5</option>
-                                                               <option value="6">6</option>
-                                                               <option value="7">7</option>
-                                                               <option value="8">8</option>
-                                                               <option value="9">9</option>
-                                                               <option value="10">10</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">Cocinas</h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div>
-                                                        <select id="select_kitchen_now" style="width: 100%;">
-                                                            <optgroup label="Cocinas">
-                                                               <option value="0">0</option>
-                                                               <option value="1">1</option>
-                                                               <option value="2">2</option>
-                                                               <option value="3">3</option>
-                                                               <option value="4">4</option>
-                                                               <option value="5">5</option>
-                                                               <option value="6">6</option>
-                                                               <option value="7">7</option>
-                                                               <option value="8">8</option>
-                                                               <option value="9">9</option>
-                                                               <option value="10">10</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                         </div>
-
-                                         <!-- <div class="row">
-                                              <div class="col-xs-12">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Posicione el local en el mapa</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <?php //include ("../../test/map.php"); ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
-
-
+                                        </div>
                                     </div>
                                 </div>
                             </div>
