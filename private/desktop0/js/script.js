@@ -953,3 +953,15 @@ function CallModalMessageFav(){
 function Calldatepicker(){
 	$("#fecha_aprobacion").datepicker();
 }
+
+function CalldatepickerFechaInicio(){
+	$("#fecha_inicio").datepicker();
+}
+
+function CalldatepickerFechaFin(){
+	$("#fecha_finalizacion").datepicker();
+}
+
+function CalldatepickerFechaMonitoreo(){
+	$("#fecha_monitoreo").datepicker();
+}
