@@ -6,12 +6,12 @@
                     <div class="card-header">
                         <div class="col-xs-10">
                             <div class="card-title" style="width: 105%;">
-                                <input type="text" class="form-control" style="width: 100%;" placeholder="Título del artículo a publicar" id="title_publish" name="title_publish" autofocus />
+                                <input type="text" class="form-control" style="width: 100%;" placeholder="Escriba el nombre del proyecto" id="title_publish" name="title_publish" autofocus />
                             </div>
                             </div>
                             <div class="col-xs-2">
                                 <div class="card-title" style="width: 100%;">
-                                    <button type="button" style="margin-bottom: -10px; margin-top: 0; float: right;" class="btn btn-primary" onclick="javascript: PreviewArticle();">Publicar artículo</button>
+                                    <button type="button" style="margin-bottom: -10px; margin-top: 0; float: right;" class="btn btn-primary" onclick="javascript: PreviewArticle();">Agregar proyecto</button>
                                 </div>
                             </div>
                     </div>
@@ -23,7 +23,7 @@
                                         <div class="icon fa fa-pencil"></div>
                                         <div class="step-title">
                                             <div class="title">Redactar</div>
-                                            <div class="description">Describe el elemento a publicar.</div>
+                                            <div class="description">Escribe los objetivos del proyecto.</div>
                                         </div>
                                     </a>
                                 </li>
@@ -32,23 +32,23 @@
                                         <div class="icon fa fa-picture-o"></div>
                                         <div class="step-title">
                                             <div class="title">Subir imágenes</div>
-                                            <div class="description">Selecciona las imágenes del elemento a publicar.</div>
+                                            <div class="description">Selecciona las imágenes del proyecto.</div>
                                         </div>
                                     </a>
                                 </li>
                                 <li role="step">
                                     <a href="#step3" role="tab" id="step3-tab" data-toggle="tab" aria-controls="profile">
-                                        <div class="icon fa fa-bar-chart"></div>
+                                        <div class="icon fa fa-tasks"></div>
                                         <div class="step-title">
-                                            <div class="title">Información de negocios</div>
-                                            <div class="description">Precio, agente, localización, descripción, etc.</div>
+                                            <div class="title">Información de formato</div>
+                                            <div class="description">Facultad, CUR, Escuela, Código dictamen, etc.</div>
                                         </div>
                                     </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="step1" aria-labelledby="home-tab">
-                                    <?php include ("edit/index.html"); ?>
+                                    <?php include ("private/desktop0/html/edit/index.html"); ?>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="step2" aria-labelledby="profile-tab">
                                     <div class="mensage"></div>      
@@ -65,29 +65,52 @@
 
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Precio</h3>
+                                                    <h3 class="panel-title">Facultad | CUR | Escuela
+                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: addAgentNow();" aria-hidden="true" title="Agregar agente" ></i></h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                  <div class="form-group">
+                                                
+                                                    <div>
+
+                                                    <?php
+                                                        $ExAgentUser = $Conexion->query("SELECT DISTINCT username FROM agents;");
+
+                                                        ?>
+                                                            <select id="select_agent" style="width: 100%;">
+                                                        <?php
+
+                                                        while ($RExAgentUser = $ExAgentUser->fetch_array(MYSQLI_ASSOC)){
+                                                            ?>
+                                                                <optgroup label="Registrado por <?php echo $RExAgentUser['username']; ?>">
+
+                                                                <?php
+                                                                    $NewQAgents = $Conexion->query("SELECT * FROM agents WHERE username='".$RExAgentUser['username']."';");
+
+                                                                    while ($RNewQAgents = $NewQAgents->fetch_array(MYSQLI_ASSOC)){
+                                                                        ?>
+                                                                            <option value="<?php echo $RNewQAgents['id_agent']; ?>"><?php echo $RNewQAgents['names']; ?></option>
+                                                                        <?php
+
+                                                                    }
+                                                                ?>
+                                                                </optgroup>
+                                                            <?php
+                                                        }
+
+                                                        ?>
+                                                            </select>
+                                                        <?php
+                                                    ?>
+                                                    </div>
+
+                                                  <!-- <div class="form-group">
                                                     <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                                                     <div class="input-group">
                                                       <div class="input-group-addon">$</div>
-                                                      <input type="number" class="form-control" id="precio_dolar" name="precio_dolar" placeholder="Cantidad en dólares" onkeyup="javascript: ConvertToDolar(this);">
+                                                      <input type="number" class="form-control" id="precio_dolar" name="precio_dolar" placeholder="Facultad / CUR / Escuela" onkeyup="javascript: ConvertToDolar(this);">
                                                       <div class="input-group-addon"></div>
                                                     </div><br>
-
-                                                    <div class="input-group">
-                                                      <div class="input-group-addon">C$</div>
-                                                      <input type="number" class="form-control" id="cantidad_dolar" placeholder="¿A cuánto?" onkeyup="javascript: ConvertToCD(this);" />
-                                                      <div class="input-group-addon">$1</div>
-                                                    </div><br>
-
-                                                    <div class="input-group">
-                                                      <div class="input-group-addon">C$</div>
-                                                      <input type="number" class="form-control" id="cantidad_cordoba" placeholder="Cantidad en córdobas" onkeyup="javascript: ConvertToCordoba(this);">
-                                                      <div class="input-group-addon"></div>
-                                                    </div>
-                                                  </div>
+                                                  </div> -->
                                                 </div>
                                             </div>
 
@@ -96,9 +119,7 @@
                                                     <h3 class="panel-title">Localización</h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                     <input type="text" class="form-control" id="departamento_local" placeholder="* Ciudad departamental" /><br/>
-                                                     <input type="text" class="form-control" id="ciudad_local" placeholder="* Ciudad o municipio" /><br/>
-                                                     <input type="text" class="form-control" id="direccion_local" placeholder="* Dirección del local" /><br/>
+                                                     <input type="text" class="form-control" id="fecha_aprobacion" placeholder="* Ciudad departamental" onclick="javascript: Calldatepicker();"/><br/>
                                                 </div>
                                             </div>
                                          </div>
@@ -107,7 +128,7 @@
 
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Seleccionar Agente
+                                                    <h3 class="panel-title">Instancia de aprobación
                                                     <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: addAgentNow();" aria-hidden="true" title="Agregar agente" ></i>
                                                     </h3>
                                                 </div>
@@ -218,25 +239,13 @@
 
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Recamaras</h3>
+                                                    <h3 class="panel-title">Dictamen económico</h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                    <div>
-                                                        <select id="select_bed_room" style="width: 100%;">
-                                                            <optgroup label="Recamaras">
-                                                               <option value="0">0</option>
-                                                               <option value="1">1</option>
-                                                               <option value="2">2</option>
-                                                               <option value="3">3</option>
-                                                               <option value="4">4</option>
-                                                               <option value="5">5</option>
-                                                               <option value="6">6</option>
-                                                               <option value="7">7</option>
-                                                               <option value="8">8</option>
-                                                               <option value="9">9</option>
-                                                               <option value="10">10</option>
-                                                            </optgroup>
-                                                        </select>
+                                                    <div class="input-group">
+                                                      <div class="input-group-addon">Código</div>
+                                                      <input type="number" class="form-control" id="cod_dictamen" name="cod_dictamen" placeholder="####"/>
+                                                      <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -318,18 +327,18 @@
 
                                          </div>
 
-                                         <div class="row">
+                                         <!-- <div class="row">
                                               <div class="col-xs-12">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h3 class="panel-title">Posicione el local en el mapa</h3>
                                                     </div>
                                                     <div class="panel-body">
-                                                        <?php include ("../../test/map.php"); ?>
+                                                        <?php //include ("../../test/map.php"); ?>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
 
                                     </div>
@@ -361,7 +370,7 @@
 
             <a href="articles" style="display: none;" id="ClickArticlesList"></a>
 
-            <?php include ("build/modals.php"); ?>
+            <?php include ("private/desktop0/html/build/modals.php"); ?>
         </div>
     </div>
 </div>
