@@ -103,7 +103,7 @@
                                                   </div> -->
                                                 </div>
                                             </div>
-
+                                            
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Fecha de aprobación</h3>
@@ -112,6 +112,20 @@
                                                      <input type="text" class="form-control" id="fecha_aprobacion" placeholder="* Fecha" onclick="javascript: Calldatepicker();"/><br/>
                                                 </div>
                                             </div>
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Dictamen económico</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="input-group">
+                                                      <div class="input-group-addon">Código</div>
+                                                      <input type="number" class="form-control" id="cod_dictamen" name="cod_dictamen" placeholder="####"/>
+                                                      <div class="input-group-addon"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                          </div>
 
                                          <div class="col-xs-4">
@@ -191,39 +205,28 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">Estado de la propiedad</h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div>
-                                                        <select id="select_property_state" style="width: 100%;">
-                                                            <optgroup label="Tipo de propiedad">
-                                                               <option value="En proceso">En proceso</option>
-                                                               <option value="Vendido">Vendido</option>
-                                                               <option value="Alquilado">Alquilado</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div> -->
                                          </div>
 
                                          <div class="col-xs-4">
-
+                                            
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Dictamen económico</h3>
+                                                    <h3 class="panel-title">Temporalidad</h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                    <div class="input-group">
-                                                      <div class="input-group-addon">Código</div>
-                                                      <input type="number" class="form-control" id="cod_dictamen" name="cod_dictamen" placeholder="####"/>
+                                                     <div class="input-group">
+                                                      <div class="input-group-addon">Duración</div>
+                                                      <input type="number" class="form-control" id="duracion_meses" name="duracion_meses" placeholder="# Nº de meses" style="z-index: 1;" />
                                                       <div class="input-group-addon"></div>
-                                                    </div>
+                                                    </div><br/>
+                                                    
+                                                     <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="* Fecha inicial" onclick="javascript: CalldatepickerFechaInicio();"/><br/>
+                                                     <input type="text" class="form-control" id="fecha_finalizacion" name="fecha_finalizacion" placeholder="* Fecha de finalización" onclick="javascript: CalldatepickerFechaFin();"/><br/>
+                                                     <input type="text" class="form-control" id="fecha_monitoreo" name="fecha_monitoreo" placeholder="* Fecha de monitoreo" onclick="javascript: CalldatepickerFechaMonitoreo();"/><br/>
+                                                     
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
