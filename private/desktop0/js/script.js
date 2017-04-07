@@ -283,8 +283,8 @@ function OptionsImageSelected(value){
 	//Verificar esto en el servidor. Considero que hay que cambiar el valor.
 	var newData = value.src.split("/");
 
-	$("#MyImgSelectedOptions").html(newData[8]);
-	$("#MyNameImgDelete").val(newData[8]);
+	$("#MyImgSelectedOptions").html(newData[9]);
+	$("#MyNameImgDelete").val(newData[9]);
 
 	document.getElementById("ImgAmplia").src = value.src;
 	
