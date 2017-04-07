@@ -949,3 +949,7 @@ function CallModalMessageFav(){
   	});
 	$(".ShowMSGSendedFav").click();
 }
+
+function Calldatepicker(){
+	$("#fecha_aprobacion").datepicker();
+}
