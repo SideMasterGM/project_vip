@@ -1,14 +1,19 @@
 <?php
-	include ("../../connect_server/connect_server.php");
+	include ("../../../connect_server/connect_server.php");
+	$CN = CDB("vip");
+	@session_start();
+
 	$src = trim(urldecode($_POST['MyNameImgDelete']));
 
-	$R = $Conexion->query("SELECT * FROM tmp_img WHERE src='".$src."' LIMIT 1;")->fetch_array(MYSQLI_ASSOC);
-	chmod("../../".$R['folder'].$R['src'], 0777);
-	unlink("../../".$R['folder'].$R['src']);
+	if (is_array($CN->getTmpImgUnique(@$_SESSION['usr'], $src))){
+		foreach ($CN->getTmpImgUnique(@$_SESSION['usr'], $src) as $R) {
+			chmod("../../".$R['folder'].$R['src'], 0777);
+			unlink("../../".$R['folder'].$R['src']);
+		}
 
-	$Q = "DELETE FROM tmp_img WHERE src='".$src."';";
-
-	if ($Conexion->query($Q))
-		echo "OK";
-
+		if ($CN->deleteTmpImg($src))
+			echo "OK";
+	} else if (is_bool($CN->getTmpImgUnique(@$_SESSION['usr'], $src))){
+		echo "Mandela";
+	}
 ?>
