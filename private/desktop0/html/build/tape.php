@@ -21,9 +21,7 @@
 
             <?php
                 $CN = CDB("vip");
-                //$QuantitySus = $Conexion->query("SELECT * FROM suscriptions WHERE viewed='No';")->num_rows;
                 $QuantitySus = $CN->getActivityNotificationFavoritiesCount(@$_SESSION['usr']);
-                //$QuantityMsg = $Conexion->query("SELECT * FROM sus_message;")->num_rows;
                 $QuantityMsg = $CN->getActivityNotificationMessageCount(@$_SESSION['usr']);
                 $QuantityTotal = $QuantitySus + $QuantityMsg;
             ?>
