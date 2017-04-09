@@ -59,21 +59,33 @@
 			|   10	|	Respuesta a una actividad								|
 			+-------+-----------------------------------------------------------+
 		*/
+
+		/**
+			* Método que agrega una actividad de usuario.
+			*@param: $usr (Nombre de usuario), $code (Tipo de actividad o evento), $description.
+		*/
 	    public function addActivity($usr, $code, $description){
-	    	$usr = $this->CleanString($usr);
+	    	#CleanString es un método perteneciente a esta clase.
+	    	$usr = $this->CleanString($usr); #Se limpia la cadena recibida, atendiendo al nombre de usuario.
 	    	
+	    	#Consulta preparada que inserta una actividad.
+	    	#Nombre de tabla: vip_user_activity
+	    	#Atributos: username, code, description, date_log, date_log_unix, favorite.
 	    	$Reason = $this->db->prepare("INSERT INTO vip_user_activity (username, code, description, date_log, date_log_unix, favorite) VALUES (:username,:code,:description,:date_log,:date_log_unix,:favorite)");
 
-	    	$Reason->bindValue(":username", $usr);
-	    	$Reason->bindValue(":code", $code);
-	    	$Reason->bindValue(":description", $description);
-	    	$Reason->bindValue(":date_log", date('Y-n-j'));
-	    	$Reason->bindValue(":date_log_unix", time());
-	    	$Reason->bindValue(":favorite", 0);
+	    	#Se agregan los valores.
+	    	$Reason->bindValue(":username", $usr);				#Nombre de usuario.
+	    	$Reason->bindValue(":code", $code);					#Tipo de actividad o evento.
+	    	$Reason->bindValue(":description", $description);	#Descripción.
+	    	$Reason->bindValue(":date_log", date('Y-n-j'));		#Fecha.
+	    	$Reason->bindValue(":date_log_unix", time());		#Tiempo en decimal UNIX.
+	    	$Reason->bindValue(":favorite", 0);					#Valor por defecto de favorito.
 
+	    	#Ejecución de la consulta. Espera retornar un valor booleano.
 	    	if ($Reason->execute())
 	    		return true;
 
+	    	#Si algo ha fallado, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
