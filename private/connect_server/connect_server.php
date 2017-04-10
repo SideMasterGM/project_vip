@@ -89,6 +89,10 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene una actividad de usuario.
+			*@param: $id_activity (ID de una actividad), $Quantity (Límite de resultados).
+		*/
 	    public function getActivity($id_activity, $Quantity){
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE id_activity='".$id_activity."' LIMIT ".$Quantity.";");
 
