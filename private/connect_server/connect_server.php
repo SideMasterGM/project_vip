@@ -94,12 +94,18 @@
 			*@param: $id_activity (ID de una actividad), $Quantity (Límite de resultados).
 		*/
 	    public function getActivity($id_activity, $Quantity){
+	    	#Statement: Consulta directa sin preparación. 
+	    	#Tabla: vip_user_activity.
+	    	#Atributos: id_activity y cláusula LIMIT afectada.
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE id_activity='".$id_activity."' LIMIT ".$Quantity.";");
 
+	    	#Si tiene datos.
 	    	if ($stmt->rowCount() > 0){
-	    		$UsersData = [];
+	    		$UsersData = []; #Definición de una array multidimensional.
 
+	    		#Recorrido de las filas devueltas por la consulta anterior.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
 	    			$UsersData[] = [
 	    				'id_activity' 	=> $row['id_activity'], 
 	    				'username' 		=> $row['username'], 
@@ -109,11 +115,14 @@
 	    				'date_log_unix' => $row['date_log_unix'],
 	    				'favorite' 		=> $row['favorite']
 	    			];
+	    			#Se agregan toda la información devuelta, recordar el * de la consulta.
 	    		}
 
+	    		#Finalizado el recorrido, se devuelve el array que contiene toda la información.
 	    		return $UsersData;
 	    	}
 
+	    	#Si algo ha fallado, se devuelve un booleano falso.
 	    	return false;
 	    }
 
