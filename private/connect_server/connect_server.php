@@ -247,7 +247,6 @@
 	    	return false;
 	    }
 
-
 	    /**
 			* Método que obtiene las actividades de los demás usuarios, evitando el usuario de sesión actual.
 			*@param: $Quantity (Límite de resultados).
@@ -360,7 +359,6 @@
 	    	#Se algo falla, re retorna un valor booleano falso.
 	    	return false;
 	    }
-
 
 	    /**
 			* Método que agrega un mensaje a una actividad.
@@ -574,24 +572,38 @@
 		    return false;
 	    }
 
+	    /**
+			* Método que actualiza la acción de favorito a una actividad.
+			*@param: $usr (Nombre de usuario al que hace referencia), $id_activity(ID de actividad) $favorite (Favorito 0,1).
+		*/
 	    public function updateActivityFavorite($usr, $id_activity, $favorite){
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user_activity.
+	    	#Atributos: favorite, id_favorite.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Tenga en cuenta que hay varias tablas de actividades relacionadas, por lo tanto, se actualzarán en cascada.
 	    	$Reason = $this->db->prepare('UPDATE vip_user_activity '
                 . 'SET favorite = :favorite '
                 . 'WHERE id_activity = :id_activity');
 
+	    	#Se vincula el valor con el parámetro.
 	    	$Reason->bindValue(':favorite', 	$favorite);
         	$Reason->bindValue(':id_activity', 	$id_activity);
 
+        	#Si el valor a favorito es 1, significa que se marca como favorito. Si es 0, lo contrario.
         	if ($favorite == 1){
         		$Message = "La actividad ".$id_activity.", se ha marcado como favorito.";
         	} else if ($favorite == 0) {
         		$Message = "La actividad ".$id_activity.", se ha desmarcado de los favoritos.";
         	}
 
+        	#La variable $Message almacena el string que se cargará en la descripción de la nueva actividad.
         	if ($this->addActivity($usr, 9, $Message))
-		    	if ($Reason->execute())
-		    		return true;
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		return true;	#Todo ha salido correctamente.
 
+		    #Si algo falla, se devuelve un valor booleano falso.
 		    return false;
 	    }
 
