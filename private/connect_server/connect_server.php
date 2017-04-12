@@ -939,23 +939,39 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene la contraseña de un usuario en específico.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function getUserPwd($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user.
+		    #Atributos: username.
+		    #Valores devueltos: password.
+
 	    	$stmt = $this->db->query("SELECT password FROM vip_user WHERE username='".$usr."';");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
 	    		$UsersData = [];
 
+	    		#Se recorren las filas devueltas.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$UsersData[] = [
 	    				'password' 	=> $row['password']
 	    			];
 	    		}
 
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo password.
 	    		foreach ($UsersData as $value) {
 	    			return $value['password'];
 	    		}
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
