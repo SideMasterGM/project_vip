@@ -835,9 +835,19 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    /**
+			* Método que obtiene el número de usuarios que existen.
+			*@param: No hay.
+		*/
 	    public function getUserCount(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user.
+		    #Atributos: -
+		    #Valores devueltos: Todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user");
 	    	
+	    	#Se retorna la cantidad de filas devueltas por la consulta.
 	    	return $stmt->rowCount();
 	    }
 
