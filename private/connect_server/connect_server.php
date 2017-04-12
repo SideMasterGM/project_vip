@@ -1295,13 +1295,26 @@
 
 	    /*-------------------------------------------------*/
 
+	    /**
+			* Método que obtiene las comunidades del proyecto.
+			*@param: No hay.
+		*/
 	    public function getProjectComunidad(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: municipios.
+		    #Atributos: -
+		    #Valores devueltos: Todos los datos posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM municipios;");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
 	    		$getData = [];
 
+	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
 	    			$getData[] = [
 	    				'cod_muni' 		=> $row['cod_muni'], 
 	    				'nombre_muni' 	=> $row['nombre_muni'],
@@ -1309,9 +1322,11 @@
 	    			];
 	    		}
 
+	    		#Retorno del array cargado de información.
 	    		return $getData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
