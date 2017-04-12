@@ -802,9 +802,19 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    /**
+			* Método que obtiene el número de actividades a las que se les ha agregado un mensaje en notificación a mi usuario.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function getActivityNotificationMessageCount($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_activity_message.
+		    #Atributos: username.
+		    #Valores devueltos: id_activity, date_log_unix (evitando redundancia).
+
 	    	$stmt = $this->db->query("SELECT distinct(id_activity), date_log_unix FROM vip_user_activity_message WHERE username!='".$usr."';");
 	    	
+	    	#Se retorna la cantidad de filas devueltas por la consulta.
 	    	return $stmt->rowCount();
 	    }
 
