@@ -1065,13 +1065,26 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene información sobre la imagen de perfil de un usuario.
+			*@param: $usr (Nombre de usuario), $Order (La forma de ordenar la info.), $Quantity (Límite de registros).
+		*/
 	    public function getUserImgPerfil($usr, $Order, $Quantity){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_img_perfil.
+		    #Atributos: usr, cláusula LIMIT.
+		    #Valores devueltos: Todos los datos posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_img_perfil WHERE username='".$usr."' ORDER BY id ".$Order." LIMIT ".$Quantity);
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
 	    		$UserImgPerfil = [];
 
+	    		#Se recorren las filas devueltas.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$UserImgPerfil[] = [
 	    				'id' 			=> $row['id'],
 	    				'username' 		=> $row['username'],
@@ -1082,9 +1095,11 @@
 	    			];
 	    		}
 
+	    		#Se retorna la información capturada en el array.
 	    		return $UserImgPerfil;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
