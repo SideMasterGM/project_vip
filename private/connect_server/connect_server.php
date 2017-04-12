@@ -1103,60 +1103,68 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que limpia o escapa strings.
+			*@param: $str (String = Cadena de caracteres).
+		*/
 	    public function CleanString($str) {
- 
+ 			
+ 			#Se limpian los espacios de inicio y de fin.
 		    $str = trim($str);
-		 
+		 	
+		 	#Reemplaza todas las apariciones del string buscado con el string de reemplazo.
+		 	#str_replace: http://php.net/manual/es/function.str-replace.php
+		    #--------------------------------------------------------------------------------
+		 	
 		    $str = str_replace(
 		        array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),
 		        array('a', 'a', 'a', 'a', 'a', 'A', 'A', 'A', 'A'),
 		        $str
 		    );
-		 
+		 	
+		 	#--------------------------------------------------------------------------------
+
 		    $str = str_replace(
 		        array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ê', 'Ë'),
 		        array('e', 'e', 'e', 'e', 'E', 'E', 'E', 'E'),
 		        $str
 		    );
 		 
+		    #--------------------------------------------------------------------------------
+
 		    $str = str_replace(
 		        array('í', 'ì', 'ï', 'î', 'Í', 'Ì', 'Ï', 'Î'),
 		        array('i', 'i', 'i', 'i', 'I', 'I', 'I', 'I'),
 		        $str
 		    );
 		 
+		    #--------------------------------------------------------------------------------
+
 		    $str = str_replace(
 		        array('ó', 'ò', 'ö', 'ô', 'Ó', 'Ò', 'Ö', 'Ô'),
 		        array('o', 'o', 'o', 'o', 'O', 'O', 'O', 'O'),
 		        $str
 		    );
 		 
+		    #--------------------------------------------------------------------------------
+
 		    $str = str_replace(
 		        array('ú', 'ù', 'ü', 'û', 'Ú', 'Ù', 'Û', 'Ü'),
 		        array('u', 'u', 'u', 'u', 'U', 'U', 'U', 'U'),
 		        $str
 		    );
 		 
+		    #--------------------------------------------------------------------------------
+
 		    $str = str_replace(
 		        array('ñ', 'Ñ', 'ç', 'Ç'),
 		        array('n', 'N', 'c', 'C',),
 		        $str
 		    );
+
+		    #--------------------------------------------------------------------------------
 		 
-		    // //Esta parte se encarga de eliminar cualquier caracter extraño
-		    // $str = str_replace(
-		    //     array("\", "¨", "º", "-", "~",
-		    //          "#", "@", "|", "!", """,
-		    //          "·", "$", "%", "&", "/",
-		    //          "(", ")", "?", "'", "¡",
-		    //          "¿", "[", "^", "<code>", "]",
-		    //          "+", "}", "{", "¨", "´",
-		    //          ">", "< ", ";", ",", ":",
-		    //          ".", " "),
-		    //     '',
-		    //     $str
-		    // );
-		 
+		    #Se retorna el nuevo string.
 		    return $str;
 		}
 
