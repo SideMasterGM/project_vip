@@ -23,6 +23,7 @@
 		function __construct($host, $port, $dbase, $user, $pass){
 			#Escribir una cadena con formato de secuencia.
 			#fprintf(): http://php.net/manual/es/function.fprintf.php
+
 			$cn = sprintf("host=%s;port=%s;dbname=%s;user=%s;password=%s", 
 				$host, $port, $dbase, $user, $pass);
 
@@ -72,6 +73,7 @@
 	    	#Consulta preparada que inserta una actividad.
 	    	#Nombre de tabla: vip_user_activity
 	    	#Atributos: username, code, description, date_log, date_log_unix, favorite.
+
 	    	$Reason = $this->db->prepare("INSERT INTO vip_user_activity (username, code, description, date_log, date_log_unix, favorite) VALUES (:username,:code,:description,:date_log,:date_log_unix,:favorite)");
 
 	    	#Se agregan los valores.
@@ -98,6 +100,7 @@
 	    	#Statement: Consulta directa sin preparación. 
 	    	#Tabla: vip_user_activity.
 	    	#Atributos: id_activity y cláusula LIMIT afectada.
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE id_activity='".$id_activity."' LIMIT ".$Quantity.";");
 
 	    	#Si tiene datos.
@@ -136,6 +139,7 @@
 	    	#Tabla: vip_user_activity_message.
 	    	#Atributos: username y cláusula LIMIT afectada.
 	    	#Valores devueltos: id_activity (Este no debe tener redundancias), date_log_unix.
+
 	    	$stmt = $this->db->query("SELECT distinct(id_activity), date_log_unix FROM vip_user_activity_message WHERE username!='".$usr."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
 
 	    	#Si hay registros.
@@ -145,6 +149,7 @@
 
 	    		#Se recorren los resultados y se almacenan en el array.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
 	    			$UsersData[] = [
 	    				'id_activity' 	=> $row['id_activity'], 
 	    				'date_log_unix' => $row['date_log_unix']
@@ -168,6 +173,7 @@
 	    	#Tabla: vip_user_activity.
 	    	#Atributos: username, favorite y cláusula LIMIT afectada.
 	    	#Valores devueltos: todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".$usr."' AND favorite=1 ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
 
 	    	#Si hay registros.
@@ -177,6 +183,7 @@
 
 	    		#Se recorren los resultados y se almacenan en el array.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
 	    			$UsersData[] = [
 	    				'id_activity' 	=> $row['id_activity'], 
 	    				'username' 		=> $row['username'], 
@@ -196,14 +203,30 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene mis actividades, referidas al usuario de sesión actual.
+			*@param: $Quantity (Límite de resultados).
+		*/
 	    public function getMyActivity($Quantity){
+	    	#Se habilita el uso de sesiones.
 	    	@session_start();
+
+	    	#Statement: Consulta directa no preparada. 
+	    	#Tabla: vip_user_activity.
+	    	#Atributos: username y cláusula LIMIT afectada.
+	    	#Valores devueltos: todos los posibles (*).
+
+	    	#Se utiliza la variable de sesión $_SESSION['usr'] para comparar con posible nombre de usuario que se 
+	    	#se encuentra registrado en la tabla: vip_user_activity.
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".@$_SESSION['usr']."' ORDER BY id_activity DESC LIMIT ".$Quantity.";");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
 	    		$UsersData = [];
 
+	    		#Se recorren los resultados y se almacenan en el array.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
 	    			$UsersData[] = [
 	    				'id_activity' 	=> $row['id_activity'], 
 	    				'username' 		=> $row['username'], 
@@ -215,9 +238,11 @@
 	    			];
 	    		}
 
+	    		#Se retorna el array con la información almacenada.
 	    		return $UsersData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
