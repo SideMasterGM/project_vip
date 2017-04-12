@@ -746,25 +746,43 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que crea un árbol de directorios sobre un usuario.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function DirUser($usr){
+	    	#Ruta del directorio |Users|
 	    	$path = "../../private/desktop0/users/";
-			if (!file_exists($path))
-				@mkdir($path, 0777);
 
+	    	#Se verifica la existencia del directorio |Users|.
+			if (!file_exists($path))
+				@mkdir($path, 0777); 					#En caso que no exista, se crea el directorio.
+
+			#Se limpia el nombre de usuario y se concatena a la variable $path que contiene la ruta de |Users|.
 			$path .= $this->CleanString($usr)."/";
-			if (!file_exists($path))
-				@mkdir($path, 0777);
 
+			#Se verifica la existencia del directorio |Users|nombre_de_usuario|.
+			if (!file_exists($path))
+				@mkdir($path, 0777);					#En caso que no exista, se crea el directorio.
+
+			#Se hace una copia de la ruta actual del usuario |Users|nombre_de_usuario|.
 			$path_project = $path;
 
+			#Se concatena img_perfil, este será otro directorio dentro del directorio usuario.
 			$path .= "img_perfil/";
+
+			#Se verifica la existencia del directorio |Users|nombre_de_usuario|img_perfil|.
 			if (!file_exists($path))
-				@mkdir($path, 0777);
+				@mkdir($path, 0777);					#En caso que no exista, se crea el directorio.
 
+			#$path_project conserva una copia de |Users|nombre_de_usuario|, se concatena |project_img|.
 			$path_project .= "project_img/";
-			if (!file_exists($path_project))
-				@mkdir($path_project, 0777);
 
+			#Se verifica la existencia del directorio |Users|nombre_de_usuario|project_img|
+			if (!file_exists($path_project))
+				@mkdir($path_project, 0777);			#En caso que no exista, se crea el directorio.
+
+			#Retornamos verdadero, que todo ha salido correctamente.
 			return true;
 	    }
 
