@@ -851,9 +851,19 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    /**
+			* Método que obtiene el número de usuarios que tienen el mismo nombre.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function getUserRowCount($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user.
+		    #Atributos: username.
+		    #Valores devueltos: Todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user WHERE username='".$usr."'");
 	    	
+	    	#Se retorna la cantidad de filas devueltas por la consulta.
 	    	return $stmt->rowCount();
 	    }
 
