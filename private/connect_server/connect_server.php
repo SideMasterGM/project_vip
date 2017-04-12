@@ -1364,13 +1364,26 @@
 	    	return false;
 	    }
 
+	     /**
+			* Método que obtiene las imágenes temporales con respecto al usuario logueado.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function getTmpImg($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: username.
+		    #Valores devueltos: Todos los datos posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_tmp_img WHERE username='".$usr."';");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
 	    		$getData = [];
 
+	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
 	    			$getData[] = [
 	    				'id' 			=> $row['id'], 
 	    				'username' 		=> $row['username'], 
@@ -1381,9 +1394,11 @@
 	    			];
 	    		}
 
+	    		#Retorno del array cargado de información.
 	    		return $getData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
