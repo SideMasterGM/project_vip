@@ -705,14 +705,33 @@
 		    return false;
 	    }
 
+	    /**
+			* Método que loguea a un usuario.
+			*@param: $usr (Nombre de usuario), $pwd (Contraseña).
+		*/
 	    public function LoginUser($usr, $pwd){
+	    	#Se limpia el nombre de usuario.
 	    	$usr = $this->CleanString($usr);
+
+	    	#Se limpian los espacios de inicio y fin de la cadena password.
 	    	$pwd = trim($pwd);
 
+	    	#Se verifica si existe el sistema de escape de strings get_magic_quotes_gpc.
+	    	#get_magic_quotes_gpc: http://php.net/manual/es/function.get-magic-quotes-gpc.php
 			if (!get_magic_quotes_gpc())
-				$usr = addslashes($usr);
+				$usr = addslashes($usr); #Escapa un string con barras invertidas
 
+			#addslashes: http://php.net/manual/es/function.addslashes.php
+
+			#Escape a string para una consulta.
+			#pg_escape_string: http://php.net/manual/es/function.pg-escape-string.php
 			$usr = pg_escape_string($usr);
+
+			#Statement: Consulta no preparada. 
+		    #Tabla: vip_user.
+		    #Atributos: username, password.
+		    #Valores devueltos: password.
+
 	    	$stmt = $this->db->query("SELECT password FROM vip_user WHERE username='".$usr."';");
 
 	    	if ($stmt->rowCount() > 0)
