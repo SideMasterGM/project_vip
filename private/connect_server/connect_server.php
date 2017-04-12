@@ -222,6 +222,7 @@
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de array multidimensional.
 	    		$UsersData = [];
 
 	    		#Se recorren los resultados y se almacenan en el array.
@@ -246,13 +247,29 @@
 	    	return false;
 	    }
 
+
+	    /**
+			* Método que obtiene las actividades de los demás usuarios, evitando el usuario de sesión actual.
+			*@param: $Quantity (Límite de resultados).
+		*/
 	    public function getActivityWithOutMe($Quantity){
+	    	#Se habilita el uso de sesiones.
 	    	@session_start();
+
+	    	#Statement: Consulta directa no preparada. 
+	    	#Tabla: vip_user_activity.
+	    	#Atributos: username y cláusula LIMIT afectada.
+	    	#Valores devueltos: todos los posibles (*).
+
+	    	#Se utiliza la variable de sesión $_SESSION['usr'] para operar en diferencia a él y mostrar los demás usuarios.
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username!='".@$_SESSION['usr']."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de array multidimensional.
 	    		$UsersData = [];
 
+	    		#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
 	    				'id_activity' 	=> $row['id_activity'], 
@@ -265,9 +282,11 @@
 	    			];
 	    		}
 
+	    		#Se retorna el array con la información almacenada.
 	    		return $UsersData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
