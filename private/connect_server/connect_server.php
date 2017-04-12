@@ -1205,6 +1205,12 @@
 	    	return false;
 	    }
 
+	    /**
+	    	*------------------------------NO UTILIZADO---------------------------------------
+			* Método que obtiene todos los proyectos, sin embargo, este método no es utilizado.
+			*@param: No hay.
+			*------------------------------NO UTILIZADO---------------------------------------
+		*/
 	    public function getAllProject() {
 	        $stmt = $this->db->query("SELECT * FROM vip_proyecto");
 
@@ -1230,6 +1236,12 @@
 	        return false;
 	    }
 
+	    /**
+	    	*------------------------------NO UTILIZADO---------------------------------------
+			* Método que agrega proyectos, sin embargo, este método no es utilizado.
+			*@param: No hay.
+			*------------------------------NO UTILIZADO---------------------------------------
+		*/
 	    public function addProject($dataProject){
 	        $sql = "INSERT INTO vip_proyecto(nombre, facultad_cur_escuela, objetivo_general, objetivo_especifico, resultados_esperados, fecha_aprobacion, cod_dictamen_economico, nombre_instancia_aprobacion) VALUES(:nombre,:facultad_cur_escuela,:objetivo_general,:objetivo_especifico,:resultados_esperados,:fecha_aprobacion,:cod_dictamen_economico,:nombre_instancia_aprobacion)";
 
