@@ -786,9 +786,19 @@
 			return true;
 	    }
 
+	    /**
+			* Método que obtiene el número de actividades que se han agregado a favoritos.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function getActivityNotificationFavoritiesCount($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_activity.
+		    #Atributos: username, favorite.
+		    #Valores devueltos: Todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".$usr."' AND favorite=1;");
 	    	
+	    	#Se retorna la cantidad de filas devueltas por la consulta.
 	    	return $stmt->rowCount();
 	    }
 
