@@ -1426,13 +1426,21 @@
         	return false;
 	    }
 
+	    /**
+			* Método que obtiene la imagen temporal con respecto a un usuario.
+			*@param: $usr (Nombre de usuario), $src (Recurso de la imagen: nombre).
+		*/
 	    public function getTmpImgUnique($usr, $src){
 	    	$stmt = $this->db->query("SELECT * FROM vip_tmp_img WHERE src='".$src."' AND username='".$usr."' LIMIT 1;");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
 	    		$getData = [];
 
+	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
 	    			$getData[] = [
 	    				'id' 			=> $row['id'], 
 	    				'folder' 		=> $row['folder'], 
@@ -1442,9 +1450,11 @@
 	    			];
 	    		}
 
+	    		#Retorno del array cargado de información.
 	    		return $getData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
