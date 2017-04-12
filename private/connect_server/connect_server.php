@@ -407,19 +407,33 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que agrega la información del nuevo usuario.
+			*@param: $usr (Nombre de usuario), $email (Dirección de correo).
+		*/
 	    public function addNewUserInfo($usr, $email){
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user_info.
+	    	#Atributos: username, email, date_log, date_log_unix.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se alamacenan las instrucciones en esta variable.
 	    	$q = "INSERT INTO vip_user_info (username, email, date_log, date_log_unix) VALUES (:username,:email,:date_log,:date_log_unix);";
 	    
+	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
 
+	    	#Se vincula un valor a un parámetro.
 	    	$stmt->bindValue(":username", 		$usr);
 	    	$stmt->bindValue(":email", 			$email);
 	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
 	    	$stmt->bindValue(":date_log_unix", 	time());
 
+	    	#Se ejecuta la consulta preparada.
 	    	if ($stmt->execute())
-	    		return true;
+	    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
