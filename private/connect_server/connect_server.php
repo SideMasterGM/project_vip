@@ -647,14 +647,28 @@
 	    	return false;
 	    }
 
-	    public function VerifyUserPassword($usr, $current_pwd){	    	
+	    /**
+			* Método que verifica la contraseña de un usuario.
+			*@param: $usr (Nombre de usuario al que hace referencia), $current_pwd (Clave por defecto).
+		*/
+	    public function VerifyUserPassword($usr, $current_pwd){	   
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user.
+		    #Atributos: password, username.
+		    #Valores devueltos: password. 	
+	    	
+	    	#Se extrae la contraseña cifrada del usuario en comparación.
 	    	$stmt = $this->db->query("SELECT password FROM vip_user WHERE username='".$usr."';");
 	    
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0)
-	    		while ($r = $stmt->fetch(\PDO::FETCH_ASSOC))
-	    			if (password_verify($current_pwd, $r['password']))
-	    				return true;
+	    		while ($r = $stmt->fetch(\PDO::FETCH_ASSOC))	#Se recorren los valores devueltos.
+	    			if (password_verify($current_pwd, $r['password'])) 	#Comprueba que la contraseña coincida con un hash.
+	    				return true;	#Satisfactorio.
 	    	
+	    	#password_verify: http://php.net/manual/es/function.password-verify.php
+
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
