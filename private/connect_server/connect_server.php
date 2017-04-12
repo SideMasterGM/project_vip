@@ -290,12 +290,24 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene los mensajes que se han escrito en las actividades con identificador en específico.
+			*@param: $id_activity (Identificador que apunta a una actividad).
+		*/
 	    public function getActivityMessage($id_activity){
+	    	#Statement: Consulta directa no preparada. 
+	    	#Tabla: vip_user_activity_message.
+	    	#Atributos: id_activity.
+	    	#Valores devueltos: todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity_message WHERE id_activity='".$id_activity."' ORDER BY id DESC;");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de array multidimensional.
 	    		$UsersData = [];
 
+	    		#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
 	    				'id' 			=> $row['id'], 
@@ -307,9 +319,11 @@
 	    			];
 	    		}
 
+				#Se retorna el array con la información almacenada.
 	    		return $UsersData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
