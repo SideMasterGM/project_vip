@@ -14,11 +14,12 @@
 
 		#Método constructor que crea la conexión al servidor de base de datos.
 		#Gestor utilizado: PostgreSQL.
+		
 		/**
 			*@param: $host, $post, $dbase, $user, $pass.
 			#Se puede conectar con múltiples base de datos.
 		*/
-
+			
 		function __construct($host, $port, $dbase, $user, $pass){
 			#Escribir una cadena con formato de secuencia.
 			#fprintf(): http://php.net/manual/es/function.fprintf.php
@@ -126,7 +127,7 @@
 	    	return false;
 	    }
 
-	     /**
+	    /**
 			* Método que obtiene una notificación o cambio ocurrido en una actividad.
 			*@param: $usr (Nombre de usuario que realizó la actividad), $Quantity (Límite de resultados).
 		*/
