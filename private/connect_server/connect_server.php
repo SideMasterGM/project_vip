@@ -1027,23 +1027,41 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    /**
+			* Método que obtiene la dirección de correo de un usuario.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function getUserEmail($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_info.
+		    #Atributos: username.
+		    #Valores devueltos: email.
+
 	    	$stmt = $this->db->query("SELECT email FROM vip_user_info WHERE username='".$usr."'");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
 	    		$UserEmail = [];
 
+	    		#Se recorren las filas devueltas.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$UserEmail[] = [
 	    				'email' => $row['email']
 	    			];
 	    		}
 
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo email.
 	    		foreach ($UserEmail as $value) {
+
+	    			#Se retorna el valor que contiene el índice: email.
 	    			return $value['email'];
 	    		}
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
