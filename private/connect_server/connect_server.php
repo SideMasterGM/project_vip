@@ -361,28 +361,49 @@
 	    	return false;
 	    }
 
+
+	    /**
+			* Método que agrega un mensaje a una actividad.
+			*@param: $usr (Nombre de usuario que agrega), $id_activity (Identificador de la actividad), $message (Mensaje).
+		*/
 	    public function addActivityMessage($usr, $id_activity, $message){
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user_activity_message.
+	    	#Atributos: id_activity, username, message, date_log, date_log_unix.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se alamacenan las instrucciones en esta variable.
 	    	$q = "INSERT INTO vip_user_activity_message (id_activity, username, message, date_log, date_log_unix) VALUES (:id_activity,:username,:message,:date_log,:date_log_unix);";
 	    
+	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
 
+	    	#Se vincula un valor a un parámetro.
 	    	$stmt->bindValue(":id_activity", 	$id_activity);
 	    	$stmt->bindValue(":username", 		$usr);
 	    	$stmt->bindValue(":message", 		$message);
 	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
 	    	$stmt->bindValue(":date_log_unix", 	time());
 
+	    	#Se obtiene la actividad con el identificador, extrayendo sólo 1 resultado.
 	    	$activity = $this->getActivity($id_activity, 1);
+
+	    	#Definición de una variable a cadena vacía.
 	    	$activity_username = "";
 
+	    	#Se recorre el array multidimensional que devuelve el método getActivity y se asigna el valor del índice a $value.
 	    	foreach ($activity as $value) {
+	    		#Se asigna el nombre de usuario devuelto a la variable vacía.
 	    		$activity_username = $value['username'];
 	    	}
 
+	    	#Se ejecuta la consulta preparada.
+	    	#Seguidamente se agrega una actividad.
 	    	if ($stmt->execute())
 	    		if ($this->addActivity($usr, 10, "Respondiendo a la actividad ".$id_activity." del usuario ".$activity_username))
-	    			return true;
+	    			return true; 	#Si ha llegado hasta acá, todo ha salido excelente.
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
