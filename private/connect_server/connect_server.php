@@ -1279,12 +1279,18 @@
 		    return false;
 		}
 
+		/**
+			* Método que destruye sesiones y agrega una actividad.
+			*@param: No hay.
+		*/
 	    public function sessionDestroy(){
+	    	#Se verifica si no están establecidas las sesiones.
 	    	if (!isset($_SESSION))
-	    		@session_start();
+	    		@session_start(); #Habilitar uso de sesiones.
 
+	    	#Agrega una nueva actividad, pasándole por parámetros el nombre de usuario, el código y la descripción.
 	    	if ($this->addActivity($_SESSION['usr'], 0, "Cierre de sesión"))
-				@session_destroy();
+				@session_destroy(); #Finalmente se destruyen las sesiones.
 	    }
 
 	    /*-------------------------------------------------*/
