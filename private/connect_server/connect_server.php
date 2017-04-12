@@ -869,7 +869,7 @@
 
 	    /**
 			* Método que obtiene el argumento de una actividad, referida al mensaje según el código.
-			*@param: $code (ID de la actividad).
+			*@param: $code (Código correspondiente a una actividad).
 		*/
 	    public function getActivityArgument($code){
 	    	#Statement: Consulta no preparada. 
@@ -903,23 +903,39 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene el valor favorite de una actividad.
+			*@param: $id_activity (ID de una actividad).
+		*/
 	    public function getActivityFavorite($id_activity){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_activity.
+		    #Atributos: id_activity.
+		    #Valores devueltos: Todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE id_activity='".$id_activity."';");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
 	    		$UsersData = [];
 
+	    		#Se recorren las filas devueltas.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$UsersData[] = [
 	    				'favorite' 	=> $row['favorite']
 	    			];
 	    		}
 
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#En este caso se retorna solamente el campo favorite.
 	    		foreach ($UsersData as $value) {
-	    			return $value['favorite'];
+	    			return $value['favorite']; #Correcto.
 	    		}
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
