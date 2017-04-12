@@ -1011,9 +1011,19 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene la cantidad de direcciones de correo igual al email que se le pasa por parámetros.
+			*@param: $email (Dirección de correo).
+		*/
 	    public function getEmailRowCount($email){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_info.
+		    #Atributos: email.
+		    #Valores devueltos: Todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_info WHERE email='".$email."'");
 	    	
+	    	#Se retorna la cantidad.
 	    	return $stmt->rowCount();
 	    }
 
