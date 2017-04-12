@@ -469,16 +469,33 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que elimina un usuario.
+			*@param: $usr (Nombre de usuario).
+		*/
 	    public function deleteUser($usr){
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user.
+	    	#Atributos: username.
+	    	#Valores devueltos: Ninguno ya que se trata de eliminar datos.
+
+	    	#Hay que tener en cuenta que también existen otras tablas relacionadas con esta, sin embargo
+	    	#también son eliminadas ya que están escritas en cascada para actualizar y eliminar.
 	    	$Reason = $this->db->prepare('DELETE FROM vip_user '
                 . 'WHERE username = :usr');
+
+	    	#Se vincula el valor con el parámetro.
         	$Reason->bindValue(':usr', $usr);
 
+        	#Se habilitan las sesiones.
         	@session_start();
-        	if ($this->addActivity(@$_SESSION['usr'], 6, "Eliminando al usuario: ".$usr))
-	       		if ($Reason->execute())
-	       			return true;
 
+        	#Se añade una nueva actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 6, "Eliminando al usuario: ".$usr))
+	       		if ($Reason->execute())	#Se ejecuta la consulta preparada.
+	       			return true;	#Retorno verdadero si todo ha marchado bien.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
         	return false;
 	    }
 
