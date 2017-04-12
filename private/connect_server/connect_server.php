@@ -17,7 +17,7 @@
 		
 		/**
 			*@param: $host, $post, $dbase, $user, $pass.
-			#Se puede conectar con múltiples base de datos.
+			*Se puede conectar con múltiples base de datos.
 		*/
 
 		function __construct($host, $port, $dbase, $user, $pass){
