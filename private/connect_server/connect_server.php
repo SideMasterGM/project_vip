@@ -1513,5 +1513,12 @@
     	return true;
 	}
 
-	
+	/**
+		* Función que conecta con el servidor de base de datos.
+		*@param: $db (Nombre de la base de datos).
+	*/
+	function CDB($db){
+		#Retorno de la conexión.
+		return new PostgreSQL("localhost", "5432", $db, "postgres", "Windows10");
+	}
 ?>
