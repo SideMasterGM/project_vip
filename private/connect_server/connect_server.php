@@ -437,21 +437,35 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que agrega una imagen de perfil a un usuario.
+			*@param: $usr (Nombre de usuario), $folder (Ruta de almacenamiento), $src (Nombre del recurso).
+		*/
 	    public function addUserImgPerfil($usr, $folder, $src){
+	    	#Se limpia el nombre del recurso.
 	    	$src = $this->CleanString($src);
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user_img_perfil.
+	    	#Atributos: username, folder, src, date_log, date_log_unix.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	$QueryImgPerfil = $this->db->prepare("INSERT INTO vip_user_img_perfil (username, folder, src, date_log, date_log_unix) VALUES (:username,:folder,:src,:date_log,:date_log_unix)");
 
+	    	#Se vinculan los valores con los parámetros.
 	    	$QueryImgPerfil->bindValue(":username", $usr);
 	    	$QueryImgPerfil->bindValue(":folder", $folder);
 	    	$QueryImgPerfil->bindValue(":src", $src);
 	    	$QueryImgPerfil->bindValue(":date_log", date('Y-n-j'));
 	    	$QueryImgPerfil->bindValue(":date_log_unix", time());
 
+	    	#Se agrega una nueva actividad sobre la acción.
+	    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
 	    	if ($this->addActivity($usr, 5, "Agregando nueva imagen de perfil:  ".$src))
 		    	if ($QueryImgPerfil->execute())
-		    		return true;
+		    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
 
+		    #Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
