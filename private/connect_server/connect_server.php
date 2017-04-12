@@ -543,20 +543,34 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que actualiza la dirección de correo de un usuario.
+			*@param: $usr (Nombre de usuario al que hace referencia), $email (Dirección de correo).
+		*/
 	    public function updateUserEmail($usr, $email){
+	    	#Se limpia la variable $email.
 	    	$email = $this->CleanString($email);
 
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user_info.
+	    	#Atributos: email, username.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
 	    	$Reason = $this->db->prepare('UPDATE vip_user_info '
                 . 'SET email = :email '
                 . 'WHERE username = :usr');
 
+	    	#Se vincula el valor con el parámetro.
 	    	$Reason->bindValue(':email', $email);
         	$Reason->bindValue(':usr', $usr);
 
+        	#Se crea una nueva actividad.
         	if ($this->addActivity($usr, 4, "Actualización de E-Mail de ".$this->getUserEmail($usr)." a ".$email))
-		    	if ($Reason->execute())
-		    		return true;
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
 
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
 	    }
 
