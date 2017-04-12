@@ -499,28 +499,47 @@
         	return false;
 	    }
 
+	    /**
+			* Método que actualiza el nombre de usuario de un usuario y el árbol de directorios.
+			*@param: $new_usr (El nuevo nombre de usuario), $usr (Nombre de usuario al que hace referencia).
+		*/
 	    public function updateUser($new_usr, $usr){
+	    	#Se limpia el contenido de la variable $new_user.
 	    	$new_usr = $this->CleanString($new_usr);
 
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user.
+	    	#Atributos: username.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#La actualización se hace en cascada con respecto a las demás tablas relacionadas a esta.
 	    	$Reason = $this->db->prepare('UPDATE vip_user '
                 . 'SET username = :new_usr '
                 . 'WHERE username = :current_usr');
 
+	    	#Se vincula el valor con el parámetro.
         	$Reason->bindValue(':new_usr', $new_usr);
         	$Reason->bindValue(':current_usr', $usr);
 
+        	#Ruta del directorio |users|.
         	$path = "../../../../private/desktop0/users/";
 
+        	#Se renombra el directorio del usuario $usr al nuevo que se le ha pasado como $new_usr.
         	rename($path.$usr."/", $path.$new_usr."/");
 
+        	#Se habilitan las sesiones.
         	@session_start();
+
+        	#Se le asigna el nuevo valor a la sesión de inicio que guarda el nombre de usuario.
         	@$_SESSION['usr'] = $new_usr;
 
+        	#Se agrega una nueva actividad.
         	if ($this->addActivity($usr, 2, "Nombre de usuario modificado de ".$usr." a ".$new_usr))
-		    	if ($Reason->execute())
-		    		if ($this->updateUserPathImg($new_usr, $usr))
-		    			return true;
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		if ($this->updateUserPathImg($new_usr, $usr))	#Se actualiza la ruta del directorio de imágenes.
+		    			return true;	#Todo el proceso ha sido correcto.
 
+		    #Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
