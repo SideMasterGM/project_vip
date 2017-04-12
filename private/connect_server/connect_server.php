@@ -1115,7 +1115,7 @@
 		 	#Reemplaza todas las apariciones del string buscado con el string de reemplazo.
 		 	#str_replace: http://php.net/manual/es/function.str-replace.php
 		    #--------------------------------------------------------------------------------
-		 	
+
 		    $str = str_replace(
 		        array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),
 		        array('a', 'a', 'a', 'a', 'a', 'A', 'A', 'A', 'A'),
@@ -1168,13 +1168,26 @@
 		    return $str;
 		}
 
+		/**
+			* Método que obtiene información de sesión del usuario.
+			*@param: $Limit (Límite de registros), $Order (Orden en el retorno de los datos).
+		*/
 	    public function getSessionUser($Limit, $Order){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_info_user.
+		    #Atributos: cláusula LIMIT.
+		    #Valores devueltos: Todos los datos posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_info_user ORDER BY date_log_unix ".$Order." LIMIT ".$Limit);
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de array multidimensional.
 	    		$dataProject = [];
 
+	    		#Recorrer todos los registros que existan.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Almacenamiento de la información.
 	    			$dataProject[] = [
 	    				'username' 		=> $row['username'],
 	    				'activity' 		=> $row['activity'],
@@ -1184,9 +1197,11 @@
 	    			];
 	    		}
 
+	    		#Retorno del array cargado de datos.
 	    		return $dataProject;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
