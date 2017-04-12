@@ -1364,7 +1364,7 @@
 	    	return false;
 	    }
 
-	     /**
+	    /**
 			* Método que obtiene las imágenes temporales con respecto al usuario logueado.
 			*@param: $usr (Nombre de usuario).
 		*/
@@ -1402,14 +1402,27 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que elimina la imagen temporal apuntada.
+			*@param: $src (Recurso de la imagen: nombre).
+		*/
 	    public function deleteTmpImg($src){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: src.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
 	    	$Reason = $this->db->prepare('DELETE FROM vip_tmp_img '
                 . 'WHERE src = :src');
+
+	    	#Se vincula el valor con el parámetro.
         	$Reason->bindValue(':src', $src);
 
+        	#Se ejecuta la consulta.
         	if ($Reason->execute())
-	       		return true;
+	       		return true; #Buen resultado.
 
+	       	#Si algo falla, se retorna un valor booleano falso.
         	return false;
 	    }
 
