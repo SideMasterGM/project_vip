@@ -1496,18 +1496,22 @@
 
 	}
 
-
+	/**
+		* Función que verifica las sesión, si está logueado o no.
+		*@param: No hay.
+	*/
 	function SessionVerify(){
+		#Se verifica si está establecido el uso de sesiones.
 		if (!isset($_SESSION))
-    		@session_start();
+    		@session_start(); #En caso de que no, se habilitan.
 
+    	#Se verifica si la sesión tiene un valor NO.
     	if (!isset($_SESSION['session']) || $_SESSION['session'] == "No")
-    		return false;
+    		return false; #En caso de que si haya entrado, se retorna false.
 
+    	#Si existe una sesión de usuario, entonces se retorna true.
     	return true;
 	}
 
-	function CDB($db){
-		return new PostgreSQL("localhost", "5432", $db, "postgres", "Windows10");
-	}
+	
 ?>
