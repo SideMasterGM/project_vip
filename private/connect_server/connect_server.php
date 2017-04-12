@@ -401,7 +401,7 @@
 	    	#Seguidamente se agrega una actividad.
 	    	if ($stmt->execute())
 	    		if ($this->addActivity($usr, 10, "Respondiendo a la actividad ".$id_activity." del usuario ".$activity_username))
-	    			return true; 	#Si ha llegado hasta acá, todo ha salido excelente.
+	    			return true; #Si ha llegado hasta acá, todo ha salido excelente.
 
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
