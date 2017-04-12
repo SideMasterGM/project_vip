@@ -5,11 +5,20 @@
 		* --------------------------------------------- *
 	*/
 
+	#Estableciendo la entrada de texto a UTF-8 desde la cabecera.
 	header("Content-Type: text/html;charset=utf-8");
 
+	#Modelo principal de conexión y métodos de acción.
 	class PostgreSQL {
-		var $db;
+		var $db; #Variable que representa la conexión a la DB.
 
+		#Método constructor que crea la conexión al servidor de base de datos.
+		#Gestor utilizado: PostgreSQL.
+		/**
+			*@param: $host, $post, $dbase, $user, $pass.
+			#Se puede conectar con múltiples base de datos.
+		*/
+			
 		function __construct($host, $port, $dbase, $user, $pass){
 			$cn = sprintf("host=%s;port=%s;dbname=%s;user=%s;password=%s", 
 				$host, $port, $dbase, $user, $pass);
