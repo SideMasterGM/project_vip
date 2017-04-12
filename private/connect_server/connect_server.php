@@ -1262,6 +1262,12 @@
 	        return false;
 	    }
 
+	    /**
+	    	*------------------------------NO UTILIZADO---------------------------------------
+			* Método que verifica una sesión, sin embargo, este método no es utilizado.
+			*@param: No hay.
+			*------------------------------NO UTILIZADO---------------------------------------
+		*/
 	    public function is_session_started(){
 		    if ( php_sapi_name() !== 'cli' ) {
 		        if ( version_compare(phpversion(), '5.4.0', '>=') ) {
