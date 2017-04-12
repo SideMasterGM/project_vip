@@ -328,20 +328,33 @@
 	    }
 
 	    public function addNewUser($usr, $pwd, $email, $usr_author){	    	
+			*@param: $usr (Nombre de usuario a agregar), $pwd (Password), $email (Dirección de correo), $usr_author (¿Quién lo registra?).
+		*/
+	    public function addNewUser($usr, $pwd, $email, $usr_author){
+	    	#Variable que almacena las instrucciones de la consulta.    	
 	    	$q = "INSERT INTO vip_user (username, password) VALUES (:username,:password);";
+
+	    	#Se limpia el nombre de usuario.
 	    	$usr = $this->CleanString($usr);
 
+	    	#Se crea la consulta preparada pasándole por parámetro las instrucciones.
 	    	$stmt = $this->db->prepare($q);
 
+	    	#bindValue: http://php.net/manual/es/pdostatement.bindvalue.php
 	    	$stmt->bindValue(":username", $usr);
+
+	    	#Se cifra la contraseña con password_hash().
+	    	#password_hash: http://php.net/manual/es/function.password-hash.php
 	    	$stmt->bindValue(":password", password_hash($pwd, PASSWORD_DEFAULT));
 
+	    	#Se ejecuta la consulta preparada.
 	    	if ($stmt->execute())
-	    		if ($this->addNewUserInfo($usr, $email))
-	    			if ($this->DirUser($usr))
-	    				if ($this->addActivity($usr_author, 7, "Agregando nuevo usuario: ".$usr))
-	    					return true;
+	    		if ($this->addNewUserInfo($usr, $email))	#Agrega la información al nuevo usuario (usr, email).
+	    			if ($this->DirUser($usr))				#Crea el árbol de directorios del nuevo usuario.
+	    				if ($this->addActivity($usr_author, 7, "Agregando nuevo usuario: ".$usr)) #Agrega una actividad.
+	    					return true;	#Si todo marcha bien hasta acá, se retorna un valor booleano exitoso.
 
+	    	#Se algo falla, re retorna un valor booleano falso.
 	    	return false;
 	    }
 
