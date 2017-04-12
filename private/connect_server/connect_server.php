@@ -1423,20 +1423,4 @@
 	function CDB($db){
 		return new PostgreSQL("localhost", "5432", $db, "postgres", "Windows10");
 	}
-
-	//echo $ObjProject[0]['nombre'];
-
-	//include ("ShowData.php");
-	/*Datos del proyecto*/
-	/*$dataProject = array('nombre'						=> "InterCloud", 
-						'facultad_cur_escuela' 			=> "Ciencia y Tecnología", 
-						'objetivo_general'				=> "Mejorar el registro académico", 
-						'objetivo_especifico' 			=> "Establecer normas", 
-						'resultados_esperados' 			=> "Producción del producto desarrollado", 
-						'fecha_aprobacion' 				=> "09/02/2017", 
-						'cod_dictamen_economico' 		=> "0001", 
-						'nombre_instancia_aprobacion' 	=> "TheCodeBrain");
-	*/
-	/*Se registra un proyecto, retorna true o false*/
-	// $id = $CN->addProject($dataProject);
 ?>
