@@ -19,7 +19,7 @@
 			*@param: $host, $post, $dbase, $user, $pass.
 			#Se puede conectar con múltiples base de datos.
 		*/
-			
+
 		function __construct($host, $port, $dbase, $user, $pass){
 			#Escribir una cadena con formato de secuencia.
 			#fprintf(): http://php.net/manual/es/function.fprintf.php
@@ -155,16 +155,27 @@
 	    		return $UsersData;
 	    	}
 
-	    	#Si algo ha fallado, se retorna un booleano falso.
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
-	     public function getActivityNotificationFavorities($usr, $Quantity){
+	    /**
+			* Método que obtiene una notificación de una actividad agregada a favoritos.
+			*@param: $usr (Nombre de usuario que realizó la actividad), $Quantity (Límite de resultados).
+		*/
+	    public function getActivityNotificationFavorities($usr, $Quantity){
+	    	#Statement: Consulta directa sin preparación. 
+	    	#Tabla: vip_user_activity.
+	    	#Atributos: username, favorite y cláusula LIMIT afectada.
+	    	#Valores devueltos: todos los posibles (*).
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username='".$usr."' AND favorite=1 ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
 
+	    	#Si hay registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de array multidimensional.
 	    		$UsersData = [];
 
+	    		#Se recorren los resultados y se almacenan en el array.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
 	    				'id_activity' 	=> $row['id_activity'], 
@@ -177,9 +188,11 @@
 	    			];
 	    		}
 
+	    		#Se retorna el array con la información almacenada.
 	    		return $UsersData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
