@@ -867,23 +867,39 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    /**
+			* Método que obtiene el argumento de una actividad, referida al mensaje según el código.
+			*@param: $code (ID de la actividad).
+		*/
 	    public function getActivityArgument($code){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_activity_argument.
+		    #Atributos: code.
+		    #Valores devueltos: Todos los posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity_argument WHERE code='".$code."';");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
 	    		$UsersData = [];
 
+	    		#Se recorren las filas devueltas.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$UsersData[] = [
 	    				'activity' 	=> $row['activity']
 	    			];
 	    		}
 
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#En este caso se retorna solamente la actividad o el argumento de la misma.
 	    		foreach ($UsersData as $value) {
-	    			return $value['activity'];
+	    			return $value['activity']; #Correcto.
 	    		}
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
