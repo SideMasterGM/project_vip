@@ -327,7 +327,8 @@
 	    	return false;
 	    }
 
-	    public function addNewUser($usr, $pwd, $email, $usr_author){	    	
+	    /**
+			* Método que agrega un nuevo usuario.
 			*@param: $usr (Nombre de usuario a agregar), $pwd (Password), $email (Dirección de correo), $usr_author (¿Quién lo registra?).
 		*/
 	    public function addNewUser($usr, $pwd, $email, $usr_author){
@@ -340,7 +341,9 @@
 	    	#Se crea la consulta preparada pasándole por parámetro las instrucciones.
 	    	$stmt = $this->db->prepare($q);
 
+	    	#Vincula un valor a un parámetro.
 	    	#bindValue: http://php.net/manual/es/pdostatement.bindvalue.php
+
 	    	$stmt->bindValue(":username", $usr);
 
 	    	#Se cifra la contraseña con password_hash().
