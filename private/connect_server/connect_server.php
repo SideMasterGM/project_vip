@@ -1431,6 +1431,11 @@
 			*@param: $usr (Nombre de usuario), $src (Recurso de la imagen: nombre).
 		*/
 	    public function getTmpImgUnique($usr, $src){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: src, username.
+		    #Valores devueltos: Todos los datos posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_tmp_img WHERE src='".$src."' AND username='".$usr."' LIMIT 1;");
 
 	    	#Si existen registros.
@@ -1458,20 +1463,34 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que agrega una imagen temporal con respecto al usuario.
+			*@param: $usr (Nombre de usuario), $folder (Directorio donde se almacenan los recursos), $src (Recurso de la imagen: nombre).
+		*/
 		public function addTmpImg($usr, $folder, $src){
+			#Statement: Consulta preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: username, folder, src, date_log, date_log_unix.
+		    #Valores devueltos: No devuelve ya que se intenta INSERTAR.
+
+			#Variable que almacena las instrucciones de la consulta.
 	    	$q = "INSERT INTO vip_tmp_img (username, folder, src, date_log, date_log_unix) VALUES (:username,:folder,:src,:date_log,:date_log_unix);";
 	    
+	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
 
+	    	#Se vinculan los valores con los parámetros.
 	    	$stmt->bindValue(":username", 		$usr);
 	    	$stmt->bindValue(":folder", 		$folder);
 	    	$stmt->bindValue(":src", 			$src);
 	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
 	    	$stmt->bindValue(":date_log_unix", 	time());
 
+	    	#Se ejecuta la consulta preparada.
 	    	if ($stmt->execute())
-	    		return true;
+	    		return true;	#Todo bien.
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
