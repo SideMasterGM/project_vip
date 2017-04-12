@@ -18,8 +18,10 @@
 			*@param: $host, $post, $dbase, $user, $pass.
 			#Se puede conectar con múltiples base de datos.
 		*/
-			
+
 		function __construct($host, $port, $dbase, $user, $pass){
+			#Escribir una cadena con formato de secuencia.
+			#fprintf(): http://php.net/manual/es/function.fprintf.php
 			$cn = sprintf("host=%s;port=%s;dbname=%s;user=%s;password=%s", 
 				$host, $port, $dbase, $user, $pass);
 
