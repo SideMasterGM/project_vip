@@ -734,13 +734,15 @@
 
 	    	$stmt = $this->db->query("SELECT password FROM vip_user WHERE username='".$usr."';");
 
+	    	#Existen registros.
 	    	if ($stmt->rowCount() > 0)
-	    		while ($r = $stmt->fetch(\PDO::FETCH_ASSOC))
-	    			if (password_verify($pwd, $r['password']))
-	    				if ($this->addActivity($usr, 1, "Inicio de sesión"))
-	    					if ($this->DirUser($usr))
-	    						return true;
+	    		while ($r = $stmt->fetch(\PDO::FETCH_ASSOC))					#Recorrer datos.
+	    			if (password_verify($pwd, $r['password']))					#Verificar contraseñas.
+	    				if ($this->addActivity($usr, 1, "Inicio de sesión"))	#Crear nueva actividad.
+	    					if ($this->DirUser($usr))							#Árbol de directorio del usuario.
+	    						return true;									#Todo correcto.
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
