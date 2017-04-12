@@ -126,12 +126,23 @@
 	    	return false;
 	    }
 
+	     /**
+			* Método que obtiene una notificación o cambio ocurrido en una actividad.
+			*@param: $usr (Nombre de usuario que realizó la actividad), $Quantity (Límite de resultados).
+		*/
 	    public function getActivityNotificationMessage($usr, $Quantity){
+	    	#Statement: Consulta directa sin preparación. 
+	    	#Tabla: vip_user_activity_message.
+	    	#Atributos: username y cláusula LIMIT afectada.
+	    	#Valores devueltos: id_activity (Este no debe tener redundancias), date_log_unix.
 	    	$stmt = $this->db->query("SELECT distinct(id_activity), date_log_unix FROM vip_user_activity_message WHERE username!='".$usr."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
 
+	    	#Si hay registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de array multidimensional.
 	    		$UsersData = [];
 
+	    		#Se recorren los resultados y se almacenan en el array.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			$UsersData[] = [
 	    				'id_activity' 	=> $row['id_activity'], 
@@ -139,9 +150,11 @@
 	    			];
 	    		}
 
+	    		#Se retorna el array con la información almacenada.
 	    		return $UsersData;
 	    	}
 
+	    	#Si algo ha fallado, se retorna un booleano falso.
 	    	return false;
 	    }
 
