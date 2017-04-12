@@ -1330,22 +1330,37 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene las Facultades, Curs o Escuelas.
+			*@param: No hay.
+		*/
 	    public function getProjectFacCurEsc(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: facultades.
+		    #Atributos: -
+		    #Valores devueltos: Todos los datos posibles (*).
+
 	    	$stmt = $this->db->query("SELECT * FROM facultades;");
 
+	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
 	    		$getData = [];
 
+	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
 	    			$UsersData[] = [
 	    				'codigo_facultad' 	=> $row['codigo_facultad'], 
 	    				'nombrefac' 		=> $row['nombrefac']
 	    			];
 	    		}
 
+	    		#Retorno del array cargado de información.
 	    		return $UsersData;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
