@@ -818,9 +818,20 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    /**
+			* Método que obtiene el número de inicios de sesión que han realizado los usuarios.
+			*@param: No hay.
+		*/
 	    public function getUserSession(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_activity.
+		    #Atributos: code.
+		    #Valores devueltos: Todos los posibles (*).
+
+	    	#El código que se le pasa significa Inicio de sesión y puedes encontrar más en la línea: 45 de este script.
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE code=1");
 	    	
+	    	#Se retorna la cantidad de filas devueltas por la consulta.
 	    	return $stmt->rowCount();
 	    }
 
