@@ -607,26 +607,43 @@
 		    return false;
 	    }
 
+	    /**
+			* Método que actualiza la contraseña de un usuario.
+			*@param: $usr (Nombre de usuario al que hace referencia), $current_pwd (Clave por defecto), $new_pwd (Nueva clave).
+		*/
 	    public function updateUserPassword($usr, $current_pwd, $new_pwd){
+	    	#Se verifica la clave por defecto llamando al método VerifyUserPassword, pasándole por parámetro el nombre de usuario
+	    	#y la clave por defecto. Si es correcta, retorna true, sino, false.
 	    	if ($this->VerifyUserPassword($usr, $current_pwd)){
 	    		
+	    		#Statement: Consulta preparada. 
+		    	#Tabla: vip_user.
+		    	#Atributos: password, username.
+		    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    		#Se prepara al consulta.
 	    		$Reason = $this->db->prepare('UPDATE vip_user '
                 . 'SET password = :new_pwd '
                 . 'WHERE username = :usr');
 
+	    		#Se vincula el valor con el parámetro.
 		    	$Reason->bindValue(':new_pwd', password_hash($new_pwd, PASSWORD_DEFAULT));
 	        	$Reason->bindValue(':usr', $usr);
 
+	        	#Se crea una nueva actividad.
 	        	if ($this->addActivity($usr, 3, "Actualización de contraseña"))
-			    	if ($Reason->execute())
-			    		return true;
+			    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+			    		return true;	#Si se llega hasta acá, significa que todo se ha realizado con éxito.
 
+			    #Se retorna -2 pensándose como fallo que significa que no se ha podido hacer la actualización.
 			    return -2;
 
 	    	} else {
+	    		#Se retorna -1 pensándose como fallo que significa que la contraseña por defecto es incorrecta.
 	    		return -1;
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
 
