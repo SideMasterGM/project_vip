@@ -1364,6 +1364,48 @@
 	    	return false;
 	    }
 
+
+
+
+	    /**
+			* Método que obtiene las instancias de aprobación del proyecto.
+			*@param: No hay.
+		*/
+	    public function getProjectInstanciaAprobacion(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_proyecto_instancia_aprob.
+		    #Atributos: -
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto_instancia_aprob;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id' 							=> $row['id'], 
+	    				'nombre_instancia_aprobacion' 	=> $row['nombre_instancia_aprobacion']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+
+
+
+
+
 	    /**
 			* Método que obtiene las imágenes temporales con respecto al usuario logueado.
 			*@param: $usr (Nombre de usuario).
