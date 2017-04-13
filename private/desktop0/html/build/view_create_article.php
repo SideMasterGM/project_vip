@@ -132,13 +132,13 @@
                                                             $CNEx = CDB("vip");
 
                                                             ?>
-                                                                <select id="select_fac_cur_esc" style="width: 100%;">
+                                                                <select id="select_instancia_aprobacion" style="width: 100%;">
                                                                     <optgroup label="Instancias de aprobación">
                                                             <?php
 
                                                             foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
                                                                 ?>
-                                                                    <option value="<?php echo $value['nombre_instancia_aprobacion']; ?>"><?php echo $value['nombrefac']; ?></option>
+                                                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['nombre_instancia_aprobacion']; ?></option>
                                                                 <?php                                                              
                                                             }
 
