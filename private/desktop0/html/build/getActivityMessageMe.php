@@ -51,7 +51,9 @@
 
         }
     } else if (is_bool($CN->getActivityNotificationMessage(@$_SESSION['usr'], 10))) {
-        echo "No hay notificaciones.";
+        ?>
+            <p align="center" style="margin: 20px; font-size: 15px;">No hay notificaciones</p>
+        <?php
     }
 ?>
 
