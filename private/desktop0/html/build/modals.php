@@ -244,6 +244,62 @@
 </div>
 
 
+<!-- Agregar nueva instancia de aprobación. -->
+<input type="hidden" class="AddNewTypePropertyNow" data-toggle="modal" data-target="#AddNewTypePropertyNow"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="AddNewTypePropertyNow" tabindex="1" role="dialog" aria-labelledby="MyAddNewTypePropertyNow" onclick="javascript: getPropiertyTypeBox();" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="MyAddNewTypePropertyNow">Agregar instancia de aprobación</h4>
+            </div>
+            <div class="modal-body">
+                
+                <div class="panel tagcloud-widget">
+                  <div class="panel-heading">
+                    <span class="panel-icon">
+                      <i class="fa fa-pencil"></i>
+                    </span>
+                    <span class="panel-title">Después de escribir el nombre de la instancia, presione Enter para guardar.</span>
+                  </div>
+                  <div class="panel-body">
+                    <form id="SendDataTagPropertyType">
+                        <input type="text" class="form-control" name="writeTagProperty_type" id="writeTagProperty_type" placeholder="Escriba aquí..." />
+                    </form>
+                    <div class="setDataTagPropertyType">
+                       <?php
+                            $getObjAddPT = $Conexion->query("SELECT * FROM property_type;");
+
+                            if ($getObjAddPT->num_rows > 0){
+                                while ($getDataPTAdd = $getObjAddPT->fetch_array(MYSQLI_ASSOC)){
+                                    ?>
+                                        <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $getDataPTAdd['name_type']; ?>
+
+                                            <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagPropertyType('<?php echo $getDataPTAdd['id'] ?>');" ></i>
+                                        </span>
+                                    <?php
+                                }
+                            }
+                        ?>
+                    </div>
+
+                    <form id="SendDataDeletePropertyType">
+                        <input type="hidden" class="form-control" name="DelTagPT" id="DelTagPT" />
+                    </form>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: getPropiertyTypeBox();" data-dismiss="modal">¡Okay!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <!-- Agregar nuevo tipo de propiedad. -->
 <input type="hidden" class="AddNewTypePropertyNow" data-toggle="modal" data-target="#AddNewTypePropertyNow"  />
 
