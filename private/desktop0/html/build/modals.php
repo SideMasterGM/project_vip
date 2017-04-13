@@ -245,10 +245,10 @@
 
 
 <!-- Agregar nueva instancia de aprobación. -->
-<input type="hidden" class="AddNewTypePropertyNow" data-toggle="modal" data-target="#AddNewTypePropertyNow"  />
+<input type="hidden" class="AddNewInstanciaAprobacion" data-toggle="modal" data-target="#AddNewInstanciaAprobacion"  />
 
 <!-- Modal -->
-<div class="modal fade modal-primary" id="AddNewTypePropertyNow" tabindex="1" role="dialog" aria-labelledby="MyAddNewTypePropertyNow" onclick="javascript: getPropiertyTypeBox();" aria-hidden="true">
+<div class="modal fade modal-primary" id="AddNewInstanciaAprobacion" tabindex="1" role="dialog" aria-labelledby="MyAddNewTypePropertyNow" onclick="javascript: getPropiertyTypeBox();" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

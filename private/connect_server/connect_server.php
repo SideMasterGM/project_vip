@@ -1364,9 +1364,6 @@
 	    	return false;
 	    }
 
-
-
-
 	    /**
 			* Método que obtiene las instancias de aprobación del proyecto.
 			*@param: No hay.
