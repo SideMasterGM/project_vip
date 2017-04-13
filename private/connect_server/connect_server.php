@@ -1398,11 +1398,6 @@
 	    	return false;
 	    }
 
-
-
-
-
-
 	    /**
 			* Método que obtiene las imágenes temporales con respecto al usuario logueado.
 			*@param: $usr (Nombre de usuario).
