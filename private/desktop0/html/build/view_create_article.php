@@ -66,7 +66,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Facultad | CUR | Escuela
-                                                    <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: addAgentNow();" aria-hidden="true" title="Agregar agente" ></i></h3> -->
+                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: addAgentNow();" aria-hidden="true" title="Agregar agente" ></i></h3>
                                                 </div>
                                                 <div class="panel-body">
                                                 
@@ -128,35 +128,25 @@
                                                     
                                                     <div>
 
-                                                    <?php
-                                                        $ExAgentUser = $Conexion->query("SELECT DISTINCT username FROM agents;");
-
-                                                        ?>
-                                                            <select id="select_agent" style="width: 100%;">
                                                         <?php
+                                                            $CNEx = CDB("vip");
 
-                                                        while ($RExAgentUser = $ExAgentUser->fetch_array(MYSQLI_ASSOC)){
                                                             ?>
-                                                                <optgroup label="Registrado por <?php echo $RExAgentUser['username']; ?>">
-
-                                                                <?php
-                                                                    $NewQAgents = $Conexion->query("SELECT * FROM agents WHERE username='".$RExAgentUser['username']."';");
-
-                                                                    while ($RNewQAgents = $NewQAgents->fetch_array(MYSQLI_ASSOC)){
-                                                                        ?>
-                                                                            <option value="<?php echo $RNewQAgents['id_agent']; ?>"><?php echo $RNewQAgents['names']; ?></option>
-                                                                        <?php
-
-                                                                    }
-                                                                ?>
-                                                                </optgroup>
+                                                                <select id="select_fac_cur_esc" style="width: 100%;">
+                                                                    <optgroup label="Instancias de aprobación">
                                                             <?php
-                                                        }
 
+                                                            foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
+                                                                ?>
+                                                                    <option value="<?php echo $value['nombre_instancia_aprobacion']; ?>"><?php echo $value['nombrefac']; ?></option>
+                                                                <?php                                                              
+                                                            }
+
+                                                            ?>
+                                                                    </optgroup>
+                                                                </select>
+                                                            <?php
                                                         ?>
-                                                            </select>
-                                                        <?php
-                                                    ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,7 +171,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Comunidad | Población
-                                                    <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: addAgentNow();" aria-hidden="true" title="Agregar agente" ></i></h3> -->
+                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: addAgentNow();" aria-hidden="true" title="Agregar agente" ></i></h3>
                                                 </div>
                                                 <div class="panel-body">
                                                 
