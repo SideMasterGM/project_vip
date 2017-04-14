@@ -2,17 +2,17 @@
 	include ("../../../connect_server/connect_server.php");
 	$CN = CDB("vip");
 
-	if (is_array($CNEx->getProjectInstanciaAprobacion())){
+	if (is_array($CN->getProjectInstanciaAprobacion())){
 		?> <optgroup label="Instancias de aprobación"> <?php
 
-		foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
+		foreach ($CN->getProjectInstanciaAprobacion() as $value) {
 			?>
-				<option value="<?php echo $R['nombre_instancia_aprobacion']; ?>"><?php echo $R['nombre_instancia_aprobacion']; ?></option>
+				<option value="<?php echo $value['nombre_instancia_aprobacion']; ?>"><?php echo $value['nombre_instancia_aprobacion']; ?></option>
 			<?php
 		}
 
 		?> </optgroup> <?php
-	} else if (is_bool($CNEx->getProjectInstanciaAprobacion())){
+	} else if (is_bool($CN->getProjectInstanciaAprobacion())){
 		?>
 	        <optgroup label="Instancia de aprobación">
 	        </optgroup>
