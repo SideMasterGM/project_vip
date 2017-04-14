@@ -428,7 +428,7 @@ function getInstanciaAprobacion(){
 }
 
 function DeleteTagInstanciaAprobacion(value){
-	$("#DelTagPT").val(value);
+	$("#DelTagInstanciaAprobacion").val(value);
 
 	$.ajax({
 	    url: "private/desktop0/html/build/DelInstanciaAprobacion.php",
