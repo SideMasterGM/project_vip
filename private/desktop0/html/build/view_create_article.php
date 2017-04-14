@@ -69,28 +69,26 @@
                                                     <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewFacCurEsc();" aria-hidden="true" title="Agregar Facultad | CUR | Escuela" ></i></h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                
                                                     <div>
-
-                                                    <?php
-                                                        $CNEx = CDB("all");
-
-                                                        ?>
-                                                            <select id="select_fac_cur_esc" style="width: 100%;">
-                                                                <optgroup label="Lista de centros">
                                                         <?php
+                                                            $CNEx = CDB("all");
 
-                                                        foreach ($CNEx->getProjectFacCurEsc() as $value) {
                                                             ?>
-                                                                <option value="<?php echo $value['codigo_facultad']; ?>"><?php echo $value['nombrefac']; ?></option>
-                                                            <?php                                                              
-                                                        }
+                                                                <select id="select_fac_cur_esc" style="width: 100%;">
+                                                                    <optgroup label="Lista de centros">
+                                                            <?php
 
+                                                                foreach ($CNEx->getProjectFacCurEsc() as $value) {
+                                                                    ?>
+                                                                        <option value="<?php echo $value['codigo_facultad']; ?>"><?php echo $value['nombrefac']; ?></option>
+                                                                    <?php                                                              
+                                                                }
+
+                                                            ?>
+                                                                    </optgroup>
+                                                                </select>
+                                                            <?php
                                                         ?>
-                                                                </optgroup>
-                                                            </select>
-                                                        <?php
-                                                    ?>
                                                     </div>
                                                 </div>
                                             </div>
