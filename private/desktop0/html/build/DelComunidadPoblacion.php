@@ -8,7 +8,7 @@
         if (is_array($CN->getProjectComunidadPoblacion())){
             foreach ($CN->getProjectComunidadPoblacion() as $value) {
                 ?>
-                    <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:47.5%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:47.5%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-map-marker" aria-hidden="true"></i>
                         <?php 
                             $NombreMunicipio = trim($value['nombre_muni']);
                             if (iconv_strlen($NombreMunicipio) >= 17){
