@@ -1442,6 +1442,34 @@
 	    }
 
 	    /**
+			* Método que elimina una Facultad | Cur | Escuela.
+			*@param: $id (Identificador de la facultad).
+		*/
+	    public function deleteFacCurEsc($id){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: id.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM facultades '
+                . 'WHERE codigo_facultad = :codigo_facultad');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':codigo_facultad', $id);
+
+        	#Agregando una nueva actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 14, "Eliminando la Facultad | Cur | Escuela con ID: ".$id." y nombre: ".$this->getOnlyInstanciaAprobacion($id))) #Agrega una actividad.
+	        	if ($Reason->execute()) #Se ejecuta la consulta.
+		       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
+	    }
+
+	    /**
 			* Método que obtiene las instancias de aprobación del proyecto.
 			*@param: No hay.
 		*/
