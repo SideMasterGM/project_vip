@@ -413,6 +413,19 @@ function SendDataFacCurEsc(){
   	});
 }
 
+function DeleteTagFacCurEsc(value){
+	$("#DelTagFacCurEsc").val(value);
+
+	$.ajax({
+	    url: "private/desktop0/html/build/DelFacCurEsc.php",
+	    type: "POST",
+	    data: $("#SendDataDeleteFacCurEsc").serialize(),
+	    success: function(data){
+   			$(".setDataFacCurEsc").html(data);    		
+	    }
+  	});
+}
+
 $("#SendDataTagPropertyType").submit(function( event ) {
   TestSendData();
   $("#writeTagProperty_type").val("");
