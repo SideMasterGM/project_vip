@@ -44,9 +44,9 @@
 
 		/*
 			+-------+-----------------------------------------------------------+
-			|       Lista de códigos que representan actividades o eventos.      |
+			|       Lista de códigos que representan actividades o eventos.     |
 			+-------+-----------------------------------------------------------+
-			| Code 	|	Descripción												|
+			| Code 	|	Descripción	-> Usuarios									|
 			+-------+-----------------------------------------------------------+
 			|  -1 	|	Apertura de cuenta										|
 			|   0 	|	Cierre de sesión										|
@@ -59,6 +59,11 @@
 			|   7 	|	Creación de un usuario									|
 			|   9 	|	Señalar una actividad como favorito						|
 			|   10	|	Respuesta a una actividad								|
+			+-------+-----------------------------------------------------------+
+			| Code 	|	Descripción	-> Proyectos								|
+			+-------+-----------------------------------------------------------+
+			|   11	|	Creación de una instancia de aprobación					|
+			|   12	|	Eliminación de una instancia de aprobación				|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1432,6 +1437,9 @@
 			*@param: $id (Identificador de la instancia).
 		*/
 	    public function deleteInstanciaAprobacion($id){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
 	    	#Statement: Consulta preparada. 
 		    #Tabla: vip_tmp_img.
 		    #Atributos: id.
@@ -1444,8 +1452,9 @@
         	$Reason->bindValue(':id', $id);
 
         	#Se ejecuta la consulta.
-        	if ($Reason->execute())
-	       		return true; #Buen resultado.
+        	if ($this->addActivity(@$_SESSION['usr'], 12, "Eliminando la instancia de aprobación con ID: ".$id)) #Agrega una actividad.
+	        	if ($Reason->execute())
+		       		return true; #Buen resultado.
 
 	       	#Si algo falla, se retorna un valor booleano falso.
         	return false;
