@@ -431,11 +431,11 @@ function DeleteTagInstanciaAprobacion(value){
 	$("#DelTagPT").val(value);
 
 	$.ajax({
-	    url: "private/desktop0/html/build/PropertyTypeDel.php",
+	    url: "private/desktop0/html/build/DelInstanciaAprobacion.php",
 	    type: "POST",
-	    data: $("#SendDataDeletePropertyType").serialize(),
+	    data: $("#SendDataInstanciaAprobacion").serialize(),
 	    success: function(data){
-   			$(".setDataTagPropertyType").html(data);    		
+   			$(".setDataInstanciaAprobacion").html(data);    		
 	    }
   	});
 }
