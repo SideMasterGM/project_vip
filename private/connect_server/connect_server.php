@@ -1471,7 +1471,7 @@
 	    	$stmt->bindValue(":nombrefac", 			$name);
 
 	    	#Agregando una nueva actividad.
-        	if ($this->addActivity(@$_SESSION['usr'], 13, "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".$this->getOnlyInstanciaAprobacion() + 1)) #Agrega una actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 13, "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".$this->getOnlyLastCodeFacCurEsc() + 1)) #Agrega una actividad.
 		    	if ($stmt->execute()) #Se ejecuta la consulta preparada.
 		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 
