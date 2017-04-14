@@ -1454,7 +1454,7 @@
 	    }
 
 	    /**
-			* Método que agrega una Facultad | Cur | Escuela.
+			* Método que agrega una Comunidad o Población.
 			*@param: $name (Nombre).
 		*/
 	    public function addComunidadPoblacion($name){
@@ -1462,29 +1462,30 @@
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
-	    	#Tabla: facultades.
-	    	#Atributos: codigo_facultad, nombrefac.
+	    	#Tabla: municipios.
+	    	#Atributos: cod_muni, nombre_muni, cod_dpto.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
-	    	$q = "INSERT INTO facultades (codigo_facultad, nombrefac) VALUES (:codigo_facultad,:nombrefac);";
+	    	$q = "INSERT INTO municipios (cod_muni, nombre_muni, cod_dpto) VALUES (:cod_muni,:nombre_muni,:cod_dpto);";
 	    
 	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":codigo_facultad", 	$this->getOnlyLastCodeComunidadPoblacion() + 1);
-	    	$stmt->bindValue(":nombrefac", 			$name);
+	    	$stmt->bindValue(":cod_muni", 		$this->getOnlyLastCodeComunidadPoblacion() + 1);
+	    	$stmt->bindValue(":nombre_muni", 	$name);
+	    	$stmt->bindValue(":cod_dpto", 		0);
 
 	    	#Agregando la descripción completa de la nueva actividad.
-	    	$description = "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".($this->getOnlyLastCodeComunidadPoblacion() + 1);
+	    	$description = "Agregando una nueva Comunidad | Población: ".$name." con ID: ".($this->getOnlyLastCodeComunidadPoblacion() + 1);
 
 		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
 		    	#Creando una nueva conexión, distinta base de datos.
 		    	$Connection = CDB("vip");
 
 		    	#Se hace uso de esta nueva y temporal conexión.
-        		if ($Connection->addActivity(@$_SESSION['usr'], 13, $description)) #Agrega una actividad.
+        		if ($Connection->addActivity(@$_SESSION['usr'], 15, $description)) #Agrega una actividad.
 		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
