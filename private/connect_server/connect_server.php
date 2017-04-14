@@ -1419,7 +1419,7 @@
 
 	    	#Statement: Consulta preparada. 
 	    	#Tabla: facultades.
-	    	#Atributos: nombre_instancia_aprobacion, date_log, date_log_unix.
+	    	#Atributos: codigo_facultad, nombrefac.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
