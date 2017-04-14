@@ -262,7 +262,7 @@
                     <span class="panel-icon">
                       <i class="fa fa-pencil"></i>
                     </span>
-                    <span class="panel-title">Después de escribir el nombre de la instancia, presione Enter para guardar.</span>
+                    <span class="panel-title">Escriba el nombre de la instancia. Presione Enter para guardar.</span>
                   </div>
                   <div class="panel-body">
                     <form id="SendDataTagPropertyType">
@@ -271,13 +271,18 @@
                     <div class="setDataTagPropertyType">
                        <?php
                             $CNEx = CDB("vip");
-                             foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
-                                ?>
-                                    <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $value['nombre_instancia_aprobacion']; ?>
+                            
+                            if (is_array($CNEx->getProjectInstanciaAprobacion())){
+                                foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
+                                    ?>
+                                        <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $value['nombre_instancia_aprobacion']; ?>
 
-                                            <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagPropertyType('<?php echo $value['id'] ?>');" ></i>
-                                        </span>
-                                <?php
+                                                <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagPropertyType('<?php echo $value['id'] ?>');" ></i>
+                                            </span>
+                                    <?php
+                                }
+                            } else if (is_bool($CNEx->getProjectInstanciaAprobacion())){
+                                #Opcional para agregar un diálogo.
                             }
                         ?>
                     </div>
