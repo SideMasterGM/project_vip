@@ -482,7 +482,7 @@ function getComunidadPoblacion(){
 		processData:false, 
 		cache:false 
 	}).done(function(msg){
-		$("#select_fac_cur_esc").html(msg);
+		$("#select_comunidad_poblacion").html(msg);
 	});
 }
 
