@@ -1403,6 +1403,44 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene el nombre de la instancia de aprobación especificando el ID.
+			*@param: $id (Identificador de la instancia de aprobación).
+		*/
+	    public function getOnlyInstanciaAprobacion($id){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_proyecto_instancia_aprob.
+		    #Atributos: username.
+		    #Valores devueltos: nombre_instancia_aprobacion.
+
+	    	$stmt = $this->db->query("SELECT nombre_instancia_aprobacion FROM vip_proyecto_instancia_aprob WHERE id='".$id."'");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$getData[] = [
+	    				'nombre_instancia_aprobacion' => $row['nombre_instancia_aprobacion']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo nombre_instancia_aprobacion.
+	    		foreach ($getData as $value) {
+
+	    			#Se retorna el valor que contiene el índice: nombre_instancia_aprobacion.
+	    			return $value['nombre_instancia_aprobacion'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
 	     /**
 			* Método que agrega una instancia de aprobación del proyecto.
 			*@param: $instancia (Nombre de la instancia de aprobación).
