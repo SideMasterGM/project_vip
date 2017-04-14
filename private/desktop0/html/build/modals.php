@@ -275,9 +275,16 @@
                             if (is_array($CNEx->getProjectComunidadPoblacion())){
                                 foreach ($CNEx->getProjectComunidadPoblacion() as $value) {
                                     ?>
-                                        <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:100%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                            <?php echo $value['nombre_muni']; ?>
-                                            <i class="fa fa-times" style="margin: 0 5px; position: absolute; right: 8%; cursor: pointer;" title="Eliminar <?php echo $value['nombre_muni']; ?>" aria-hidden="true" onclick="javascript: DeleteTagComunidadPoblacion('<?php echo $value['cod_muni'] ?>');" ></i>
+                                        <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:47.5%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                            <?php 
+                                                $NombreMunicipio = trim($value['nombre_muni']);
+                                                if (iconv_strlen($NombreMunicipio) >= 17){
+                                                    $NombreMunicipio = substr($NombreMunicipio, 0, 17)."...";
+                                                }
+
+                                                echo $NombreMunicipio;
+                                            ?>
+                                            <i class="fa fa-times" style="margin: -15px 5px 10px 0px; float: right; cursor: pointer;" title="Eliminar <?php echo $value['nombre_muni']; ?>" aria-hidden="true" onclick="javascript: DeleteTagComunidadPoblacion('<?php echo $value['cod_muni'] ?>');" ></i>
                                         </span>
                                     <?php
                                 }
