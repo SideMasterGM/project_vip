@@ -426,6 +426,19 @@ function DeleteTagFacCurEsc(value){
   	});
 }
 
+function getFacCurEsc(){
+	$.ajax({
+		url:'private/desktop0/html/build/getFacCurEsc.php', 
+		contentType:false,
+		data:archivos, 
+		processData:false, 
+		cache:false 
+	}).done(function(msg){
+		$("#select_fac_cur_esc").html(msg);
+	});
+}
+
+
 $("#SendDataTagPropertyType").submit(function( event ) {
   TestSendData();
   $("#writeTagProperty_type").val("");
