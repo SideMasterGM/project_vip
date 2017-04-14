@@ -396,6 +396,23 @@ function AddNewFacCurEsc(){
 	$(".AddNewFacCurEsc").click();
 }
 
+$("#SendDataFacCurEsc").submit(function( event ) {
+  SendDataFacCurEsc();
+  $("#writeFacCutEsc").val("");
+  event.preventDefault();
+});
+
+function SendDataFacCurEsc(){
+	$.ajax({
+	    url: "private/desktop0/html/build/addFacCurEsc.php",
+	    type: "POST",
+	    data: $("#SendDataFacCurEsc").serialize(),
+	    success: function(data){
+   			$(".setDataFacCurEsc").html(data);    		
+	    }
+  	});
+}
+
 $("#SendDataTagPropertyType").submit(function( event ) {
   TestSendData();
   $("#writeTagProperty_type").val("");
