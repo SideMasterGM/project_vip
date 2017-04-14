@@ -183,7 +183,7 @@
                                                                 <optgroup label="Lista de centros">
                                                         <?php
 
-                                                        foreach ($CNEx->getProjectComunidad() as $value) {
+                                                        foreach ($CNEx->getProjectComunidadPoblacion() as $value) {
                                                             ?>
                                                                 <option value="<?php echo $value['cod_muni']; ?>"><?php echo $value['nombre_muni']; ?></option>
                                                             <?php                                                              
