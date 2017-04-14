@@ -438,7 +438,6 @@ function getFacCurEsc(){
 	});
 }
 
-
 $("#SendDataTagPropertyType").submit(function( event ) {
   TestSendData();
   $("#writeTagProperty_type").val("");
