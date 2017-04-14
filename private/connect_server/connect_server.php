@@ -1428,6 +1428,31 @@
 	    }
 
 	    /**
+			* Método que elimina una instancia.
+			*@param: $id (Identificador de la instancia).
+		*/
+	    public function deleteInstanciaAprobacion($id){
+	    	#Statement: Consulta preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: id.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM vip_proyecto_instancia_aprob '
+                . 'WHERE id = :id');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':id', $id);
+
+        	#Se ejecuta la consulta.
+        	if ($Reason->execute())
+	       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
+	    }
+
+
+	    /**
 			* Método que obtiene las imágenes temporales con respecto al usuario logueado.
 			*@param: $usr (Nombre de usuario).
 		*/
