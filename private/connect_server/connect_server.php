@@ -1416,16 +1416,16 @@
 	    }
 
 	    /**
-			* Método que obtiene el nombre de la facultad correspondiente a un identificador.
-			*@param: $id (Identificador de la facultad).
+			* Método que obtiene el nombre del municipio correspondiente a un identificador.
+			*@param: $id (Identificador de la comunidad).
 		*/
 	    public function getOnlyComunidadPoblacion($id){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: facultades.
-		    #Atributos: username.
+		    #Tabla: municipios.
+		    #Atributos: cod_muni.
 		    #Valores devueltos: Todo los posibles (*).
 
-	    	$stmt = $this->db->query("SELECT nombrefac FROM facultades WHERE codigo_facultad='".$id."'");
+	    	$stmt = $this->db->query("SELECT nombre_muni FROM municipios WHERE cod_muni='".$id."'");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -1436,16 +1436,16 @@
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$getData[] = [
-	    				'nombrefac' => $row['nombrefac']
+	    				'nombre_muni' => $row['nombre_muni']
 	    			];
 	    		}
 
 	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
-	    		#Se obtiene precisamente el campo nombrefac.
+	    		#Se obtiene precisamente el campo nombre_muni.
 	    		foreach ($getData as $value) {
 
-	    			#Se retorna el valor que contiene el índice: nombrefac.
-	    			return $value['nombrefac'];
+	    			#Se retorna el valor que contiene el índice: nombre_muni.
+	    			return $value['nombre_muni'];
 	    		}
 	    	}
 
