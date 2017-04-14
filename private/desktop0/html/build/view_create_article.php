@@ -121,7 +121,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Instancia de aprobación
-                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: addAgentNow();" aria-hidden="true" title="Agregar agente" ></i>
+                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewInstanciaAprobacion();" aria-hidden="true" title="Agregar agente" ></i>
                                                     </h3>
                                                 </div>
                                                 <div class="panel-body">

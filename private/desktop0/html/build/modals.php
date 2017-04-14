@@ -248,12 +248,12 @@
 <input type="hidden" class="AddNewInstanciaAprobacion" data-toggle="modal" data-target="#AddNewInstanciaAprobacion"  />
 
 <!-- Modal -->
-<div class="modal fade modal-primary" id="AddNewInstanciaAprobacion" tabindex="1" role="dialog" aria-labelledby="MyAddNewTypePropertyNow" onclick="javascript: getPropiertyTypeBox();" aria-hidden="true">
+<div class="modal fade modal-primary" id="AddNewInstanciaAprobacion" tabindex="1" role="dialog" aria-labelledby="MyNewInstanciaAprobacion" onclick="javascript: getInstanciaAprobacion();" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyAddNewTypePropertyNow">Agregar instancia de aprobación</h4>
+                <h4 class="modal-title" id="MyNewInstanciaAprobacion">Agregar instancia de aprobación</h4>
             </div>
             <div class="modal-body">
                 
@@ -270,17 +270,14 @@
                     </form>
                     <div class="setDataTagPropertyType">
                        <?php
-                            $getObjAddPT = $Conexion->query("SELECT * FROM property_type;");
+                            $CNEx = CDB("vip");
+                             foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
+                                ?>
+                                    <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $value['nombre_instancia_aprobacion']; ?>
 
-                            if ($getObjAddPT->num_rows > 0){
-                                while ($getDataPTAdd = $getObjAddPT->fetch_array(MYSQLI_ASSOC)){
-                                    ?>
-                                        <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $getDataPTAdd['name_type']; ?>
-
-                                            <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagPropertyType('<?php echo $getDataPTAdd['id'] ?>');" ></i>
+                                            <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagPropertyType('<?php echo $value['id'] ?>');" ></i>
                                         </span>
-                                    <?php
-                                }
+                                <?php
                             }
                         ?>
                     </div>
@@ -292,7 +289,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: getPropiertyTypeBox();" data-dismiss="modal">¡Okay!...</button>
+                <button type="button" class="btn btn-default" onclick="javascript: getInstanciaAprobacion();" data-dismiss="modal">¡Okay!...</button>
             </div>
         </div>
     </div>

@@ -387,6 +387,10 @@ function AddNewPropertyType(){
 	$(".AddNewTypePropertyNow").click();
 }
 
+function AddNewInstanciaAprobacion(){
+	$(".AddNewInstanciaAprobacion").click();
+}
+
 $("#SendDataTagPropertyType").submit(function( event ) {
   TestSendData();
   $("#writeTagProperty_type").val("");
@@ -440,6 +444,18 @@ function getPropiertyTypeBox(){
 		cache:false 
 	}).done(function(msg){
 		$("#select_property_type").html(msg);
+	});
+}
+
+function getInstanciaAprobacion(){
+	$.ajax({
+		url:'private/desktop0/html/build/getInstanciaAprobacion.php', 
+		contentType:false,
+		data:archivos, 
+		processData:false, 
+		cache:false 
+	}).done(function(msg){
+		$("#select_instancia_aprobacion").html(msg);
 	});
 }
 
