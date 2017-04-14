@@ -86,17 +86,17 @@
                     </a>
                 </li> -->
 
-                 <li class="about_us__item">
+                <!--  <li class="about_us__item">
                     <a href="about_us">
                         <span class="icon fa fa-pencil"></span><span class="title">Escribir sobre nosotros</span>
                     </a>
-                </li>
+                </li> -->
 
-                <li class="contact_us__item">
+                <!-- <li class="contact_us__item">
                     <a href="contact_us">
                         <span class="icon fa fa-slack"></span><span class="title">Contacto y redes sociales</span>
                     </a>
-                </li>
+                </li> -->
 
                 <li class="panel panel-default dropdown three__item">
                     <a data-toggle="collapse" href="#dropdown-icon">
