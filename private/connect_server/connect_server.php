@@ -1398,6 +1398,35 @@
 	    	return false;
 	    }
 
+	     /**
+			* Método que agrega una instancia de aprobación del proyecto.
+			*@param: $instancia (Nombre de la instancia de aprobación).
+		*/
+	    public function addInstanciaAprobacion($instancia){
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_proyecto_instancia_aprob.
+	    	#Atributos: nombre_instancia_aprobacion, date_log, date_log_unix.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se alamacenan las instrucciones en esta variable.
+	    	$q = "INSERT INTO vip_proyecto_instancia_aprob (nombre_instancia_aprobacion, date_log, date_log_unix) VALUES (:nombre_instancia_aprobacion,:date_log,:date_log_unix);";
+	    
+	    	#Se prepara la consulta.
+	    	$stmt = $this->db->prepare($q);
+
+	    	#Se vincula un valor a un parámetro.
+	    	$stmt->bindValue(":nombre_instancia_aprobacion", 	$instancia);
+	    	$stmt->bindValue(":date_log", 						date('Y-n-j'));
+	    	$stmt->bindValue(":date_log_unix", 					time());
+
+	    	#Se ejecuta la consulta preparada.
+	    	if ($stmt->execute())
+	    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
 	    /**
 			* Método que obtiene las imágenes temporales con respecto al usuario logueado.
 			*@param: $usr (Nombre de usuario).
