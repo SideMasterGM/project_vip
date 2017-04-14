@@ -253,7 +253,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyNewFacCurEsc">Agregar Facultad | Cur | Escuela</h4>
+                <h4 class="modal-title" id="MyNewFacCurEsc"><i class="fa fa-pencil"></i> Agregar Facultad | Cur | Escuela</h4>
             </div>
             <div class="modal-body">
                 
@@ -276,7 +276,7 @@
                                 foreach ($CNEx->getProjectFacCurEsc() as $value) {
                                     ?>
                                         <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:100%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-graduation-cap" aria-hidden="true"></i>
-<?php echo $value['nombrefac']; ?>
+                                            <?php echo $value['nombrefac']; ?>
                                             <i class="fa fa-times" style="margin: 0 5px; position: absolute; right: 8%; cursor: pointer;" title="Eliminar <?php echo $value['nombrefac']; ?>" aria-hidden="true" onclick="javascript: DeleteTagFacCurEsc('<?php echo $value['codigo_facultad'] ?>');" ></i>
                                         </span>
                                     <?php
@@ -310,7 +310,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyNewInstanciaAprobacion">Agregar instancia de aprobación</h4>
+                <h4 class="modal-title" id="MyNewInstanciaAprobacion"><i class="fa fa-pencil"></i> Agregar instancia de aprobación</h4>
             </div>
             <div class="modal-body">
                 
