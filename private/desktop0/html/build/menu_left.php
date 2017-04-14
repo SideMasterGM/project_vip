@@ -74,6 +74,12 @@
                     </a>
                 </li>
 
+                 <li class="add_property__item">
+                    <a href="#" onclick="javascript: AddNewComunidadPoblacion();">
+                        <span class="icon fa fa-map-marker"></span><span class="title">Agregar Comunidad | Población</span>
+                    </a>
+                </li>
+
                <!--  <li class="config_slider">
                     <a href="slider">
                         <span class="icon fa fa-sliders"></span><span class="title">Configurar Slider</span>
