@@ -68,6 +68,12 @@
                     </a>
                 </li>
 
+                <li class="add_property__item">
+                    <a href="#" onclick="javascript: AddNewFacCurEsc();">
+                        <span class="icon fa fa-graduation-cap"></span><span class="title">Agregar Facultad | CUR | Escuela</span>
+                    </a>
+                </li>
+
                <!--  <li class="config_slider">
                     <a href="slider">
                         <span class="icon fa fa-sliders"></span><span class="title">Configurar Slider</span>
