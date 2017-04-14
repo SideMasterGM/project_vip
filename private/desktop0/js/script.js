@@ -438,6 +438,56 @@ function getFacCurEsc(){
 	});
 }
 
+/*Other window modal: Comunidad | Población*/
+
+function AddNewComunidadPoblacion(){
+	$(".AddNewComunidadPoblacion").click();
+}
+
+$("#SendDataComunidadPoblacion").submit(function( event ) {
+  SendDataComunidadPoblacion();
+  $("#writeComunidadPoblacion").val("");
+  event.preventDefault();
+});
+
+function SendDataComunidadPoblacion(){
+	$.ajax({
+	    url: "private/desktop0/html/build/addComunidadPoblacion.php",
+	    type: "POST",
+	    data: $("#SendDataComunidadPoblacion").serialize(),
+	    success: function(data){
+   			$(".setDataComunidadPoblacion").html(data);    		
+	    }
+  	});
+}
+
+function DeleteTagComunidadPoblacion(value){
+	$("#DelTagComunidadPoblacion").val(value);
+
+	$.ajax({
+	    url: "private/desktop0/html/build/DelComunidadPoblacion.php",
+	    type: "POST",
+	    data: $("#SendDataDeleteComunidadPoblacion").serialize(),
+	    success: function(data){
+   			$(".setDataComunidadPoblacion").html(data);    		
+	    }
+  	});
+}
+
+function getComunidadPoblacion(){
+	$.ajax({
+		url:'private/desktop0/html/build/getComunidadPoblacion.php', 
+		contentType:false,
+		data:archivos, 
+		processData:false, 
+		cache:false 
+	}).done(function(msg){
+		$("#select_fac_cur_esc").html(msg);
+	});
+}
+
+/*-------------END----------------*/
+
 $("#SendDataTagPropertyType").submit(function( event ) {
   TestSendData();
   $("#writeTagProperty_type").val("");
