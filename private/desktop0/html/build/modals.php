@@ -278,8 +278,8 @@
                                         <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:47.5%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-map-marker" aria-hidden="true"></i>
                                             <?php 
                                                 $NombreMunicipio = trim($value['nombre_muni']);
-                                                if (iconv_strlen($NombreMunicipio) >= 17){
-                                                    $NombreMunicipio = substr($NombreMunicipio, 0, 17)."...";
+                                                if (iconv_strlen($NombreMunicipio) >= 20){
+                                                    $NombreMunicipio = substr($NombreMunicipio, 0, 20)."...";
                                                 }
 
                                                 echo $NombreMunicipio;
@@ -374,7 +374,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyNewInstanciaAprobacion"><i class="fa fa-pencil"></i> Agregar instancia de aprobación</h4>
+                <h4 class="modal-title" id="MyNewInstanciaAprobacion"><i class="fa fa-briefcase" aria-hidden="true"></i> Agregar instancia de aprobación</h4>
             </div>
             <div class="modal-body">
                 
@@ -396,8 +396,16 @@
                             if (is_array($CNEx->getProjectInstanciaAprobacion())){
                                 foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
                                     ?>
-                                        <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $value['nombre_instancia_aprobacion']; ?>
-                                            <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagInstanciaAprobacion('<?php echo $value['id'] ?>');" ></i>
+                                        <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:47.5%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-briefcase" aria-hidden="true"></i>
+                                            <?php 
+                                                $NombreInstanciaAprobacion = trim($value['nombre_instancia_aprobacion']);
+                                                if (iconv_strlen($NombreInstanciaAprobacion) >= 20){
+                                                    $NombreInstanciaAprobacion = substr($NombreInstanciaAprobacion, 0, 20)."...";
+                                                }
+
+                                                echo $NombreInstanciaAprobacion;
+                                            ?>
+                                            <i class="fa fa-times" style="margin: -15px 5px 10px 0px; float: right; cursor: pointer;" title="Eliminar <?php echo $value['nombre_instancia_aprobacion']; ?>" aria-hidden="true" onclick="javascript: DeleteTagInstanciaAprobacion('<?php echo $value['id'] ?>');" ></i>
                                         </span>
                                     <?php
                                 }
