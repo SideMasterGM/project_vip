@@ -301,6 +301,63 @@
 </div>
 
 
+<!-- Agregar nueva Facultad | CUR | Escuela.  -->
+<input type="hidden" class="AddNewFacCurEsc" data-toggle="modal" data-target="#AddNewFacCurEsc"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="AddNewFacCurEsc" tabindex="1" role="dialog" aria-labelledby="MyNewFacCurEsc" onclick="javascript: getFacCurEsc();" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="MyNewFacCurEsc"><i class="fa fa-pencil"></i> Agregar Facultad | Cur | Escuela</h4>
+            </div>
+            <div class="modal-body">
+                
+                <div class="panel tagcloud-widget">
+                  <div class="panel-heading">
+                    <span class="panel-icon">
+                      <i class="fa fa-pencil"></i>
+                    </span>
+                    <span class="panel-title">Escriba el nombre de la facultad. Presione Enter para guardar.</span>
+                  </div>
+                  <div class="panel-body">
+                    <form id="SendDataFacCurEsc">
+                        <input type="text" class="form-control" name="writeFacCutEsc" id="writeFacCutEsc" placeholder="Escriba aquí..." />
+                    </form>
+                    <div class="setDataFacCurEsc">
+                       <?php
+                            $CNEx = CDB("all");
+
+                            if (is_array($CNEx->getProjectFacCurEsc())){
+                                foreach ($CNEx->getProjectFacCurEsc() as $value) {
+                                    ?>
+                                        <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:100%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                            <?php echo $value['nombrefac']; ?>
+                                            <i class="fa fa-times" style="margin: 0 5px; position: absolute; right: 8%; cursor: pointer;" title="Eliminar <?php echo $value['nombrefac']; ?>" aria-hidden="true" onclick="javascript: DeleteTagFacCurEsc('<?php echo $value['codigo_facultad'] ?>');" ></i>
+                                        </span>
+                                    <?php
+                                }
+                            } else if (is_bool($CNEx->getProjectFacCurEsc())){
+                                #Opcional para agregar un diálogo.
+                            }
+                        ?>
+                    </div>
+
+                    <form id="SendDataDeleteFacCurEsc">
+                        <input type="hidden" class="form-control" name="DelTagFacCurEsc" id="DelTagFacCurEsc" />
+                    </form>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: getFacCurEsc();" data-dismiss="modal">¡Okay!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Agregar nueva instancia de aprobación. -->
 <input type="hidden" class="AddNewInstanciaAprobacion" data-toggle="modal" data-target="#AddNewInstanciaAprobacion"  />
 
