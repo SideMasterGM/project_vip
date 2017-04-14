@@ -1494,7 +1494,7 @@
         	$Reason->bindValue(':id', $id);
 
         	#Agregando una nueva actividad.
-        	if ($this->addActivity(@$_SESSION['usr'], 12, "Eliminando la instancia de aprobación con ID: ".$id)) #Agrega una actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 12, "Eliminando la instancia de aprobación con ID: ".$id." y nombre: ".$this->getOnlyInstanciaAprobacion($id))) #Agrega una actividad.
 	        	if ($Reason->execute()) #Se ejecuta la consulta.
 		       		return true; #Buen resultado.
 
