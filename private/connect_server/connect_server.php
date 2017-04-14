@@ -1441,7 +1441,7 @@
 	    	#Se vincula un valor a un parámetro.
 	    	$stmt->bindValue(":cod_muni", 		$this->getOnlyLastCodeComunidadPoblacion() + 1);
 	    	$stmt->bindValue(":nombre_muni", 	$name);
-	    	$stmt->bindValue(":cod_dpto", 		0);
+	    	$stmt->bindValue(":cod_dpto", 		2);
 
 	    	#Agregando la descripción completa de la nueva actividad.
 	    	$description = "Agregando una nueva Comunidad | Población: ".$name." con ID: ".($this->getOnlyLastCodeComunidadPoblacion() + 1);
