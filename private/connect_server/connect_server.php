@@ -64,6 +64,8 @@
 			+-------+-----------------------------------------------------------+
 			|   11	|	Creación de una instancia de aprobación					|
 			|   12	|	Eliminación de una instancia de aprobación				|
+			|   13	|	Creación de una Facultad | Cur | Escuela				|
+			|   14	|	Eliminación de una Facultad | Cur | Escuela				|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1411,28 +1413,27 @@
 			* Método que agrega una Facultad | Cur | Escuela.
 			*@param: $name (Nombre).
 		*/
-	    public function addInstanciaAprobacion($name){
+	    public function addFacCurEsc($name){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
-	    	#Tabla: vip_proyecto_instancia_aprob.
+	    	#Tabla: facultades.
 	    	#Atributos: nombre_instancia_aprobacion, date_log, date_log_unix.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
-	    	$q = "INSERT INTO vip_proyecto_instancia_aprob (nombre_instancia_aprobacion, date_log, date_log_unix) VALUES (:nombre_instancia_aprobacion,:date_log,:date_log_unix);";
+	    	$q = "INSERT INTO facultades (codigo_facultad, nombrefac) VALUES (:codigo_facultad,:nombrefac);";
 	    
 	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":nombre_instancia_aprobacion", 	$instancia);
-	    	$stmt->bindValue(":date_log", 						date('Y-n-j'));
-	    	$stmt->bindValue(":date_log_unix", 					time());
+	    	$stmt->bindValue(":codigo_facultad", 	$this->getOnlyLastCodeFacCurEsc() + 1);
+	    	$stmt->bindValue(":nombrefac", 			$name);
 
 	    	#Agregando una nueva actividad.
-        	if ($this->addActivity(@$_SESSION['usr'], 11, "Agregando una nueva instancia de aprobación llamada: ".$instancia)) #Agrega una actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 13, "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".$this->getOnlyInstanciaAprobacion() + 1)) #Agrega una actividad.
 		    	if ($stmt->execute()) #Se ejecuta la consulta preparada.
 		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 
