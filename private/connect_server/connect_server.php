@@ -1408,6 +1408,9 @@
 			*@param: $instancia (Nombre de la instancia de aprobación).
 		*/
 	    public function addInstanciaAprobacion($instancia){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
 	    	#Statement: Consulta preparada. 
 	    	#Tabla: vip_proyecto_instancia_aprob.
 	    	#Atributos: nombre_instancia_aprobacion, date_log, date_log_unix.
@@ -1424,9 +1427,10 @@
 	    	$stmt->bindValue(":date_log", 						date('Y-n-j'));
 	    	$stmt->bindValue(":date_log_unix", 					time());
 
-	    	#Se ejecuta la consulta preparada.
-	    	if ($stmt->execute())
-	    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+	    	#Agregando una nueva actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 11, "Agregando una nueva instancia de aprobación llamada: ".$instancia)) #Agrega una actividad.
+		    	if ($stmt->execute()) #Se ejecuta la consulta preparada.
+		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
