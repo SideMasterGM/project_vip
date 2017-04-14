@@ -1347,7 +1347,7 @@
 		    #Atributos: -
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM facultades;");
+	    	$stmt = $this->db->query("SELECT * FROM facultades ORDER BY codigo_facultad DESC;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
