@@ -1337,6 +1337,11 @@
 	    	return false;
 	    }
 
+	    #####################################################################################
+	    #										INICIO 										#
+	    #####################################################################################
+	    #			Métodos utilizados para gestionar Facultad | CUR | Escuela.				#
+	    #####################################################################################
 	    /**
 			* Método que obtiene las Facultades, Curs o Escuelas.
 			*@param: No hay.
@@ -1515,6 +1520,11 @@
 	       	#Si algo falla, se retorna un valor booleano falso.
         	return false;
 	    }
+
+	    #####################################################################################
+	    #										FIN 										#
+	    #####################################################################################
+	    
 
 	    /**
 			* Método que obtiene las instancias de aprobación del proyecto.
