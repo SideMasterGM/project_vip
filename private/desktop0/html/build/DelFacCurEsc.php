@@ -2,7 +2,7 @@
 	include ("../../../connect_server/connect_server.php");
 	$CN = CDB("vip");
 
-	$id = $_POST['DelTagInstanciaAprobacion'];
+	$id = $_POST['DelTagFacCurEsc'];
 
 	if ($CN->deleteInstanciaAprobacion($id)){
 		if (is_array($CN->getProjectInstanciaAprobacion())){
