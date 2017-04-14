@@ -1499,7 +1499,7 @@
         	$Reason->bindValue(':codigo_facultad', $id);
 
         	#Agregando una nueva actividad.
-        	if ($this->addActivity(@$_SESSION['usr'], 14, "Eliminando la Facultad | Cur | Escuela con ID: ".$id." y nombre: ".$this->getOnlyInstanciaAprobacion($id))) #Agrega una actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 14, "Eliminando la Facultad | Cur | Escuela con ID: ".$id." y nombre: ".$this->getOnlyFacCurEsc($id))) #Agrega una actividad.
 	        	if ($Reason->execute()) #Se ejecuta la consulta.
 		       		return true; #Buen resultado.
 
