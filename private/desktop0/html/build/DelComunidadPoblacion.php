@@ -1,21 +1,21 @@
 <?php
-	include ("../../../connect_server/connect_server.php");
-	$CN = CDB("vip");
+    include ("../../../connect_server/connect_server.php");
+    $CN = CDB("all");
 
-	$id = $_POST['DelTagInstanciaAprobacion'];
+    $id = $_POST['DelTagComunidadPoblacion'];
 
-	if ($CN->deleteInstanciaAprobacion($id)){
-		if (is_array($CN->getProjectInstanciaAprobacion())){
-            foreach ($CN->getProjectInstanciaAprobacion() as $value) {
+    if ($CN->deleteComunidadPoblacion($id)){
+        if (is_array($CN->getProjectComunidadPoblacion())){
+            foreach ($CN->getProjectComunidadPoblacion() as $value) {
                 ?>
-                    <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $value['nombre_instancia_aprobacion']; ?>
-                    	<i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagInstanciaAprobacion('<?php echo $value['id'] ?>');" ></i>
+                    <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:100%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <?php echo $value['nombre_muni']; ?>
+                        <i class="fa fa-times" style="margin: 0 5px; position: absolute; right: 8%; cursor: pointer;" title="Eliminar <?php echo $value['nombre_muni']; ?>" aria-hidden="true" onclick="javascript: DeleteTagComunidadPoblacion('<?php echo $value['cod_muni'] ?>');" ></i>
                     </span>
                 <?php
             }
-        } else if (is_bool($CN->getProjectInstanciaAprobacion())){
+        } else if (is_bool($CN->getProjectComunidadPoblacion())){
             #Opcional para agregar un diálogo.
         }
-	}
-
+    }
 ?>
