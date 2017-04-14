@@ -253,7 +253,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyNewComunidadPoblacion"><i class="fa fa-pencil"></i> Agregar Comunidad | Población</h4>
+                <h4 class="modal-title" id="MyNewComunidadPoblacion"><i class="fa fa-map-marker"></i> Agregar Comunidad | Población</h4>
             </div>
             <div class="modal-body">
                 
@@ -275,7 +275,7 @@
                             if (is_array($CNEx->getProjectComunidadPoblacion())){
                                 foreach ($CNEx->getProjectComunidadPoblacion() as $value) {
                                     ?>
-                                        <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:47.5%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                        <span class="label label-primary" style="font-size: 16px; background-color: #353D47; text-align: left; padding:10px; width:47.5%; margin: 10px 10px 0 0; display: inline-table;" ><i class="fa fa-map-marker" aria-hidden="true"></i>
                                             <?php 
                                                 $NombreMunicipio = trim($value['nombre_muni']);
                                                 if (iconv_strlen($NombreMunicipio) >= 17){
