@@ -253,7 +253,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyNewFacCurEsc">Agregar instancia de aprobación</h4>
+                <h4 class="modal-title" id="MyNewFacCurEsc">Agregar Facultad | Cur | Escuela</h4>
             </div>
             <div class="modal-body">
                 
@@ -262,7 +262,7 @@
                     <span class="panel-icon">
                       <i class="fa fa-pencil"></i>
                     </span>
-                    <span class="panel-title">Escriba el nombre de la instancia. Presione Enter para guardar.</span>
+                    <span class="panel-title">Escriba el nombre de la facultad. Presione Enter para guardar.</span>
                   </div>
                   <div class="panel-body">
                     <form id="SendDataFacCurEsc">
