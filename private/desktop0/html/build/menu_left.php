@@ -63,8 +63,8 @@
                 </li>
 
                 <li class="add_property__item">
-                    <a href="#" onclick="javascript: AddNewPropertyType();">
-                        <span class="icon fa fa-tasks"></span><span class="title">Agregar propiedad</span>
+                    <a href="#" onclick="javascript: AddNewInstanciaAprobacion();">
+                        <span class="icon fa fa-tasks"></span><span class="title">Agregar Instancia de Aprobación</span>
                     </a>
                 </li>
 
