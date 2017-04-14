@@ -1485,10 +1485,6 @@
 	    	return false;
 	    }
 
-	    public function PruebaAhora(){
-	    	echo LlamarAhora();
-	    }
-
 	    /**
 			* Método que elimina una Facultad | Cur | Escuela.
 			*@param: $id (Identificador de la facultad).
