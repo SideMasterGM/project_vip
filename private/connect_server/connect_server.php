@@ -1340,6 +1340,195 @@
 	    #####################################################################################
 	    #										INICIO 										#
 	    #####################################################################################
+	    #			Métodos utilizados para gestionar Comunidades o Población.				#
+	    #####################################################################################
+	    /**
+			* Método que obtiene las Facultades, Curs o Escuelas.
+			*@param: No hay.
+		*/
+	    public function getProjectComunidadPoblacion(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: facultades.
+		    #Atributos: -
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM facultades ORDER BY codigo_facultad DESC;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'codigo_facultad' 	=> $row['codigo_facultad'], 
+	    				'nombrefac' 		=> $row['nombrefac']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que obtiene el campo codigo_facultad del último registro de la tabla facultades.
+			*@param: No hay.
+		*/
+	    public function getOnlyLastCodeComunidadPoblacion(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: facultades.
+		    #Atributos: username.
+		    #Valores devueltos: Todo los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM facultades ORDER BY codigo_facultad DESC LIMIT 1");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$getData[] = [
+	    				'codigo_facultad' => $row['codigo_facultad']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo codigo_facultad.
+	    		foreach ($getData as $value) {
+
+	    			#Se retorna el valor que contiene el índice: codigo_facultad.
+	    			return $value['codigo_facultad'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que obtiene el nombre de la facultad correspondiente a un identificador.
+			*@param: $id (Identificador de la facultad).
+		*/
+	    public function getOnlyComunidadPoblacion($id){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: facultades.
+		    #Atributos: username.
+		    #Valores devueltos: Todo los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT nombrefac FROM facultades WHERE codigo_facultad='".$id."'");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$getData[] = [
+	    				'nombrefac' => $row['nombrefac']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo nombrefac.
+	    		foreach ($getData as $value) {
+
+	    			#Se retorna el valor que contiene el índice: nombrefac.
+	    			return $value['nombrefac'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que agrega una Facultad | Cur | Escuela.
+			*@param: $name (Nombre).
+		*/
+	    public function addComunidadPoblacion($name){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: facultades.
+	    	#Atributos: codigo_facultad, nombrefac.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se alamacenan las instrucciones en esta variable.
+	    	$q = "INSERT INTO facultades (codigo_facultad, nombrefac) VALUES (:codigo_facultad,:nombrefac);";
+	    
+	    	#Se prepara la consulta.
+	    	$stmt = $this->db->prepare($q);
+
+	    	#Se vincula un valor a un parámetro.
+	    	$stmt->bindValue(":codigo_facultad", 	$this->getOnlyLastCodeComunidadPoblacion() + 1);
+	    	$stmt->bindValue(":nombrefac", 			$name);
+
+	    	#Agregando la descripción completa de la nueva actividad.
+	    	$description = "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".($this->getOnlyLastCodeComunidadPoblacion() + 1);
+
+		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
+		    	#Creando una nueva conexión, distinta base de datos.
+		    	$Connection = CDB("vip");
+
+		    	#Se hace uso de esta nueva y temporal conexión.
+        		if ($Connection->addActivity(@$_SESSION['usr'], 13, $description)) #Agrega una actividad.
+		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+		    }
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que elimina una Facultad | Cur | Escuela.
+			*@param: $id (Identificador de la facultad).
+		*/
+	    public function deleteComunidadPoblacion($id){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: id.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM facultades '
+                . 'WHERE codigo_facultad = :codigo_facultad');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':codigo_facultad', $id);
+
+        	#Creando una nueva conexión, distinta base de datos.
+		    $Connection = CDB("vip");
+
+		    #Se hace uso de esta nueva y temporal conexión.
+        	if ($Connection->addActivity(@$_SESSION['usr'], 14, "Eliminando la Facultad | Cur | Escuela con ID: ".$id." y nombre: ".$this->getOnlyComunidadPoblacion($id))) #Agrega una actividad.
+	        	if ($Reason->execute()) #Se ejecuta la consulta.
+		       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
+	    }
+
+	    #####################################################################################
+	    #										FIN 										#
+	    #####################################################################################
+	    
+
+	    #####################################################################################
+	    #										INICIO 										#
+	    #####################################################################################
 	    #			Métodos utilizados para gestionar Facultad | CUR | Escuela.				#
 	    #####################################################################################
 	    /**
