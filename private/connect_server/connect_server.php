@@ -1318,7 +1318,7 @@
 		    #Atributos: -
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM municipios;");
+	    	$stmt = $this->db->query("SELECT * FROM municipios ORDER BY cod_muni DESC;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
