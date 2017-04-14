@@ -1410,6 +1410,44 @@
 	    }
 
 	    /**
+			* Método que obtiene el nombre de la facultad correspondiente a un identificador.
+			*@param: $id (Identificador de la facultad).
+		*/
+	    public function getOnlyFacCurEsc($id){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: facultades.
+		    #Atributos: username.
+		    #Valores devueltos: Todo los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT nombrefac FROM facultades WHERE codigo_facultad='".$id."'");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$getData[] = [
+	    				'nombrefac' => $row['nombrefac']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo nombrefac.
+	    		foreach ($getData as $value) {
+
+	    			#Se retorna el valor que contiene el índice: nombrefac.
+	    			return $value['nombrefac'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que agrega una Facultad | Cur | Escuela.
 			*@param: $name (Nombre).
 		*/
