@@ -66,6 +66,8 @@
 			|   12	|	Eliminación de una instancia de aprobación				|
 			|   13	|	Creación de una Facultad | Cur | Escuela				|
 			|   14	|	Eliminación de una Facultad | Cur | Escuela				|
+			|   15	|	Creación de una Comunidad | Población					|
+			|   16	|	Eliminación de una Comunidad | Población				|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1493,29 +1495,29 @@
 	    }
 
 	    /**
-			* Método que elimina una Facultad | Cur | Escuela.
-			*@param: $id (Identificador de la facultad).
+			* Método que elimina una Comunidad | Población.
+			*@param: $id (Identificador de la población).
 		*/
 	    public function deleteComunidadPoblacion($id){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
-		    #Tabla: vip_tmp_img.
+		    #Tabla: municipios.
 		    #Atributos: id.
 		    #Valores devueltos: No hay, ya que es un DELETE.
 
-	    	$Reason = $this->db->prepare('DELETE FROM facultades '
-                . 'WHERE codigo_facultad = :codigo_facultad');
+	    	$Reason = $this->db->prepare('DELETE FROM municipios '
+                . 'WHERE cod_muni = :cod_muni');
 
 	    	#Se vincula el valor con el parámetro.
-        	$Reason->bindValue(':codigo_facultad', $id);
+        	$Reason->bindValue(':cod_muni', $id);
 
         	#Creando una nueva conexión, distinta base de datos.
 		    $Connection = CDB("vip");
 
 		    #Se hace uso de esta nueva y temporal conexión.
-        	if ($Connection->addActivity(@$_SESSION['usr'], 14, "Eliminando la Facultad | Cur | Escuela con ID: ".$id." y nombre: ".$this->getOnlyComunidadPoblacion($id))) #Agrega una actividad.
+        	if ($Connection->addActivity(@$_SESSION['usr'], 16, "Eliminando la Comunidad | Población con ID: ".$id." y nombre: ".$this->getOnlyComunidadPoblacion($id))) #Agrega una actividad.
 	        	if ($Reason->execute()) #Se ejecuta la consulta.
 		       		return true; #Buen resultado.
 
