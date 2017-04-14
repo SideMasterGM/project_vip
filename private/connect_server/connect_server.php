@@ -1808,8 +1808,4 @@
 		#Retorno de la conexión.
 		return new PostgreSQL("localhost", "5432", $db, "postgres", "Windows10");
 	}
-
-	function LlamarAhora(){
-		return "Listo";
-	}
 ?>
