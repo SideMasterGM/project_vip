@@ -1470,12 +1470,15 @@
 	    	$stmt->bindValue(":codigo_facultad", 	$this->getOnlyLastCodeFacCurEsc() + 1);
 	    	$stmt->bindValue(":nombrefac", 			$name);
 
+	    	#Agregando la descripción completa de la nueva actividad.
+	    	$description = "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".($this->getOnlyLastCodeFacCurEsc() + 1);
+
 		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
 		    	#Creando una nueva conexión, distinta base de datos.
 		    	$Connection = CDB("vip");
 
 		    	#Se hace uso de esta nueva y temporal conexión.
-        		if ($Connection->addActivity(@$_SESSION['usr'], 13, "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".$this->getOnlyLastCodeFacCurEsc() + 1)) #Agrega una actividad.
+        		if ($Connection->addActivity(@$_SESSION['usr'], 13, $description)) #Agrega una actividad.
 		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
