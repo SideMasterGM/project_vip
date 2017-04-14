@@ -415,6 +415,31 @@ function SendDataInstanciaAprobacion(){
   	});
 }
 
+function getInstanciaAprobacion(){
+	$.ajax({
+		url:'private/desktop0/html/build/getInstanciaAprobacion.php', 
+		contentType:false,
+		data:archivos, 
+		processData:false, 
+		cache:false 
+	}).done(function(msg){
+		$("#select_instancia_aprobacion").html(msg);
+	});
+}
+
+function DeleteTagInstanciaAprobacion(value){
+	$("#DelTagPT").val(value);
+
+	$.ajax({
+	    url: "private/desktop0/html/build/PropertyTypeDel.php",
+	    type: "POST",
+	    data: $("#SendDataDeletePropertyType").serialize(),
+	    success: function(data){
+   			$(".setDataTagPropertyType").html(data);    		
+	    }
+  	});
+}
+
 // Esto comentado sin funciona!.
 // $("#writeTagProperty_type").unbind("keyup").keyup(function(e){ 
 //     var code = e.which; // recommended to use e.which, it's normalized across browsers
@@ -462,18 +487,6 @@ function getPropiertyTypeBox(){
 		cache:false 
 	}).done(function(msg){
 		$("#select_property_type").html(msg);
-	});
-}
-
-function getInstanciaAprobacion(){
-	$.ajax({
-		url:'private/desktop0/html/build/getInstanciaAprobacion.php', 
-		contentType:false,
-		data:archivos, 
-		processData:false, 
-		cache:false 
-	}).done(function(msg){
-		$("#select_instancia_aprobacion").html(msg);
 	});
 }
 
