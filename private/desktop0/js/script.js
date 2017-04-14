@@ -397,6 +397,24 @@ $("#SendDataTagPropertyType").submit(function( event ) {
   event.preventDefault();
 });
 
+/*Capturando el evento submit en el formulario: SendDataInstanciaAprobacion */
+$("#SendDataInstanciaAprobacion").submit(function( event ) {
+  SendDataInstanciaAprobacion();
+  $("#writeInstanciaAprobacion").val("");
+  event.preventDefault();
+});
+
+function SendDataInstanciaAprobacion(){
+	$.ajax({
+	    url: "private/desktop0/html/build/addInstanciaAprobacion.php",
+	    type: "POST",
+	    data: $("#SendDataInstanciaAprobacion").serialize(),
+	    success: function(data){
+   			$(".setDataInstanciaAprobacion").html(data);    		
+	    }
+  	});
+}
+
 // Esto comentado sin funciona!.
 // $("#writeTagProperty_type").unbind("keyup").keyup(function(e){ 
 //     var code = e.which; // recommended to use e.which, it's normalized across browsers
