@@ -1470,13 +1470,20 @@
 	    	$stmt->bindValue(":codigo_facultad", 	$this->getOnlyLastCodeFacCurEsc() + 1);
 	    	$stmt->bindValue(":nombrefac", 			$name);
 
-	    	#Agregando una nueva actividad.
-        	if ($this->addActivity(@$_SESSION['usr'], 13, "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".$this->getOnlyLastCodeFacCurEsc() + 1)) #Agrega una actividad.
-		    	if ($stmt->execute()) #Se ejecuta la consulta preparada.
-		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
+		    	#Creando una nueva conexión, distinta base de datos.
+		    	$Connection = CDB("vip");
 
+		    	#Se hace uso de esta nueva y temporal conexión.
+        		if ($Connection->addActivity(@$_SESSION['usr'], 13, "Agregando una nueva Facultad | Cur | Escuela: ".$name." con ID: ".$this->getOnlyLastCodeFacCurEsc() + 1)) #Agrega una actividad.
+		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    public function PruebaAhora(){
+	    	echo LlamarAhora();
 	    }
 
 	    /**
@@ -1498,8 +1505,11 @@
 	    	#Se vincula el valor con el parámetro.
         	$Reason->bindValue(':codigo_facultad', $id);
 
-        	#Agregando una nueva actividad.
-        	if ($this->addActivity(@$_SESSION['usr'], 14, "Eliminando la Facultad | Cur | Escuela con ID: ".$id." y nombre: ".$this->getOnlyFacCurEsc($id))) #Agrega una actividad.
+        	#Creando una nueva conexión, distinta base de datos.
+		    $Connection = CDB("vip");
+
+		    #Se hace uso de esta nueva y temporal conexión.
+        	if ($Connection->addActivity(@$_SESSION['usr'], 14, "Eliminando la Facultad | Cur | Escuela con ID: ".$id." y nombre: ".$this->getOnlyFacCurEsc($id))) #Agrega una actividad.
 	        	if ($Reason->execute()) #Se ejecuta la consulta.
 		       		return true; #Buen resultado.
 
@@ -1797,5 +1807,9 @@
 	function CDB($db){
 		#Retorno de la conexión.
 		return new PostgreSQL("localhost", "5432", $db, "postgres", "Windows10");
+	}
+
+	function LlamarAhora(){
+		return "Listo";
 	}
 ?>
