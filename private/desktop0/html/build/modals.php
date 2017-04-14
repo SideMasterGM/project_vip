@@ -286,8 +286,8 @@
                         ?>
                     </div>
 
-                    <form id="SendDataDeletePropertyType">
-                        <input type="hidden" class="form-control" name="DelTagPT" id="DelTagPT" />
+                    <form id="SendDataDeleteInstanciaAprobacion">
+                        <input type="hidden" class="form-control" name="DelTagInstanciaAprobacion" id="DelTagInstanciaAprobacion" />
                     </form>
                   </div>
                 </div>
