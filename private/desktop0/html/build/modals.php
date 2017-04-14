@@ -270,17 +270,17 @@
                     </form>
                     <div class="setDataFacCurEsc">
                        <?php
-                            $CNEx = CDB("vip");
+                            $CNEx = CDB("all");
 
-                            if (is_array($CNEx->getProjectInstanciaAprobacion())){
-                                foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
+                            if (is_array($CNEx->getProjectFacCurEsc())){
+                                foreach ($CNEx->getProjectFacCurEsc() as $value) {
                                     ?>
-                                        <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $value['nombre_instancia_aprobacion']; ?>
-                                            <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar" aria-hidden="true" onclick="javascript: DeleteTagFacCurEsc('<?php echo $value['id'] ?>');" ></i>
+                                        <span class="label label-primary" style="font-size: 16px; margin: 10px 10px 0 0; display: inline-table;" ><?php echo $value['nombrefac']; ?>
+                                            <i class="fa fa-times" style="margin: 0 5px; cursor: pointer;" title="Eliminar <?php echo $value['nombrefac']; ?>" aria-hidden="true" onclick="javascript: DeleteTagFacCurEsc('<?php echo $value['codigo_facultad'] ?>');" ></i>
                                         </span>
                                     <?php
                                 }
-                            } else if (is_bool($CNEx->getProjectInstanciaAprobacion())){
+                            } else if (is_bool($CNEx->getProjectFacCurEsc())){
                                 #Opcional para agregar un diálogo.
                             }
                         ?>
