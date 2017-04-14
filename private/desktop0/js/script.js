@@ -391,6 +391,11 @@ function AddNewInstanciaAprobacion(){
 	$(".AddNewInstanciaAprobacion").click();
 }
 
+/*Llamando a esta función se hace presente la ventana modal asociada.*/
+function AddNewFacCurEsc(){
+	$(".AddNewFacCurEsc").click();
+}
+
 $("#SendDataTagPropertyType").submit(function( event ) {
   TestSendData();
   $("#writeTagProperty_type").val("");
