@@ -433,7 +433,7 @@ function DeleteTagInstanciaAprobacion(value){
 	$.ajax({
 	    url: "private/desktop0/html/build/DelInstanciaAprobacion.php",
 	    type: "POST",
-	    data: $("#SendDataInstanciaAprobacion").serialize(),
+	    data: $("#SendDataDeleteInstanciaAprobacion").serialize(),
 	    success: function(data){
    			$(".setDataInstanciaAprobacion").html(data);    		
 	    }
