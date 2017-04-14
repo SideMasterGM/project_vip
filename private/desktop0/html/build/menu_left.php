@@ -64,7 +64,7 @@
 
                 <li class="add_property__item">
                     <a href="#" onclick="javascript: AddNewInstanciaAprobacion();">
-                        <span class="icon fa fa-tasks"></span><span class="title">Agregar Instancia de Aprobación</span>
+                        <span class="icon fa fa-briefcase"></span><span class="title">Agregar Instancia de Aprobación</span>
                     </a>
                 </li>
 
