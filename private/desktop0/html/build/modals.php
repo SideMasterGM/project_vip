@@ -265,13 +265,13 @@
                     <span class="panel-title">Escriba el nombre de la instancia. Presione Enter para guardar.</span>
                   </div>
                   <div class="panel-body">
-                    <form id="SendDataTagPropertyType">
-                        <input type="text" class="form-control" name="writeTagProperty_type" id="writeTagProperty_type" placeholder="Escriba aquí..." />
+                    <form id="SendDataInstanciaAprobacion">
+                        <input type="text" class="form-control" name="writeInstanciaAprobacion" id="writeInstanciaAprobacion" placeholder="Escriba aquí..." />
                     </form>
-                    <div class="setDataTagPropertyType">
+                    <div class="setDataInstanciaAprobacion">
                        <?php
                             $CNEx = CDB("vip");
-                            
+
                             if (is_array($CNEx->getProjectInstanciaAprobacion())){
                                 foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
                                     ?>
