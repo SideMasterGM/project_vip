@@ -1370,6 +1370,44 @@
 	    }
 
 	    /**
+			* Método que obtiene el campo codigo_facultad del último registro de la tabla facultades.
+			*@param: No hay.
+		*/
+	    public function getOnlyLastCodeFacCurEsc(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: facultades.
+		    #Atributos: username.
+		    #Valores devueltos: Todo los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM facultades ORDER BY codigo_facultad DESC LIMIT 1");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$getData[] = [
+	    				'codigo_facultad' => $row['codigo_facultad']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo codigo_facultad.
+	    		foreach ($getData as $value) {
+
+	    			#Se retorna el valor que contiene el índice: codigo_facultad.
+	    			return $value['codigo_facultad'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que obtiene las instancias de aprobación del proyecto.
 			*@param: No hay.
 		*/
