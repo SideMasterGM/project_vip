@@ -1343,7 +1343,7 @@
 	    #			Métodos utilizados para gestionar Comunidades o Población.				#
 	    #####################################################################################
 	    /**
-			* Método que obtiene las Facultades, Curs o Escuelas.
+			* Método que obtiene las Comunidades o Población.
 			*@param: No hay.
 		*/
 	    public function getProjectComunidadPoblacion(){
@@ -1378,16 +1378,16 @@
 	    }
 
 	    /**
-			* Método que obtiene el campo codigo_facultad del último registro de la tabla facultades.
+			* Método que obtiene el campo cod_muni del último registro de la tabla municipios.
 			*@param: No hay.
 		*/
 	    public function getOnlyLastCodeComunidadPoblacion(){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: facultades.
-		    #Atributos: username.
+		    #Tabla: municipios.
+		    #Atributos: cod_muni.
 		    #Valores devueltos: Todo los posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM facultades ORDER BY codigo_facultad DESC LIMIT 1");
+	    	$stmt = $this->db->query("SELECT * FROM municipios ORDER BY cod_muni DESC LIMIT 1");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -1398,16 +1398,16 @@
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$getData[] = [
-	    				'codigo_facultad' => $row['codigo_facultad']
+	    				'cod_muni' => $row['cod_muni']
 	    			];
 	    		}
 
 	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
-	    		#Se obtiene precisamente el campo codigo_facultad.
+	    		#Se obtiene precisamente el campo cod_muni.
 	    		foreach ($getData as $value) {
 
-	    			#Se retorna el valor que contiene el índice: codigo_facultad.
-	    			return $value['codigo_facultad'];
+	    			#Se retorna el valor que contiene el índice: cod_muni.
+	    			return $value['cod_muni'];
 	    		}
 	    	}
 
