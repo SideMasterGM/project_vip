@@ -257,20 +257,7 @@
             <form id="ArtSendData">
                 <input type="hidden" class="form-control" id="pro_title" name="pro_title" /><br/>
                 <textarea id="art_content" style="display: none;" name="pro_content"></textarea><br/>
-                <!-- <input type="hidden" class="form-control" id="pro_price" name="pro_price" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_department" name="pro_department" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_city" name="pro_city" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_local_address" name="pro_local_address" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_agent" name="pro_agent" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_business_type" name="pro_business_type" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_property_type" name="pro_property_type" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_property_state" name="pro_property_state" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_bed_room" name="pro_bed_room" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_living_room" name="pro_living_room" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_parking" name="pro_parking" /><br/> -->
-                <!-- <input type="hidden" class="form-control" id="pro_kitchen_now" name="pro_kitchen_now" /><br/> -->
-                <!-- <input type="hidden" id="coord_latitude" name="coord_latitude" />
-                <input type="hidden" id="coord_longitude" name="coord_longitude" /> -->
+                
             </form>
 
             <a href="articles" style="display: none;" id="ClickArticlesList"></a>

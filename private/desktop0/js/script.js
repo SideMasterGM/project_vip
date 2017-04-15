@@ -348,25 +348,8 @@ function PreviewArticle(){
 
 	$("#pro_title").val($("#title_publish").val());
 	$("#pro_content").val($(".trumbowyg-editor").html());
-	$("#pro_price").val($("#precio_dolar").val());
-	$("#pro_department").val($("#departamento_local").val());
-	$("#pro_city").val($("#ciudad_local").val());
-	$("#pro_local_address").val($("#direccion_local").val());
-	
-	$("#pro_agent").val($("#select_agent").val());
-	$("#pro_business_type").val($("#select_business_type").val());
-	$("#pro_property_type").val($("#select_property_type").val());
-	$("#pro_property_state").val($("#select_property_state").val());
-	$("#pro_bed_room").val($("#select_bed_room").val());
-	$("#pro_living_room").val($("#select_living_room").val());
-	$("#pro_parking").val($("#select_parking").val());
-	$("#pro_kitchen_now").val($("#select_kitchen_now").val());
 
-	if ($("#pro_title").val() == "" || $("#pro_content").val() == "" || $("#pro_price").val() == "" || 
-		$("#pro_department").val() == "" || $("#pro_city").val() == "" || $("#pro_local_address").val() == "" ||
-		$("#pro_agent").val() == "" || $("#pro_business_type").val() == "" || $("#pro_property_type").val() == "" || 
-		$("#pro_property_state").val() == "" || $("#pro_bed_room").val() == "" || $("#pro_living_room").val() == "" || 
-		$("#pro_parking").val() == "" || $("#pro_kitchen_now").val() == ""){
+	if ($("#pro_title").val() == "" || $("#pro_content").val() == ""){
 		$(".RelleneTodosLosDatos").click();
 	} else {
 		$.ajax({
