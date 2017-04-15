@@ -715,7 +715,7 @@
         	$Reason->bindValue(':usr', $new_usr);
 
         	#Se cambia la ruta de las imágenes que estén agregadas a un proyecto que haya creado este usuario.
-	    	if ($this->ChangeUserProjectImg($new_usr)){
+	    	if ($this->ChangeUserProjectImg($new_usr, $usr)){
         		#Se ejecuta la consulta preparada.
 		    	if ($Reason->execute()){
 		    		return true;	#Satisfactorio.
@@ -2339,14 +2339,14 @@
 	    	return false;
 	    }
 
-	    public function ChangeUserProjectImg($usr){
+	    public function ChangeUserProjectImg($new_usr, $usr){
 
 	    	if (is_array($this->getProjectImg())){
 
 		    	foreach ($this->getProjectImg() as $value) {
 	    			$SplitFolder = explode("/", $value['folder']);
 	    			if ($SplitFolder[1] == $usr){
-	    				updateUserProjectPathImg($usr, $value['id_project']);
+	    				$this->updateUserProjectPathImg($new_usr, $value['id_project']);
 	    			}
 	    		}
 	    		
