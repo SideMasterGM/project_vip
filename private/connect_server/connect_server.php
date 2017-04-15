@@ -2241,17 +2241,22 @@
 			*@param: $id_project (Identificador del proyecto).
 		*/
 	    public function dumpProjectImg($id_project){
-	    	
+	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 	    	
+	    	#Variable de sesión que contiene el nombre de usuario actualmente logueado.
 	    	$usr = @$_SESSION['usr'];
 
+	    	#Se verifica que haya información que volcar.
 	    	if (is_array($this->getTmpImg($usr))){
 
+	    		#Se procede al volcado de la información.
 	    		foreach ($this->getTmpImg($usr) as $value) {
+	    			#Se agrega a la nueva tabla con respecto al proyecto.
 	    			$this->addProjectImg($id_project, $value['folder'], $value['src']);
 	    		}
 
+	    		#Si todo ha salido bien, se retorna un valor booleano verdadero.
 	    		return 1;
 
 	    	} else if (is_bool($this->getTmpImg($usr))){
