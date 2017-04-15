@@ -1351,6 +1351,48 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que obtiene un ID de Proyecto con respecto a un título y último en haberse agregado.
+			*@param: $name (Nombre del proyecto).
+		*/
+	    public function getProyectoOnlyLastID($name){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_proyecto.
+		    #Atributos: nombre.
+		    #Valores devueltos: id_project.
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto WHERE nombre='".$name."' ORDER BY id_project DESC LIMIT 1");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$getData[] = [
+	    				'id_project' => $row['id_project']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo id_project.
+	    		foreach ($getData as $value) {
+
+	    			#Se retorna el valor que contiene el índice: id_project.
+	    			return $value['id_project'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    #####################################################################################
+	    #										FIN 										#
+	    #####################################################################################
+
 
 	    #####################################################################################
 	    #										INICIO 										#
