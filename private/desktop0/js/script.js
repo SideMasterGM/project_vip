@@ -381,11 +381,11 @@ function PreviewArticle(){
 	/*Personas atendidas*/
 	$("#pro_personas_atendidas").val($("#personas_atendidas").val());
 
-	if ($("#pro_title").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == "" 
-		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == "" 
-		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == "" 
-		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == ""
-		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == ""){
+	if ($("#pro_title").val() == "" || $("#pro_content").val() == "" || $("#pro_fac_cur_esc").val() == "" 
+		|| $("#pro_instancia_aprobacion").val() == "" || $("#pro_comunidad_poblacion").val() == "" || $("#pro_duracion_meses").val() == "" 
+		|| $("#pro_fecha_aprobacion").val() == "" || $("#pro_fecha_inicio").val() == "" || $("#pro_fecha_finalizacion").val() == "" 
+		|| $("#pro_fecha_monitoreo").val() == "" || $("#pro_nombre_organismo").val() == "" || $("#pro_monto_financiado").val() == ""
+		|| $("#pro_cod_dictamen").val() == "" || $("#pro_tipo_publicacion").val() == "" || $("#pro_datos_publicacion").val() == ""){
 		$(".RelleneTodosLosDatos").click();
 	} else {
 		$.ajax({
