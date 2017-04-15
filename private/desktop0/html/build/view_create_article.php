@@ -177,18 +177,16 @@
 
                                                     <?php
                                                         $CNEx = CDB("all");
-
                                                         ?>
                                                             <select id="select_comunidad_poblacion" style="width: 100%;">
                                                                 <optgroup label="Lista de centros">
                                                         <?php
 
-                                                        foreach ($CNEx->getProjectComunidadPoblacion() as $value) {
-                                                            ?>
-                                                                <option value="<?php echo $value['cod_muni']; ?>"><?php echo $value['nombre_muni']; ?></option>
-                                                            <?php                                                              
-                                                        }
-
+                                                            foreach ($CNEx->getProjectComunidadPoblacion() as $value) {
+                                                                ?>
+                                                                    <option value="<?php echo $value['cod_muni']; ?>"><?php echo $value['nombre_muni']; ?></option>
+                                                                <?php                                                              
+                                                            }
                                                         ?>
                                                                 </optgroup>
                                                             </select>
@@ -204,38 +202,6 @@
                                                 </div>
                                             </div>
                                             
-                                            <!-- <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">Tipo de propiedad 
-                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewPropertyType();" aria-hidden="true" title="Agregar nuevo tipo de propiedad" ></i>
-                                                    </h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div>
-                                                        <select id="select_property_type" style="width: 100%;"> -->
-                                                            
-                                                            <?php
-                                                                // $getObjTypeProperty = $Conexion->query("SELECT * FROM property_type;");
-
-                                                                // if ($getObjTypeProperty->num_rows > 0){
-                                                                    ?>
-                                                                        <!-- <optgroup label="Tipo de propiedad"> -->
-                                                                    <?php
-                                                                    // while ($getDataPT = $getObjTypeProperty->fetch_array(MYSQLI_ASSOC)){
-                                                                        ?>
-                                                                            <!-- <option value="<?php //echo $getDataPT['name_type']; ?>"><?php //echo $getDataPT['name_type']; ?></option> -->
-                                                                            
-                                                                        <?php
-                                                                    // }
-                                                                    ?>
-                                                                         <!-- </optgroup> -->
-                                                                    <?php
-                                                                // }
-                                                            ?>
-                                                 <!--        </select>
-                                                    </div>
-                                                </div> -->
-                                            <!-- </div> -->
                                          </div>
 
                                          <div class="col-xs-4">
@@ -289,22 +255,22 @@
             </div>
 
             <form id="ArtSendData">
-                <input type="hidden" class="form-control" id="art_title" name="art_title" /><br/>
-                <textarea id="art_content" style="display: none;" name="art_content"></textarea><br/>
-                <input type="hidden" class="form-control" id="art_price" name="art_price" /><br/>
-                <input type="hidden" class="form-control" id="art_department" name="art_department" /><br/>
-                <input type="hidden" class="form-control" id="art_city" name="art_city" /><br/>
-                <input type="hidden" class="form-control" id="art_local_address" name="art_local_address" /><br/>
-                <input type="hidden" class="form-control" id="art_agent" name="art_agent" /><br/>
-                <input type="hidden" class="form-control" id="art_business_type" name="art_business_type" /><br/>
-                <input type="hidden" class="form-control" id="art_property_type" name="art_property_type" /><br/>
-                <input type="hidden" class="form-control" id="art_property_state" name="art_property_state" /><br/>
-                <input type="hidden" class="form-control" id="art_bed_room" name="art_bed_room" /><br/>
-                <input type="hidden" class="form-control" id="art_living_room" name="art_living_room" /><br/>
-                <input type="hidden" class="form-control" id="art_parking" name="art_parking" /><br/>
-                <input type="hidden" class="form-control" id="art_kitchen_now" name="art_kitchen_now" /><br/>
-                <input type="hidden" id="coord_latitude" name="coord_latitude" />
-                <input type="hidden" id="coord_longitude" name="coord_longitude" />
+                <input type="hidden" class="form-control" id="pro_title" name="pro_title" /><br/>
+                <textarea id="art_content" style="display: none;" name="pro_content"></textarea><br/>
+                <!-- <input type="hidden" class="form-control" id="pro_price" name="pro_price" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_department" name="pro_department" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_city" name="pro_city" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_local_address" name="pro_local_address" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_agent" name="pro_agent" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_business_type" name="pro_business_type" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_property_type" name="pro_property_type" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_property_state" name="pro_property_state" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_bed_room" name="pro_bed_room" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_living_room" name="pro_living_room" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_parking" name="pro_parking" /><br/> -->
+                <!-- <input type="hidden" class="form-control" id="pro_kitchen_now" name="pro_kitchen_now" /><br/> -->
+                <!-- <input type="hidden" id="coord_latitude" name="coord_latitude" />
+                <input type="hidden" id="coord_longitude" name="coord_longitude" /> -->
             </form>
 
             <a href="articles" style="display: none;" id="ClickArticlesList"></a>
