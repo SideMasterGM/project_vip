@@ -2237,6 +2237,30 @@
 	    }
 
 	    /**
+			* Método que elimina la imagen temporal apuntada.
+			*@param: $src (Recurso de la imagen: nombre).
+		*/
+	    public function deleteTmpImgById($id){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_tmp_img.
+		    #Atributos: src.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM vip_tmp_img '
+                . 'WHERE id = :id');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':id', $id);
+
+        	#Se ejecuta la consulta.
+        	if ($Reason->execute())
+	       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
+	    }
+
+	    /**
 			* Método que vuelca la información de la tabla vip_tmp_img a vip_project_img.
 			*@param: $id_project (Identificador del proyecto).
 		*/
@@ -2253,7 +2277,11 @@
 	    		#Se procede al volcado de la información.
 	    		foreach ($this->getTmpImg($usr) as $value) {
 	    			#Se agrega a la nueva tabla con respecto al proyecto.
-	    			$this->addProjectImg($id_project, $value['folder'], $value['src']);
+	    			if ($this->addProjectImg($id_project, $value['folder'], $value['src'])){
+	    				if ($this->deleteTmpImgById($value['id'])){
+	    					return 1;
+	    				}
+	    			}
 	    		}
 
 	    		#Si todo ha salido bien, se retorna un valor booleano verdadero.
