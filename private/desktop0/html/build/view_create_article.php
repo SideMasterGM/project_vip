@@ -119,7 +119,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Instancia de aprobación
-                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewInstanciaAprobacion();" aria-hidden="true" title="Agregar agente" ></i>
+                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewInstanciaAprobacion();" aria-hidden="true" title="Agregar Instancia de Aprobación" ></i>
                                                     </h3>
                                                 </div>
                                                 <div class="panel-body">
@@ -169,7 +169,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title">Comunidad | Población
-                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewComunidadPoblacion();" aria-hidden="true" title="Agregar agente" ></i></h3>
+                                                    <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewComunidadPoblacion();" aria-hidden="true" title="Agregar Comunidad | Población" ></i></h3>
                                                 </div>
                                                 <div class="panel-body">
                                                 
@@ -256,8 +256,31 @@
 
             <form id="ArtSendData">
                 <input type="hidden" class="form-control" id="pro_title" name="pro_title" /><br/>
-                <textarea id="art_content" style="display: none;" name="pro_content"></textarea><br/>
+                <textarea id="pro_content" style="display: none;" name="pro_content"></textarea><br/>
                 
+                <input type="hidden" class="form-control" id="pro_fac_cur_esc" name="pro_fac_cur_esc" /><br/>
+                <input type="hidden" class="form-control" id="pro_instancia_aprobacion" name="pro_instancia_aprobacion" /><br/>
+                <input type="hidden" class="form-control" id="pro_comunidad_poblacion" name="pro_comunidad_poblacion" /><br/>
+                
+                <input type="hidden" class="form-control" id="pro_duracion_meses" name="pro_duracion_meses" /><br/>
+                <input type="hidden" class="form-control" id="pro_fecha_aprobacion" name="pro_fecha_aprobacion" /><br/>
+                <input type="hidden" class="form-control" id="pro_fecha_inicio" name="pro_fecha_inicio" /><br/>
+                <input type="hidden" class="form-control" id="pro_fecha_finalizacion" name="pro_fecha_finalizacion" /><br/>
+                <input type="hidden" class="form-control" id="pro_fecha_monitoreo" name="pro_fecha_monitoreo" /><br/>
+                
+                <input type="hidden" class="form-control" id="pro_nombre_organismo" name="pro_nombre_organismo" /><br/>
+                <input type="hidden" class="form-control" id="pro_monto_financiado" name="pro_monto_financiado" /><br/>
+                <input type="hidden" class="form-control" id="pro_aporte_unan" name="pro_aporte_unan" /><br/>
+                
+                <input type="hidden" class="form-control" id="pro_zona_geografica" name="pro_zona_geografica" /><br/>
+                
+                <input type="hidden" class="form-control" id="pro_cod_dictamen" name="pro_cod_dictamen" /><br/>
+                
+                <input type="hidden" class="form-control" id="pro_tipo_publicacion" name="pro_tipo_publicacion" /><br/>
+                <input type="hidden" class="form-control" id="pro_datos_publicacion" name="pro_datos_publicacion" /><br/>
+                <input type="hidden" class="form-control" id="pro_otros_datos" name="pro_otros_datos" /><br/>
+                
+                <input type="hidden" class="form-control" id="pro_personas_atendidas" name="pro_personas_atendidas" /><br/>
             </form>
 
             <a href="articles" style="display: none;" id="ClickArticlesList"></a>
