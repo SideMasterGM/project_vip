@@ -69,6 +69,9 @@
 			|   15	|	Creación de una Comunidad | Población					|
 			|   16	|	Eliminación de una Comunidad | Población				|
 			+-------+-----------------------------------------------------------+
+			|   17	|	Creación de un Proyecto									|
+			|   18	|	Eliminación de un Proyecto								|
+			+-------+-----------------------------------------------------------+
 		*/
 
 		/**
