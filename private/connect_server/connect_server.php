@@ -2327,4 +2327,6 @@
 		#Retorno de la conexión.
 		return new PostgreSQL("localhost", "5432", $db, "postgres", "Windows10");
 	}
+
+	#En el volcado de imágenes hay un bug, dejar las imágenes fuera del directorio del usuario.
 ?>
