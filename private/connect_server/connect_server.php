@@ -73,6 +73,7 @@
 			|   18	|	Eliminación de un Proyecto								|
 			|   19	|	Creación Zonas geográficas de los beneficiarios			|
 			|   20	|	Creación de la Temporalidad del proyecto				|
+			|   21	|	Creación de la información financiera del proyecto		|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1470,33 +1471,32 @@
 			*@param: $id_project (Identificador del proyecto), $NombreOrganismo.
 			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
 		*/
-	    public function addProyectoInformacionFinanciera($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo){
+	    public function addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
 	    	#Tabla: vip_informacion_financiera.
-	    	#Atributos: id_project, .
+	    	#Atributos: id_project, nombre_organismo, monto_financiado, aporte_unan.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
-	    	$q = "INSERT INTO vip_informacion_financiera (id_project, duracion_meses, fecha_inicio, fecha_finalizacion, fecha_monitoreo) VALUES (:id_project,:duracion_meses,:fecha_inicio,:fecha_finalizacion,:fecha_monitoreo);";
+	    	$q = "INSERT INTO vip_informacion_financiera (id_project, nombre_organismo, monto_financiado, aporte_unan) VALUES (:id_project,:nombre_organismo,:monto_financiado,:aporte_unan);";
 	    
 	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":id_project", 					$id_project;
-	    	$stmt->bindValue(":duracion_meses", 				$DuracionMeses);
-	    	$stmt->bindValue(":fecha_inicio", 					$FechaInicio);
-	    	$stmt->bindValue(":fecha_finalizacion", 			$FechaFinalizacion);
-	    	$stmt->bindValue(":fecha_monitoreo", 				$FechaMonitoreo);
+	    	$stmt->bindValue(":id_project", 			$id_project;
+	    	$stmt->bindValue(":nombre_organismo", 		$NombreOrganismo);
+	    	$stmt->bindValue(":monto_financiado", 		$MontoFinanciado);
+	    	$stmt->bindValue(":aporte_unan", 			$AporteUNAN);
 
 	    	#Agregando la descripción completa de la nueva actividad.
-	    	$description = "Agregando la Temporalidad del proyecto con ID: ".$id_project;
+	    	$description = "Agregando la información financiera del proyecto con ID: ".$id_project;
 
 		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
-        		if ($this->addActivity(@$_SESSION['usr'], 20, $description)) #Agrega una actividad.
+        		if ($this->addActivity(@$_SESSION['usr'], 21, $description)) #Agrega una actividad.
 		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
