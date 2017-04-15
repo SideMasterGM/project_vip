@@ -395,7 +395,7 @@ function PreviewArticle(){
 		    data: $("#ArtSendData").serialize(),
 		    success: function(data){
 		    	if (data == "OK"){
-		    		$("#MyInfoArtAddYes").html("Post: " + $("#pro_title").val());
+		    		$("#MyInfoArtAddYes").html("Proyecto: " + $("#pro_title").val());
 		    		$(".InfoArtAddYes").click();
 		    	}
 		    }
