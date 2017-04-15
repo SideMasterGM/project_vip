@@ -6,10 +6,10 @@
                     <div class="card-header">
                         <div class="card-title">
                         	<div class="title">
-                        		Registro de artículos
+                        		Registro de proyectos
                         	</div>
                         	<div class="icon-addAgent-right">
-                        		<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo artículo" onclick="javascript: window.location.href='./create_article'" ></i>
+                        		<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo proyecto" onclick="javascript: window.location.href='./project'" ></i>
                         	</div>
                         </div>
                     </div>
@@ -18,22 +18,22 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Título</th>
-                                    <th>Precio ($)</th>
-                                    <th>Ciudad</th>
-                                    <th>Agente</th>
-                                    <th>D - S - E - C</th>
+                                    <th>Nombre</th>
+                                    <th>Facultad | CUR | Escuela</th>
+                                    <th title="Código de Dictamen económico" >Dictamen económico</th>
+                                    <th>Instancia de aprobación</th>
+                                    <th title="Fecha de aprobación" >Fecha</th>
                                 </tr>
                             </thead>
 
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Título</th>
-                                    <th>Precio ($)</th>
-                                    <th>Ciudad</th>
-                                    <th>Agente</th>
-                                    <th>D - S - E - C</th>
+                                    <th>Nombre</th>
+                                    <th>Facultad | CUR | Escuela</th>
+                                    <th title="Código de Dictamen económico" >Dictamen económico</th>
+                                    <th>Instancia de aprobación</th>
+                                    <th title="Fecha de aprobación" >Fecha</th>
                                 </tr>
                             </tfoot>
 
