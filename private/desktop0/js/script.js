@@ -346,8 +346,40 @@ function ConvertToCD(value){
 
 function PreviewArticle(){
 
+	/*Título y contenido del proyecto*/
 	$("#pro_title").val($("#title_publish").val());
 	$("#pro_content").val($(".trumbowyg-editor").html());
+	
+	/*Combobox, Facultdad, Instancia, Comunidad*/
+	$("#").val($("#select_fac_cur_esc").val());
+	$("#").val($("#select_instancia_aprobacion").val());
+	$("#").val($("#select_comunidad_poblacion").val());
+
+	/*Temporalidad*/
+	$("#").val($("#duracion_meses").val());
+	$("#").val($("#fecha_aprobacion").val());
+	$("#").val($("#fecha_inicio").val());
+	$("#").val($("#fecha_finalizacion").val());
+	$("#").val($("#fecha_monitoreo").val());
+
+	/*Información financiera*/
+	$("#").val($("#nombre_organismo").val());
+	$("#").val($("#monto_financiado").val());
+	$("#").val($("#aporte_unan").val());
+
+	/*Zona geográfica, este también está ubicado en Comunidad.*/
+	$("#").val($("#zona_geografica").val());
+
+	/*Dictamen económico*/
+	$("#").val($("#cod_dictamen").val());
+	
+	/*Resultados*/
+	$("#").val($("#tipo_publicacion").val());
+	$("#").val($("#datos_publicacion").val());
+	$("#").val($("#otros_datos").val());
+
+	/*Personas atendidas*/
+	$("#").val($("#personas_atendidas").val());
 
 	if ($("#pro_title").val() == "" || $("#pro_content").val() == ""){
 		$(".RelleneTodosLosDatos").click();
