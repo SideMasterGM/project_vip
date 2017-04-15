@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <div class="col-xs-10">
                             <div class="card-title" style="width: 105%;">
-                                <input type="text" class="form-control" style="width: 100%;" placeholder="Escriba el nombre del proyecto" id="title_publish" name="title_publish" autofocus />
+                                <input type="text" class="form-control" style="width: 100%;" placeholder="* Escriba el nombre del proyecto" id="title_publish" name="title_publish" autofocus />
                             </div>
                             </div>
                             <div class="col-xs-2">
