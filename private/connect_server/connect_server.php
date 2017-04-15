@@ -2297,6 +2297,38 @@
 	    	return -1;
 	    }
 
+	    public function getProjectImg(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_info.
+		    #Atributos: -
+		    #Valores devueltos: Todos los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_info;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$UsersData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$UsersData[] = [
+	    				'username' 		=> $row['username'],
+	    				'email' 		=> $row['email'],
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Se retorna el array de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
 	    #####################################################################################
 	    #										FIN 										#
 	    #####################################################################################
