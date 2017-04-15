@@ -47,7 +47,7 @@
 
 					if ($CN->addProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
 						#Se hace un valcado de imágenes.
-
+						
 						
 						
 					} else {
