@@ -45,6 +45,15 @@
 
 				if ($CN->addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
 
+					if ($CN->addProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
+						#Se hace un valcado de imágenes.
+
+						
+						
+					} else {
+						echo "No se ha podido registrar la información de resultados del proyecto con ID: ".$id_project;
+					}
+
 				} else {
 					echo "No se ha podido registrar la Información Financiera del proyecto con ID: ".$id_project;
 				}
@@ -60,13 +69,6 @@
 	} else {
 		echo "No se ha podido registrar el proyecto.";
 	}
-
-
-
-
-
-
-
 
 
 
