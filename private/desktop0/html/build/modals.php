@@ -231,10 +231,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyRelleneTodosLosDatos">Datos incompletos</h4>
+                <h4 class="modal-title" id="MyRelleneTodosLosDatos">¡Hey, hey!. Datos incompletos.</h4>
             </div>
             <div class="modal-body">
-                <p>Para publicar el artículo, debe de rellenar todos los campos que se encuentran vacíos, así no habrán problemas para mostrar los datos de forma correcta.</p>
+                <p>Algunos campos del formulario se encuentran vacíos, al menos los que son obligatorios (*). Por favor, rellene los campos y vuelva a intentarlo.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">¡Verificaré!...</button>
