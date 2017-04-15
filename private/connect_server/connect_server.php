@@ -2205,6 +2205,64 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que agrega imágenes al proyecto.
+			*@param: $id_project (Identificador del proyecto), $folder (Directorio donde se almacenan los recursos), $src (Recurso de la imagen: nombre).
+		*/
+		public function addProjectImg($id_project, $folder, $src){
+			#Statement: Consulta preparada. 
+		    #Tabla: vip_project_img.
+		    #Atributos: id_project, folder, src, date_log, date_log_unix.
+		    #Valores devueltos: No devuelve ya que se intenta INSERTAR.
+
+			#Variable que almacena las instrucciones de la consulta.
+	    	$q = "INSERT INTO vip_project_img (id_project, folder, src, date_log, date_log_unix) VALUES (:id_project,:folder,:src,:date_log,:date_log_unix);";
+	    
+	    	#Se prepara la consulta.
+	    	$stmt = $this->db->prepare($q);
+
+	    	#Se vinculan los valores con los parámetros.
+	    	$stmt->bindValue(":id_project", 	$id_project);
+	    	$stmt->bindValue(":folder", 		$folder);
+	    	$stmt->bindValue(":src", 			$src);
+	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
+	    	$stmt->bindValue(":date_log_unix", 	time());
+
+	    	#Se ejecuta la consulta preparada.
+	    	if ($stmt->execute())
+	    		return true;	#Todo bien.
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que vuelca la información de la tabla vip_tmp_img a vip_project_img.
+			*@param: $id_project (Identificador del proyecto).
+		*/
+	    public function dumpProjectImg($id_project){
+	    	
+	    	@session_start();
+	    	
+	    	$usr = @$_SESSION['usr'];
+
+	    	if (is_array($this->getTmpImg($usr))){
+
+	    		foreach ($this->getTmpImg($usr) as $value) {
+	    			$this->addProjectImg($id_project, $value['folder'], $value['src']);
+	    		}
+
+	    		return 1;
+
+	    	} else if (is_bool($this->getTmpImg($usr))){
+	    		#No hay imágenes temporales.
+	    		return -5;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return -1;
+	    }
+
 	    #####################################################################################
 	    #										FIN 										#
 	    #####################################################################################
