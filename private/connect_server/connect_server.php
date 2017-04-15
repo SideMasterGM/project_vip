@@ -74,6 +74,7 @@
 			|   19	|	Creación Zonas geográficas de los beneficiarios			|
 			|   20	|	Creación de la Temporalidad del proyecto				|
 			|   21	|	Creación de la información financiera del proyecto		|
+			|   22	|	Creación de la información de resultados del proyecto 	|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1497,6 +1498,43 @@
 
 		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
         		if ($this->addActivity(@$_SESSION['usr'], 21, $description)) #Agrega una actividad.
+		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+		    }
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que agrega la información de resultados del Proyecto.
+			*@param: $id_project (Identificador del proyecto), $TipoPublicacion.
+			*@param: $DatosPublicacion, $OtrosDatos.
+		*/
+	    public function addProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_info_resultados_proyecto.
+	    	#Atributos: id_project, tipo_publicacion, datos_publicacion, otros_resultados.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se alamacenan las instrucciones en esta variable.
+	    	$q = "INSERT INTO vip_info_resultados_proyecto (id_project, tipo_publicacion, datos_publicacion, otros_resultados) VALUES (:id_project,:tipo_publicacion,:datos_publicacion,:otros_resultados);";
+	    
+	    	#Se prepara la consulta.
+	    	$stmt = $this->db->prepare($q);
+
+	    	#Se vincula un valor a un parámetro.
+	    	$stmt->bindValue(":id_project", 			$id_project;
+	    	$stmt->bindValue(":tipo_publicacion", 		$TipoPublicacion);
+	    	$stmt->bindValue(":datos_publicacion", 		$DatosPublicacion);
+	    	$stmt->bindValue(":otros_resultados", 		$OtrosDatos);
+
+	    	#Agregando la descripción completa de la nueva actividad.
+	    	$description = "Agregando información de resultados del proyecto con ID: ".$id_project;
+
+		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
+        		if ($this->addActivity(@$_SESSION['usr'], 22, $description)) #Agrega una actividad.
 		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
