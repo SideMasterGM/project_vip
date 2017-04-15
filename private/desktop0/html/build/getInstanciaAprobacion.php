@@ -7,7 +7,7 @@
 
 		foreach ($CN->getProjectInstanciaAprobacion() as $value) {
 			?>
-				<option value="<?php echo $value['nombre_instancia_aprobacion']; ?>"><?php echo $value['nombre_instancia_aprobacion']; ?></option>
+				<option value="<?php echo $value['id']; ?>"><?php echo $value['nombre_instancia_aprobacion']; ?></option>
 			<?php
 		}
 
