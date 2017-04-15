@@ -3,6 +3,33 @@
 	@session_start();
 	include ("../../connect_server/connect_server.php");
 
+	= trim($_POST['pro_title']);
+	= trim($_POST['pro_content']);
+
+	= trim($_POST['pro_fac_cur_esc']);
+	= trim($_POST['pro_instancia_aprobacion']);
+	= trim($_POST['pro_comunidad_poblacion']);
+
+	= trim($_POST['pro_duracion_meses']);
+	= trim($_POST['pro_fecha_aprobacion']);
+	= trim($_POST['pro_fecha_inicio']);
+	= trim($_POST['pro_fecha_finalizacion']);
+	= trim($_POST['pro_fecha_monitoreo']);
+
+	= trim($_POST['pro_nombre_organismo']);
+	= trim($_POST['pro_monto_financiado']);
+	= trim($_POST['pro_aporte_unan']);
+
+	= trim($_POST['pro_zona_geografica']);
+
+	= trim($_POST['pro_cod_dictamen']);
+
+	= trim($_POST['pro_tipo_publicacion']);
+	= trim($_POST['pro_datos_publicacion']);
+	= trim($_POST['pro_otros_datos']);
+	
+	= trim($_POST['pro_personas_atendidas']);
+
 	$title 				= $Conexion->real_escape_string(trim($_POST['art_title']));
 	$content_es			= trim($_POST['art_content']);
 	$price 				= $Conexion->real_escape_string(trim($_POST['art_price']));
