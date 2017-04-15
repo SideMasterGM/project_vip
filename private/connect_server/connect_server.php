@@ -71,6 +71,7 @@
 			+-------+-----------------------------------------------------------+
 			|   17	|	Creación de un Proyecto									|
 			|   18	|	Eliminación de un Proyecto								|
+			|   19	|	Creación Zonas geográficas de los beneficiarios			|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1385,6 +1386,42 @@
 	    		}
 	    	}
 
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que agrega la Zona Geográfica de los beneficiarios del Proyecto.
+			*@param: $id_project (Identificador del proyecto), $IDComunidadPoblacion (Identificador), $PersonasAtendidas (Cantidad), $ZonaGeografica (Lugar).
+		*/
+	    public function addProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_zona_geografica_beneficiarios.
+	    	#Atributos: id_project, id_comunidad_poblacion, cantidad_personas_atendidas, nombre_zona_geografica.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se alamacenan las instrucciones en esta variable.
+	    	$q = "INSERT INTO vip_zona_geografica_beneficiarios (id_project, id_comunidad_poblacion, cantidad_personas_atendidas, nombre_zona_geografica) VALUES (:id_project,:id_comunidad_poblacion,:cantidad_personas_atendidas,:nombre_zona_geografica);";
+	    
+	    	#Se prepara la consulta.
+	    	$stmt = $this->db->prepare($q);
+
+	    	#Se vincula un valor a un parámetro.
+	    	$stmt->bindValue(":id_project", 					$id_project;
+	    	$stmt->bindValue(":id_comunidad_poblacion", 		$IDComunidadPoblacion);
+	    	$stmt->bindValue(":cantidad_personas_atendidas", 	$PersonasAtendidas);
+	    	$stmt->bindValue(":nombre_zona_geografica", 		$ZonaGeografica);
+
+	    	#Agregando la descripción completa de la nueva actividad.
+	    	$description = "Agregando Zonas geográficas de los beneficiarios del proyecto con ID: ".$id_project;
+
+		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
+        		if ($this->addActivity(@$_SESSION['usr'], 19, $description)) #Agrega una actividad.
+		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
