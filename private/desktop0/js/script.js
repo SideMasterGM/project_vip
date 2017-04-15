@@ -389,18 +389,17 @@ function PreviewArticle(){
 		|| $("#pro_personas_atendidas").val() == ""){
 		$(".RelleneTodosLosDatos").click();
 	} else {
-		alert("Excelente.");
-		// $.ajax({
-		//     url: "private/desktop0/html/build/AddArticle.php",
-		//     type: "POST",
-		//     data: $("#ArtSendData").serialize(),
-		//     success: function(data){
-		//     	if (data == "OK"){
-		//     		$("#MyInfoArtAddYes").html("Post: " + $("#pro_title").val());
-		//     		$(".InfoArtAddYes").click();
-		//     	}
-		//     }
-	 //  	});
+		$.ajax({
+		    url: "private/desktop0/html/build/AddArticle.php",
+		    type: "POST",
+		    data: $("#ArtSendData").serialize(),
+		    success: function(data){
+		    	if (data == "OK"){
+		    		$("#MyInfoArtAddYes").html("Post: " + $("#pro_title").val());
+		    		$(".InfoArtAddYes").click();
+		    	}
+		    }
+	  	});
 	}
 }
 
