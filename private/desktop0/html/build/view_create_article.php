@@ -100,7 +100,7 @@
                                                 <div class="panel-body">
                                                      <div class="input-group">
                                                       <div class="input-group-addon">Duración</div>
-                                                      <input type="number" class="form-control" id="duracion_meses" name="duracion_meses" placeholder="# Nº de meses" style="z-index: 1;" />
+                                                      <input type="number" class="form-control" id="duracion_meses" name="duracion_meses" placeholder="* Nº de meses" style="z-index: 1;" />
                                                       <div class="input-group-addon"></div>
                                                     </div><br/>
 
@@ -158,7 +158,7 @@
                                                      <input type="text" class="form-control" id="nombre_organismo" name="nombre_organismo" placeholder="* Nombre del organismo"/><br/>
                                                      <div class="input-group">
                                                       <div class="input-group-addon">C$</div>
-                                                      <input type="number" class="form-control" id="monto_financiado" name="monto_financiado" placeholder="C$"/>
+                                                      <input type="number" class="form-control" id="monto_financiado" name="monto_financiado" placeholder="* C$"/>
                                                       <div class="input-group-addon">Monto</div>
                                                     </div><br/>
                                                      <input type="text" class="form-control" id="aporte_unan" name="aporte_unan" placeholder="* Aporte de la UNAN" /><br/>
@@ -213,7 +213,7 @@
                                                 <div class="panel-body">
                                                     <div class="input-group">
                                                       <div class="input-group-addon">Código</div>
-                                                      <input type="number" class="form-control" id="cod_dictamen" name="cod_dictamen" placeholder="####"/>
+                                                      <input type="number" class="form-control" id="cod_dictamen" name="cod_dictamen" placeholder="* #"/>
                                                       <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
@@ -239,7 +239,7 @@
                                                 <div class="panel-body">
                                                     <div class="input-group">
                                                       <div class="input-group-addon">Cantidad</div>
-                                                      <input type="number" class="form-control" id="personas_atendidas" name="personas_atendidas" placeholder="####"/>
+                                                      <input type="number" class="form-control" id="personas_atendidas" name="personas_atendidas" placeholder="* #"/>
                                                       <div class="input-group-addon"></div>
                                                     </div>
                                                 </div>
