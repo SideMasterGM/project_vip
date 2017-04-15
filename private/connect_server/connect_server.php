@@ -1306,6 +1306,53 @@
 	    #####################################################################################
 	    #										INICIO 										#
 	    #####################################################################################
+	    #					Métodos utilizados para gestionar Proyectos.					#
+	    #####################################################################################
+
+	    /**
+			* Método que agrega un nuevo proyecto.
+			*@param: $name (Nombre), $content (Objetivos y resultados), $IDFacCurEsc (Identificador).
+			*@param: $FechaAprobacion (Fecha de aprobación), $CodigoDictamen (Dictamen económico), $IDInstanciaAprobacion (Identificador).
+		*/
+	    public function addProyecto($name, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_proyecto.
+	    	#Atributos: cod_muni, nombre_muni, cod_dpto.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se alamacenan las instrucciones en esta variable.
+	    	$q = "INSERT INTO vip_proyecto (nombre, id_facultad_cur_escuela, contenido, fecha_aprobacion, cod_dictamen_economico, id_instancia_aprobacion) VALUES (:nombre,:id_facultad_cur_escuela,:contenido,:fecha_aprobacion,:cod_dictamen_economico,:id_instancia_aprobacion);";
+	    
+	    	#Se prepara la consulta.
+	    	$stmt = $this->db->prepare($q);
+
+	    	#Se vincula un valor a un parámetro.
+	    	$stmt->bindValue(":cod_muni", 		$this->getOnlyLastCodeComunidadPoblacion() + 1);
+	    	$stmt->bindValue(":nombre_muni", 	$name);
+	    	$stmt->bindValue(":cod_dpto", 		2);
+
+	    	#Agregando la descripción completa de la nueva actividad.
+	    	$description = "Agregando una nueva Comunidad | Población: ".$name." con ID: ".($this->getOnlyLastCodeComunidadPoblacion() + 1);
+
+		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
+		    	#Creando una nueva conexión, distinta base de datos.
+		    	$Connection = CDB("vip");
+
+		    	#Se hace uso de esta nueva y temporal conexión.
+        		if ($Connection->addActivity(@$_SESSION['usr'], 15, $description)) #Agrega una actividad.
+		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
+		    }
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+
+	    #####################################################################################
+	    #										INICIO 										#
+	    #####################################################################################
 	    #			Métodos utilizados para gestionar Comunidades o Población.				#
 	    #####################################################################################
 	    /**
