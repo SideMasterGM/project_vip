@@ -2327,19 +2327,18 @@
 	    			];
 	    		}
 
-	    		// foreach ($UsersData as $value) {
-	    		// 	$SplitFolder = explode("/", $value['folder']);
-	    		// 	if ($SplitFolder[1] == $usr){
-
-	    		// 	}
-	    		// }
-
 	    		#Se retorna el array de información.
 	    		return $UsersData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    public function ChangeUserProjectImg($usr){
+
+
+
 	    }
 
 	    /**
