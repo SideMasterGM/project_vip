@@ -39,7 +39,11 @@
 	if ($CN->addProyecto($title, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion)){
 		$id_project = $CN->getProyectoOnlyLastID($title);
 
-		
+		if ($CN->addProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica)){
+
+			
+
+		}
 
 	} else {
 		echo "No se ha podido registrar el proyecto.";
