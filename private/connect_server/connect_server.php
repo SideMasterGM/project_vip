@@ -75,6 +75,7 @@
 			|   20	|	Creación de la Temporalidad del proyecto				|
 			|   21	|	Creación de la información financiera del proyecto		|
 			|   22	|	Creación de la información de resultados del proyecto 	|
+			|   23	|	Volcado de las imágenes almacenadas temporalmente 		|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1337,7 +1338,7 @@
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":nombre", 					$name;
+	    	$stmt->bindValue(":nombre", 					$name);
 	    	$stmt->bindValue(":id_facultad_cur_escuela", 	$IDFacCurEsc);
 	    	$stmt->bindValue(":contenido", 					$content);
 	    	$stmt->bindValue(":fecha_aprobacion", 			$FechaAprobacion);
@@ -1413,7 +1414,7 @@
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":id_project", 					$id_project;
+	    	$stmt->bindValue(":id_project", 					$id_project);
 	    	$stmt->bindValue(":id_comunidad_poblacion", 		$IDComunidadPoblacion);
 	    	$stmt->bindValue(":cantidad_personas_atendidas", 	$PersonasAtendidas);
 	    	$stmt->bindValue(":nombre_zona_geografica", 		$ZonaGeografica);
@@ -1450,7 +1451,7 @@
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":id_project", 					$id_project;
+	    	$stmt->bindValue(":id_project", 					$id_project);
 	    	$stmt->bindValue(":duracion_meses", 				$DuracionMeses);
 	    	$stmt->bindValue(":fecha_inicio", 					$FechaInicio);
 	    	$stmt->bindValue(":fecha_finalizacion", 			$FechaFinalizacion);
@@ -1488,7 +1489,7 @@
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":id_project", 			$id_project;
+	    	$stmt->bindValue(":id_project", 			$id_project);
 	    	$stmt->bindValue(":nombre_organismo", 		$NombreOrganismo);
 	    	$stmt->bindValue(":monto_financiado", 		$MontoFinanciado);
 	    	$stmt->bindValue(":aporte_unan", 			$AporteUNAN);
@@ -1525,7 +1526,7 @@
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":id_project", 			$id_project;
+	    	$stmt->bindValue(":id_project", 			$id_project);
 	    	$stmt->bindValue(":tipo_publicacion", 		$TipoPublicacion);
 	    	$stmt->bindValue(":datos_publicacion", 		$DatosPublicacion);
 	    	$stmt->bindValue(":otros_resultados", 		$OtrosDatos);
@@ -2279,9 +2280,7 @@
 	    			#Se agrega a la nueva tabla con respecto al proyecto.
 	    			if ($this->addProjectImg($id_project, $value['folder'], $value['src'])){
 	    				#Eliminando el registro de la imagen que se acaba de volcar de la tabla temporal.
-	    				if ($this->deleteTmpImgById($value['id'])){
-	    					return 1;
-	    				}
+	    				$this->deleteTmpImgById($value['id']);
 	    			}
 	    		}
 
