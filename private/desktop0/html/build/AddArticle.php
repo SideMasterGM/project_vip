@@ -41,13 +41,25 @@
 
 		if ($CN->addProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica)){
 
-			
+			if ($CN->addProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo)){
 
+				
+
+			} else {
+				echo "No se ha podido registrar la Temporalidad del proyecto con ID: ".$id_project;
+			}
+
+		} else {
+			echo "No se ha podido registrar la Zona Geográfica de los beneficiarios del proyecto ID: ".$id_project;
 		}
 
 	} else {
 		echo "No se ha podido registrar el proyecto.";
 	}
+
+
+
+
 
 
 
