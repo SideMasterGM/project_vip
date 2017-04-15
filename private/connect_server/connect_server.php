@@ -2297,13 +2297,17 @@
 	    	return -1;
 	    }
 
+	     /**
+			* Método que obtiene todos los recursos de vip_project_img.
+			*@param: $id_project (Identificador del proyecto).
+		*/
 	    public function getProjectImg(){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: vip_user_info.
+		    #Tabla: vip_project_img.
 		    #Atributos: -
 		    #Valores devueltos: Todos los posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_user_info;");
+	    	$stmt = $this->db->query("SELECT * FROM vip_project_img;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -2314,8 +2318,10 @@
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se agrega la información en forma de atributo sobre los índices del array.
 	    			$UsersData[] = [
-	    				'username' 		=> $row['username'],
-	    				'email' 		=> $row['email'],
+	    				'id_project' 	=> $row['id_project'],
+	    				'id_img' 		=> $row['id_img'],
+	    				'folder' 		=> $row['folder'],
+	    				'src' 			=> $row['src'],
 	    				'date_log' 		=> $row['date_log'], 
 	    				'date_log_unix' => $row['date_log_unix']
 	    			];
