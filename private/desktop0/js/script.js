@@ -346,27 +346,27 @@ function ConvertToCD(value){
 
 function PreviewArticle(){
 
-	$("#art_title").val($("#title_publish").val());
-	$("#art_content").val($(".trumbowyg-editor").html());
-	$("#art_price").val($("#precio_dolar").val());
-	$("#art_department").val($("#departamento_local").val());
-	$("#art_city").val($("#ciudad_local").val());
-	$("#art_local_address").val($("#direccion_local").val());
+	$("#pro_title").val($("#title_publish").val());
+	$("#pro_content").val($(".trumbowyg-editor").html());
+	$("#pro_price").val($("#precio_dolar").val());
+	$("#pro_department").val($("#departamento_local").val());
+	$("#pro_city").val($("#ciudad_local").val());
+	$("#pro_local_address").val($("#direccion_local").val());
 	
-	$("#art_agent").val($("#select_agent").val());
-	$("#art_business_type").val($("#select_business_type").val());
-	$("#art_property_type").val($("#select_property_type").val());
-	$("#art_property_state").val($("#select_property_state").val());
-	$("#art_bed_room").val($("#select_bed_room").val());
-	$("#art_living_room").val($("#select_living_room").val());
-	$("#art_parking").val($("#select_parking").val());
-	$("#art_kitchen_now").val($("#select_kitchen_now").val());
+	$("#pro_agent").val($("#select_agent").val());
+	$("#pro_business_type").val($("#select_business_type").val());
+	$("#pro_property_type").val($("#select_property_type").val());
+	$("#pro_property_state").val($("#select_property_state").val());
+	$("#pro_bed_room").val($("#select_bed_room").val());
+	$("#pro_living_room").val($("#select_living_room").val());
+	$("#pro_parking").val($("#select_parking").val());
+	$("#pro_kitchen_now").val($("#select_kitchen_now").val());
 
-	if ($("#art_title").val() == "" || $("#art_content").val() == "" || $("#art_price").val() == "" || 
-		$("#art_department").val() == "" || $("#art_city").val() == "" || $("#art_local_address").val() == "" ||
-		$("#art_agent").val() == "" || $("#art_business_type").val() == "" || $("#art_property_type").val() == "" || 
-		$("#art_property_state").val() == "" || $("#art_bed_room").val() == "" || $("#art_living_room").val() == "" || 
-		$("#art_parking").val() == "" || $("#art_kitchen_now").val() == ""){
+	if ($("#pro_title").val() == "" || $("#pro_content").val() == "" || $("#pro_price").val() == "" || 
+		$("#pro_department").val() == "" || $("#pro_city").val() == "" || $("#pro_local_address").val() == "" ||
+		$("#pro_agent").val() == "" || $("#pro_business_type").val() == "" || $("#pro_property_type").val() == "" || 
+		$("#pro_property_state").val() == "" || $("#pro_bed_room").val() == "" || $("#pro_living_room").val() == "" || 
+		$("#pro_parking").val() == "" || $("#pro_kitchen_now").val() == ""){
 		$(".RelleneTodosLosDatos").click();
 	} else {
 		$.ajax({
@@ -375,7 +375,7 @@ function PreviewArticle(){
 		    data: $("#ArtSendData").serialize(),
 		    success: function(data){
 		    	if (data == "OK"){
-		    		$("#MyInfoArtAddYes").html("Post: " + $("#art_title").val());
+		    		$("#MyInfoArtAddYes").html("Post: " + $("#pro_title").val());
 		    		$(".InfoArtAddYes").click();
 		    	}
 		    }
