@@ -43,7 +43,11 @@
 
 			if ($CN->addProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo)){
 
-				
+				if ($CN->addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
+
+				} else {
+					echo "No se ha podido registrar la Información Financiera del proyecto con ID: ".$id_project;
+				}
 
 			} else {
 				echo "No se ha podido registrar la Temporalidad del proyecto con ID: ".$id_project;
