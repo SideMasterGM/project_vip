@@ -1320,7 +1320,7 @@
 
 	    	#Statement: Consulta preparada. 
 	    	#Tabla: vip_proyecto.
-	    	#Atributos: cod_muni, nombre_muni, cod_dpto.
+	    	#Atributos: nombre, id_facultad_cur_escuela, contenido, fecha_aprobacion, cod_dictamen_economico, id_instancia_aprobacion.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
@@ -1330,19 +1330,18 @@
 	    	$stmt = $this->db->prepare($q);
 
 	    	#Se vincula un valor a un parámetro.
-	    	$stmt->bindValue(":cod_muni", 		$this->getOnlyLastCodeComunidadPoblacion() + 1);
-	    	$stmt->bindValue(":nombre_muni", 	$name);
-	    	$stmt->bindValue(":cod_dpto", 		2);
+	    	$stmt->bindValue(":nombre", 					$name;
+	    	$stmt->bindValue(":id_facultad_cur_escuela", 	$IDFacCurEsc);
+	    	$stmt->bindValue(":contenido", 					$content);
+	    	$stmt->bindValue(":fecha_aprobacion", 			$FechaAprobacion);
+	    	$stmt->bindValue(":cod_dictamen_economico", 	$CodigoDictamen);
+	    	$stmt->bindValue(":id_instancia_aprobacion", 	$IDInstanciaAprobacion);
 
 	    	#Agregando la descripción completa de la nueva actividad.
-	    	$description = "Agregando una nueva Comunidad | Población: ".$name." con ID: ".($this->getOnlyLastCodeComunidadPoblacion() + 1);
+	    	$description = "Agregando un nuevo Proyecto titulado: ".$name;
 
 		    if ($stmt->execute()) { #Se ejecuta la consulta preparada.
-		    	#Creando una nueva conexión, distinta base de datos.
-		    	$Connection = CDB("vip");
-
-		    	#Se hace uso de esta nueva y temporal conexión.
-        		if ($Connection->addActivity(@$_SESSION['usr'], 15, $description)) #Agrega una actividad.
+        		if ($this->addActivity(@$_SESSION['usr'], 17, $description)) #Agrega una actividad.
 		    		return true; #Si se ha llegado hasta acá, es un resultado correcto.
 		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
