@@ -6,36 +6,40 @@
 	include ("../../../connect_server/connect_server.php");
 	$CN = CDB("vip");
 
+	#Tabla: vip_proyecto
 	$title 					= trim($_POST['pro_title']);
 	$content 				= trim($_POST['pro_content']);
 
-	$FacCurEsc 				= trim($_POST['pro_fac_cur_esc']);
-	$IDInstanciaAprobacion 	= trim($_POST['pro_instancia_aprobacion']);
-	$IDComunidadPoblacion	= trim($_POST['pro_comunidad_poblacion']);
-
-	$DuracionMeses 			= trim($_POST['pro_duracion_meses']);
+	$IDFacCurEsc 			= trim($_POST['pro_fac_cur_esc']);
 	$FechaAprobacion 		= trim($_POST['pro_fecha_aprobacion']);
+	$CodigoDictamen 		= trim($_POST['pro_cod_dictamen']);
+	$IDInstanciaAprobacion 	= trim($_POST['pro_instancia_aprobacion']);
+	
+	#Tabla: vip_zona_geografica_beneficiarios
+	$IDComunidadPoblacion	= trim($_POST['pro_comunidad_poblacion']);
+	$PersonasAtendidas 		= trim($_POST['pro_personas_atendidas']);
+	$ZonaGeografica 		= trim($_POST['pro_zona_geografica']);
+
+	#Tabla: vip_temporalidad_proyecto
+	$DuracionMeses 			= trim($_POST['pro_duracion_meses']);
 	$FechaInicio 			= trim($_POST['pro_fecha_inicio']);
 	$FechaFinalizacion 		= trim($_POST['pro_fecha_finalizacion']);
 	$FechaMonitoreo 		= trim($_POST['pro_fecha_monitoreo']);
 
+	#Tabla: vip_informacion_financiera
 	$NombreOrganismo 		= trim($_POST['pro_nombre_organismo']);
 	$MontoFinanciado 		= trim($_POST['pro_monto_financiado']);
 	$AporteUNAN 			= trim($_POST['pro_aporte_unan']);
 
-	$ZonaGeografica 		= trim($_POST['pro_zona_geografica']);
-
-	$CodigoDictamen 		= trim($_POST['pro_cod_dictamen']);
-
+	#Tabla: vip_info_resultados_proyecto
 	$TipoPublicacion 		= trim($_POST['pro_tipo_publicacion']);
 	$DatosPublicacion 		= trim($_POST['pro_datos_publicacion']);
 	$OtrosDatos 			= trim($_POST['pro_otros_datos']);
 
-	$PersonasAtendidas 		= trim($_POST['pro_personas_atendidas']);
 
 
 
-	
+
 
 
 
