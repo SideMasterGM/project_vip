@@ -348,7 +348,7 @@ function PreviewArticle(){
 
 	/*Título y contenido del proyecto*/
 	$("#pro_title").val($("#title_publish").val());
-	$("#pro_content").val($(".trumbowyg-editor").html());
+	$("#pro_content").html($("#trumbowyg-demo").html());
 	
 	/*Combobox, Facultdad, Instancia, Comunidad*/
 	$("#pro_fac_cur_esc").val($("#select_fac_cur_esc").val());
@@ -385,20 +385,22 @@ function PreviewArticle(){
 		|| $("#pro_instancia_aprobacion").val() == "" || $("#pro_comunidad_poblacion").val() == "" || $("#pro_duracion_meses").val() == "" 
 		|| $("#pro_fecha_aprobacion").val() == "" || $("#pro_fecha_inicio").val() == "" || $("#pro_fecha_finalizacion").val() == "" 
 		|| $("#pro_fecha_monitoreo").val() == "" || $("#pro_nombre_organismo").val() == "" || $("#pro_monto_financiado").val() == ""
-		|| $("#pro_cod_dictamen").val() == "" || $("#pro_tipo_publicacion").val() == "" || $("#pro_datos_publicacion").val() == ""){
+		|| $("#pro_cod_dictamen").val() == "" || $("#pro_tipo_publicacion").val() == "" || $("#pro_datos_publicacion").val() == "" 
+		|| $("#pro_personas_atendidas").val() == ""){
 		$(".RelleneTodosLosDatos").click();
 	} else {
-		$.ajax({
-		    url: "private/desktop0/html/build/AddArticle.php",
-		    type: "POST",
-		    data: $("#ArtSendData").serialize(),
-		    success: function(data){
-		    	if (data == "OK"){
-		    		$("#MyInfoArtAddYes").html("Post: " + $("#pro_title").val());
-		    		$(".InfoArtAddYes").click();
-		    	}
-		    }
-	  	});
+		alert("Excelente.");
+		// $.ajax({
+		//     url: "private/desktop0/html/build/AddArticle.php",
+		//     type: "POST",
+		//     data: $("#ArtSendData").serialize(),
+		//     success: function(data){
+		//     	if (data == "OK"){
+		//     		$("#MyInfoArtAddYes").html("Post: " + $("#pro_title").val());
+		//     		$(".InfoArtAddYes").click();
+		//     	}
+		//     }
+	 //  	});
 	}
 }
 
