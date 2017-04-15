@@ -39,23 +39,25 @@
 
                             <tbody id="tbody_listArticle">
                                 <?php
-                                    $GetArticle = $Conexion->query("SELECT * FROM article;");
 
-                                    while ($RArticle = $GetArticle->fetch_array(MYSQLI_ASSOC)){
-                                        ?>
-                                            <tr onclick="javascript: OnItemClickTrArticle(this);">
-                                                <td><?php echo $RArticle['id_art']; ?></td>
-                                                <td><?php echo $RArticle['title']; ?></td>
-                                                <td><?php echo number_format($RArticle['price'], 2, '.', ','); ?></td>
-                                                <td><?php echo $RArticle['city']; ?></td>
-                                                <?php
-                                                    $RArt = $Conexion->query("SELECT names FROM agents WHERE id_agent='".$RArticle['id_agent']."';")->fetch_array(MYSQLI_ASSOC);
-                                                ?>
-                                                <td><?php echo $RArt['names']; ?></td>
-                                                <td><?php echo $RArticle['bed_room']." - ".$RArticle['living_room']." - ".$RArticle['parking']." - ".$RArticle['kitchen']; ?></td>
-                                            </tr>
-                                        <?php
-                                    }
+                                    $Connect_VIP = CDB("vip");
+                                    $Connect_ALL = CDB("all");
+
+                                    if (is_array($Connect_VIP->getProjects())){
+                                        foreach ($Connect_VIP->getProjects() as $value) {
+                                            
+                                            ?>
+                                                <tr onclick="javascript: OnItemClickTrArticle(this);">
+                                                    <td><?php echo $value['id_project']; ?></td>
+                                                    <td><?php echo $value['nombre']; ?></td>
+                                                    <td><?php echo $Connect_ALL->getOnlyFacCurEsc($value['id_facultad_cur_escuela']); ?></td>
+                                                    <td><?php echo $value['cod_dictamen_economico']; ?></td>
+                                                    <td><?php echo $Connect_VIP->getOnlyInstanciaAprobacion($value['id_instancia_aprobacion']); ?></td>
+                                                    <td><?php echo $value['fecha_aprobacion']; ?></td>
+                                                </tr>
+                                            <?php
+                                        }
+                                    }                                   
                                 ?>
                             </tbody>
                         </table>
