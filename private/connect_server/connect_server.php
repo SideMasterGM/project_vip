@@ -2278,14 +2278,16 @@
 	    		foreach ($this->getTmpImg($usr) as $value) {
 	    			#Se agrega a la nueva tabla con respecto al proyecto.
 	    			if ($this->addProjectImg($id_project, $value['folder'], $value['src'])){
+	    				#Eliminando el registro de la imagen que se acaba de volcar de la tabla temporal.
 	    				if ($this->deleteTmpImgById($value['id'])){
 	    					return 1;
 	    				}
 	    			}
 	    		}
 
-	    		#Si todo ha salido bien, se retorna un valor booleano verdadero.
-	    		return 1;
+	    		#Si todo ha salido bien, se retorna un valor booleano verdadero. Agregando una actividad.
+	    		if ($this->addActivity(@$usr, 23, "Volcado de las imágenes almacenadas temporalmente al proyecto con ID: ".$id_project))
+	    			return 1;
 
 	    	} else if (is_bool($this->getTmpImg($usr))){
 	    		#No hay imágenes temporales.
