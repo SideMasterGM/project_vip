@@ -2297,9 +2297,9 @@
 	    	return -1;
 	    }
 
-	     /**
+	    /**
 			* Método que obtiene todos los recursos de vip_project_img.
-			*@param: $id_project (Identificador del proyecto).
+			*@param: No hay.
 		*/
 	    public function getProjectImg(){
 	    	#Statement: Consulta no preparada. 
@@ -2327,12 +2327,49 @@
 	    			];
 	    		}
 
+	    		// foreach ($UsersData as $value) {
+	    		// 	$SplitFolder = explode("/", $value['folder']);
+	    		// 	if ($SplitFolder[1] == $usr){
+
+	    		// 	}
+	    		// }
+
 	    		#Se retorna el array de información.
 	    		return $UsersData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    /**
+			* Método que actualiza la ruta del directorio de Users/Usuario.
+			*@param: $new_usr (Nuevo nombre de usuario), $usr (El nombre de usuario por defecto).
+		*/
+	    public function updateUserPathImg($new_usr, $usr){
+
+	    	#Se puede observar que el nuevo nombre de usuario ha sido limpiado.
+	    	$Path = "users/".$this->CleanString($new_usr)."/img_perfil"."/";
+
+	    	#Statement: Consulta preparada. 
+		    #Tabla: vip_user_img_perfil.
+		    #Atributos: folder, username.
+		    #Valores devueltos: password. 	
+
+	    	$Reason = $this->db->prepare('UPDATE vip_user_img_perfil '
+                . 'SET folder = :path '
+                . 'WHERE username = :usr');
+
+	    	#Se vincula el valor con el parámetro.
+	    	$Reason->bindValue(':path', $Path);
+        	$Reason->bindValue(':usr', $new_usr);
+
+        	#Se ejecuta la consulta preparada.
+	    	if ($Reason->execute())
+	    		return true;	#Satisfactorio.
+
+	    	#Si algo falla, se retorna una valor booleano falso.
+		    return false;
 	    }
 
 	    #####################################################################################
