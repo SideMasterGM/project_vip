@@ -36,6 +36,14 @@
 	$DatosPublicacion 		= trim($_POST['pro_datos_publicacion']);
 	$OtrosDatos 			= trim($_POST['pro_otros_datos']);
 
+	if ($CN->addProyecto($title, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion)){
+		$id_project = $CN->getProyectoOnlyLastID($title);
+
+		
+
+	} else {
+		echo "No se ha podido registrar el proyecto.";
+	}
 
 
 
