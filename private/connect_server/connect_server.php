@@ -2344,25 +2344,24 @@
 
 	    /**
 			* Método que actualiza la ruta del directorio de Users/Usuario.
-			*@param: $new_usr (Nuevo nombre de usuario), $usr (El nombre de usuario por defecto).
+			*@param: $new_usr (Nuevo nombre de usuario).
 		*/
-	    public function updateUserPathImg($new_usr, $usr){
-
+	    public function updateUserProjectPathImg($new_usr, $id_project){
 	    	#Se puede observar que el nuevo nombre de usuario ha sido limpiado.
-	    	$Path = "users/".$this->CleanString($new_usr)."/img_perfil"."/";
+	    	$Path = "users/".$this->CleanString($new_usr)."/project_img"."/";
 
 	    	#Statement: Consulta preparada. 
-		    #Tabla: vip_user_img_perfil.
-		    #Atributos: folder, username.
-		    #Valores devueltos: password. 	
+		    #Tabla: vip_project_img.
+		    #Atributos: folder, id_project.
+		    #Valores devueltos: - 	
 
-	    	$Reason = $this->db->prepare('UPDATE vip_user_img_perfil '
+	    	$Reason = $this->db->prepare('UPDATE vip_project_img '
                 . 'SET folder = :path '
-                . 'WHERE username = :usr');
+                . 'WHERE id_project = :id_project');
 
 	    	#Se vincula el valor con el parámetro.
-	    	$Reason->bindValue(':path', $Path);
-        	$Reason->bindValue(':usr', $new_usr);
+	    	$Reason->bindValue(':path', 		$Path);
+        	$Reason->bindValue(':id_project', 	$id_project);
 
         	#Se ejecuta la consulta preparada.
 	    	if ($Reason->execute())
