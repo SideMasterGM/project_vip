@@ -2339,13 +2339,27 @@
 	    	return false;
 	    }
 
+	    /**
+			* Método que actualiza la ruta del directorio de Users/Usuario al registro de imágenes de un proyecto.
+			*@param: $new_usr (Nuevo nombre de usuario), $usr (Nombre de usuario anterior).
+		*/
 	    public function ChangeUserProjectImg($new_usr, $usr){
-
+	    	#Se verifica que el método devuelva un array con la información necesaria.
 	    	if (is_array($this->getProjectImg())){
 
+	    		#Se recorre el array que devuelve y se muestra por medio de la variable $value.
 		    	foreach ($this->getProjectImg() as $value) {
+
+		    		#Se hace un split con la función explode.
+		    		#explode(): http://php.net/manual/en/function.explode.php
+
 	    			$SplitFolder = explode("/", $value['folder']);
+
+	    			#Se compara el índice 1 con el nombre de usuario anterior.
+	    			#Si es correcto, se procede a actualizar la información.
 	    			if ($SplitFolder[1] == $usr){
+
+	    				#Actualiza la ruta de las imágenes registradas en un proyecto con respecto al usuario.
 	    				$this->updateUserProjectPathImg($new_usr, $value['id_project']);
 	    			}
 	    		}
