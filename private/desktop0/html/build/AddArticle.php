@@ -1,54 +1,44 @@
 <?php
 	
 	@session_start();
-	include ("../../connect_server/connect_server.php");
+	$usr = @$_SESSION['usr'];
 
-	= trim($_POST['pro_title']);
-	= trim($_POST['pro_content']);
+	include ("../../../connect_server/connect_server.php");
+	$CN = CDB("vip");
 
-	= trim($_POST['pro_fac_cur_esc']);
-	= trim($_POST['pro_instancia_aprobacion']);
-	= trim($_POST['pro_comunidad_poblacion']);
+	$title 					= trim($_POST['pro_title']);
+	$content 				= trim($_POST['pro_content']);
 
-	= trim($_POST['pro_duracion_meses']);
-	= trim($_POST['pro_fecha_aprobacion']);
-	= trim($_POST['pro_fecha_inicio']);
-	= trim($_POST['pro_fecha_finalizacion']);
-	= trim($_POST['pro_fecha_monitoreo']);
+	$FacCurEsc 				= trim($_POST['pro_fac_cur_esc']);
+	$IDInstanciaAprobacion 	= trim($_POST['pro_instancia_aprobacion']);
+	$IDComunidadPoblacion	= trim($_POST['pro_comunidad_poblacion']);
 
-	= trim($_POST['pro_nombre_organismo']);
-	= trim($_POST['pro_monto_financiado']);
-	= trim($_POST['pro_aporte_unan']);
+	$DuracionMeses 			= trim($_POST['pro_duracion_meses']);
+	$FechaAprobacion 		= trim($_POST['pro_fecha_aprobacion']);
+	$FechaInicio 			= trim($_POST['pro_fecha_inicio']);
+	$FechaFinalizacion 		= trim($_POST['pro_fecha_finalizacion']);
+	$FechaMonitoreo 		= trim($_POST['pro_fecha_monitoreo']);
 
-	= trim($_POST['pro_zona_geografica']);
+	$NombreOrganismo 		= trim($_POST['pro_nombre_organismo']);
+	$MontoFinanciado 		= trim($_POST['pro_monto_financiado']);
+	$AporteUNAN 			= trim($_POST['pro_aporte_unan']);
 
-	= trim($_POST['pro_cod_dictamen']);
+	$ZonaGeografica 		= trim($_POST['pro_zona_geografica']);
 
-	= trim($_POST['pro_tipo_publicacion']);
-	= trim($_POST['pro_datos_publicacion']);
-	= trim($_POST['pro_otros_datos']);
+	$CodigoDictamen 		= trim($_POST['pro_cod_dictamen']);
+
+	$TipoPublicacion 		= trim($_POST['pro_tipo_publicacion']);
+	$DatosPublicacion 		= trim($_POST['pro_datos_publicacion']);
+	$OtrosDatos 			= trim($_POST['pro_otros_datos']);
+
+	$PersonasAtendidas 		= trim($_POST['pro_personas_atendidas']);
+
+
+
 	
-	= trim($_POST['pro_personas_atendidas']);
 
-	$title 				= $Conexion->real_escape_string(trim($_POST['art_title']));
-	$content_es			= trim($_POST['art_content']);
-	$price 				= $Conexion->real_escape_string(trim($_POST['art_price']));
-	$department 		= $Conexion->real_escape_string(trim($_POST['art_department']));
-	$city 				= $Conexion->real_escape_string(trim($_POST['art_city']));
-	$local_address 		= $Conexion->real_escape_string(trim($_POST['art_local_address']));
-	$agent 				= $Conexion->real_escape_string(trim($_POST['art_agent']));
-	$business_type 		= $Conexion->real_escape_string(trim($_POST['art_business_type']));
-	$property_type 		= $Conexion->real_escape_string(trim($_POST['art_property_type']));
-	$property_state 	= $Conexion->real_escape_string(trim($_POST['art_property_state']));
-	$bed_room 			= $Conexion->real_escape_string(trim($_POST['art_bed_room']));
-	$living_room 		= $Conexion->real_escape_string(trim($_POST['art_living_room']));
-	$parking 			= $Conexion->real_escape_string(trim($_POST['art_parking']));
-	$kitchen 			= $Conexion->real_escape_string(trim($_POST['art_kitchen_now']));
-	$coord_latitude		= $_POST['coord_latitude'];
-	$coord_longitude	= $_POST['coord_longitude'];
 
-	$date_log_unix	= time();
-	$username		= $_SESSION['username'];
+
 	
 	$Q = "INSERT INTO article (id_art, title, content_es, content_en, price, department, city, local_address, id_agent, business_type, property_type, property_state, bed_room, living_room, parking, kitchen, longitude, latitude, date_log, date_log_unix, username) VALUES ('','".$title."','".$content_es."','".$content_es."','".$price."','".$department."','".$city."','".$local_address."','".$agent."','".$business_type."','".$property_type."','".$property_state."','".$bed_room."','".$living_room."','".$parking."','".(int)$kitchen."','".$coord_longitude."','".$coord_latitude."',NOW(),'".$date_log_unix."','".$username."');";
 
