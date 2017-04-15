@@ -213,10 +213,10 @@
                 <h4 class="modal-title" id="MyInfoArtAddYes"></h4>
             </div>
             <div class="modal-body">
-                <h4>El artículo fue agregado con éxito</h4>
+                <h4>¡Genial!. El proyecto se ha registrado con éxito.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./articles.php';" data-dismiss="modal">¡OK!...</button>
+                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects.php';" data-dismiss="modal">¡OK!...</button>
             </div>
         </div>
     </div>
