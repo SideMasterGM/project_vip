@@ -351,37 +351,41 @@ function PreviewArticle(){
 	$("#pro_content").val($(".trumbowyg-editor").html());
 	
 	/*Combobox, Facultdad, Instancia, Comunidad*/
-	$("#").val($("#select_fac_cur_esc").val());
-	$("#").val($("#select_instancia_aprobacion").val());
-	$("#").val($("#select_comunidad_poblacion").val());
+	$("#pro_fac_cur_esc").val($("#select_fac_cur_esc").val());
+	$("#pro_instancia_aprobacion").val($("#select_instancia_aprobacion").val());
+	$("#pro_comunidad_poblacion").val($("#select_comunidad_poblacion").val());
 
 	/*Temporalidad*/
-	$("#").val($("#duracion_meses").val());
-	$("#").val($("#fecha_aprobacion").val());
-	$("#").val($("#fecha_inicio").val());
-	$("#").val($("#fecha_finalizacion").val());
-	$("#").val($("#fecha_monitoreo").val());
+	$("#pro_duracion_meses").val($("#duracion_meses").val());
+	$("#pro_fecha_aprobacion").val($("#fecha_aprobacion").val());
+	$("#pro_fecha_inicio").val($("#fecha_inicio").val());
+	$("#pro_fecha_finalizacion").val($("#fecha_finalizacion").val());
+	$("#pro_fecha_monitoreo").val($("#fecha_monitoreo").val());
 
 	/*Información financiera*/
-	$("#").val($("#nombre_organismo").val());
-	$("#").val($("#monto_financiado").val());
-	$("#").val($("#aporte_unan").val());
+	$("#pro_nombre_organismo").val($("#nombre_organismo").val());
+	$("#pro_monto_financiado").val($("#monto_financiado").val());
+	$("#pro_aporte_unan").val($("#aporte_unan").val());
 
 	/*Zona geográfica, este también está ubicado en Comunidad.*/
-	$("#").val($("#zona_geografica").val());
+	$("#pro_zona_geografica").val($("#zona_geografica").val());
 
 	/*Dictamen económico*/
-	$("#").val($("#cod_dictamen").val());
+	$("#pro_cod_dictamen").val($("#cod_dictamen").val());
 	
 	/*Resultados*/
-	$("#").val($("#tipo_publicacion").val());
-	$("#").val($("#datos_publicacion").val());
-	$("#").val($("#otros_datos").val());
+	$("#pro_tipo_publicacion").val($("#tipo_publicacion").val());
+	$("#pro_datos_publicacion").val($("#datos_publicacion").val());
+	$("#pro_otros_datos").val($("#otros_datos").val());
 
 	/*Personas atendidas*/
-	$("#").val($("#personas_atendidas").val());
+	$("#pro_personas_atendidas").val($("#personas_atendidas").val());
 
-	if ($("#pro_title").val() == "" || $("#pro_content").val() == ""){
+	if ($("#pro_title").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == "" 
+		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == "" 
+		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == "" 
+		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == ""
+		|| $("#pro_content").val() == "" || $("#pro_content").val() == "" || $("#pro_content").val() == ""){
 		$(".RelleneTodosLosDatos").click();
 	} else {
 		$.ajax({
