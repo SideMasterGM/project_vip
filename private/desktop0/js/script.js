@@ -609,7 +609,7 @@ function getPropiertyTypeBox(){
 
 //Pendiente... -- Ya está solucionado!.
 
-function OnItemClickTrArticle(value){
+function OnItemClickTrProject(value){
 	var id_art 		= value.getElementsByTagName("td")[0].innerHTML;
 	var title 		= value.getElementsByTagName("td")[1].innerHTML;
 	var price 		= value.getElementsByTagName("td")[2].innerHTML;
