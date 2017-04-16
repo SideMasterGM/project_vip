@@ -2516,6 +2516,31 @@
 		    return false;
 	    }
 
+	    /**
+			* Método que elimina una imagen por el nombre del recurso agregado en un proyecto.
+			*@param: $id_project (Identificador del proyecto), $src (Recurso de la imagen: nombre).
+		*/
+	    public function deleteProjectImgBySrc($id_project, $src){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_project_img.
+		    #Atributos: src, id_project.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM vip_project_img '
+                . 'WHERE id_project = :id_project AND src = :src');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':id_project', 	$id_project);
+        	$Reason->bindValue(':src', 			$src);
+
+        	#Se ejecuta la consulta.
+        	if ($Reason->execute())
+	       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
+	    }
+
 	    #####################################################################################
 	    #										FIN 										#
 	    #####################################################################################
