@@ -1400,6 +1400,45 @@
 	    }
 
 	    /**
+			* Método que obtiene un proyecto en específico por ID.
+			*@param: id_project (Identificador del proyecto).
+		*/
+	    public function getProjectsOnlyById($id_project){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_proyecto.
+		    #Atributos: id_project
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto WHERE id_project='".$id_project."';");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id_project' 				=> $row['id_project'], 
+	    				'nombre' 					=> $row['nombre'],
+	    				'id_facultad_cur_escuela' 	=> $row['id_facultad_cur_escuela'],
+	    				'contenido' 				=> $row['contenido'],
+	    				'fecha_aprobacion' 			=> $row['fecha_aprobacion'],
+	    				'cod_dictamen_economico' 	=> $row['cod_dictamen_economico'],
+	    				'id_instancia_aprobacion' 	=> $row['id_instancia_aprobacion']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que obtiene un ID de Proyecto con respecto a un título y último en haberse agregado.
 			*@param: $name (Nombre del proyecto).
 		*/
