@@ -348,7 +348,8 @@ function PreviewArticle(){
 
 	/*Título y contenido del proyecto*/
 	$("#pro_title").val($("#title_publish").val());
-	$("#pro_content").html($("#trumbowyg-demo").html());
+	//$("#pro_content").html($("#trumbowyg-demo").html());
+	$("#pro_content").html($(".trumbowyg-editor").html());
 	
 	/*Combobox, Facultdad, Instancia, Comunidad*/
 	$("#pro_fac_cur_esc").val($("#select_fac_cur_esc").val());
