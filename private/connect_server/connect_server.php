@@ -1409,7 +1409,7 @@
 		    #Atributos: id_project
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto WHERE id_project='".$id_project."';");
+	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto WHERE id_project='".$id_project."' LIMIT 1;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
