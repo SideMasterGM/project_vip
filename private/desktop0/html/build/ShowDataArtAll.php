@@ -1,6 +1,9 @@
 <?php
   include ("../../../connect_server/connect_server.php");
-
+  
+  $CN_VIP = CDB("vip");
+  $CN_ALL = CDB("all");
+  
   $id_project = $_POST['ValueArticleByID'];
 ?>
 
@@ -14,11 +17,6 @@
             </div>
             <div class="panel-body">
                 <div>
-                    <?php
-                        $CN_VIP = CDB("vip");
-                        $CN_ALL = CDB("all");
-
-                        ?>
                             <select id="select_fac_cur_esc" style="width: 100%;">
                                 <optgroup label="Lista de centros">
                         <?php
@@ -26,6 +24,8 @@
                             if (is_array($CN_VIP->getProjectsOnlyById($id_project))){
                               foreach ($CN_VIP->getProjectsOnlyById($id_project) as $ProjectValue) {
                                 
+                                $fecha_aprobacion = $ProjectValue['fecha_aprobacion'];
+
                                 if (is_array($CN_ALL->getProjectFacCurEsc())){
                                   foreach ($CN_ALL->getProjectFacCurEsc() as $ProjectFacCurEsc) {
                                     
@@ -74,7 +74,7 @@
                   <div class="input-group-addon"></div>
                 </div><br/>
 
-                  <input type="text" class="form-control" id="fecha_aprobacion" placeholder="* Fecha de aprobación" onfocus="javascript: Calldatepicker();"/><br/>  
+                  <input type="text" class="form-control" id="fecha_aprobacion" value="<?php echo $fecha_aprobacion; ?>" placeholder="* Fecha de aprobación" onfocus="javascript: Calldatepicker();"/><br/>  
                  <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>"  placeholder="* Fecha inicial" onfocus="javascript: CalldatepickerFechaInicio();"/><br/>
                  <input type="text" class="form-control" id="fecha_finalizacion" name="fecha_finalizacion" value="<?php echo $fecha_finalizacion; ?>" placeholder="* Fecha de finalización" onfocus="javascript: CalldatepickerFechaFin();"/><br/>
                  <input type="text" class="form-control" id="fecha_monitoreo" name="fecha_monitoreo" value="<?php echo $fecha_monitoreo; ?>" placeholder="* Fecha de monitoreo" onfocus="javascript: CalldatepickerFechaMonitoreo();"/><br/>
@@ -95,26 +95,33 @@
             <div class="panel-body">
                 
                 <div>
+                    <select id="select_instancia_aprobacion" style="width: 100%;">
+                      <optgroup label="Instancias de aprobación">
 
                     <?php
-                        $CNEx = CDB("vip");
-
-                        ?>
-                            <select id="select_instancia_aprobacion" style="width: 100%;">
-                                <optgroup label="Instancias de aprobación">
-                        <?php
-
-                        foreach ($CNEx->getProjectInstanciaAprobacion() as $value) {
-                            ?>
-                                <option value="<?php echo $value['id']; ?>"><?php echo $value['nombre_instancia_aprobacion']; ?></option>
-                            <?php                                                              
+                      if (is_array($CN_VIP->getProjectsOnlyById($id_project))){
+                        foreach ($CN_VIP->getProjectsOnlyById($id_project) as $InstanciaID) {
+                          
+                          if (is_array($CN_VIP->getProjectInstanciaAprobacion())){
+                            foreach ($CN_VIP->getProjectInstanciaAprobacion() as $ProjectInstanciaAprobacion) {
+                              
+                              if ($InstanciaID['id_instancia_aprobacion'] == $ProjectInstanciaAprobacion['id']){
+                                ?>
+                                  <option selected="selected" value="<?php echo $ProjectInstanciaAprobacion['id']; ?>"><?php echo $ProjectInstanciaAprobacion['nombre_instancia_aprobacion']; ?></option>
+                                <?php 
+                              } else {
+                                ?>
+                                  <option value="<?php echo $ProjectInstanciaAprobacion['id']; ?>"><?php echo $ProjectInstanciaAprobacion['nombre_instancia_aprobacion']; ?></option>
+                                <?php 
+                              }
+                            }
+                          }
                         }
+                      }
 
-                        ?>
-                                </optgroup>
-                            </select>
-                        <?php
                     ?>
+                      </optgroup>
+                    </select>
                 </div>
             </div>
         </div>
