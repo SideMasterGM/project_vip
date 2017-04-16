@@ -653,8 +653,8 @@ function SelectImgArticle(value){
 	//Verificar esto en el servidor. Considero que hay que cambiar el valor.
 	var newData = value.src.split("/");
 
-	$("#MySelectImgArticle").html(newData[8]);
-	$("#MynImgDel").val(newData[8]);
+	$("#MySelectImgArticle").html(newData[9]);
+	$("#MynImgDel").val(newData[9]);
 
 	document.getElementById("ImgArtBig").src = value.src;
 	
