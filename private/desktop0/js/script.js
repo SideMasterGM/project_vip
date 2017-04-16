@@ -640,7 +640,7 @@ function OnItemClickTrProject(value){
 //Ejecutando el cargado de la imágenes.
 function LoadImgArticle(){
 	$.ajax({
-	    url: "private/desktop0/html/build/showImgArticleID.php",
+	    url: "private/desktop0/html/build/showImgProjectID.php",
 	    type: "POST",
 	    data: $("#ShowDataArticleByID").serialize(),
 	    success: function(data){
