@@ -162,25 +162,23 @@
             
                 <div>
 
-                  <select id="select_fac_cur_esc" style="width: 100%;">
+                  <select id="select_comunidad_poblacion" style="width: 100%;">
                       <optgroup label="Lista de centros">
                         <?php
 
-                            if (is_array($CN_VIP->getProjectsOnlyById($id_project))){
-                              foreach ($CN_VIP->getProjectsOnlyById($id_project) as $ProjectValue) {
+                            if (is_array($CN_VIP->getProyectoZonaGeoBeneficiariosOnlyById($id_project))){
+                              foreach ($CN_VIP->getProyectoZonaGeoBeneficiariosOnlyById($id_project) as $ProjectZonaGeoBeneficiario) {
                                 
-                                $fecha_aprobacion = $ProjectValue['fecha_aprobacion'];
-
-                                if (is_array($CN_ALL->getProjectFacCurEsc())){
-                                  foreach ($CN_ALL->getProjectFacCurEsc() as $ProjectFacCurEsc) {
+                                if (is_array($CN_ALL->getProjectComunidadPoblacion())){
+                                  foreach ($CN_ALL->getProjectComunidadPoblacion() as $ProjectComunidadPoblacion) {
                                     
-                                    if ($ProjectValue['id_facultad_cur_escuela'] == $ProjectFacCurEsc['codigo_facultad']){
+                                    if ($ProjectZonaGeoBeneficiario['id_comunidad_poblacion'] == $ProjectComunidadPoblacion['cod_muni']){
                                       ?>
-                                        <option selected="selected" value="<?php echo $ProjectFacCurEsc['codigo_facultad']; ?>"><?php echo $ProjectFacCurEsc['nombrefac']; ?></option>
+                                        <option selected="selected" value="<?php echo $ProjectComunidadPoblacion['cod_muni']; ?>"><?php echo $ProjectComunidadPoblacion['nombre_muni']; ?></option>
                                       <?php 
                                     } else {
                                       ?>
-                                        <option value="<?php echo $ProjectFacCurEsc['codigo_facultad']; ?>"><?php echo $ProjectFacCurEsc['nombrefac']; ?></option>
+                                        <option value="<?php echo $ProjectComunidadPoblacion['cod_muni']; ?>"><?php echo $ProjectComunidadPoblacion['nombre_muni']; ?></option>
                                       <?php 
                                     }
                                   }
@@ -190,24 +188,7 @@
                         ?>
                       </optgroup>
                     </select>
-                
-                <?php
-                    $CNEx = CDB("all");
-                    ?>
-                        <select id="select_comunidad_poblacion" style="width: 100%;">
-                            <optgroup label="Lista de centros">
-                    <?php
 
-                        foreach ($CNEx->getProjectComunidadPoblacion() as $value) {
-                            ?>
-                                <option value="<?php echo $value['cod_muni']; ?>"><?php echo $value['nombre_muni']; ?></option>
-                            <?php                                                              
-                        }
-                    ?>
-                            </optgroup>
-                        </select>
-                    <?php
-                ?>
                     <br/><br/>
                     <div class="input-group">
                       <div class="input-group-addon">Nombre</div>
