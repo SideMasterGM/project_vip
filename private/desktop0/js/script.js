@@ -610,20 +610,20 @@ function getPropiertyTypeBox(){
 //Pendiente... -- Ya está solucionado!.
 
 function OnItemClickTrProject(value){
-	var id_art 		= value.getElementsByTagName("td")[0].innerHTML;
-	var title 		= value.getElementsByTagName("td")[1].innerHTML;
+	var id_project 	= value.getElementsByTagName("td")[0].innerHTML;
+	var nombre 		= value.getElementsByTagName("td")[1].innerHTML;
 	var price 		= value.getElementsByTagName("td")[2].innerHTML;
 	var city 		= value.getElementsByTagName("td")[3].innerHTML;
 	var names_agent = value.getElementsByTagName("td")[4].innerHTML;
 	var dsec 		= value.getElementsByTagName("td")[5].innerHTML;
 
-	$("#ValueArticleByID").val(id_art);
+	$("#ValueArticleByID").val(id_project);
 
 	$(".show-optionsArticle").click();
-	$("#InsertTitleArticle").val(title);
+	$("#InsertTitleArticle").val(nombre);
 
 	$.ajax({
-	    url: "private/desktop0/html/build/ShowDataArticleByID.php",
+	    url: "private/desktop0/html/build/ShowDataProjectByID.php",
 	    type: "POST",
 	    data: $("#ShowDataArticleByID").serialize(),
 	    success: function(data){
