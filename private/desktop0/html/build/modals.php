@@ -539,7 +539,7 @@
                                             </div>
                                             <div class="panel-body">
                                                 <input type="text" class="form-control" id="InsertTitleArticle" placeholder="Título del artículo..." />
-                                                <?php include ("edit/index.html"); ?>
+                                                <?php include ("private/desktop0/html/edit/index.html"); ?>
                                             </div>
                                         </div>
                                     </div>
