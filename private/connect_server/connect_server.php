@@ -1588,6 +1588,43 @@
 	    }
 
 	    /**
+			* Método que obtiene la información financiera de un proyecto en específico por ID.
+			*@param: id_project (Identificador del proyecto).
+		*/
+	    public function getProyectoFinancieraOnlyById($id_project){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_informacion_financiera.
+		    #Atributos: id_project
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_informacion_financiera WHERE id_project='".$id_project."' LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id_project' 			=> $row['id_project'], 
+	    				'duracion_meses' 		=> $row['duracion_meses'],
+	    				'fecha_inicio' 			=> $row['fecha_inicio'],
+	    				'fecha_finalizacion'	=> $row['fecha_finalizacion'],
+	    				'fecha_monitoreo' 		=> $row['fecha_monitoreo']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que agrega la Información financiera del Proyecto.
 			*@param: $id_project (Identificador del proyecto), $NombreOrganismo.
 			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
