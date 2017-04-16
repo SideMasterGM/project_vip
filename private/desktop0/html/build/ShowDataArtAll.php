@@ -1,7 +1,8 @@
 <?php
   include ("../../../connect_server/connect_server.php");
 
-  $id = $_POST['ValueArticleByID'];
+  $id_project = $_POST['ValueArticleByID'];
+  echo $id_project;
 ?>
 
 <div class="row">
@@ -10,24 +11,38 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Facultad | CUR | Escuela
-                <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewFacCurEsc();" aria-hidden="true" title="Agregar Facultad | CUR | Escuela" ></i></h3>
+                <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewFacCurEsc();" aria-hidden="true" title="Agregar Facultad | CUR | Escuela" ></i></h3> -->
             </div>
             <div class="panel-body">
                 <div>
                     <?php
-                        $CNEx = CDB("all");
+                        $CN_VIP = CDB("vip");
+                        $CN_ALL = CDB("all");
 
                         ?>
                             <select id="select_fac_cur_esc" style="width: 100%;">
                                 <optgroup label="Lista de centros">
                         <?php
 
-                            foreach ($CNEx->getProjectFacCurEsc() as $value) {
-                                ?>
-                                    <option value="<?php echo $value['codigo_facultad']; ?>"><?php echo $value['nombrefac']; ?></option>
-                                <?php                                                              
+                            if (is_array($CN_VIP->getProjectsOnlyById($id_project))){
+                              foreach ($CN_VIP->getProjectsOnlyById($id_project) as $ProjectValue) {
+                                
+                                if (is_array($CN_ALL->getProjectFacCurEsc())){
+                                  foreach ($CN_ALL->getProjectFacCurEsc() as $ProjectFacCurEsc) {
+                                    
+                                    if ($ProjectValue['id_facultad_cur_escuela'] == $ProjectFacCurEsc['codigo_facultad']){
+                                      ?>
+                                        <option selected="selected" value="<?php echo $ProjectFacCurEsc['codigo_facultad']; ?>"><?php echo $ProjectFacCurEsc['nombrefac']; ?></option>
+                                      <?php 
+                                    } else {
+                                      ?>
+                                        <option value="<?php echo $ProjectFacCurEsc['codigo_facultad']; ?>"><?php echo $ProjectFacCurEsc['nombrefac']; ?></option>
+                                      <?php 
+                                    }
+                                  }
+                                }
+                              }
                             }
-
                         ?>
                                 </optgroup>
                             </select>
@@ -63,7 +78,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Instancia de aprobación
-                <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewInstanciaAprobacion();" aria-hidden="true" title="Agregar Instancia de Aprobación" ></i>
+                <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewInstanciaAprobacion();" aria-hidden="true" title="Agregar Instancia de Aprobación" ></i> -->
                 </h3>
             </div>
             <div class="panel-body">
@@ -113,7 +128,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Comunidad | Población
-                <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewComunidadPoblacion();" aria-hidden="true" title="Agregar Comunidad | Población" ></i></h3>
+                <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewComunidadPoblacion();" aria-hidden="true" title="Agregar Comunidad | Población" ></i></h3> -->
             </div>
             <div class="panel-body">
             
