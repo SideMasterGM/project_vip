@@ -484,7 +484,6 @@
 </div>
 
 
-
 <!-- Este es para las opciones del artículo!. -->
 <input type="hidden" class="show-optionsArticle" data-toggle="modal" data-target="#ShowOptionsArticle"  />
 
@@ -509,7 +508,7 @@
                                             <div class="icon fa fa-pencil"></div>
                                             <div class="step-title">
                                                 <div class="title">Redacción</div>
-                                                <div class="description">La descripción, título y contenido.</div>
+                                                <div class="description">Objetivos y resultados del proyecto.</div>
                                             </div>
                                         </a>
                                     </li>
@@ -518,16 +517,16 @@
                                             <div class="icon fa fa-picture-o"></div>
                                             <div class="step-title">
                                                 <div class="title">Mis imágenes</div>
-                                                <div class="description">Los cambios se aplicarán automaticamente.</div>
+                                                <div class="description">Recursos del proyecto...</div>
                                             </div>
                                         </a>
                                     </li>
                                     <li role="step">
                                         <a href="#step3-2" role="tab" id="step3-tab" data-toggle="tab" aria-controls="profile">
-                                            <div class="icon fa fa-bar-chart"></div>
+                                            <div class="icon fa fa-tasks"></div>
                                             <div class="step-title">
-                                                <div class="title">Información de negocios</div>
-                                                <div class="description">Precio, agente, localización...</div>
+                                                <div class="title">Información de formato</div>
+                                                <div class="description">Facultad, CUR, Escuela, Código dictamen, etc.</div>
                                             </div>
                                         </a>
                                     </li>
@@ -601,131 +600,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-<!-- Este es para las opciones del artículo!. -->
-<input type="hidden" class="show-optionsArticle" data-toggle="modal" data-target="#ShowOptionsArticle"  />
-
-<!-- Modal -->
-<div class="modal fade modal-primary" id="ShowOptionsArticle" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyArticleTitle">Información del proyecto</h4>
-            </div>
-
-            <div class="row">
-
-                <div class="col-xs-12">
-                    <div class="card">
-                        <div class="card-body no-padding">
-                            <div class="step card-no-padding">
-                                <ul class="nav nav-tabs nav-justified" role="tablist">
-                                    <li role="step" class="active step-success">
-                                        <a href="#step1-2" id="step1-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-                                            <div class="icon fa fa-pencil"></div>
-                                            <div class="step-title">
-                                                <div class="title">Redacción</div>
-                                                <div class="description">La descripción, título y contenido.</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li role="step">
-                                        <a href="#step2-2" role="tab" id="step2-tab" data-toggle="tab" aria-controls="profile">
-                                            <div class="icon fa fa-picture-o"></div>
-                                            <div class="step-title">
-                                                <div class="title">Mis imágenes</div>
-                                                <div class="description">Los cambios se aplicarán automaticamente.</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li role="step">
-                                        <a href="#step3-2" role="tab" id="step3-tab" data-toggle="tab" aria-controls="profile">
-                                            <div class="icon fa fa-bar-chart"></div>
-                                            <div class="step-title">
-                                                <div class="title">Información de negocios</div>
-                                                <div class="description">Precio, agente, localización...</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="step1-2" aria-labelledby="home-tab">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">Redacción</h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <input type="text" class="form-control" id="InsertTitleArticle" placeholder="Título del artículo..." />
-                                                <?php include ("edit/index.html"); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="step2-2" aria-labelledby="profile-tab">
-                                        <div class="mensage"></div>
-                                        <table align="center">
-                                            <tr>
-                                                 <td><input type="file" multiple="multiple" id="archivos" onchange="javascript: UploadPhotos();"></td><!-- Este es nuestro campo input File -->
-                                            </tr> 
-                                        </table>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="step3-2" aria-labelledby="dropdown1-tab">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <form id="ShowDataArticleByID">
-                <input type="hidden" id="ValueArticleByID" name="ValueArticleByID" />
-            </form>
-
-            <form id="SendAllDataUpdateArt">
-                <input type="hidden" id="Send_ValueArticleByID" name="Send_ValueArticleByID" />
-
-                <input type="hidden" id="Send_InsertTitleArticle" name="Send_InsertTitleArticle" />
-                <input type="hidden" id="Send_trumbowyg-demo" name="Send_trumbowyg-demo" />
-
-                <input type="hidden" id="Send_precio_dolar" name="Send_precio_dolar" />
-                <input type="hidden" id="Send_departamento_local" name="Send_departamento_local" />
-                <input type="hidden" id="Send_ciudad_local" name="Send_ciudad_local" />
-                <input type="hidden" id="Send_direccion_local" name="Send_direccion_local" />
-
-                <input type="hidden" id="Send_select_agent" name="Send_select_agent" />
-
-                <input type="hidden" id="Send_select_business_type" name="Send_select_business_type" />
-                <input type="hidden" id="Send_select_property_type" name="Send_select_property_type" />
-                <input type="hidden" id="Send_select_property_state" name="Send_select_property_state" />
-
-                <input type="hidden" id="Send_select_bed_room" name="Send_select_bed_room" />
-                <input type="hidden" id="Send_select_living_room" name="Send_select_living_room" />
-                <input type="hidden" id="Send_select_parking" name="Send_select_parking" />
-                <input type="hidden" id="Send_select_kitchen_now" name="Send_select_kitchen_now" />
-
-                <input type="hidden" id="Send_coord_latitude" name="Send_coord_latitude" />
-                <input type="hidden" id="Send_coord_longitude" name="Send_coord_longitude" />
-            </form>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">Eliminar</button>
-                <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
 
 
 <!-- Opciones de la imagen seleccionada!. -->
