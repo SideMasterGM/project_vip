@@ -54,17 +54,30 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Temporalidad</h3>
             </div>
+          
             <div class="panel-body">
+                
+                <?php
+                  if (is_array($CN_VIP->getProyectoTemporalidadOnlyById($id_project))){
+                    foreach ($CN_VIP->getProyectoTemporalidadOnlyById($id_project) as $ValueTemp) {
+                      $duracion_meses     = $ValueTemp['duracion_meses'];
+                      $fecha_inicio       = $ValueTemp['fecha_inicio'];
+                      $fecha_finalizacion = $ValueTemp['fecha_finalizacion'];
+                      $fecha_monitoreo    = $ValueTemp['fecha_monitoreo'];
+                    }
+                  }
+                ?>
+
                  <div class="input-group">
                   <div class="input-group-addon">Duración</div>
-                  <input type="number" class="form-control" id="duracion_meses" name="duracion_meses" placeholder="* Nº de meses" style="z-index: 1;" />
+                  <input type="number" class="form-control" id="duracion_meses" name="duracion_meses" value="<?php echo $duracion_meses; ?>" placeholder="* Nº de meses" style="z-index: 1;" />
                   <div class="input-group-addon"></div>
                 </div><br/>
 
                   <input type="text" class="form-control" id="fecha_aprobacion" placeholder="* Fecha de aprobación" onfocus="javascript: Calldatepicker();"/><br/>  
-                 <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="* Fecha inicial" onfocus="javascript: CalldatepickerFechaInicio();"/><br/>
-                 <input type="text" class="form-control" id="fecha_finalizacion" name="fecha_finalizacion" placeholder="* Fecha de finalización" onfocus="javascript: CalldatepickerFechaFin();"/><br/>
-                 <input type="text" class="form-control" id="fecha_monitoreo" name="fecha_monitoreo" placeholder="* Fecha de monitoreo" onfocus="javascript: CalldatepickerFechaMonitoreo();"/><br/>
+                 <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>"  placeholder="* Fecha inicial" onfocus="javascript: CalldatepickerFechaInicio();"/><br/>
+                 <input type="text" class="form-control" id="fecha_finalizacion" name="fecha_finalizacion" value="<?php echo $fecha_finalizacion; ?>" placeholder="* Fecha de finalización" onfocus="javascript: CalldatepickerFechaFin();"/><br/>
+                 <input type="text" class="form-control" id="fecha_monitoreo" name="fecha_monitoreo" value="<?php echo $fecha_monitoreo; ?>" placeholder="* Fecha de monitoreo" onfocus="javascript: CalldatepickerFechaMonitoreo();"/><br/>
                  
             </div>
         </div>
