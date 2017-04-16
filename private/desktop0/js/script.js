@@ -644,7 +644,7 @@ function LoadImgArticle(){
 	    type: "POST",
 	    data: $("#ShowDataArticleByID").serialize(),
 	    success: function(data){
-   			NewMessage(data); 		
+   			NewMessage(data);
 	    }
   	});
 }
