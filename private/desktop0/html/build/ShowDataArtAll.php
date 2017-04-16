@@ -2,7 +2,6 @@
   include ("../../../connect_server/connect_server.php");
 
   $id_project = $_POST['ValueArticleByID'];
-  echo $id_project;
 ?>
 
 <div class="row">
@@ -46,8 +45,7 @@
                         ?>
                                 </optgroup>
                             </select>
-                        <?php
-                    ?>
+                        
                 </div>
             </div>
         </div>
