@@ -665,7 +665,7 @@ function DelImgArtNow(){
 	$("#newidimgdel").val($("#ValueArticleByID").val());
 
   	$.ajax({
-	    url: "private/desktop0/html/build/DelImgArtNow.php",
+	    url: "private/desktop0/html/build/DelImgProjectNow.php",
 	    type: "POST",
 	    data: $("#SendImgtoDeleteNow").serialize(),
 	    success: function(data){
