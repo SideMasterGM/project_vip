@@ -2418,6 +2418,44 @@
 	    }
 
 	    /**
+			* Método que obtiene las imágenes de un proyecto en específico por ID.
+			*@param: $id_project (Identificador del proyecto).
+		*/
+	    public function getProjectImgOnlyById($id_project){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_project_img.
+		    #Atributos: -
+		    #Valores devueltos: Todos los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_project_img WHERE id_project='".$id_project."';");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$UsersData = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$UsersData[] = [
+	    				'id_project' 	=> $row['id_project'],
+	    				'id_img' 		=> $row['id_img'],
+	    				'folder' 		=> $row['folder'],
+	    				'src' 			=> $row['src'],
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Se retorna el array de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que actualiza la ruta del directorio de Users/Usuario al registro de imágenes de un proyecto.
 			*@param: $new_usr (Nuevo nombre de usuario), $usr (Nombre de usuario anterior).
 		*/
