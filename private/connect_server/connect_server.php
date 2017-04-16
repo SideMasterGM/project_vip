@@ -1513,6 +1513,42 @@
 	    }
 
 	    /**
+			* Método que obtiene la información de Zonas geográficas de beneficiarios de un proyecto en específico por ID.
+			*@param: id_project (Identificador del proyecto).
+		*/
+	    public function getProyectoZonaGeoBeneficiariosOnlyById($id_project){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_zona_geografica_beneficiarios.
+		    #Atributos: id_project
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_zona_geografica_beneficiarios WHERE id_project='".$id_project."' LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id_project' 					=> $row['id_project'], 
+	    				'id_comunidad_poblacion' 		=> $row['id_comunidad_poblacion'],
+	    				'cantidad_personas_atendidas' 	=> $row['cantidad_personas_atendidas'],
+	    				'nombre_zona_geografica'		=> $row['nombre_zona_geografica']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que agrega la Temporalidad del Proyecto.
 			*@param: $id_project (Identificador del proyecto), $DuracionMeses.
 			*@param: $FechaInicio, $FechaFinalizacion, $FechaMonitoreo.
