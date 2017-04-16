@@ -132,13 +132,23 @@
             </div>
             <div class="panel-body">
                 
-                 <input type="text" class="form-control" id="nombre_organismo" name="nombre_organismo" placeholder="* Nombre del organismo"/><br/>
+                  <?php
+                    if (is_array($CN_VIP->getProyectoFinancieraOnlyById($id_project))){
+                      foreach ($CN_VIP->getProyectoFinancieraOnlyById($id_project) as $InfoFinanciera) {
+                        $nombre_organismo = $InfoFinanciera['nombre_organismo'];
+                        $monto_financiado = $InfoFinanciera['monto_financiado'];
+                        $aporte_unan      = $InfoFinanciera['aporte_unan'];
+                      }
+                    }
+                  ?>
+
+                 <input type="text" class="form-control" id="nombre_organismo" name="nombre_organismo" value="<?php echo $nombre_organismo; ?>" placeholder="* Nombre del organismo"/><br/>
                  <div class="input-group">
                   <div class="input-group-addon">C$</div>
-                  <input type="number" class="form-control" id="monto_financiado" name="monto_financiado" placeholder="* C$"/>
+                  <input type="number" class="form-control" id="monto_financiado" name="monto_financiado" value="<?php echo $monto_financiado; ?>" placeholder="* C$"/>
                   <div class="input-group-addon">Monto</div>
                 </div><br/>
-                 <input type="text" class="form-control" id="aporte_unan" name="aporte_unan" placeholder="* Aporte de la UNAN" /><br/>
+                 <input type="text" class="form-control" id="aporte_unan" name="aporte_unan" value="<?php echo $aporte_unan; ?>" placeholder="* Aporte de la UNAN" /><br/>
                  
             </div>
         </div>
@@ -152,6 +162,35 @@
             
                 <div>
 
+                  <select id="select_fac_cur_esc" style="width: 100%;">
+                      <optgroup label="Lista de centros">
+                        <?php
+
+                            if (is_array($CN_VIP->getProjectsOnlyById($id_project))){
+                              foreach ($CN_VIP->getProjectsOnlyById($id_project) as $ProjectValue) {
+                                
+                                $fecha_aprobacion = $ProjectValue['fecha_aprobacion'];
+
+                                if (is_array($CN_ALL->getProjectFacCurEsc())){
+                                  foreach ($CN_ALL->getProjectFacCurEsc() as $ProjectFacCurEsc) {
+                                    
+                                    if ($ProjectValue['id_facultad_cur_escuela'] == $ProjectFacCurEsc['codigo_facultad']){
+                                      ?>
+                                        <option selected="selected" value="<?php echo $ProjectFacCurEsc['codigo_facultad']; ?>"><?php echo $ProjectFacCurEsc['nombrefac']; ?></option>
+                                      <?php 
+                                    } else {
+                                      ?>
+                                        <option value="<?php echo $ProjectFacCurEsc['codigo_facultad']; ?>"><?php echo $ProjectFacCurEsc['nombrefac']; ?></option>
+                                      <?php 
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                        ?>
+                      </optgroup>
+                    </select>
+                
                 <?php
                     $CNEx = CDB("all");
                     ?>
