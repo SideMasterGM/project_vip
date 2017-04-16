@@ -24,7 +24,8 @@
                             if (is_array($CN_VIP->getProjectsOnlyById($id_project))){
                               foreach ($CN_VIP->getProjectsOnlyById($id_project) as $ProjectValue) {
                                 
-                                $fecha_aprobacion = $ProjectValue['fecha_aprobacion'];
+                                $fecha_aprobacion       = $ProjectValue['fecha_aprobacion'];
+                                $cod_dictamen_economico = $ProjectValue['cod_dictamen_economico'];
 
                                 if (is_array($CN_ALL->getProjectFacCurEsc())){
                                   foreach ($CN_ALL->getProjectFacCurEsc() as $ProjectFacCurEsc) {
@@ -169,6 +170,8 @@
                             if (is_array($CN_VIP->getProyectoZonaGeoBeneficiariosOnlyById($id_project))){
                               foreach ($CN_VIP->getProyectoZonaGeoBeneficiariosOnlyById($id_project) as $ProjectZonaGeoBeneficiario) {
                                 
+                                $ZonaGeografica = $ProjectZonaGeoBeneficiario['nombre_zona_geografica'];
+
                                 if (is_array($CN_ALL->getProjectComunidadPoblacion())){
                                   foreach ($CN_ALL->getProjectComunidadPoblacion() as $ProjectComunidadPoblacion) {
                                     
@@ -192,7 +195,7 @@
                     <br/><br/>
                     <div class="input-group">
                       <div class="input-group-addon">Nombre</div>
-                      <input type="text" class="form-control" id="zona_geografica" name="zona_geografica" placeholder="Zona geográfica"/>
+                      <input type="text" class="form-control" id="zona_geografica" name="zona_geografica" value="<?php echo $ZonaGeografica; ?>" placeholder="Zona geográfica"/>
                       <div class="input-group-addon"></div>
                     </div>
                 </div>
@@ -210,7 +213,7 @@
             <div class="panel-body">
                 <div class="input-group">
                   <div class="input-group-addon">Código</div>
-                  <input type="number" class="form-control" id="cod_dictamen" name="cod_dictamen" placeholder="* #"/>
+                  <input type="number" class="form-control" id="cod_dictamen" name="cod_dictamen" value="<?php echo $cod_dictamen_economico; ?>" placeholder="* #"/>
                   <div class="input-group-addon"></div>
                 </div>
             </div>
