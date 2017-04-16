@@ -47,7 +47,7 @@
                                         foreach ($Connect_VIP->getProjects() as $value) {
                                             
                                             ?>
-                                                <tr onclick="javascript: OnItemClickTrArticle(this);">
+                                                <tr onclick="javascript: OnItemClickTrProject(this);">
                                                     <td><?php echo $value['id_project']; ?></td>
                                                     <td><?php echo $value['nombre']; ?></td>
                                                     <td><?php echo $Connect_ALL->getOnlyFacCurEsc($value['id_facultad_cur_escuela']); ?></td>
