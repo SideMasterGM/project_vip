@@ -1,8 +1,19 @@
 <?php
+	include ("../../../connect_server/connect_server.php");
+
+    $CN = CDB("vip");
+
+    $id = $_POST['ValueArticleByID'];
+
+    if (is_array($CN->getProjectsOnlyById($id))){
+    	foreach ($CN->getProjectsOnlyById($id) as $value) {
+    		echo $value['contenido'];
+    	}
+    }
+
     include ("../../connect_server/connect_server.php");
     include ("CalcDate.php");
 
-    $id = $_POST['ValueArticleByID'];
 
     $Data = $Conexion->query("SELECT * FROM article WHERE id_art='".$id."';");
     
