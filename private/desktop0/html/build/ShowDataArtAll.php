@@ -224,7 +224,17 @@
                 <h3 class="panel-title">Resultados</h3>
             </div>
             <div class="panel-body">
-                
+                  
+                  <?php
+                    if (is_array($CN_VIP->getProyectoResultadosOnlyById($id_project))){
+                      foreach ($CN_VIP->getProyectoResultadosOnlyById($id_project) as $Resultados) {
+                        $tipo_publicacion   = $Resultados['tipo_publicacion'];
+                        $datos_publicacion  = $Resultados['datos_publicacion'];
+                        $otros_resultados   = $Resultados['otros_resultados'];
+                      }
+                    }
+                  ?>
+
                  <input type="text" class="form-control" id="tipo_publicacion" name="tipo_publicacion" placeholder="* Tipo de publicación"/><br/>
                  <input type="text" class="form-control" id="datos_publicacion" name="datos_publicacion" placeholder="* Datos de publicación" /><br/>
                  <input type="text" class="form-control" id="otros_datos" name="otros_datos" placeholder=" Otros resultados" /><br/>
