@@ -1551,7 +1551,7 @@
 	    }
 
 	    /**
-			* Método que obtiene un proyecto en específico por ID.
+			* Método que obtiene la información de temporalidad de un proyecto en específico por ID.
 			*@param: id_project (Identificador del proyecto).
 		*/
 	    public function getProyectoTemporalidadOnlyById($id_project){
@@ -1571,13 +1571,11 @@
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
 	    			$UsersData[] = [
-	    				'id_project' 				=> $row['id_project'], 
-	    				'nombre' 					=> $row['nombre'],
-	    				'id_facultad_cur_escuela' 	=> $row['id_facultad_cur_escuela'],
-	    				'contenido' 				=> $row['contenido'],
-	    				'fecha_aprobacion' 			=> $row['fecha_aprobacion'],
-	    				'cod_dictamen_economico' 	=> $row['cod_dictamen_economico'],
-	    				'id_instancia_aprobacion' 	=> $row['id_instancia_aprobacion']
+	    				'id_project' 			=> $row['id_project'], 
+	    				'duracion_meses' 		=> $row['duracion_meses'],
+	    				'fecha_inicio' 			=> $row['fecha_inicio'],
+	    				'fecha_finalizacion'	=> $row['fecha_finalizacion'],
+	    				'fecha_monitoreo' 		=> $row['fecha_monitoreo']
 	    			];
 	    		}
 
