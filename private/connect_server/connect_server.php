@@ -1608,11 +1608,10 @@
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
 	    			$UsersData[] = [
-	    				'id_project' 			=> $row['id_project'], 
-	    				'duracion_meses' 		=> $row['duracion_meses'],
-	    				'fecha_inicio' 			=> $row['fecha_inicio'],
-	    				'fecha_finalizacion'	=> $row['fecha_finalizacion'],
-	    				'fecha_monitoreo' 		=> $row['fecha_monitoreo']
+	    				'id_project' 		=> $row['id_project'], 
+	    				'nombre_organismo' 	=> $row['nombre_organismo'],
+	    				'monto_financiado' 	=> $row['monto_financiado'],
+	    				'aporte_unan'		=> $row['aporte_unan']
 	    			];
 	    		}
 
