@@ -1660,6 +1660,42 @@
 	    }
 
 	    /**
+			* Método que obtiene los resultados de un proyecto en específico por ID.
+			*@param: id_project (Identificador del proyecto).
+		*/
+	    public function getProyectoResultadosOnlyById($id_project){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_info_resultados_proyecto.
+		    #Atributos: id_project
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_info_resultados_proyecto WHERE id_project='".$id_project."' LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id_project' 		=> $row['id_project'], 
+	    				'tipo_publicacion' 	=> $row['tipo_publicacion'],
+	    				'datos_publicacion' => $row['datos_publicacion'],
+	    				'otros_resultados'	=> $row['otros_resultados']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que agrega la Información financiera del Proyecto.
 			*@param: $id_project (Identificador del proyecto), $NombreOrganismo.
 			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
