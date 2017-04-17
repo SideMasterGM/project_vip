@@ -1413,7 +1413,7 @@
         	$Reason->bindValue(':id_project', $id_project);
 
 		    #Se hace uso de esta nueva y temporal conexión.
-        	if ($this->addActivity(@$_SESSION['usr'], 18, "Eliminando un Proyecto con ID: ".$id)) #Agrega una actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 18, "Eliminando un Proyecto con ID: ".$id_project)) #Agrega una actividad.
 	        	if ($Reason->execute()) #Se ejecuta la consulta.
 		       		return true; #Buen resultado.
 
