@@ -1649,7 +1649,7 @@
 			*@param: $FechaInicio, $FechaFinalizacion, $FechaMonitoreo.
 		*/
 	    public function updateProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo){
-	    	#Statement: Consulta preparada.
+	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_temporalidad_proyecto.
 	    	#Atributos: id_project,  duracion_meses, fecha_inicio, fecha_finalizacion, fecha_monitoreo.
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
@@ -1823,7 +1823,7 @@
 			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
 		*/
 	    public function updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN){
-	    	#Statement: Consulta preparada.
+	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_informacion_financiera.
 	    	#Atributos: id_project,  nombre_organismo, monto_financiado, aporte_unan.
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
@@ -1888,26 +1888,23 @@
 			*@param: $DatosPublicacion, $OtrosDatos.
 		*/
 	    public function updateProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos){
-	    	#Statement: Consulta preparada.
+	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_info_resultados_proyecto.
 	    	#Atributos: id_project, tipo_publicacion, datos_publicacion, otros_resultados.
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-	    	$Reason = $this->db->prepare('UPDATE vip_info_resultados_proyecto '
-                . 'SET tipo_publicacion = :tipo_publicacion, datos_publicacion = :datos_publicacion, otros_resultados = :otros_resultados'
-                . 'WHERE id_project = :id_project');
+	    	$Reason = "UPDATE vip_info_resultados_proyecto SET tipo_publicacion='".$TipoPublicacion."', datos_publicacion='".$DatosPublicacion."', otros_resultados='".$OtrosDatos."' WHERE id_project='".$id_project."'";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
 
-	    	#Se vincula el valor con el parámetro.
-	    	$Reason->bindValue(":tipo_publicacion", 	$TipoPublicacion);
-	    	$Reason->bindValue(":datos_publicacion", 	$DatosPublicacion);
-	    	$Reason->bindValue(":otros_resultados", 	$OtrosDatos);
-	    	$Reason->bindValue(":id_project", 			$id_project);
-
-        	#Se crea una nueva actividad.
-        	//if ($this->addActivity($usr, 28, "Actualización de los resultados sobre un Proyecto con ID: ".$id_project))
-		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
-		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+        		//if ($this->addActivity($usr, 28, "Actualización de los resultados sobre un Proyecto con ID: ".$id_project))
+	    			return true;
+	    	}
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
