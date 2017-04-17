@@ -170,7 +170,8 @@
                             if (is_array($CN_VIP->getProyectoZonaGeoBeneficiariosOnlyById($id_project))){
                               foreach ($CN_VIP->getProyectoZonaGeoBeneficiariosOnlyById($id_project) as $ProjectZonaGeoBeneficiario) {
                                 
-                                $ZonaGeografica = $ProjectZonaGeoBeneficiario['nombre_zona_geografica'];
+                                $ZonaGeografica     = $ProjectZonaGeoBeneficiario['nombre_zona_geografica'];
+                                $PersonasAtendidas  = $ProjectZonaGeoBeneficiario['cantidad_personas_atendidas'];
 
                                 if (is_array($CN_ALL->getProjectComunidadPoblacion())){
                                   foreach ($CN_ALL->getProjectComunidadPoblacion() as $ProjectComunidadPoblacion) {
@@ -235,9 +236,9 @@
                     }
                   ?>
 
-                 <input type="text" class="form-control" id="tipo_publicacion" name="tipo_publicacion" placeholder="* Tipo de publicación"/><br/>
-                 <input type="text" class="form-control" id="datos_publicacion" name="datos_publicacion" placeholder="* Datos de publicación" /><br/>
-                 <input type="text" class="form-control" id="otros_datos" name="otros_datos" placeholder=" Otros resultados" /><br/>
+                 <input type="text" class="form-control" id="tipo_publicacion" name="tipo_publicacion" value="<?php echo $tipo_publicacion; ?>" placeholder="* Tipo de publicación"/><br/>
+                 <input type="text" class="form-control" id="datos_publicacion" name="datos_publicacion" value="<?php echo $datos_publicacion; ?>" placeholder="* Datos de publicación" /><br/>
+                 <input type="text" class="form-control" id="otros_datos" name="otros_datos" value="<?php echo $otros_resultados; ?>" placeholder=" Otros resultados" /><br/>
                  
             </div>
         </div>
@@ -249,7 +250,7 @@
             <div class="panel-body">
                 <div class="input-group">
                   <div class="input-group-addon">Cantidad</div>
-                  <input type="number" class="form-control" id="personas_atendidas" name="personas_atendidas" placeholder="* #"/>
+                  <input type="number" class="form-control" id="personas_atendidas" name="personas_atendidas" value="<?php echo $PersonasAtendidas; ?>" placeholder="* #"/>
                   <div class="input-group-addon"></div>
                 </div>
             </div>
