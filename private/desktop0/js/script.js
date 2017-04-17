@@ -1143,3 +1143,32 @@ function CalldatepickerFechaFin(){
 function CalldatepickerFechaMonitoreo(){
 	$("#fecha_monitoreo").datepicker();
 }
+
+function ProjectResult(){
+	/*Desaparece la ventana del proyecto*/
+	$("#ShowOptionsArticle").click();
+
+	/*Se pasa el CKEditor a la ventana actual*/
+	$(".CKEditorProjectResult").html($(".containerCKeditorProject").html());
+	
+	/*Se elimina el CKEditor de la ventana de proyecto anterior*/
+	$(".containerCKeditorProject").html("");
+
+	/*Se limpia el CKEditor*/
+	$("#trumbowyg-demo").text("");
+   	$(".trumbowyg-editor").html(""); 
+
+	/*Se muestra la ventana con el CKeditor*/
+	$(".AddResultProject").click();
+
+	$.ajax({
+	    url: "private/desktop0/html/build/ShowDataProjectByID.php",
+	    type: "POST",
+	    data: $("#ShowDataArticleByID").serialize(),
+	    success: function(data){
+   			$("#trumbowyg-demo").text(data);    		
+   			$(".trumbowyg-editor").html(data);    		
+	    }
+  	});
+  	
+}
