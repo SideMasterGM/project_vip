@@ -1651,6 +1651,38 @@
 	    }
 
 	    /**
+			* Método que actualiza la Temporalidad del Proyecto.
+			*@param: $id_project (Identificador del proyecto), $DuracionMeses.
+			*@param: $FechaInicio, $FechaFinalizacion, $FechaMonitoreo.
+		*/
+	    public function updateProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo){
+	    	#Statement: Consulta preparada.
+	    	#Tabla: vip_temporalidad_proyecto.
+	    	#Atributos: id_project,  duracion_meses, fecha_inicio, fecha_finalizacion, fecha_monitoreo.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = $this->db->prepare('UPDATE vip_temporalidad_proyecto '
+                . 'SET duracion_meses = :duracion_meses, fecha_inicio = :fecha_inicio, fecha_finalizacion = :fecha_finalizacion, fecha_monitoreo = :fecha_monitoreo'
+                . 'WHERE id_project = :id_project');
+
+	    	#Se vincula el valor con el parámetro.
+	    	$Reason->bindValue(":duracion_meses", 		$DuracionMeses);
+	    	$Reason->bindValue(":fecha_inicio", 		$FechaInicio);
+	    	$Reason->bindValue(":fecha_finalizacion", 	$FechaFinalizacion);
+	    	$Reason->bindValue(":fecha_monitoreo", 		$FechaMonitoreo);
+	    	$Reason->bindValue(":id_project", 			$id_project);
+
+        	#Se crea una nueva actividad.
+        	//if ($this->addActivity($usr, 25, "Actualización de Zona Geográfica de beneficiarios sobre un Proyecto con ID: ".$id_project))
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
+	    }
+
+	    /**
 			* Método que obtiene la información de temporalidad de un proyecto en específico por ID.
 			*@param: id_project (Identificador del proyecto).
 		*/
