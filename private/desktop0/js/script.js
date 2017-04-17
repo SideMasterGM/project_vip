@@ -1154,9 +1154,7 @@ function ProjectResult(){
 	/*Se elimina el CKEditor de la ventana de proyecto anterior*/
 	$(".containerCKeditorProject").html("");
 
-	/*Se muestra la ventana con el CKeditor*/
-	$(".AddResultProject").click();
-
+	/*Se hace la petición sobre la información y se almacena en el CKEditor*/
 	$.ajax({
 	    url: "private/desktop0/html/build/ShowDataProjectResultById.php",
 	    type: "POST",
@@ -1167,4 +1165,7 @@ function ProjectResult(){
 		   	$(".trumbowyg-editor").html(data);    		
 	    }
   	});
+
+  	/*Se muestra la ventana con el CKeditor*/
+	$(".AddResultProject").click();
 }
