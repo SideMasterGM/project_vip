@@ -76,6 +76,11 @@
 			|   21	|	Creación de la información financiera del proyecto		|
 			|   22	|	Creación de la información de resultados del proyecto 	|
 			|   23	|	Volcado de las imágenes almacenadas temporalmente 		|
+			|   24	|	Actualización de un Proyecto 							|
+			|   25	|	Actualización de Zona Geográfica de beneficiarios 		|
+			|   26	|	Actualización de Temporalidad sobre un Proyecto			|
+			|   27	|	Actualización de la información financiera				|
+			|   28	|	Actualización de los resultados de un Proyecto			|
 			+-------+-----------------------------------------------------------+
 		*/
 
