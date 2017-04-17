@@ -750,18 +750,6 @@ function UpdateListItemArt(){
 	/*Personas atendidas*/
 	$("#pro_personas_atendidas").val($("#personas_atendidas").val());
 
-	// $.ajax({
-	//     url: "private/desktop0/html/build/AddArticle.php",
-	//     type: "POST",
-	//     data: $("#ArtSendData").serialize(),
-	//     success: function(data){
-	//     	if (data == "OK"){
-	//     		$("#MyInfoArtAddYes").html("Proyecto: " + $("#pro_title").val());
-	//     		$(".InfoArtAddYes").click();
-	//     	}
-	//     }
- //  	});
-
   	$.ajax({
 	    url: "private/desktop0/html/build/UpdateAllProject.php",
 	    type: "POST",
