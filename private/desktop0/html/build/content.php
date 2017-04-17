@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <i class="icon fa fa-tags fa-4x"></i>
                             <div class="content">
-                                <div class="title">0</div>
+                                <div class="title"><?php echo $CN->getProjectsCount(); ?></div>
                                 <div class="sub-title">Proyectos</div>
                             </div>
                             <div class="clear-both"></div>
