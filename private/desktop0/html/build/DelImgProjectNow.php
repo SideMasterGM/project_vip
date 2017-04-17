@@ -9,7 +9,9 @@
 	$id_project = $_POST['newidimgdel'];
 
 	#Nombre del recurso de tipo imagen.
-	$src 		= $_POST['MynImgDel'];
+	$src 		= $CN->CleanString(trim(urldecode($_POST['MynImgDel'])));
+
+	//echo "ID: ".$id_project.", SRC: ".$src;
 
 	#Se verifica que devuelva el array que contiene la información.
 	if (is_array($CN->getProjectImg())){
