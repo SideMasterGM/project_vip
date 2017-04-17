@@ -712,31 +712,56 @@ function ShowDataArtAll(){
 }
 
 function UpdateListItemArt(){
-	$("#Send_ValueArticleByID").val($("#ValueArticleByID").val());
-	
-	$("#Send_InsertTitleArticle").val($("#InsertTitleArticle").val());
-	$("#Send_trumbowyg-demo").val($("#trumbowyg-demo").val());
-	
-	$("#Send_precio_dolar").val($("#precio_dolar").val());
-	$("#Send_departamento_local").val($("#departamento_local").val());
-	$("#Send_ciudad_local").val($("#ciudad_local").val());
-	$("#Send_direccion_local").val($("#direccion_local").val());
-	
-	$("#Send_select_agent").val($("#select_agent").val());
-	
-	$("#Send_select_business_type").val($("#select_business_type").val());
-	$("#Send_select_property_type").val($("#select_property_type").val());
-	$("#Send_select_property_state").val($("#select_property_state").val());
-	
-	$("#Send_select_bed_room").val($("#select_bed_room").val());
-	$("#Send_select_living_room").val($("#select_living_room").val());
-	$("#Send_select_parking").val($("#select_parking").val());
-	$("#Send_select_kitchen_now").val($("#select_kitchen_now").val());
 
-	$("#Send_coord_latitude").val($("#coord_latitude").val());
-	$("#Send_coord_longitude").val($("#coord_longitude").val());
+	/*Título y contenido del proyecto*/
+	$("#pro_title").val($("#InsertTitleArticle").val());
+	//$("#pro_content").html($("#trumbowyg-demo").html());
+	$("#pro_content").html($(".trumbowyg-editor").html());
+	
+	/*Combobox, Facultdad, Instancia, Comunidad*/
+	$("#pro_fac_cur_esc").val($("#select_fac_cur_esc").val());
+	$("#pro_instancia_aprobacion").val($("#select_instancia_aprobacion").val());
+	$("#pro_comunidad_poblacion").val($("#select_comunidad_poblacion").val());
 
-	$.ajax({
+	/*Temporalidad*/
+	$("#pro_duracion_meses").val($("#duracion_meses").val());
+	$("#pro_fecha_aprobacion").val($("#fecha_aprobacion").val());
+	$("#pro_fecha_inicio").val($("#fecha_inicio").val());
+	$("#pro_fecha_finalizacion").val($("#fecha_finalizacion").val());
+	$("#pro_fecha_monitoreo").val($("#fecha_monitoreo").val());
+
+	/*Información financiera*/
+	$("#pro_nombre_organismo").val($("#nombre_organismo").val());
+	$("#pro_monto_financiado").val($("#monto_financiado").val());
+	$("#pro_aporte_unan").val($("#aporte_unan").val());
+
+	/*Zona geográfica, este también está ubicado en Comunidad.*/
+	$("#pro_zona_geografica").val($("#zona_geografica").val());
+
+	/*Dictamen económico*/
+	$("#pro_cod_dictamen").val($("#cod_dictamen").val());
+	
+	/*Resultados*/
+	$("#pro_tipo_publicacion").val($("#tipo_publicacion").val());
+	$("#pro_datos_publicacion").val($("#datos_publicacion").val());
+	$("#pro_otros_datos").val($("#otros_datos").val());
+
+	/*Personas atendidas*/
+	$("#pro_personas_atendidas").val($("#personas_atendidas").val());
+
+	// $.ajax({
+	//     url: "private/desktop0/html/build/AddArticle.php",
+	//     type: "POST",
+	//     data: $("#ArtSendData").serialize(),
+	//     success: function(data){
+	//     	if (data == "OK"){
+	//     		$("#MyInfoArtAddYes").html("Proyecto: " + $("#pro_title").val());
+	//     		$(".InfoArtAddYes").click();
+	//     	}
+	//     }
+ //  	});
+
+  	$.ajax({
 	    url: "private/desktop0/html/build/UpdateAllArticle.php",
 	    type: "POST",
 	    data: $("#SendAllDataUpdateArt").serialize(),
@@ -746,7 +771,6 @@ function UpdateListItemArt(){
 			}
 	    }
   	});
-
 }
 
 function DelArtModal(){
