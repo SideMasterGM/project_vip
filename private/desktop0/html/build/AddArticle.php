@@ -48,13 +48,14 @@
 					if ($CN->addProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
 						#Se hace un valcado de imágenes.
 						$dumpProjectImg = $CN->dumpProjectImg($id_project);
-						if ($dumpProjectImg == 1){
-							echo "OK";
-						} else if ($dumpProjectImg == -5){
-							echo "No hay imágenes que volcar";
-						} else if ($dumpProjectImg == -1){
-							echo "Algo ha salido mal.";
-						}
+						echo "OK";
+						// if ($dumpProjectImg == 1){
+						// 	echo "OK";
+						// } else if ($dumpProjectImg == -5){
+						// 	echo "No hay imágenes que volcar";
+						// } else if ($dumpProjectImg == -1){
+						// 	echo "Algo ha salido mal.";
+						// }
 
 					} else {
 						echo "No se ha podido registrar la información de resultados del proyecto con ID: ".$id_project;
