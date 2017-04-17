@@ -45,7 +45,13 @@
 
 			if ($CN_VIP->updateProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo)){
 
-				
+				if ($CN_VIP->updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
+
+					
+
+				} else {
+					echo "No se ha podido actualizar la información financiera del proyecto con ID: ".$id_project;
+				}
 
 			} else {
 				echo "No se ha podido actualizar la temporalidad del proyecto con ID: ".$id_project;
