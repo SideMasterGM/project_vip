@@ -47,7 +47,11 @@
 
 				if ($CN_VIP->updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
 
-					
+					if ($CN_VIP->updateProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
+
+					} else {
+						echo "No se ha podido actualizar los resultados de un proyecto con ID: ".$id_project;
+					}
 
 				} else {
 					echo "No se ha podido actualizar la información financiera del proyecto con ID: ".$id_project;
