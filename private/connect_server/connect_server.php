@@ -1361,6 +1361,40 @@
 	    }
 
 	    /**
+			* Método que actualiza la información de un proyecto.
+			*@param: $id_project (Identificador del proyecto), $name (Nombre), $content (Objetivos y resultados), $IDFacCurEsc (Identificador).
+			*@param: $FechaAprobacion (Fecha de aprobación), $CodigoDictamen (Dictamen económico), $IDInstanciaAprobacion (Identificador).
+		*/
+	    public function updateProject($id_project, $name, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion){
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_proyecto.
+	    	#Atributos: id_project, nombre, id_facultad_cur_escuela, contenido, fecha_aprobacion, cod_dictamen_economico, id_instancia_aprobacion.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = $this->db->prepare('UPDATE vip_proyecto '
+                . 'SET nombre = :nombre, id_facultad_cur_escuela = :id_facultad_cur_escuela, contenido = :contenido, fecha_aprobacion = :fecha_aprobacion, cod_dictamen_economico = :cod_dictamen_economico, id_instancia_aprobacion = :id_instancia_aprobacion'
+                . 'WHERE id_project = :id_project');
+
+	    	#Se vincula el valor con el parámetro.
+	    	$Reason->bindValue(":nombre", 					$name);
+	    	$Reason->bindValue(":id_facultad_cur_escuela", 	$IDFacCurEsc);
+	    	$Reason->bindValue(":contenido", 				$content);
+	    	$Reason->bindValue(":fecha_aprobacion", 		$FechaAprobacion);
+	    	$Reason->bindValue(":cod_dictamen_economico", 	$CodigoDictamen);
+	    	$Reason->bindValue(":id_instancia_aprobacion", 	$IDInstanciaAprobacion);
+	    	$Reason->bindValue(":id_project", 				$id_project);
+
+        	#Se crea una nueva actividad.
+        	//if ($this->addActivity($usr, 4, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
+	    }
+
+	    /**
 			* Método que obtiene todos los proyectos.
 			*@param: No hay.
 		*/
