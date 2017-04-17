@@ -772,14 +772,14 @@ function DelArtModalImage(){
 
 function DelArtNow(){
   	$.ajax({
-	    url: "private/desktop0/html/build/DelArtModal.php",
+	    url: "private/desktop0/html/build/DelProjectModal.php",
 	    type: "POST",
 	    data: $("#ShowDataArticleByID").serialize(),
 	    success: function(data){
    			if (data == "OK"){
 	    		$("#DelArtModal").click();
 	    		setTimeout(function(){
-	    			window.location.href="./articles";
+	    			window.location.href="./projects";
 	    		}, 100);
 	    	}		
 	    }
