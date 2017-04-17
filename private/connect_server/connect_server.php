@@ -1366,6 +1366,10 @@
 			*@param: $FechaAprobacion (Fecha de aprobación), $CodigoDictamen (Dictamen económico), $IDInstanciaAprobacion (Identificador).
 		*/
 	    public function updateProject($id_project, $name, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
 	    	#Statement: Consulta no preparada. 
 	    	#Tabla: vip_proyecto.
 	    	#Atributos: id_project, nombre, id_facultad_cur_escuela, contenido, fecha_aprobacion, cod_dictamen_economico, id_instancia_aprobacion.
@@ -1387,6 +1391,34 @@
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
+	    }
+
+	    /**
+			* Método que elimina un proyecto.
+			*@param: $project_id (Identificador de la población).
+		*/
+	    public function deleteProject($id_project){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+		    #Tabla: vip_proyecto.
+		    #Atributos: id_project.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM vip_proyecto '
+                . 'WHERE id_project = :id_project');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':id_project', $id_project);
+
+		    #Se hace uso de esta nueva y temporal conexión.
+        	if ($this->addActivity(@$_SESSION['usr'], 16, "Eliminando la Comunidad | Población con ID: ".$id." y nombre: ".$this->getOnlyComunidadPoblacion($id))) #Agrega una actividad.
+	        	if ($Reason->execute()) #Se ejecuta la consulta.
+		       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
 	    }
 
 	    /**
@@ -1546,6 +1578,10 @@
 			*@param: $id_project (Identificador del proyecto), $IDComunidadPoblacion (Identificador), $PersonasAtendidas (Cantidad), $ZonaGeografica (Lugar).
 		*/
 	    public function updateProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
 	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_zona_geografica_beneficiarios.
 	    	#Atributos: id_project,  id_comunidad_poblacion, cantidad_personas_atendidas, nombre_zona_geografica.
@@ -1649,6 +1685,10 @@
 			*@param: $FechaInicio, $FechaFinalizacion, $FechaMonitoreo.
 		*/
 	    public function updateProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
 	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_temporalidad_proyecto.
 	    	#Atributos: id_project,  duracion_meses, fecha_inicio, fecha_finalizacion, fecha_monitoreo.
@@ -1823,6 +1863,10 @@
 			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
 		*/
 	    public function updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
 	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_informacion_financiera.
 	    	#Atributos: id_project,  nombre_organismo, monto_financiado, aporte_unan.
@@ -1888,6 +1932,10 @@
 			*@param: $DatosPublicacion, $OtrosDatos.
 		*/
 	    public function updateProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
 	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_info_resultados_proyecto.
 	    	#Atributos: id_project, tipo_publicacion, datos_publicacion, otros_resultados.
