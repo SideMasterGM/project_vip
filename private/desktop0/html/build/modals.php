@@ -567,6 +567,8 @@
             </form>
 
             <form id="SendAllDataUpdateArt">
+                <input type="hidden" class="form-control" id="pro_id_project" name="pro_id_project" />
+
                 <input type="hidden" class="form-control" id="pro_title" name="pro_title" />
                 <textarea id="pro_content" style="display: none;" name="pro_content"></textarea>
                 
