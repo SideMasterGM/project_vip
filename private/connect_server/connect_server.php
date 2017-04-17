@@ -1829,6 +1829,37 @@
 	    }
 
 	    /**
+			* Método que actualiza la información financiera del Proyecto.
+			*@param: $id_project (Identificador del proyecto), $NombreOrganismo.
+			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
+		*/
+	    public function updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN){
+	    	#Statement: Consulta preparada.
+	    	#Tabla: vip_informacion_financiera.
+	    	#Atributos: id_project,  nombre_organismo, monto_financiado, aporte_unan.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = $this->db->prepare('UPDATE vip_informacion_financiera '
+                . 'SET nombre_organismo = :nombre_organismo, monto_financiado = :monto_financiado, aporte_unan = :aporte_unan'
+                . 'WHERE id_project = :id_project');
+
+	    	#Se vincula el valor con el parámetro.
+	    	$Reason->bindValue(":nombre_organismo", 	$NombreOrganismo);
+	    	$Reason->bindValue(":monto_financiado", 	$MontoFinanciado);
+	    	$Reason->bindValue(":aporte_unan", 			$AporteUNAN);
+	    	$Reason->bindValue(":id_project", 			$id_project);
+
+        	#Se crea una nueva actividad.
+        	//if ($this->addActivity($usr, 27, "Actualización de la información financiera sobre un Proyecto con ID: ".$id_project))
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
+	    }
+
+	    /**
 			* Método que agrega la información de resultados del Proyecto.
 			*@param: $id_project (Identificador del proyecto), $TipoPublicacion.
 			*@param: $DatosPublicacion, $OtrosDatos.
