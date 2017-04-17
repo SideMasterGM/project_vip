@@ -6,9 +6,9 @@
     
     $CN = CDB("vip");
 
-    if (is_array($CN->getProjectsOnlyById($id))){
-    	foreach ($CN->getProjectsOnlyById($id) as $value) {
-    		echo $value['contenido'];
+    if (is_array($CN->getProjectsResultById($id_project))){
+    	foreach ($CN->getProjectsResultById($id_project) as $value) {
+    		echo $value['otros'];
     	}
     }
 ?>
