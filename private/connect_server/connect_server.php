@@ -1596,7 +1596,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-        		//if ($this->addActivity($usr, 25, "Actualización de Zona Geográfica de beneficiarios sobre un Proyecto con ID: ".$id_project))
+        		if ($this->addActivity($usr, 25, "Actualización de Zona Geográfica de beneficiarios sobre un Proyecto con ID: ".$id_project))
 	    			return true;
 			    
 	    	}
@@ -1703,7 +1703,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-        		//if ($this->addActivity($usr, 26, "Actualización de temporalidad sobre un Proyecto con ID: ".$id_project))
+        		if ($this->addActivity($usr, 26, "Actualización de temporalidad sobre un Proyecto con ID: ".$id_project))
 	    			return true;
 	    	}
 
@@ -1881,7 +1881,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-        		//if ($this->addActivity($usr, 27, "Actualización de la información financiera sobre un Proyecto con ID: ".$id_project))
+        		if ($this->addActivity($usr, 27, "Actualización de la información financiera sobre un Proyecto con ID: ".$id_project))
 	    			return true;
 	    	}
 
@@ -1950,7 +1950,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-        		//if ($this->addActivity($usr, 28, "Actualización de los resultados sobre un Proyecto con ID: ".$id_project))
+        		if ($this->addActivity($usr, 28, "Actualización de los resultados sobre un Proyecto con ID: ".$id_project))
 	    			return true;
 	    	}
 
