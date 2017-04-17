@@ -169,10 +169,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myAddResultProject">Agregar resultados</h4>
+                <h4 class="modal-title" id="myAddResultProject">Resultados del proyecto</h4>
             </div>
             <div class="modal-body">
-                <p>Escriba los resultados del proyecto.</p>
+                <p>Redacte los resultados obtenidos en el proyecto realizado.</p>
+                 <div class="CKEditorProjectResult">
+                     
+                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
@@ -561,7 +564,9 @@
                                             </div>
                                             <div class="panel-body">
                                                 <input type="text" class="form-control" id="InsertTitleArticle" placeholder="Título del artículo..." />
-                                                <?php include ("private/desktop0/html/edit/index.html"); ?>
+                                                <div class="containerCKeditorProject">
+                                                    <?php include ("private/desktop0/html/edit/index.html"); ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -620,6 +625,8 @@
             </form>
 
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="float: left;" onclick="javascript: ProjectResult();">Resultados</button>
+                
                 <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">Eliminar</button>
                 <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
