@@ -657,13 +657,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyInfoArtUpdateYes">Actualización del artículo</h4>
+                <h4 class="modal-title" id="MyInfoArtUpdateYes">Actualización del proyecto</h4>
             </div>
             <div class="modal-body">
-                <h4>El artículo fue actualizado con éxito</h4>
+                <h4>El proyecto fue actualizado con éxito</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./articles.php';" data-dismiss="modal">¡OK!...</button>
+                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects';" data-dismiss="modal">¡OK!...</button>
             </div>
         </div>
     </div>
