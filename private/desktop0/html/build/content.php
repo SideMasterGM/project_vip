@@ -31,7 +31,7 @@
                 </a>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                <a href="articles">
+                <a href="projects">
                     <div class="card green summary-inline">
                         <div class="card-body">
                             <i class="icon fa fa-tags fa-4x"></i>
