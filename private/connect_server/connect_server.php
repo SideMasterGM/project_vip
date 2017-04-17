@@ -1372,23 +1372,31 @@
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-	    	$Reason = $this->db->prepare('UPDATE vip_proyecto '
-                . 'SET nombre = :nombre, id_facultad_cur_escuela = :id_facultad_cur_escuela, contenido = :contenido, fecha_aprobacion = :fecha_aprobacion, cod_dictamen_economico = :cod_dictamen_economico, id_instancia_aprobacion = :id_instancia_aprobacion'
-                . 'WHERE id_project = :id_project');
 
-	    	#Se vincula el valor con el parámetro.
-	    	$Reason->bindValue(":nombre", 					$name);
-	    	$Reason->bindValue(":id_facultad_cur_escuela", 	$IDFacCurEsc);
-	    	$Reason->bindValue(":contenido", 				$content);
-	    	$Reason->bindValue(":fecha_aprobacion", 		$FechaAprobacion);
-	    	$Reason->bindValue(":cod_dictamen_economico", 	$CodigoDictamen);
-	    	$Reason->bindValue(":id_instancia_aprobacion", 	$IDInstanciaAprobacion);
-	    	$Reason->bindValue(":id_project", 				$id_project);
+
+	    	$Reason = "UPDATE vip_proyecto SET nombre='".$name."', id_facultad_cur_escuela='".$IDFacCurEsc."', contenido='".$content."', fecha_aprobacion='".$FechaAprobacion."', cod_dictamen_economico='".$CodigoDictamen."', id_instancia_aprobacion='".$IDInstanciaAprobacion."' WHERE id_project='".$id_project."'";
+	    	$Execution = $this->db->query($Reason);
+
+	    	if ($Execution){
+	    		return true;
+	    	}
+	    	// $Reason = $this->db->prepare('UPDATE vip_proyecto '
+      //           . 'SET nombre = :uno, id_facultad_cur_escuela = :dos, contenido = :tres, fecha_aprobacion = :cuatro, cod_dictamen_economico = :cinco, id_instancia_aprobacion = :seis'
+      //           . 'WHERE id_project = :id_project');
+
+	    	// #Se vincula el valor con el parámetro.
+	    	// $Reason->bindValue(":id_project", 	$id_project);
+	    	// $Reason->bindValue(":uno", 			$name);
+	    	// $Reason->bindValue(":dos", 			$IDFacCurEsc);
+	    	// $Reason->bindValue(":tres", 		$content);
+	    	// $Reason->bindValue(":cuatro", 		$FechaAprobacion);
+	    	// $Reason->bindValue(":cinco", 		$CodigoDictamen);
+	    	// $Reason->bindValue(":seis", 		$IDInstanciaAprobacion);
 
         	#Se crea una nueva actividad.
         	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
-		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
-		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+		    	//if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    	//	return true;		#Si llega hasta acá, todo se ha relizado correctamente.
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
