@@ -1366,17 +1366,18 @@
 			*@param: $FechaAprobacion (Fecha de aprobación), $CodigoDictamen (Dictamen económico), $IDInstanciaAprobacion (Identificador).
 		*/
 	    public function updateProject($id_project, $name, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion){
-	    	#Statement: Consulta preparada. 
+	    	#Statement: Consulta no preparada. 
 	    	#Tabla: vip_proyecto.
 	    	#Atributos: id_project, nombre, id_facultad_cur_escuela, contenido, fecha_aprobacion, cod_dictamen_economico, id_instancia_aprobacion.
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-
-
 	    	$Reason = "UPDATE vip_proyecto SET nombre='".$name."', id_facultad_cur_escuela='".$IDFacCurEsc."', contenido='".$content."', fecha_aprobacion='".$FechaAprobacion."', cod_dictamen_economico='".$CodigoDictamen."', id_instancia_aprobacion='".$IDInstanciaAprobacion."' WHERE id_project='".$id_project."'";
+	    	
+	    	#Se ejecuta.
 	    	$Execution = $this->db->query($Reason);
 
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
 	        	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
@@ -1545,26 +1546,24 @@
 			*@param: $id_project (Identificador del proyecto), $IDComunidadPoblacion (Identificador), $PersonasAtendidas (Cantidad), $ZonaGeografica (Lugar).
 		*/
 	    public function updateProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica){
-	    	#Statement: Consulta preparada.
+	    	#Statement: Consulta no preparada.
 	    	#Tabla: vip_zona_geografica_beneficiarios.
 	    	#Atributos: id_project,  id_comunidad_poblacion, cantidad_personas_atendidas, nombre_zona_geografica.
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-	    	$Reason = $this->db->prepare('UPDATE vip_zona_geografica_beneficiarios '
-                . 'SET id_comunidad_poblacion = :id_comunidad_poblacion, cantidad_personas_atendidas = :cantidad_personas_atendidas, nombre_zona_geografica = :nombre_zona_geografica'
-                . 'WHERE id_project = :id_project');
+	    	$Reason = "UPDATE vip_zona_geografica_beneficiarios SET id_comunidad_poblacion='".$IDComunidadPoblacion."', cantidad_personas_atendidas='".$PersonasAtendidas."', nombre_zona_geografica='".$ZonaGeografica."' WHERE id_project='".$id_project."'";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
 
-	    	#Se vincula el valor con el parámetro.
-	    	$Reason->bindValue(":id_comunidad_poblacion", 		$IDComunidadPoblacion);
-	    	$Reason->bindValue(":cantidad_personas_atendidas", 	$PersonasAtendidas);
-	    	$Reason->bindValue(":nombre_zona_geografica", 		$ZonaGeografica);
-	    	$Reason->bindValue(":id_project", 					$id_project);
-
-        	#Se crea una nueva actividad.
-        	//if ($this->addActivity($usr, 25, "Actualización de Zona Geográfica de beneficiarios sobre un Proyecto con ID: ".$id_project))
-		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
-		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+        		//if ($this->addActivity($usr, 25, "Actualización de Zona Geográfica de beneficiarios sobre un Proyecto con ID: ".$id_project))
+	    			return true;
+			    
+	    	}
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
