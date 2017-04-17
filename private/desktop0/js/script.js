@@ -713,7 +713,7 @@ function ShowDataArtAll(){
 
 function UpdateListItemArt(){
 	$("#pro_id_project").val($("#ValueArticleByID").val());
-	
+
 	/*Título y contenido del proyecto*/
 	$("#pro_title").val($("#InsertTitleArticle").val());
 	//$("#pro_content").html($("#trumbowyg-demo").html());
@@ -763,7 +763,7 @@ function UpdateListItemArt(){
  //  	});
 
   	$.ajax({
-	    url: "private/desktop0/html/build/UpdateAllArticle.php",
+	    url: "private/desktop0/html/build/UpdateAllProject.php",
 	    type: "POST",
 	    data: $("#SendAllDataUpdateArt").serialize(),
 	    success: function(data){
