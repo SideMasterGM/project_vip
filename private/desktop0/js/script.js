@@ -1154,21 +1154,17 @@ function ProjectResult(){
 	/*Se elimina el CKEditor de la ventana de proyecto anterior*/
 	$(".containerCKeditorProject").html("");
 
-	/*Se limpia el CKEditor*/
-	$("#trumbowyg-demo").text("");
-   	$(".trumbowyg-editor").html(""); 
-
 	/*Se muestra la ventana con el CKeditor*/
 	$(".AddResultProject").click();
 
 	$.ajax({
-	    url: "private/desktop0/html/build/ShowDataProjectByID.php",
+	    url: "private/desktop0/html/build/ShowDataProjectResultById.php",
 	    type: "POST",
 	    data: $("#ShowDataArticleByID").serialize(),
 	    success: function(data){
-   			$("#trumbowyg-demo").text(data);    		
-   			$(".trumbowyg-editor").html(data);    		
+   			/*Se agrega al CKEditor lo que devuelva el fichero*/
+			$("#trumbowyg-demo").text(data);
+		   	$(".trumbowyg-editor").html(data);    		
 	    }
   	});
-  	
 }
