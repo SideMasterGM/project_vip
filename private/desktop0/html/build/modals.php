@@ -169,17 +169,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myAddResultProject">Resultados del proyecto</h4>
+                <h4 class="modal-title" id="myAddResultProject">Reporte final del proyecto</h4>
             </div>
             <div class="modal-body">
-                <p>Redacte los resultados obtenidos en el proyecto realizado.</p>
+                <p>Redacte el reporte final sobre los resultados obtenidos en el proyecto.</p>
                  <div class="CKEditorProjectResult">
                      
                  </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary" onclick="javascript: UpdateResultProject();">Sí</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: UpdateResultProject();">Guardar</button>
             </div>
         </div>
     </div>
