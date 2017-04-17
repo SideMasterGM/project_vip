@@ -3,6 +3,7 @@
 	$CN = CDB("vip");
 
 	@session_start();
+
 	$ruta = "../../users/".@$_SESSION['usr']."/project_img/"; //Decalaramos una variable con la ruta en donde almacenaremos los archivos
 	$path = "users/".@$_SESSION['usr']."/project_img/";
 	$mensage = ''; //Declaramos una variable mensaje quue almacenara el resultado de las operaciones.
@@ -14,12 +15,12 @@
 			$Destino = $ruta.$NombreOriginal;	//Creamos una ruta de destino con la variable ruta y el nombre original del archivo	
 			
 			if (move_uploaded_file($temporal, $Destino)){
-				if (!$CN->addTmpImg(@$_SESSION['usr'], $path, $NombreOriginal))
+				if (!$CN->addProjectImg(@$_SESSION['id_project_selected'], $path, $NombreOriginal))
 					$mensage = "<br/>No se insertó la imagen: ".$NombreOriginal."</br>";
 					
 				@chmod($Destino, 0777);
 
-			} //Movemos el archivo temporal a la ruta especificada		
+			}
 		}
 
 		if ($key['error']=='') { //Si no existio ningun error, retornamos un mensaje por cada archivo subido
