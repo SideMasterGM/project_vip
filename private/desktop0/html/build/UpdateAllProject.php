@@ -48,7 +48,7 @@
 				if ($CN_VIP->updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
 
 					if ($CN_VIP->updateProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
-
+						echo "OK";
 					} else {
 						echo "No se ha podido actualizar los resultados de un proyecto con ID: ".$id_project;
 					}
@@ -67,46 +67,6 @@
 
 	} else {
 		echo "No se ha podido actualizar la información del proyecto con ID: ".$id_project;
-	}
-
-	if ($CN->addProyecto($title, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion)){
-		$id_project = $CN->getProyectoOnlyLastID($title);
-
-		if ($CN->addProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica)){
-
-			if ($CN->addProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo)){
-
-				if ($CN->addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
-
-					if ($CN->addProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
-						#Se hace un valcado de imágenes.
-						$dumpProjectImg = $CN->dumpProjectImg($id_project);
-						if ($dumpProjectImg == 1){
-							echo "OK";
-						} else if ($dumpProjectImg == -5){
-							echo "No hay imágenes que volcar";
-						} else if ($dumpProjectImg == -1){
-							echo "Algo ha salido mal.";
-						}
-
-					} else {
-						echo "No se ha podido registrar la información de resultados del proyecto con ID: ".$id_project;
-					}
-
-				} else {
-					echo "No se ha podido registrar la Información Financiera del proyecto con ID: ".$id_project;
-				}
-
-			} else {
-				echo "No se ha podido registrar la Temporalidad del proyecto con ID: ".$id_project;
-			}
-
-		} else {
-			echo "No se ha podido registrar la Zona Geográfica de los beneficiarios del proyecto ID: ".$id_project;
-		}
-
-	} else {
-		echo "No se ha podido registrar el proyecto.";
 	}
 
 ?>
