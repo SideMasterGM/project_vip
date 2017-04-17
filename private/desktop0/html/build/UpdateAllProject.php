@@ -43,8 +43,14 @@
 
 		if ($CN_VIP->updateProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica)){
 
-			
-			
+			if ($CN_VIP->updateProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo)){
+
+				
+
+			} else {
+				echo "No se ha podido actualizar la temporalidad del proyecto con ID: ".$id_project;
+			}
+
 		} else {
 			echo "No se ha podido actualizar la zona geográfica del proyecto con ID: ".$id_project;
 		}
