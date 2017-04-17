@@ -2,9 +2,9 @@
 	include ("../../../connect_server/connect_server.php");
 	$CN = CDB("vip");
 
-	$id_art = $_POST['ValueArticleByID'];
+	$id_project = $_POST['ValueArticleByID'];
 
-	if ($CN->){
-
+	if ($CN->deleteProject($id_project)){
+		echo "OK";
 	}
 ?>
