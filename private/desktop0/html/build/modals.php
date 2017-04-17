@@ -160,6 +160,28 @@
     </div>
 </div>
 
+<!-- Agregar resultados de un proyecto -->
+<input type="hidden" class="AddResultProject" data-toggle="modal" data-target="#AddResultProject"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="AddResultProject" tabindex="1" role="dialog" aria-labelledby="myAddResultProject" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myAddResultProject">Agregar resultados</h4>
+            </div>
+            <div class="modal-body">
+                <p>Escriba los resultados del proyecto.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: UpdateResultProject();">Sí</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Opciones de la imagen seleccionada!. -->
 <input type="hidden" class="ImgSelectedOptions" data-toggle="modal" data-target="#ImgSelectedOptions"  />
