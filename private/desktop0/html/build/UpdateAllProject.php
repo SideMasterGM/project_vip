@@ -41,7 +41,13 @@
 
 	if ($CN_VIP->updateProject($id_project, $title, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion)){
 
-		
+		if ($CN_VIP->updateProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica)){
+
+			
+			
+		} else {
+			echo "No se ha podido actualizar la zona geográfica del proyecto con ID: ".$id_project;
+		}
 
 	} else {
 		echo "No se ha podido actualizar la información del proyecto con ID: ".$id_project;
