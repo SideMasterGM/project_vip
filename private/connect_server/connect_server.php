@@ -1655,21 +1655,17 @@
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-	    	$Reason = $this->db->prepare('UPDATE vip_temporalidad_proyecto '
-                . 'SET duracion_meses = :duracion_meses, fecha_inicio = :fecha_inicio, fecha_finalizacion = :fecha_finalizacion, fecha_monitoreo = :fecha_monitoreo'
-                . 'WHERE id_project = :id_project');
+	    	$Reason = "UPDATE vip_temporalidad_proyecto SET duracion_meses='".$DuracionMeses."', fecha_inicio='".$FechaInicio."', fecha_finalizacion='".$FechaFinalizacion."', fecha_monitoreo='".$FechaMonitoreo."' WHERE id_project='".$id_project."'";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
 
-	    	#Se vincula el valor con el parámetro.
-	    	$Reason->bindValue(":duracion_meses", 		$DuracionMeses);
-	    	$Reason->bindValue(":fecha_inicio", 		$FechaInicio);
-	    	$Reason->bindValue(":fecha_finalizacion", 	$FechaFinalizacion);
-	    	$Reason->bindValue(":fecha_monitoreo", 		$FechaMonitoreo);
-	    	$Reason->bindValue(":id_project", 			$id_project);
-
-        	#Se crea una nueva actividad.
-        	//if ($this->addActivity($usr, 26, "Actualización de temporalidad sobre un Proyecto con ID: ".$id_project))
-		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
-		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+        		//if ($this->addActivity($usr, 26, "Actualización de temporalidad sobre un Proyecto con ID: ".$id_project))
+	    			return true;
+	    	}
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
@@ -1833,20 +1829,17 @@
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-	    	$Reason = $this->db->prepare('UPDATE vip_informacion_financiera '
-                . 'SET nombre_organismo = :nombre_organismo, monto_financiado = :monto_financiado, aporte_unan = :aporte_unan'
-                . 'WHERE id_project = :id_project');
+	    	$Reason = "UPDATE vip_informacion_financiera SET nombre_organismo='".$NombreOrganismo."', monto_financiado='".$MontoFinanciado."', aporte_unan='".$AporteUNAN."' WHERE id_project='".$id_project."'";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
 
-	    	#Se vincula el valor con el parámetro.
-	    	$Reason->bindValue(":nombre_organismo", 	$NombreOrganismo);
-	    	$Reason->bindValue(":monto_financiado", 	$MontoFinanciado);
-	    	$Reason->bindValue(":aporte_unan", 			$AporteUNAN);
-	    	$Reason->bindValue(":id_project", 			$id_project);
-
-        	#Se crea una nueva actividad.
-        	//if ($this->addActivity($usr, 27, "Actualización de la información financiera sobre un Proyecto con ID: ".$id_project))
-		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
-		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+        		//if ($this->addActivity($usr, 27, "Actualización de la información financiera sobre un Proyecto con ID: ".$id_project))
+	    			return true;
+	    	}
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
