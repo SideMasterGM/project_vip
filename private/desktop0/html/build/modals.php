@@ -567,29 +567,32 @@
             </form>
 
             <form id="SendAllDataUpdateArt">
-                <input type="hidden" id="Send_ValueArticleByID" name="Send_ValueArticleByID" />
-
-                <input type="hidden" id="Send_InsertTitleArticle" name="Send_InsertTitleArticle" />
-                <input type="hidden" id="Send_trumbowyg-demo" name="Send_trumbowyg-demo" />
-
-                <input type="hidden" id="Send_precio_dolar" name="Send_precio_dolar" />
-                <input type="hidden" id="Send_departamento_local" name="Send_departamento_local" />
-                <input type="hidden" id="Send_ciudad_local" name="Send_ciudad_local" />
-                <input type="hidden" id="Send_direccion_local" name="Send_direccion_local" />
-
-                <input type="hidden" id="Send_select_agent" name="Send_select_agent" />
-
-                <input type="hidden" id="Send_select_business_type" name="Send_select_business_type" />
-                <input type="hidden" id="Send_select_property_type" name="Send_select_property_type" />
-                <input type="hidden" id="Send_select_property_state" name="Send_select_property_state" />
-
-                <input type="hidden" id="Send_select_bed_room" name="Send_select_bed_room" />
-                <input type="hidden" id="Send_select_living_room" name="Send_select_living_room" />
-                <input type="hidden" id="Send_select_parking" name="Send_select_parking" />
-                <input type="hidden" id="Send_select_kitchen_now" name="Send_select_kitchen_now" />
-
-                <input type="hidden" id="Send_coord_latitude" name="Send_coord_latitude" />
-                <input type="hidden" id="Send_coord_longitude" name="Send_coord_longitude" />
+                <input type="hidden" class="form-control" id="pro_title" name="pro_title" />
+                <textarea id="pro_content" style="display: none;" name="pro_content"></textarea>
+                
+                <input type="hidden" class="form-control" id="pro_fac_cur_esc" name="pro_fac_cur_esc" />
+                <input type="hidden" class="form-control" id="pro_instancia_aprobacion" name="pro_instancia_aprobacion" />
+                <input type="hidden" class="form-control" id="pro_comunidad_poblacion" name="pro_comunidad_poblacion" />
+                
+                <input type="hidden" class="form-control" id="pro_duracion_meses" name="pro_duracion_meses" />
+                <input type="hidden" class="form-control" id="pro_fecha_aprobacion" name="pro_fecha_aprobacion" />
+                <input type="hidden" class="form-control" id="pro_fecha_inicio" name="pro_fecha_inicio" />
+                <input type="hidden" class="form-control" id="pro_fecha_finalizacion" name="pro_fecha_finalizacion" />
+                <input type="hidden" class="form-control" id="pro_fecha_monitoreo" name="pro_fecha_monitoreo" />
+                
+                <input type="hidden" class="form-control" id="pro_nombre_organismo" name="pro_nombre_organismo" />
+                <input type="hidden" class="form-control" id="pro_monto_financiado" name="pro_monto_financiado" />
+                <input type="hidden" class="form-control" id="pro_aporte_unan" name="pro_aporte_unan" />
+                
+                <input type="hidden" class="form-control" id="pro_zona_geografica" name="pro_zona_geografica" />
+                
+                <input type="hidden" class="form-control" id="pro_cod_dictamen" name="pro_cod_dictamen" />
+                
+                <input type="hidden" class="form-control" id="pro_tipo_publicacion" name="pro_tipo_publicacion" />
+                <input type="hidden" class="form-control" id="pro_datos_publicacion" name="pro_datos_publicacion" />
+                <input type="hidden" class="form-control" id="pro_otros_datos" name="pro_otros_datos" />
+                
+                <input type="hidden" class="form-control" id="pro_personas_atendidas" name="pro_personas_atendidas" />
             </form>
 
             <div class="modal-footer">
