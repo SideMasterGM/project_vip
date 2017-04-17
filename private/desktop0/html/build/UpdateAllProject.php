@@ -1,10 +1,7 @@
 <?php
-	@session_start();
-	$usr = @$_SESSION['usr'];
 
 	include ("../../../connect_server/connect_server.php");
 	$CN_VIP = CDB("vip");
-	$CN_ALL = CDB("all");
 
 	#Identificador del proyecto.
 	$id_project 			= $_POST['pro_id_project'];
