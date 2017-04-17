@@ -1466,6 +1466,22 @@
 	    }
 
 	    /**
+			* Método que obtiene el número de proyectos que existen.
+			*@param: No hay.
+		*/
+	    public function getProjectsCount(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_proyecto.
+		    #Atributos: -
+		    #Valores devueltos: Todos los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto");
+	    	
+	    	#Se retorna la cantidad de filas devueltas por la consulta.
+	    	return $stmt->rowCount();
+	    }
+
+	    /**
 			* Método que obtiene un proyecto en específico por ID.
 			*@param: id_project (Identificador del proyecto).
 		*/
