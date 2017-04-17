@@ -1674,7 +1674,7 @@
 	    	$Reason->bindValue(":id_project", 			$id_project);
 
         	#Se crea una nueva actividad.
-        	//if ($this->addActivity($usr, 25, "Actualización de Zona Geográfica de beneficiarios sobre un Proyecto con ID: ".$id_project))
+        	//if ($this->addActivity($usr, 26, "Actualización de temporalidad sobre un Proyecto con ID: ".$id_project))
 		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
 		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
 
