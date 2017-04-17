@@ -1378,25 +1378,11 @@
 	    	$Execution = $this->db->query($Reason);
 
 	    	if ($Execution){
-	    		return true;
+	        	#Se crea una nueva actividad.
+	        	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+	    			return true;
+			    
 	    	}
-	    	// $Reason = $this->db->prepare('UPDATE vip_proyecto '
-      //           . 'SET nombre = :uno, id_facultad_cur_escuela = :dos, contenido = :tres, fecha_aprobacion = :cuatro, cod_dictamen_economico = :cinco, id_instancia_aprobacion = :seis'
-      //           . 'WHERE id_project = :id_project');
-
-	    	// #Se vincula el valor con el parámetro.
-	    	// $Reason->bindValue(":id_project", 	$id_project);
-	    	// $Reason->bindValue(":uno", 			$name);
-	    	// $Reason->bindValue(":dos", 			$IDFacCurEsc);
-	    	// $Reason->bindValue(":tres", 		$content);
-	    	// $Reason->bindValue(":cuatro", 		$FechaAprobacion);
-	    	// $Reason->bindValue(":cinco", 		$CodigoDictamen);
-	    	// $Reason->bindValue(":seis", 		$IDInstanciaAprobacion);
-
-        	#Se crea una nueva actividad.
-        	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
-		    	//if ($Reason->execute())	#Se ejecuta la consulta preparada.
-		    	//	return true;		#Si llega hasta acá, todo se ha relizado correctamente.
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
