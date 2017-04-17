@@ -1,9 +1,13 @@
 <?php
 	include ("../../../connect_server/connect_server.php");
 
+    $id = $_POST['ValueArticleByID'];
+
+	@session_start();
+	@$_SESSION['id_project_selected'] = $id;
+    
     $CN = CDB("vip");
 
-    $id = $_POST['ValueArticleByID'];
 
     if (is_array($CN->getProjectsOnlyById($id))){
     	foreach ($CN->getProjectsOnlyById($id) as $value) {
