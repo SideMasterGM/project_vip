@@ -1386,7 +1386,7 @@
 	    	$Reason->bindValue(":id_project", 				$id_project);
 
         	#Se crea una nueva actividad.
-        	//if ($this->addActivity($usr, 4, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+        	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
 		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
 		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
 
@@ -1544,6 +1544,36 @@
 		    }
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    /**
+			* Método que actualiza la información de la Zona Geográfica de los beneficiarios de un proyecto.
+			*@param: $id_project (Identificador del proyecto), $IDComunidadPoblacion (Identificador), $PersonasAtendidas (Cantidad), $ZonaGeografica (Lugar).
+		*/
+	    public function updateProyectoZonaGeograficaBeneficiarios($id_project, $IDComunidadPoblacion, $PersonasAtendidas, $ZonaGeografica){
+	    	#Statement: Consulta preparada.
+	    	#Tabla: vip_zona_geografica_beneficiarios.
+	    	#Atributos: id_project,  id_comunidad_poblacion, cantidad_personas_atendidas, nombre_zona_geografica.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = $this->db->prepare('UPDATE vip_zona_geografica_beneficiarios '
+                . 'SET id_comunidad_poblacion = :id_comunidad_poblacion, cantidad_personas_atendidas = :cantidad_personas_atendidas, nombre_zona_geografica = :nombre_zona_geografica'
+                . 'WHERE id_project = :id_project');
+
+	    	#Se vincula el valor con el parámetro.
+	    	$Reason->bindValue(":id_comunidad_poblacion", 		$IDComunidadPoblacion);
+	    	$Reason->bindValue(":cantidad_personas_atendidas", 	$PersonasAtendidas);
+	    	$Reason->bindValue(":nombre_zona_geografica", 		$ZonaGeografica);
+	    	$Reason->bindValue(":id_project", 					$id_project);
+
+        	#Se crea una nueva actividad.
+        	//if ($this->addActivity($usr, 25, "Actualización de Zona Geográfica de beneficiarios sobre un Proyecto con ID: ".$id_project))
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
 	    }
 
 	    /**
