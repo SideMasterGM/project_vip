@@ -712,7 +712,8 @@ function ShowDataArtAll(){
 }
 
 function UpdateListItemArt(){
-
+	$("#pro_id_project").val($("#ValueArticleByID").val());
+	
 	/*Título y contenido del proyecto*/
 	$("#pro_title").val($("#InsertTitleArticle").val());
 	//$("#pro_content").html($("#trumbowyg-demo").html());
