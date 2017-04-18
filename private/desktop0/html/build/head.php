@@ -27,3 +27,8 @@
 <!-- CSS App -->
 <link rel="stylesheet" type="text/css" href="private/desktop0/css/style.css">
 <link rel="stylesheet" type="text/css" href="private/desktop0/css/themes/flat-blue.css">
+
+<!-- Definiendo las librerías CKEditor -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="private/desktop0/html/edit/dist/ui/trumbowyg.min.css">
+<link rel="stylesheet" href="private/desktop0/html/edit/dist/plugins/colors/ui/trumbowyg.colors.min.css">
