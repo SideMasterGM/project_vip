@@ -164,7 +164,7 @@
 <input type="hidden" class="AddResultProject" data-toggle="modal" data-target="#AddResultProject"  />
 
 <!-- Modal -->
-<div class="modal fade modal-primary" id="AddResultProject" tabindex="1" role="dialog" aria-labelledby="myAddResultProject" aria-hidden="true">
+<div class="modal fade modal-primary" onclick="javascript: TransportCKEditor();" id="AddResultProject" tabindex="1" role="dialog" aria-labelledby="myAddResultProject" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -178,7 +178,7 @@
                  </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript: TransportCKEditor();">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: UpdateResultProject();">Guardar</button>
             </div>
         </div>
