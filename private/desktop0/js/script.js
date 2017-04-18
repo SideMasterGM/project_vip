@@ -1149,10 +1149,11 @@ function ProjectResult(){
 	$("#ShowOptionsArticle").click();
 
 	/*Se pasa el CKEditor a la ventana actual*/
-	$(".CKEditorProjectResult").html($("#demonstration").html());
+	$(".CKEditorProjectResult").html($(".containerCKeditorProject").html());
 	
 	/*Se elimina el CKEditor de la ventana de proyecto anterior*/
-	$(".removeDemo").html("");
+	//$(".removeDemo").html("");
+	$(".containerCKeditorProject").html("");
 
 	/*Se hace la petición sobre la información y se almacena en el CKEditor*/
 	// $.ajax({
@@ -1171,5 +1172,5 @@ function ProjectResult(){
 }
 
 function TransportCKEditor(){
-	//$("#demonstration").html($(".CKEditorProjectResult").html());
+	$(".containerCKeditorProject").html($(".CKEditorProjectResult").html());
 }
