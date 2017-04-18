@@ -1149,22 +1149,22 @@ function ProjectResult(){
 	$("#ShowOptionsArticle").click();
 
 	/*Se pasa el CKEditor a la ventana actual*/
-	$(".CKEditorProjectResult").html($(".containerCKeditorProject").html());
+	$(".CKEditorProjectResult").html($("#demonstration").html());
 	
 	/*Se elimina el CKEditor de la ventana de proyecto anterior*/
-	$(".containerCKeditorProject").html("");
+	$(".removeDemo").html("");
 
 	/*Se hace la petición sobre la información y se almacena en el CKEditor*/
-	$.ajax({
-	    url: "private/desktop0/html/build/ShowDataProjectResultById.php",
-	    type: "POST",
-	    data: $("#ShowDataArticleByID").serialize(),
-	    success: function(data){
-   			/*Se agrega al CKEditor lo que devuelva el fichero*/
-			$("#trumbowyg-demo").text(data);
-		   	$(".trumbowyg-editor").html(data);    		
-	    }
-  	});
+	// $.ajax({
+	//     url: "private/desktop0/html/build/ShowDataProjectResultById.php",
+	//     type: "POST",
+	//     data: $("#ShowDataArticleByID").serialize(),
+	//     success: function(data){
+ //   			/*Se agrega al CKEditor lo que devuelva el fichero*/
+	// 		$("#trumbowyg-demo").text(data);
+	// 	   	$(".trumbowyg-editor").html(data);    		
+	//     }
+ //  	});
 
   	/*Se muestra la ventana con el CKeditor*/
 	$(".AddResultProject").click();
