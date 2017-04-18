@@ -178,7 +178,7 @@
                  </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript: TransportCKEditor();">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: UpdateResultProject();">Guardar</button>
             </div>
         </div>
