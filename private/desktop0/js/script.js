@@ -1169,3 +1169,7 @@ function ProjectResult(){
   	/*Se muestra la ventana con el CKeditor*/
 	$(".AddResultProject").click();
 }
+
+function TransportCKEditor(){
+	//$("#demonstration").html($(".CKEditorProjectResult").html());
+}
