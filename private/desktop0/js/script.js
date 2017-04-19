@@ -1162,8 +1162,14 @@ function ProjectResult(){
 	    data: $("#ShowDataArticleByID").serialize(),
 	    success: function(data){
    			/*Se agrega al CKEditor lo que devuelva el fichero*/
-			$("#trumbowyg-demo").text(data);
-		   	$(".trumbowyg-editor").html(data);    		
+   			if (data == ""){
+   				var structute = "<h4><strong>Título del reporte [Modificable]<br></strong></h4><p><hr></p><h4><strong></strong></h4><p>Escriba el contenido del reporte. [Modificable]</p>";
+   				$("#trumbowyg-demo").text(structute);
+		   		$(".trumbowyg-editor").html(structute);  
+   			} else {
+   				$("#trumbowyg-demo").text(data);
+		   		$(".trumbowyg-editor").html(data);
+   			}
 	    }
   	});
 
