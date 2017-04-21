@@ -81,6 +81,7 @@
 			|   26	|	Actualización de Temporalidad sobre un Proyecto			|
 			|   27	|	Actualización de la información financiera				|
 			|   28	|	Actualización de los resultados de un Proyecto			|
+			|   29	|	Actualización del informe final de un Proyecto			|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1552,6 +1553,38 @@
 
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    /**
+			* Método que agrega el informe final del proyecto.
+			*@param: $id_project (Identificador del proyecto), $content (Contenido, redacción, informe).
+		*/
+		public function addProjectResult($id_project, $content){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
+	    	#Statement: Consulta no preparada.
+	    	#Tabla: vip_informe_final.
+	    	#Atributos: id_project,  otros.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = "UPDATE vip_informe_final SET otros='".$content."' WHERE id_project='".$id_project."'";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
+
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+        		//if ($this->addActivity($usr, 29, "Modificando el informe final del proyecto con ID: ".$id_project))
+	    			return true;
+			    
+	    	}
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
 	    }
 
 	    /**
