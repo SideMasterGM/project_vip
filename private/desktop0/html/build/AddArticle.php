@@ -48,7 +48,10 @@
 					if ($CN->addProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
 						#Se hace un valcado de imágenes.
 						$dumpProjectImg = $CN->dumpProjectImg($id_project);
-						echo "OK";
+
+						#Agregando el valor al informe final de proyecto.
+						if ($CN->addProjectResult($id_project, ""))
+							echo "OK";
 						// if ($dumpProjectImg == 1){
 						// 	echo "OK";
 						// } else if ($dumpProjectImg == -5){
