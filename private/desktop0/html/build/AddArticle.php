@@ -50,8 +50,10 @@
 						$dumpProjectImg = $CN->dumpProjectImg($id_project);
 
 						#Agregando el valor al informe final de proyecto.
-						if ($CN->addProjectResult($id_project, ""))
+						if ($CN->addNowProjectResult($id_project))
 							echo "OK";
+						else 
+							echo "Error";
 						// if ($dumpProjectImg == 1){
 						// 	echo "OK";
 						// } else if ($dumpProjectImg == -5){
