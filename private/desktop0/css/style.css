@@ -1295,17 +1295,21 @@ div.show_img_perfil img {
 }
 
 .icon-addAgent-right {
-  width: 100px; 
+  width: 180px; 
   position: absolute; 
   right: 0; 
   top: 20px;
+}
+
+.icon-addAgent-right i {
+  padding: 0px 5px 5px 5px;
   transition-duration: .2s;
   -webkit-transform: scale(1.0);
   -ms-transform: scale(1.0);
   transform: scale(1.0);
 }
 
-.icon-addAgent-right:hover {
+.icon-addAgent-right i:hover {
   cursor: pointer;
   transition-duration: .2s;
   -webkit-transform: scale(1.1);
