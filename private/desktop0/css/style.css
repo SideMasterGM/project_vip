@@ -276,7 +276,7 @@ a:hover {
       .app-container .content-container .side-menu .navbar-nav .panel-collapse.in {
         display: none; }
     .app-container .content-container .side-menu:hover {
-      width: 250px; }
+      width: 270px; }
       .app-container .content-container .side-menu:hover .navbar-header .navbar-brand .title {
         display: inline-block; }
       .app-container .content-container .side-menu:hover .navbar-nav li a .title {
@@ -295,15 +295,15 @@ a:hover {
       padding-top: 84px; }
 
 .app-container.expanded .app-footer {
-  left: 250px; }
+  left: 270px; }
   .app-container.expanded .app-footer .wrapper {
     padding-left: 25px; }
 
 .app-container.expanded .content-container .navbar-top {
-  padding-left: 250px; }
+  padding-left: 270px; }
 
 .app-container.expanded .content-container .side-menu {
-  width: 250px; }
+  width: 270px; }
   .app-container.expanded .content-container .side-menu .navbar-header .navbar-brand .title {
     display: inline-block; }
   .app-container.expanded .content-container .side-menu .navbar-nav li a .title {
@@ -394,7 +394,7 @@ a:hover {
     padding-left: 0px; }
   .app-container.expanded .side-menu {
     margin-left: 0px;
-    width: 250px; }
+    width: 270px; }
   .app-container.expanded .side-body {
     margin-left: 10px; }
   .app-container .app-footer .wrapper, .app-container.expanded .app-footer .wrapper {
