@@ -160,6 +160,48 @@
     </div>
 </div>
 
+<!-- Artículo agregado con éxito!. -->
+<input type="hidden" class="ProjectResultFailure" data-toggle="modal" data-target="#ProjectResultFailure"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="ProjectResultFailure" tabindex="1" role="dialog" aria-labelledby="ProjectResultFailureOK" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ProjectResultFailureOK"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>¡Up's!. Algo ha salido mal. El reporte del proyecto no se ha podido agregar. Recargue e intente nuevamente.</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects';" data-dismiss="modal">¡Recargar!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Artículo agregado con éxito!. -->
+<input type="hidden" class="ProjectResultSuccessfull" data-toggle="modal" data-target="#ProjectResultSuccessfull"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="ProjectResultSuccessfull" tabindex="1" role="dialog" aria-labelledby="OKProjectResultSuccessfull" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="OKProjectResultSuccessfull"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>¡Genial!. El reporte del proyecto se ha registrado con éxito.</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects';" data-dismiss="modal">¡OK!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Agregar resultados de un proyecto -->
 <input type="hidden" class="AddResultProject" data-toggle="modal" data-target="#AddResultProject"  />
 
@@ -176,6 +218,12 @@
                  <div class="CKEditorProjectResult">
                      
                  </div>
+                    
+                <form id="FormProjectResult">
+                    <input type="hidden" id="idp_result" name="idp_result" />
+                    <input type="hidden" id="fpr_content" name="fpr_content" />
+                </form>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="javascript: TransportCKEditor();">Cerrar</button>
