@@ -1555,6 +1555,38 @@
 	    	return false;
 	    }
 
+	     /**
+			* Método que agrega datos vacíos sobre el informe final del proyecto.
+			*@param: $id_project (Identificador del proyecto), $content (Contenido, redacción, informe).
+		*/
+	    public function addNowProjectResult($id_project){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
+	    	#Statement: Consulta no preparada.
+	    	#Tabla: vip_informe_final.
+	    	#Atributos: id_project,  otros.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = "INSERT INTO vip_informe_final (id_project, otros) VALUES ('".$id_project."','-')";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
+
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+        		if ($this->addActivity($usr, 29, "Agregando el campo de informe final del proyecto con ID: ".$id_project))
+	    			return true;
+			    
+	    	}
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
+	    }
+
 	    /**
 			* Método que agrega el informe final del proyecto.
 			*@param: $id_project (Identificador del proyecto), $content (Contenido, redacción, informe).
