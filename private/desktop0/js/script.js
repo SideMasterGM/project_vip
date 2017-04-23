@@ -1183,7 +1183,7 @@ function TransportCKEditor(){
 
 function UpdateResultProject(){
 	$("#idp_result").val($("#ValueArticleByID").val());
-	$("#fpr_content").html($(".trumbowyg-editor").html());
+	$("#fpr_content").val($(".trumbowyg-editor").html());
 
 	$.ajax({
 	    url: "private/desktop0/html/build/addProjectResult.php",
