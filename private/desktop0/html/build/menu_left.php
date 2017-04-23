@@ -34,14 +34,14 @@
 
                  <li class="panel panel-default dropdown agents__item">
                     <a data-toggle="collapse" href="#dropdown-option-agents">
-                        <span class="icon fa fa-user-secret"></span><span class="title">Miembros</span>
+                        <span class="icon fa fa-users"></span><span class="title">Miembros</span>
                     </a>
                     <!-- Dropdown level 1 -->
                     <div id="dropdown-option-agents" class="panel-collapse collapse">
                         <div class="panel-body">
                             <ul class="nav navbar-nav">
-                                <li><a href="#" onclick="javascript: addAgentNow();">Equipo</a></li>
-                                <li><a href="agents">Coordinación</a></li>
+                                <li><a href="team">Equipo</a></li>
+                                <li><a href="coordination" onclick="javascript: addAgentNow();">Coordinación</a></li>
                             </ul>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
 
                 <li class="panel panel-default dropdown two__item">
                     <a data-toggle="collapse" href="#dropdown-table">
-                        <span class="icon fa fa-users"></span><span class="title">Usuarios</span>
+                        <span class="icon fa fa-user-secret"></span><span class="title">Usuarios</span>
                     </a>
                     <!-- Dropdown level 1 -->
                     <div id="dropdown-table" class="panel-collapse collapse">
