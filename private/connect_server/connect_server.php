@@ -1578,7 +1578,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-        		//if ($this->addActivity($usr, 29, "Modificando el informe final del proyecto con ID: ".$id_project))
+        		if ($this->addActivity($usr, 29, "Modificando el informe final del proyecto con ID: ".$id_project))
 	    			return true;
 			    
 	    	}
