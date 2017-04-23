@@ -47,21 +47,6 @@
                     </div>
                 </li>
 
-                <li class="panel panel-default dropdown two__item">
-                    <a data-toggle="collapse" href="#dropdown-table">
-                        <span class="icon fa fa-users"></span><span class="title">Usuarios</span>
-                    </a>
-                    <!-- Dropdown level 1 -->
-                    <div id="dropdown-table" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#" onclick="javascript: CreateUserNow();">Crear usuario</a></li>
-                                <li><a href="users">Lista de usuarios</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-
                 <li class="add_property__item">
                     <a href="#" onclick="javascript: AddNewInstanciaAprobacion();">
                         <span class="icon fa fa-briefcase"></span><span class="title">Agregar Instancia de Aprobación</span>
@@ -97,6 +82,21 @@
                         <span class="icon fa fa-slack"></span><span class="title">Contacto y redes sociales</span>
                     </a>
                 </li> -->
+
+                <li class="panel panel-default dropdown two__item">
+                    <a data-toggle="collapse" href="#dropdown-table">
+                        <span class="icon fa fa-users"></span><span class="title">Usuarios</span>
+                    </a>
+                    <!-- Dropdown level 1 -->
+                    <div id="dropdown-table" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#" onclick="javascript: CreateUserNow();">Crear usuario</a></li>
+                                <li><a href="users">Lista de usuarios</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
 
                 <li class="panel panel-default dropdown three__item">
                     <a data-toggle="collapse" href="#dropdown-icon">
