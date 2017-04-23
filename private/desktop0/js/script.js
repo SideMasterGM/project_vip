@@ -1180,3 +1180,28 @@ function ProjectResult(){
 function TransportCKEditor(){
 	$(".containerCKeditorProject").html($(".CKEditorProjectResult").html());
 }
+
+function UpdateResultProject(){
+	$("#idp_result").val($("#ValueArticleByID").val());
+	$("#fpr_content").html($(".trumbowyg-editor").html());
+
+	$.ajax({
+	    url: "private/desktop0/html/build/addProjectResult.php",
+	    type: "POST",
+	    data: $("#FormProjectResult").serialize(),
+	    success: function(data){
+   			if (data == "OK"){
+   				TransportCKEditor();
+   				$("#AddResultProject").click();
+   				$(".ProjectResultSuccessfull").click();
+   			} else {
+   				TransportCKEditor();
+   				$("#AddResultProject").click();
+   				$(".ProjectResultFailure").click();
+   			}
+	    }
+  	});
+
+}
+
+/*Existe un error en el registro de proyectos*/
