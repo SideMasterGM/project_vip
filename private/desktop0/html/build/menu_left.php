@@ -34,14 +34,14 @@
 
                  <li class="panel panel-default dropdown agents__item">
                     <a data-toggle="collapse" href="#dropdown-option-agents">
-                        <span class="icon fa fa-user-secret"></span><span class="title">Agentes</span>
+                        <span class="icon fa fa-user-secret"></span><span class="title">Miembros</span>
                     </a>
                     <!-- Dropdown level 1 -->
                     <div id="dropdown-option-agents" class="panel-collapse collapse">
                         <div class="panel-body">
                             <ul class="nav navbar-nav">
-                                <li><a href="#" onclick="javascript: addAgentNow();">Nuevo agente</a></li>
-                                <li><a href="agents">Listar agentes</a></li>
+                                <li><a href="#" onclick="javascript: addAgentNow();">Equipo</a></li>
+                                <li><a href="agents">Coordinación</a></li>
                             </ul>
                         </div>
                     </div>
