@@ -6,10 +6,14 @@
                     <div class="card-header">
                         <div class="card-title">
                         	<div class="title">
-                        		<i class="fa fa-pencil"></i> Registro de usuarios
+                        		<i class="fa fa-pencil"></i> Registro de equipos
                         	</div>
+
                         	<div class="icon-addAgent-right">
-                        		<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo artículo" onclick="javascript: CreateUserNow();" ></i>
+                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo proyecto" onclick="javascript: window.location.href='./project';" ></i>
+                                <i class="fa fa-users fa-2x" aria-hidden="true" title="Crear un nuevo equipo" onclick="javascript: CreateUserNow();" ></i>
+                                <i class="fa fa-sitemap fa-2x" aria-hidden="true" title="Coordinación" onclick="javascript: CreateUserNow();" ></i>
+                        		<i class="fa fa-refresh fa-2x" aria-hidden="true" title="Recargar" onclick="javascript: window.location.reload();" ></i>
                         	</div>
                         </div>
                     </div>
@@ -17,21 +21,21 @@
                         <table class="datatable table table-striped" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Nombre de usuario</th>
-                                    <th>Correo electrónico</th>
+                                    <th>ID</th>
+                                    <th>Nombre del equipo</th>
                                     <th>Fecha de registro</th>
                                     <th>Registrado</th>
-                                    <th>Contraseña cifrada</th>
+                                    <th>Proyecto vinculado</th>
                                 </tr>
                             </thead>
 
                             <tfoot>
                                 <tr>
-                                    <th>Nombre de usuario</th>
-                                    <th>Correo electrónico</th>
+                                    <th>ID</th>
+                                    <th>Nombre del equipo</th>
                                     <th>Fecha de registro</th>
                                     <th>Registrado</th>
-                                    <th>Contraseña cifrada</th>
+                                    <th>Proyecto vinculado</th>
                                 </tr>
                             </tfoot>
                             <?php include ("private/desktop0/html/build/CalcDate.php"); ?>
