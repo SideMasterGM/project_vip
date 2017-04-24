@@ -1204,4 +1204,9 @@ function UpdateResultProject(){
 
 }
 
+function CreateTeam(){
+	$("#IDProject").val($("#select_project").val());
+	$(".createNewTeam").click();
+}
+
 /*Existe un error en el registro de proyectos*/
