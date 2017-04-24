@@ -187,11 +187,34 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="javascript: ();">Agregar</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: SaveCreateTeam();">Agregar</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Mostrar mensaje de que escriba algo en el campo de texto!. -->
+<input type="hidden" class="TeamProjectSuccessfull" data-toggle="modal" data-target="#TeamProjectSuccessfull"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="TeamProjectSuccessfull" tabindex="1" role="dialog" aria-labelledby="myTeamProjectSuccessfull" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myTeamProjectSuccessfull"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>¡Genial!. El equipo ha sido creado con éxito. Haga click en cerrar.</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: window.location.reload();" data-dismiss="modal">¡Cerrar!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- ¿Está seguro que desea eliminar el elemento? -->
 <input type="hidden" class="deleteAgentmodal" data-toggle="modal" data-target="#DeleteAgentModal"  />
