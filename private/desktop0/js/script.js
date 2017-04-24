@@ -1205,6 +1205,7 @@ function UpdateResultProject(){
 }
 
 function CreateTeam(){
+	$("#IDProjectNoSend").val($("#select_project").val());
 	$("#IDProject").val($("#select_project").val());
 	$(".createNewTeam").click();
 }
@@ -1215,11 +1216,10 @@ function SaveCreateTeam(){
 	if (TeamName == ""){
 		$(".TeamProjectFailure").click();
 	} else {
-
 		$.ajax({
 		    url: "private/desktop0/html/build/addTeamProject.php",
 		    type: "POST",
-		    data: $("#FormProjectResult").serialize(),
+		    data: $("#FormTeamProject").serialize(),
 		    success: function(data){
 	   			if (data == "OK"){
 	   				$(".TeamProjectSuccessfull").click();
