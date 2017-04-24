@@ -82,6 +82,7 @@
 			|   27	|	Actualización de la información financiera				|
 			|   28	|	Actualización de los resultados de un Proyecto			|
 			|   29	|	Actualización del informe final de un Proyecto			|
+			|   30	|	Creación de un equipo									|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1578,7 +1579,7 @@
 	    	return false;
 	    }
 
-	     /**
+	    /**
 			* Método que agrega datos vacíos sobre el informe final del proyecto.
 			*@param: $id_project (Identificador del proyecto), $content (Contenido, redacción, informe).
 		*/
@@ -1602,6 +1603,38 @@
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
         		if ($this->addActivity($usr, 29, "Agregando el campo de informe final del proyecto con ID: ".$id_project))
+	    			return true;
+			    
+	    	}
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
+	    }
+
+	     /**
+			* Método que agrega un nuevo equipo para el proyecto.
+			*@param: $id_project (Identificador del proyecto), $name (Nombre del equipo).
+		*/
+	    public function addTeamProject($id_project, $name){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
+	    	#Statement: Consulta no preparada.
+	    	#Tabla: vip_team.
+	    	#Atributos: Ninguno
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = "INSERT INTO vip_team (nombre, id_project, date_log, date_log_unix) VALUES ('".$name."','".$id_project."','".date('Y-n-j')."','".time()."')";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
+
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+        		if ($this->addActivity($usr, 30, "Creando un equipo llamado: ".$name.", con ID de proyecto: ".$id_project))
 	    			return true;
 			    
 	    	}
