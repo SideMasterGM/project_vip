@@ -1,13 +1,13 @@
 <?php
-	$idp_result 	= $_POST['idp_result'];
-	$fpr_content 	= $_POST['fpr_content'];
+	$IDProject 	= $_POST['IDProject'];
+	$TeamName 	= $_POST['TeamName'];
 
-	if ($fpr_content != ""){
+	if ($TeamName != ""){
 		include ("../../../connect_server/connect_server.php");
 
 		$CN = CDB("vip");
 
-		if ($CN->addProjectResult($idp_result, $fpr_content))
+		if ($CN->addTeamProject($IDProject, $TeamName))
 			echo "OK";
 	}
 ?>
