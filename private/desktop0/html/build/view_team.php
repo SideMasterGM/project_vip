@@ -7,16 +7,40 @@
                         <div class="card-title">
                         	<div class="title">
                         		<i class="fa fa-pencil"></i> Registro de equipos
+                                <?php
+                                    $CNEx = CDB("vip");
+
+                                    ?>
+                                        <select id="select_project" onchange="javascript: CreateTeam();">
+                                            <optgroup label="Lista de proyectos">
+                                    <?php
+
+                                        foreach ($CNEx->getProjects() as $value) {
+                                            ?>
+                                                <option value="<?php echo $value['id_project']; ?>"><?php echo $value['nombre']; ?></option>
+                                            <?php                                                              
+                                        }
+
+                                    ?>
+                                            </optgroup>
+                                        </select>
+                                    <?php
+                                ?>
                         	</div>
 
                         	<div class="icon-addAgent-right">
                                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo proyecto" onclick="javascript: window.location.href='./project';" ></i>
-                                <i class="fa fa-users fa-2x" aria-hidden="true" title="Crear un nuevo equipo" onclick="javascript: CreateUserNow();" ></i>
+                                
+                                <i class="fa fa-users fa-2x" aria-hidden="true" title="Crear un nuevo equipo" onclick="javascript: CreateTeam();" ></i>
+                                
                                 <i class="fa fa-sitemap fa-2x" aria-hidden="true" title="Coordinación" onclick="javascript: CreateUserNow();" ></i>
-                        		<i class="fa fa-refresh fa-2x" aria-hidden="true" title="Recargar" onclick="javascript: window.location.reload();" ></i>
+                        		
+                                <i class="fa fa-refresh fa-2x" aria-hidden="true" title="Recargar" onclick="javascript: window.location.reload();" ></i>
                         	</div>
                         </div>
                     </div>
+    
+
                     <div class="card-body">
                         <table class="datatable table table-striped" cellspacing="0" width="100%">
                             <thead>
