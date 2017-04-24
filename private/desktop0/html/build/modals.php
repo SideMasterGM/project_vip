@@ -214,7 +214,26 @@
     </div>
 </div>
 
+<!-- Mostrar mensaje de que escriba algo en el campo de texto!. -->
+<input type="hidden" class="TeamProjectFailure" data-toggle="modal" data-target="#TeamProjectFailure"  />
 
+<!-- Modal -->
+<div class="modal fade modal-primary" id="TeamProjectFailure" tabindex="1" role="dialog" aria-labelledby="myTeamProjectFailure" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myTeamProjectFailure"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>¡Up's!. Por favor, escriba el nombre del grupo antes de intentar guardar.</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">¡Entiendo!...</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ¿Está seguro que desea eliminar el elemento? -->
 <input type="hidden" class="deleteAgentmodal" data-toggle="modal" data-target="#DeleteAgentModal"  />
