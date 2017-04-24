@@ -1209,4 +1209,32 @@ function CreateTeam(){
 	$(".createNewTeam").click();
 }
 
+function SaveCreateTeam(){
+	var TeamName = $("#TeamName").val();
+
+	if (TeamName == ""){
+		$(".TeamProjectFailure").click();
+	} else {
+
+		$.ajax({
+		    url: "private/desktop0/html/build/addProjectResult.php",
+		    type: "POST",
+		    data: $("#FormProjectResult").serialize(),
+		    success: function(data){
+	   			if (data == "OK"){
+	   				$(".TeamProjectSuccessfull").click();
+	   			} else {
+	   				alert("Nada");
+	   				
+	   			}
+		    }
+	  	});
+	}
+
+}
+
+function alala(){
+
+}
+
 /*Existe un error en el registro de proyectos*/
