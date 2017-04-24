@@ -1217,15 +1217,14 @@ function SaveCreateTeam(){
 	} else {
 
 		$.ajax({
-		    url: "private/desktop0/html/build/addProjectResult.php",
+		    url: "private/desktop0/html/build/addTeamProject.php",
 		    type: "POST",
 		    data: $("#FormProjectResult").serialize(),
 		    success: function(data){
 	   			if (data == "OK"){
 	   				$(".TeamProjectSuccessfull").click();
 	   			} else {
-	   				alert("Nada");
-	   				
+	   				$(".TeamProjectProblem").click();	   				
 	   			}
 		    }
 	  	});

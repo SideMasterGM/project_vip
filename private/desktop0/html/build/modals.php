@@ -215,6 +215,27 @@
 </div>
 
 <!-- Mostrar mensaje de que escriba algo en el campo de texto!. -->
+<input type="hidden" class="TeamProjectProblem" data-toggle="modal" data-target="#TeamProjectProblem"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="TeamProjectProblem" tabindex="1" role="dialog" aria-labelledby="myTeamProjectProblem" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myTeamProjectProblem"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>¡Up's!. Lo lamentamos, el equipo no ha podido ser creado, por favor, recargue e intente nuevamente.</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">¡Okay!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mostrar mensaje de que escriba algo en el campo de texto!. -->
 <input type="hidden" class="TeamProjectFailure" data-toggle="modal" data-target="#TeamProjectFailure"  />
 
 <!-- Modal -->
