@@ -146,7 +146,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myNewTeam">Nuevo grupo</h4>
+                <h4 class="modal-title" id="myNewTeam"><span class="icon fa fa-users"></span> <label id="TitleNewTeamProject">Nuevo equipo</labeel></h4>
             </div>
             <div class="modal-body">
                 <span class="panel-icon">
@@ -178,7 +178,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div>
-                                        <input type="text" class="form-control" id="TeamName" name="TeamName" placeholder="[Nombre del equipo]... " />
+                                        <input type="text" class="form-control" id="TeamName" name="TeamName" onkeyup="ChgCharacterTitleModal(this)" placeholder="[Nombre del equipo]... " />
                                     </div>
                                 </div>
                             </div>

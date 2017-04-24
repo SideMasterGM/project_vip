@@ -1232,8 +1232,10 @@ function SaveCreateTeam(){
 
 }
 
-function alala(){
-
+function ChgCharacterTitleModal(value){
+	if ($(value).val() != ""){
+		$("#TitleNewTeamProject").text("Equipo: " + $(value).val());
+	} else {
+		$("#TitleNewTeamProject").text("Nuevo equipo");
+	}
 }
-
-/*Existe un error en el registro de proyectos*/

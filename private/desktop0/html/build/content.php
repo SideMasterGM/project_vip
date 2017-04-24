@@ -32,7 +32,7 @@
                 </a>
             </div>
             <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12" title="Equipos y miembros">
-                <a href="agents">
+                <a href="team">
                     <div class="card blue summary-inline">
                         <div class="card-body">
                             <i class="icon fa fa-user-secret fa-4x"></i>
