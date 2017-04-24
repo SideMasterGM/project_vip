@@ -155,7 +155,7 @@
                 <span class="panel-title">Escriba el nombre del equipo que desea crear.</span><br/><br/>
                 
                 <div class="row">
-                    <form action="FormTeamProject">
+                    <form id="FormTeamProject">
                         <div class="col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -164,7 +164,8 @@
                                 </div>
                                 <div class="panel-body">
                                     <div>
-                                        <input type="text" class="form-control" id="IDProject" name="IDProject" placeholder="[ID del proyecto]... " disabled/>
+                                        <input type="text" class="form-control" id="IDProjectNoSend" name="IDProjectNoSend" placeholder="[ID del proyecto]... " disabled/>
+                                        <input type="hidden" class="form-control" id="IDProject" name="IDProject" placeholder="[ID del proyecto]... "/>
                                     </div>
                                 </div>
                             </div>
