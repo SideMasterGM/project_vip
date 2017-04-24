@@ -137,6 +137,59 @@
     </div>
 </div>
 
+<!-- Agregar un nuevo equipo -->
+<input type="hidden" class="createNewTeam" data-toggle="modal" data-target="#createNewTeam"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="createNewTeam" tabindex="1" role="dialog" aria-labelledby="myNewTeam" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myNewTeam">Nuevo grupo</h4>
+            </div>
+            <div class="modal-body">
+                <span class="panel-icon">
+                  <i class="fa fa-pencil"></i>
+                </span>
+                <span class="panel-title">Escriba el nombre del grupo que desea crear.</span><br/><br/>
+                
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">ID del proyecto
+                                <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: window.location.href='./project';" aria-hidden="true" title="Agregar un nuevo proyecto" ></i></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div>
+                                    <input type="text" class="form-control" id="IDProject" name="IDProject" placeholder="[ID del proyecto]... " disabled/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Nombre del equipo
+                                <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewFacCurEsc();" aria-hidden="true" title="Agregar Facultad | CUR | Escuela" ></i></h3> -->
+                            </div>
+                            <div class="panel-body">
+                                <div>
+                                    <input type="text" class="form-control" id="TeamName" name="TeamName" placeholder="[Nombre del equipo]... " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: ();">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ¿Está seguro que desea eliminar el elemento? -->
 <input type="hidden" class="deleteAgentmodal" data-toggle="modal" data-target="#DeleteAgentModal"  />
