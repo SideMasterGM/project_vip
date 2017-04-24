@@ -1482,6 +1482,29 @@
 	    	return $stmt->rowCount();
 	    }
 
+	    public function getProjectsAllOnly(){
+            $stmt = $this->db->query("SELECT * FROM vip_proyecto");
+
+            if ($stmt->rowCount() > 0){
+                $dataUsers = [];
+                
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $dataUsers[] = [
+                        'nombre'  => $row['nombre']
+                    ];
+                }
+
+                $texto = '';
+                foreach($dataUsers as $equipo) {
+                    $texto .= '"' . $equipo['nombre'] . '",';
+                }
+                
+                return $texto;
+            } else {
+                return false;
+            }
+        }
+
 	    /**
 			* Método que obtiene un proyecto en específico por ID.
 			*@param: id_project (Identificador del proyecto).
