@@ -1644,6 +1644,43 @@
 	    }
 
 	    /**
+			* Método que obtiene todos los equipos que se han creado.
+			*@param: No hay.
+		*/
+	    public function getTeamProject(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team.
+		    #Atributos: id_project
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id_team' 			=> $row['id_team'], 
+	    				'nombre' 			=> $row['nombre'], 
+	    				'id_project' 		=> $row['id_project'], 
+	    				'date_log' 			=> $row['date_log'],
+	    				'date_log_unix' 	=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que agrega el informe final del proyecto.
 			*@param: $id_project (Identificador del proyecto), $content (Contenido, redacción, informe).
 		*/
