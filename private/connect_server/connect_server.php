@@ -83,6 +83,7 @@
 			|   28	|	Actualización de los resultados de un Proyecto			|
 			|   29	|	Actualización del informe final de un Proyecto			|
 			|   30	|	Creación de un equipo									|
+			|   31	|	Actualización de la imagen de un equipo					|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -794,7 +795,8 @@
 				@mkdir($path, 0777);					#En caso que no exista, se crea el directorio.
 
 			#Se hace una copia de la ruta actual del usuario |Users|nombre_de_usuario|.
-			$path_project = $path;
+			$path_project 	= $path;
+			$path_team 		= $path;
 
 			#Se concatena img_perfil, este será otro directorio dentro del directorio usuario.
 			$path .= "img_perfil/";
@@ -809,6 +811,11 @@
 			#Se verifica la existencia del directorio |Users|nombre_de_usuario|project_img|
 			if (!file_exists($path_project))
 				@mkdir($path_project, 0777);			#En caso que no exista, se crea el directorio.
+
+			$path_team .= "img_team/";
+			#Se verifica la existencia del directorio |Users|nombre_de_usuario|img_team|
+			if (!file_exists($path_team))
+				@mkdir($path_team, 0777);			#En caso que no exista, se crea el directorio.
 
 			#Retornamos verdadero, que todo ha salido correctamente.
 			return true;
@@ -1679,6 +1686,81 @@
 	    	#Si algo falla, se retorna un valor booleano falso.
 	    	return false;
 	    }
+
+	    /**
+			* Método que agrega una imagen a un equipo.
+			*@param: $id_team (ID del equipo), $folder (Ruta de almacenamiento), $src (Nombre del recurso).
+		*/
+	    public function addTeamImgPerfil($id_team, $folder, $src){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
+	    	#Se limpia el nombre del recurso.
+	    	$src = $this->CleanString($src);
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_team_img.
+	    	#Atributos: id_team, folder, src, date_log, date_log_unix.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	$QImgTeam = $this->db->prepare("INSERT INTO vip_team_img (id_team, folder, src, date_log, date_log_unix) VALUES (:id_team,:folder,:src,:date_log,:date_log_unix)");
+
+	    	#Se vinculan los valores con los parámetros.
+	    	$QImgTeam->bindValue(":id_team", $id_team);
+	    	$QImgTeam->bindValue(":folder", $folder);
+	    	$QImgTeam->bindValue(":src", $src);
+	    	$QImgTeam->bindValue(":date_log", date('Y-n-j'));
+	    	$QImgTeam->bindValue(":date_log_unix", time());
+
+	    	#Se agrega una nueva actividad sobre la acción.
+	    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
+	    	if ($this->addActivity($usr, 31, "Actualizando la imagen del equipo con ID: ".$id_team))
+		    	if ($QImgTeam->execute())
+		    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
+
+		    #Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	     /**
+			* Método que recupera la información del último registro en team_img.
+			*@param: $id_team (ID del equipo), $Order (La forma de ordenar la info.), $Quantity (Límite de registros).
+		*/
+	    public function getTeamImgPerfil($id_team, $Order, $Quantity){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team_img.
+		    #Atributos: id_team, cláusula LIMIT.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_img WHERE id_team='".$id_team."' ORDER BY id ".$Order." LIMIT ".$Quantity);
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$UserImgPerfil = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$UserImgPerfil[] = [
+	    				'id' 			=> $row['id'],
+	    				'id_team' 		=> $row['id_team'],
+	    				'folder'		=> $row['folder'],
+	    				'src'			=> $row['src'],
+	    				'date_log' 		=> $row['date_log'],
+	    				'date_log_unix' => $row['date_log_unix'] 
+	    			];
+	    		}
+
+	    		#Se retorna la información capturada en el array.
+	    		return $UserImgPerfil;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
 
 	    /**
 			* Método que agrega el informe final del proyecto.
