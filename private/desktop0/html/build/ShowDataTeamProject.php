@@ -1,6 +1,9 @@
 <?php
-  include ("../../connect_server/connect_server.php");
+  include ("../../../connect_server/connect_server.php");
   include ("CalcDate.php");
+
+  $CN_VIP = CDB("vip");
+  @session_start();
 ?>
 
 <div class="ContainerReturnTeamProject">
@@ -60,10 +63,7 @@
 </form>
 
 <?php
-    $CN_VIP = CDB("vip");
-    @session_start();
-    
-    foreach ($CN_VIP->getTeamProjectById($_SESSION['id_team']) as $value) {
+    foreach ($CN_VIP->getTeamProjectById(@$_SESSION['id_team']) as $value) {
         $TeamID = $value['id_team'];
         $TeamName = $value['nombre'];
         $TeamDateLog = $value['date_log'];
@@ -72,30 +72,43 @@
     }
 ?>
 
-<div class="panel">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  
+  <div class="panel">
+      <div class="panel-heading" role="tab" id="headingThree">
+          <span class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+             Vínculo de proyecto
+            </a>
+          </span>
+       </div>
+    
+      <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+          <?php 
+            foreach ($CN_VIP->getProjectsOnlyById($TeamIDProject) as $value) {
+              $ProjectName = $value['nombre'];
+            }
+            echo $ProjectName;
+          ?>
+          </div>
+      </div>
+  </div>
+
+  <div class="panel">
     <div class="panel-heading" role="tab" id="headingOne">
         <span class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-           Fecha
+           Fecha de creación
           </a>
         </span>
      </div>
   
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <?php echo $TeamDateLog; ?>
+          <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX));; ?>
         </div>
     </div>
-</div>
+  </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title showTitleTeamProject">Nombres y apellidos</h3>
-    </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title showTitleTeamProject">Nombres y apellidos</h3>
-    </div>
 </div>
