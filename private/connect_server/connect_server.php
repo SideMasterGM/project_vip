@@ -1697,7 +1697,7 @@
 		    #Atributos: id_team
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_team WHERE id_team='".$id_team."' LIMIT 1;");
+	    	$stmt = $this->db->query("SELECT * FROM vip_team WHERE id_team=".$id_team." LIMIT 1;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
