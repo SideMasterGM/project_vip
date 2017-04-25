@@ -926,6 +926,16 @@ function OnItemClickTrUser(value){
   	});
 }
 
+function OnItemClickTrTeamProject(){
+	var TeamID 			= value.getElementsByTagName("td")[0].innerHTML;
+	var TeamName 		= value.getElementsByTagName("td")[1].innerHTML;
+	var TeamDateLog 	= value.getElementsByTagName("td")[2].innerHTML;
+	var TeamDateLogUNIX = value.getElementsByTagName("td")[3].innerHTML;
+	var IDProject 		= value.getElementsByTagName("td")[4].innerHTML;
+
+	$(".WindowModalAboutTeamProject").click();
+}
+
 function OpenModalDeleteLie(){
 	$(".OpenModalDeleteLie").click();
 }
