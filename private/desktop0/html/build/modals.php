@@ -65,9 +65,9 @@
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Nombres y apellidos</h3>
                                     </div>
-                                    <div class="panel-body">
-                                        <input type="text" class="form-control" id="id_names" placeholder="* Nombres" /><br/>
-                                        <input type="text" class="form-control" id="id_lastnames" placeholder="* Apellidos" />
+                                    
+                                    <div class="ShowInfoMembersTeamProject">
+                                        
                                     </div>
                                 </div>
 
