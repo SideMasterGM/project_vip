@@ -2,7 +2,7 @@
 	include ("../../../connect_server/connect_server.php");
 	$CN = CDB("vip");
 
-    @session_start();
+  @session_start();
 	$QImg = $CN->getTeamImgPerfil($_SESSION['id_team'], "DESC", 1);
 
 	if (is_array($QImg)){
