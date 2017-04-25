@@ -138,15 +138,15 @@
 </div>
 
 <!-- Agregar un nuevo equipo -->
-<input type="hidden" class="createNewTeam" data-toggle="modal" data-target="#createNewTeam"  />
+<input type="hidden" class="WindowModalAboutTeamProject" data-toggle="modal" data-target="#WindowModalAboutTeamProject"  />
 
 <!-- Modal -->
-<div class="modal fade modal-primary" id="createNewTeam" tabindex="1" role="dialog" aria-labelledby="myNewTeam" aria-hidden="true">
+<div class="modal fade modal-primary" id="WindowModalAboutTeamProject" tabindex="1" role="dialog" aria-labelledby="myWindowModalAboutTeamProject" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myNewTeam"><span class="icon fa fa-users"></span> <label id="TitleNewTeamProject">Nuevo equipo</labeel></h4>
+                <h4 class="modal-title" id="myWindowModalAboutTeamProject"><span class="icon fa fa-users"></span> <label id="TitleNewTeamProject">Nuevo equipo</labeel></h4>
             </div>
             <div class="modal-body">
                 <span class="panel-icon">
