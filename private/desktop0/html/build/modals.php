@@ -37,8 +37,6 @@
             <div class="row">
 
                 <div class="col-xs-4">
-                    
-
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xs-12">
@@ -48,17 +46,60 @@
                                     </div>
                                 </div>
 
-                               <!--  <div class="ChgImgTeamProject">
-                                    Algo
-                                </div> -->
-                                 <div class="PhotoTeamProject">
-                                    <i class="fa fa-camera fa-2x icon-camera-change ChgAnimationPTP" onclick="javascript: ChgImgTeamProjectClick();" aria-hidden="true" title="Cambiar imagen del equipo"></i>
-                                    <div class="camNewPhoto"><p>Actualizar imagen</p>
+                                <div class="ContainerReturnTeamProject">
+                                    <style>
+                                        .PhotoTeamProject {
+                                          position: relative;
+                                          background: url('private/desktop0/img/img-default/team.jpg'); 
+                                          width: 100%; 
+                                          height:230px; 
+                                          background-size: cover; 
+                                          border: 3px solid lightgrey; 
+                                          float: left;
+                                        }
+
+                                        .PhotoTeamProject .camNewPhoto {
+                                          color: #fff;
+                                          font-size: 14px;
+                                          padding: 20px 20px 20px 20px;
+                                          visibility: hidden;
+                                        }
+
+                                        .PhotoTeamProject .camNewPhoto {
+                                          transition-duration: .1s;
+                                          transform: linear;
+                                          margin-top: -10px;
+                                        }
+
+                                        .PhotoTeamProject:hover > .camNewPhoto {
+                                          visibility: visible;
+                                          display: inline-block;
+
+                                          transition-duration: .1s;
+                                          transform: linear;
+                                          margin: 0px;
+                                          width: 100%;
+                                          background-color: rgba(0,0,0,0.5);
+                                        }
+
+                                        #FormImgTeamProjectUpdate #ChgImgTPUpdate {
+                                          visibility: hidden;
+                                        }
+                                    </style>
+
+                                     <div class="PhotoTeamProject">
+                                        <i class="fa fa-camera fa-2x icon-camera-change ChgAnimationPTP" onclick="javascript: ChgImgTeamProjectClick();" aria-hidden="true" title="Cambiar imagen del equipo"></i>
+                                        <div class="camNewPhoto"><p>Actualizar imagen</p>
+                                        </div>
                                     </div>
                                 </div>
-                                
+
                                 <form id="FormImgTeamProjectUpdate" enctype="multipart/form-data">
-                                    <input type="file" id="ChgImgTPUpdate" name="ChgImgTPUpdate" onchange="javascript: upload_img_perfil();" />
+                                    <input type="file" id="ChgImgTPUpdate" name="ChgImgTPUpdate" onchange="javascript: UploadImgTeamProject();" />
+                                </form>
+
+                                <form id="AssignSessionIDTeam">
+                                    <input type="hidden" id="IDInputIDTeam" name="IDInputIDTeam" />
                                 </form>
                             </div>
                         </div>
@@ -67,8 +108,6 @@
                 </div>
 
                 <div class="col-xs-8">
-                    
-
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xs-12">
@@ -82,15 +121,6 @@
                                     </div>
                                 </div>
 
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Email, Localidad & Descripción</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <input type="email" class="form-control" id="id_email_address" placeholder="* Dirección de correo" /><br/>
-                                        <input type="text" class="form-control" id="id_location" placeholder="* Localidad" />
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
