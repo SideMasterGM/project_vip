@@ -1413,3 +1413,50 @@ div.show_agent_img_perfil_change img {
   height: 115px;
   max-height: 70px;
 }
+
+.PhotoTeamProject {
+  position: relative;
+  background: url('../../../private/desktop0/img/img-default/team.png'); 
+  width: 100%; 
+  height:230px; 
+  background-size: cover; 
+  border: 3px solid lightgrey; 
+  float: left;
+}
+
+
+.PhotoTeamProject .camNewPhoto {
+  color: #fff;
+  font-size: 14px;
+  padding: 20px 20px 20px 20px;
+  visibility: hidden;
+}
+
+.PhotoTeamProject .camNewPhoto {
+  transition-duration: .1s;
+  transform: linear;
+  margin-top: -10px;
+}
+
+/*.PhotoTeamProject .camNewPhoto:hover {
+  transition-duration: .1s;
+  transform: linear;
+  margin: 0px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+}*/
+
+.PhotoTeamProject:hover > .camNewPhoto {
+  visibility: visible;
+  display: inline-block;
+
+  transition-duration: .1s;
+  transform: linear;
+  margin: 0px;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#FormImgTeamProjectUpdate #ChgImgTPUpdate {
+  visibility: hidden;
+}
