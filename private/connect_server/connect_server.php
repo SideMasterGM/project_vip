@@ -1688,6 +1688,43 @@
 	    }
 
 	    /**
+			* Método que obtiene un equipo en específico por ID.
+			*@param: $id_team.
+		*/
+	    public function getTeamProjectById($id_team){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team.
+		    #Atributos: id_team
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team WHERE id_team='".$id_team."' LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id_team' 			=> $row['id_team'], 
+	    				'nombre' 			=> $row['nombre'], 
+	    				'id_project' 		=> $row['id_project'], 
+	    				'date_log' 			=> $row['date_log'],
+	    				'date_log_unix' 	=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que agrega una imagen a un equipo.
 			*@param: $id_team (ID del equipo), $folder (Ruta de almacenamiento), $src (Nombre del recurso).
 		*/
@@ -1733,7 +1770,7 @@
 		    #Atributos: id_team, cláusula LIMIT.
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_team_img WHERE id_team='".$id_team."' ORDER BY id ".$Order." LIMIT ".$Quantity);
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_img WHERE id_team=".$id_team." ORDER BY id ".$Order." LIMIT ".$Quantity);
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
