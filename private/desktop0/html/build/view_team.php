@@ -67,7 +67,7 @@
                                 <?php
                                     foreach ($CN->getTeamProject() as $value) {
                                         ?>
-                                            <tr onclick="javascript: OnItemClickTrUser(this);">
+                                            <tr onclick="javascript: OnItemClickTrTeamProject(this);">
                                                 <td><?php echo $value['id_team']; ?></td>
                                                 <td><?php echo $value['nombre']; ?></td>
                                                 <td><?php echo $value['date_log']; ?></td>
