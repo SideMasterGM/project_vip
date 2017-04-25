@@ -1266,6 +1266,14 @@ function OnItemClickTrTeamProject(value){
   	});
 
   	$.ajax({
+	    url: "private/desktop0/html/build/ShowDataMembersTeamProject.php",
+	    type: "POST",
+	    success: function(data){
+	    	$(".ShowInfoMembersTeamProject").html(data);
+	    }
+  	});
+
+  	$.ajax({
 	    url: "private/desktop0/html/build/ShowImgTeamProject.php",
 	    type: "POST",
 	    success: function(data){
