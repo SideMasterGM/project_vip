@@ -1253,3 +1253,18 @@ function OnItemClickTrTeamProject(value){
 function ChgImgTeamProjectClick(){
 	$("#ChgImgTPUpdate").click();
 }
+
+function UploadImgTeamProject(){
+	var formData = new FormData($("#FormImgTeamProjectUpdate")[0]);
+
+	$.ajax({
+    	url: "private/desktop0/html/build/UploadImgTeamProject.php",
+    	type: "POST",
+    	data: formData,
+    	contentType: false,
+    	processData: false,
+    	success: function(data){
+	      OutMessageImgPerfil(data);
+    	}
+  	});
+}
