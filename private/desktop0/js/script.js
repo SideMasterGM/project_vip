@@ -1246,6 +1246,25 @@ function OnItemClickTrTeamProject(value){
 	var TeamDateLogUNIX = value.getElementsByTagName("td")[3].innerHTML;
 	var IDProject 		= value.getElementsByTagName("td")[4].innerHTML;
 
+	$("#IDInputIDTeam").val(TeamID);
+
+	$.ajax({
+	    url: "private/desktop0/html/build/ChgSessionIDTeam.php",
+	    type: "POST",
+	    data: $("#AssignSessionIDTeam").serialize(),
+	    success: function(data){
+   			console.log("Sesión modificada");
+	    }
+  	});
+
+  	$.ajax({
+	    url: "private/desktop0/html/build/ShowImgTeamProject.php",
+	    type: "POST",
+	    success: function(data){
+   			OutMsgImgTeam(data);  		
+	    }
+  	});
+
 	$(".showTitleTeamProject").text(TeamName);
 	$(".WindowModalAboutTeamProject").click();
 }
@@ -1264,7 +1283,12 @@ function UploadImgTeamProject(){
     	contentType: false,
     	processData: false,
     	success: function(data){
-	      OutMessageImgPerfil(data);
+	      OutMsgImgTeam(data);
     	}
   	});
+}
+
+function OutMsgImgTeam(msg){
+	$('.ContainerReturnTeamProject').html(msg);
+	$(".ContainerReturnTeamProject").delay(800).fadeIn(2000);
 }
