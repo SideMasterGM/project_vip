@@ -22,6 +22,94 @@
     </div>
 </div>
 
+<!-- Este es para las opciones del artículo!. -->
+<input type="hidden" class="WindowModalAboutTeamProject" data-toggle="modal" data-target="#WindowModalAboutTeamProject"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="WindowModalAboutTeamProject" tabindex="1" role="dialog" aria-labelledby="myWindowModalAboutTeamProject" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="MyArticleTitle">Información del equipo</h4>
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-4">
+                    
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title showTitleTeamProject">Nombres y apellidos</h3>
+                                    </div>
+                                </div>
+
+                               <!--  <div class="ChgImgTeamProject">
+                                    Algo
+                                </div> -->
+                                 <div class="PhotoTeamProject">
+                                    <i class="fa fa-camera fa-2x icon-camera-change ChgAnimationPTP" onclick="javascript: ChgImgTeamProjectClick();" aria-hidden="true" title="Cambiar imagen del equipo"></i>
+                                    <div class="camNewPhoto"><p>Actualizar imagen</p>
+                                    </div>
+                                </div>
+                                
+                                <form id="FormImgTeamProjectUpdate" enctype="multipart/form-data">
+                                    <input type="file" id="ChgImgTPUpdate" name="ChgImgTPUpdate" onchange="javascript: upload_img_perfil();" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-8">
+                    
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Nombres y apellidos</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <input type="text" class="form-control" id="id_names" placeholder="* Nombres" /><br/>
+                                        <input type="text" class="form-control" id="id_lastnames" placeholder="* Apellidos" />
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Email, Localidad & Descripción</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <input type="email" class="form-control" id="id_email_address" placeholder="* Dirección de correo" /><br/>
+                                        <input type="text" class="form-control" id="id_location" placeholder="* Localidad" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="float: left;" onclick="javascript: ProjectResult();">Resultados</button>
+                
+                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">Eliminar</button>
+                <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- This is the modal window of the agents. -->
 <input type="hidden" class="add-agent-now" data-toggle="modal" data-target="#AddAgent"  />
 <!-- Modal -->
@@ -138,15 +226,15 @@
 </div>
 
 <!-- Agregar un nuevo equipo -->
-<input type="hidden" class="WindowModalAboutTeamProject" data-toggle="modal" data-target="#WindowModalAboutTeamProject"  />
+<input type="hidden" class="createNewTeam" data-toggle="modal" data-target="#createNewTeam"  />
 
 <!-- Modal -->
-<div class="modal fade modal-primary" id="WindowModalAboutTeamProject" tabindex="1" role="dialog" aria-labelledby="myWindowModalAboutTeamProject" aria-hidden="true">
+<div class="modal fade modal-primary" id="createNewTeam" tabindex="1" role="dialog" aria-labelledby="myNewTeam" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myWindowModalAboutTeamProject"><span class="icon fa fa-users"></span> <label id="TitleNewTeamProject">Nuevo equipo</labeel></h4>
+                <h4 class="modal-title" id="myNewTeam"><span class="icon fa fa-users"></span> <label id="TitleNewTeamProject">Nuevo equipo</labeel></h4>
             </div>
             <div class="modal-body">
                 <span class="panel-icon">
