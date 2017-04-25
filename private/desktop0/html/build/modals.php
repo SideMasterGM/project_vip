@@ -101,6 +101,17 @@
                                 <form id="AssignSessionIDTeam">
                                     <input type="hidden" id="IDInputIDTeam" name="IDInputIDTeam" />
                                 </form>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title showTitleTeamProject">Nombres y apellidos</h3>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title showTitleTeamProject">Nombres y apellidos</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
