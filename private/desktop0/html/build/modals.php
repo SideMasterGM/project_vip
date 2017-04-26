@@ -65,7 +65,7 @@
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Nombres y apellidos</h3>
                                     </div>
-                                    
+
                                     <div class="ShowInfoMembersTeamProject">
                                         
                                     </div>

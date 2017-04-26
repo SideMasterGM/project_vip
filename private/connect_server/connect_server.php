@@ -1697,6 +1697,11 @@
 		    #Atributos: id_team
 		    #Valores devueltos: Todos los datos posibles (*).
 
+	    	@session_start();
+
+	    	if ($id_team == "" && !isset($_SESSION['id_team'])) 
+		    	$id_team = 1;
+
 	    	$stmt = $this->db->query("SELECT * FROM vip_team WHERE id_team=".$id_team." LIMIT 1;");
 
 	    	#Si existen registros.
@@ -1770,7 +1775,12 @@
 		    #Atributos: id_team, cláusula LIMIT.
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_team_img WHERE id_team=".$id_team." ORDER BY id ".$Order." LIMIT ".$Quantity);
+		   	@session_start();
+
+	    	if ($id_team == "" && !isset($_SESSION['id_team'])) 
+		    	$id_team = 1;
+
+	    	@$stmt = $this->db->query("SELECT * FROM vip_team_img WHERE id_team=".$id_team." ORDER BY id ".$Order." LIMIT ".$Quantity);
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
