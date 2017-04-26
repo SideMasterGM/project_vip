@@ -75,40 +75,40 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
   <div class="panel">
-      <div class="panel-heading" role="tab" id="headingThree">
-          <span class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-             Vínculo de proyecto
-            </a>
-          </span>
-       </div>
-    
-      <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
+    <div class="panel-heading" role="tab" id="headingOne">
+        <span class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Vínculo de proyecto
+          </a>
+        </span>
+    </div>
+
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
           <?php 
             foreach ($CN_VIP->getProjectsOnlyById($TeamIDProject) as $value) {
               $ProjectName = $value['nombre'];
             }
             echo $ProjectName;
-          ?>
-          </div>
-      </div>
+          ?>                          
+        </div>
+    </div>                
   </div>
 
   <div class="panel">
-    <div class="panel-heading" role="tab" id="headingOne">
+     <div class="panel-heading" role="tab" id="headingTwo">
         <span class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-           Fecha de creación
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Fecha de creación
           </a>
         </span>
-     </div>
-  
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-          <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX));; ?>
-        </div>
     </div>
+
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+         <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX));; ?>
+      </div>
+    </div>                
   </div>
 
 </div>
