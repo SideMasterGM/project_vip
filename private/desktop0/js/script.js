@@ -1308,3 +1308,7 @@ function OutMsgImgTeam(msg){
 	$('.ContainerReturnTeamProject').html(msg);
 	$(".ContainerReturnTeamProject").delay(800).fadeIn(2000);
 }
+
+function AddNewFacCurEsc(){
+	$(".AddNewTeamMemberModal").click();
+}
