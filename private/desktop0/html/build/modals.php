@@ -31,7 +31,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyArticleTitle">Información del equipo</h4>
+                <h4 class="modal-title" id="MyArticleTitle"><i class="fa fa-cubes" aria-hidden="true"></i> Información del equipo</h4>
             </div>
 
             <div class="row">
@@ -63,7 +63,7 @@
                             <div class="col-xs-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Nombres y apellidos</h3>
+                                        <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo</h3>
                                     </div>
 
                                     <div class="ShowInfoMembersTeamProject">
