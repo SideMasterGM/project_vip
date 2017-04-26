@@ -50,7 +50,6 @@
                                     
                                 </div>
 
-
                             </div>
                         </div>
                     </div>
@@ -63,7 +62,7 @@
                             <div class="col-xs-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo</h3>
+                                        <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewFacCurEsc();" aria-hidden="true" title="Agregar nuevo integrante"></i></h3>
                                     </div>
 
                                     <div class="ShowInfoMembersTeamProject">
@@ -85,6 +84,45 @@
                 <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">Eliminar</button>
                 <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Agregar nuevo integrante, miembro del equipo.  -->
+<input type="hidden" class="AddNewTeamMemberModal" data-toggle="modal" data-target="#AddNewTeamMemberModal"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="AddNewTeamMemberModal" tabindex="1" role="dialog" aria-labelledby="MyNewTeamMemberModal" onclick="javascript: getFacCurEsc();" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="MyNewTeamMemberModal"><i class="fa fa-pencil"></i> Agregar nuevo miembro</h4>
+            </div>
+            <div class="modal-body">
+                
+                <div class="panel tagcloud-widget">
+                  <div class="panel-heading">
+                    <span class="panel-icon">
+                      <i class="fa fa-pencil"></i>
+                    </span>
+                    <span class="panel-title">Para crear un nuevo miembro al equipo, por favor, rellene todos los campos.</span>
+                  </div>
+                  <div class="panel-body">
+                    <form id="SendDataFacCurEsc">
+                        <input type="text" class="form-control" name="writeFacCutEsc" id="writeFacCutEsc" placeholder="Escriba aquí..." />
+                    </form>
+                    <div class="setDataFacCurEsc">
+                       
+                    </div>
+
+                    
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: getFacCurEsc();" data-dismiss="modal">¡Agregar!...</button>
             </div>
         </div>
     </div>
