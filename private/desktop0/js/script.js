@@ -1265,6 +1265,15 @@ function OnItemClickTrTeamProject(value){
 	    }
   	});
 
+  	// $.ajax({
+	  //   url: "private/desktop0/html/build/ShowImgTeamProject.php",
+	  //   type: "POST",
+	  //   success: function(data){
+   // 			//OutMsgImgTeam(data);  
+   // 			$(".ShowInfoTeamProject").html(data);		
+	  //   }
+  	// });
+
   	$.ajax({
 	    url: "private/desktop0/html/build/ShowDataMembersTeamProject.php",
 	    type: "POST",
@@ -1273,13 +1282,6 @@ function OnItemClickTrTeamProject(value){
 	    }
   	});
 
-  	$.ajax({
-	    url: "private/desktop0/html/build/ShowImgTeamProject.php",
-	    type: "POST",
-	    success: function(data){
-   			OutMsgImgTeam(data);  		
-	    }
-  	});
 
 	$(".showTitleTeamProject").text(TeamName);
 	$(".WindowModalAboutTeamProject").click();
