@@ -1309,6 +1309,6 @@ function OutMsgImgTeam(msg){
 	$(".ContainerReturnTeamProject").delay(800).fadeIn(2000);
 }
 
-function AddNewFacCurEsc(){
+function AddNewTeamMemberModal(){
 	$(".AddNewTeamMemberModal").click();
 }
