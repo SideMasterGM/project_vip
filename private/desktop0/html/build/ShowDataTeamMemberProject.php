@@ -17,11 +17,11 @@
       if (is_array($QImg)){
         foreach ($QImg as $value) {
           ?>
-            .PhotoTeamProject {
+            .PhotoTeamMemberProject {
               position: relative;
               background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>');
               width: 100%; 
-              height:230px; 
+              height:130px; 
               background-size: cover; 
               border: 3px solid lightgrey; 
               float: left;
@@ -30,11 +30,11 @@
         }
       } else if (is_bool($QImg)){
         ?>
-            .PhotoTeamProject {
+            .PhotoTeamMemberProject {
               position: relative;
               background: url('private/desktop0/img/img-default/team.jpg'); 
               width: 100%; 
-              height:230px; 
+              height:130px; 
               background-size: cover; 
               border: 3px solid lightgrey; 
               float: left;
@@ -43,23 +43,22 @@
       }
     ?>
   
-    .PhotoTeamProject .camNewPhoto {
+    .PhotoTeamMemberProject .camNewPhoto {
       color: #fff;
       font-size: 14px;
-      padding: 20px 20px 20px 20px;
+      padding: 8px 20px 20px 20px;
       visibility: hidden;
     }
 
-    .PhotoTeamProject .camNewPhoto {
+    .PhotoTeamMemberProject .camNewPhoto {
       transition-duration: .1s;
       transform: linear;
       margin-top: -10px;
     }
 
-    .PhotoTeamProject:hover > .camNewPhoto {
+    .PhotoTeamMemberProject:hover > .camNewPhoto {
       visibility: visible;
       display: inline-block;
-
       transition-duration: .1s;
       transform: linear;
       margin: 0px;
@@ -67,20 +66,20 @@
       background-color: rgba(0,0,0,0.5);
     }
 
-    #FormImgTeamProjectUpdate #ChgImgTPUpdate {
+    #FormImgTeamMemberProjectUpdate #ChgImgTPMemberUpdate {
       visibility: hidden;
     }
   </style>
 
-   <div class="PhotoTeamProject">
-      <i class="fa fa-camera fa-2x icon-camera-change ChgAnimationPTP" onclick="javascript: ChgImgTeamProjectClick();" aria-hidden="true" title="Cambiar imagen del equipo"></i>
+   <div class="PhotoTeamMemberProject">
+      <i class="fa fa-camera fa-2x icon-camera-change ChgAnimationPTP" onclick="javascript: ChgImgTeamMemberProjectClick();" aria-hidden="true" title="Cambiar imagen del integrante"></i>
       <div class="camNewPhoto"><p>Actualizar imagen</p>
       </div>
   </div>
 </div>
 
-<form id="FormImgTeamProjectUpdate" enctype="multipart/form-data">
-    <input type="file" id="ChgImgTPUpdate" name="ChgImgTPUpdate" onchange="javascript: UploadImgTeamProject();" />
+<form id="FormImgTeamMemberProjectUpdate" enctype="multipart/form-data">
+    <input type="file" id="ChgImgTPMemberUpdate" name="ChgImgTPMemberUpdate" onchange="javascript: UploadImgTeamMemberProject();" />
 </form>
 
 <?php
