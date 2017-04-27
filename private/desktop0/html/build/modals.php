@@ -111,6 +111,41 @@
                   </div>
                   <div class="panel-body">
                     
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="panel-heading">
+                                <h3 class="panel-title showTitleTeamProject">Nombres y apellidos</h3>
+                            </div>
+
+                            <div class="ShowInfoTeamMemberProjectAdd">
+
+                            </div>
+
+                        </div>
+                        
+
+
+                        <div class="col-xs-8">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i></h3>
+                                            </div>
+
+                                            <div class="">
+                                                Something for else.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                     
                   </div>
                 </div>
