@@ -107,7 +107,7 @@
                     <span class="panel-icon">
                       <i class="fa fa-pencil"></i>
                     </span>
-                    <span class="panel-title">Para crear un nuevo miembro al equipo, por favor, rellene todos los campos.</span>
+                    <span class="panel-title">Por favor, rellene todos los campos para crear un integrante.</span>
                   </div>
                   <div class="panel-body">
                     
