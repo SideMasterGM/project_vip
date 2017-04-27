@@ -6,18 +6,43 @@
   @session_start();
 ?>
 
+<!-- Acá existe un problema, la imagen de perfil no se muestra -->
+
 <div class="ContainerReturnTeamProject">
   <style>
-    .PhotoTeamProject {
-      position: relative;
-      background: url('private/desktop0/img/img-default/team.jpg'); 
-      width: 100%; 
-      height:230px; 
-      background-size: cover; 
-      border: 3px solid lightgrey; 
-      float: left;
-    }
 
+    <?php
+      $QImg = $CN_VIP->getTeamImgPerfil($_SESSION['id_team'], "DESC", 1);
+
+      if (is_array($QImg)){
+        foreach ($QImg as $value) {
+          ?>
+            .PhotoTeamProject {
+              position: relative;
+              background: url('private/desktop0/img/img-default/team.jpg'); 
+              width: 100%; 
+              height:230px; 
+              background-size: cover; 
+              border: 3px solid lightgrey; 
+              float: left;
+            }
+          <?php
+        }
+      } else if (is_bool($QImg)){
+        ?>
+          .PhotoTeamProject {
+            position: relative;
+            background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>');
+            width: 100%; 
+            height:230px; 
+            background-size: cover; 
+            border: 3px solid lightgrey; 
+            float: left;
+          }
+        <?php
+      }
+    ?>
+  
     .PhotoTeamProject .camNewPhoto {
       color: #fff;
       font-size: 14px;
