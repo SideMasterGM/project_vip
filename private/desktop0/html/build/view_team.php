@@ -84,12 +84,18 @@
                                                  </tr>
                                             <?php
                                         }
+                                        
                                     }
 
                                 ?>
                             </tbody>
                         </table>
                     </div>
+    
+                    <form id="AssignSessionIDTeam">
+                        <input type="hidden" id="IDInputIDTeam" name="IDInputIDTeam" />
+                    </form>
+
                     <form id="ShowImgPerfilUser">
                     	<input type="hidden" name="nombre_de_usuario" id="nombre_de_usuario" />
                     </form>
