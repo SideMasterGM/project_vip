@@ -19,7 +19,7 @@
           ?>
             .PhotoTeamProject {
               position: relative;
-              background: url('private/desktop0/img/img-default/team.jpg'); 
+              background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>');
               width: 100%; 
               height:230px; 
               background-size: cover; 
@@ -30,15 +30,15 @@
         }
       } else if (is_bool($QImg)){
         ?>
-          .PhotoTeamProject {
-            position: relative;
-            background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>');
-            width: 100%; 
-            height:230px; 
-            background-size: cover; 
-            border: 3px solid lightgrey; 
-            float: left;
-          }
+            .PhotoTeamProject {
+              position: relative;
+              background: url('private/desktop0/img/img-default/team.jpg'); 
+              width: 100%; 
+              height:230px; 
+              background-size: cover; 
+              border: 3px solid lightgrey; 
+              float: left;
+            }
         <?php
       }
     ?>
