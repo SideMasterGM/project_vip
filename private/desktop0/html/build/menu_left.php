@@ -32,20 +32,38 @@
                     </div>
                 </li>
 
-                 <li class="panel panel-default dropdown agents__item">
-                    <a data-toggle="collapse" href="#dropdown-option-agents">
-                        <span class="icon fa fa-users"></span><span class="title">Miembros</span>
-                    </a>
-                    <!-- Dropdown level 1 -->
-                    <div id="dropdown-option-agents" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="nav navbar-nav">
-                                <li><a href="team">Equipo</a></li>
-                                <li><a href="coordination" onclick="javascript: addAgentNow();">Coordinación</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+                <?php
+
+                    $CN_VIP = CDB("vip");
+                    if ($CN_VIP->getProjectsCount()){
+                        ?>
+                            <li class="panel panel-default dropdown agents__item">
+                                <a data-toggle="collapse" href="#dropdown-option-agents">
+                                    <span class="icon fa fa-users"></span><span class="title">Miembros</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-option-agents" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="team">Equipo</a></li>
+                                            <li><a href="coordination" onclick="javascript: addAgentNow();">Coordinación</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php
+                    } else {
+                        if ($_SERVER['PHP_SELF'] == "/project_vip/team.php"){
+                            ?>
+                                <script type="text/javascript">
+                                    window.location.href="./";
+                                </script>
+                            <?php
+                        }
+                    }
+
+                ?>
+
 
                 <li class="add_property__item">
                     <a href="#" onclick="javascript: AddNewInstanciaAprobacion();">
