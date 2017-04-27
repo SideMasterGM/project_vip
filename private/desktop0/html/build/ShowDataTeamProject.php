@@ -58,10 +58,6 @@
     <input type="file" id="ChgImgTPUpdate" name="ChgImgTPUpdate" onchange="javascript: UploadImgTeamProject();" />
 </form>
 
-<form id="AssignSessionIDTeam">
-    <input type="hidden" id="IDInputIDTeam" name="IDInputIDTeam" />
-</form>
-
 <?php
     foreach ($CN_VIP->getTeamProjectById(@$_SESSION['id_team']) as $value) {
         $TeamID = $value['id_team'];
