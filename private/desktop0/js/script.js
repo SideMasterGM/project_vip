@@ -1313,7 +1313,7 @@ function OutMsgImgTeam(msg){
 function AddNewTeamMemberModal(){
 
 	$.ajax({
-	    url: "private/desktop0/html/build/ShowDataTeamProject.php",
+	    url: "private/desktop0/html/build/ShowDataTeamMemberProject.php",
 	    type: "POST",
 	    success: function(data){
 	    	$(".ShowInfoTeamMemberProjectAdd").html(data);
@@ -1321,6 +1321,25 @@ function AddNewTeamMemberModal(){
   	});
 
 	$(".AddNewTeamMemberModal").click();
+}
+
+function ChgImgTeamMemberProjectClick(){
+	$("#ChgImgTPMemberUpdate").click();
+}
+
+function UploadImgTeamMemberProject(){
+	var formData = new FormData($("#FormImgTeamMemberProjectUpdate")[0]);
+
+	$.ajax({
+    	url: "private/desktop0/html/build/UploadImgTeamProject.php",
+    	type: "POST",
+    	data: formData,
+    	contentType: false,
+    	processData: false,
+    	success: function(data){
+	      OutMsgImgTeam(data);
+    	}
+  	});
 }
 
 // function OnItemClickTrTeamProjectMouseOverChangeID(value){
