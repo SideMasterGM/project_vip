@@ -1282,7 +1282,6 @@ function OnItemClickTrTeamProject(value){
 	    }
   	});
 
-
 	$(".showTitleTeamProject").text(TeamName);
 	$(".WindowModalAboutTeamProject").click();
 }
@@ -1312,6 +1311,15 @@ function OutMsgImgTeam(msg){
 }
 
 function AddNewTeamMemberModal(){
+
+	$.ajax({
+	    url: "private/desktop0/html/build/ShowDataTeamProject.php",
+	    type: "POST",
+	    success: function(data){
+	    	$(".ShowInfoTeamMemberProjectAdd").html(data);
+	    }
+  	});
+
 	$(".AddNewTeamMemberModal").click();
 }
 
