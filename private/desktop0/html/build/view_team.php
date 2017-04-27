@@ -65,23 +65,27 @@
                             <?php include ("private/desktop0/html/build/CalcDate.php"); ?>
                             <tbody id="tbody_listArticle">
                                 <?php
-                                    foreach ($CN->getTeamProject() as $value) {
-                                        ?>
-                                            <tr onclick="javascript: OnItemClickTrTeamProject(this);">
-                                                <td><?php echo $value['id_team']; ?></td>
-                                                <td><?php echo $value['nombre']; ?></td>
-                                                <td><?php echo $value['date_log']; ?></td>
-                                                <td><?php echo nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
-                                                <td>
-                                                    <?php 
-                                                        foreach ($CN->getProjectsOnlyById($value['id_project']) as $value) {
-                                                            echo $value['nombre'];
-                                                        }
-                                                    ?>
-                                                </td>
-                                             </tr>
-                                        <?php
+
+                                    if (is_array($CN->getTeamProject())){
+                                        foreach ($CN->getTeamProject() as $value) {
+                                            ?>
+                                                <tr onclick="javascript: OnItemClickTrTeamProject(this);">
+                                                    <td><?php echo $value['id_team']; ?></td>
+                                                    <td><?php echo $value['nombre']; ?></td>
+                                                    <td><?php echo $value['date_log']; ?></td>
+                                                    <td><?php echo nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
+                                                    <td>
+                                                        <?php 
+                                                            foreach ($CN->getProjectsOnlyById($value['id_project']) as $value) {
+                                                                echo $value['nombre'];
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                 </tr>
+                                            <?php
+                                        }
                                     }
+
                                 ?>
                             </tbody>
                         </table>
