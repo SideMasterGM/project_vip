@@ -62,7 +62,7 @@
                             <div class="col-xs-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewFacCurEsc();" aria-hidden="true" title="Agregar nuevo integrante"></i></h3>
+                                        <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i></h3>
                                     </div>
 
                                     <div class="ShowInfoMembersTeamProject">
@@ -110,13 +110,7 @@
                     <span class="panel-title">Para crear un nuevo miembro al equipo, por favor, rellene todos los campos.</span>
                   </div>
                   <div class="panel-body">
-                    <form id="SendDataFacCurEsc">
-                        <input type="text" class="form-control" name="writeFacCutEsc" id="writeFacCutEsc" placeholder="Escriba aquí..." />
-                    </form>
-                    <div class="setDataFacCurEsc">
-                       
-                    </div>
-
+                    
                     
                   </div>
                 </div>
