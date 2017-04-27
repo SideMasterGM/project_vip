@@ -10,6 +10,7 @@
                         	</div>
                         	<div class="icon-addAgent-right">
                         		<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo proyecto" onclick="javascript: window.location.href='./project'" ></i>
+                                <i class="fa fa-users fa-2x" aria-hidden="true" title="Equipos" onclick="javascript: window.location.href='./team'" ></i>
                         	</div>
                         </div>
                     </div>
