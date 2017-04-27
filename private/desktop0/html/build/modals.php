@@ -1102,6 +1102,8 @@
                 </form>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgEmail();">Aplicar</button>
             </div>
@@ -1168,6 +1170,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgUserName();">Aplicar</button>
             </div>
@@ -1301,6 +1305,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgPW();">Aplicar</button>
             </div>
