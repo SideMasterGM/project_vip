@@ -37,8 +37,8 @@
                         <div class="card-body">
                             <i class="icon fa fa-user-secret fa-4x"></i>
                             <div class="content">
-                                <div class="title">0</div>
-                                <div class="sub-title">Equipo</div>
+                                <div class="title"><?php echo $CN->getTeamCount(); ?></div>
+                                <div class="sub-title">Equipos</div>
                             </div>
                             <div class="clear-both"></div>
                         </div>
