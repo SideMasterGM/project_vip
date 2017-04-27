@@ -796,8 +796,9 @@
 				@mkdir($path, 0777);					#En caso que no exista, se crea el directorio.
 
 			#Se hace una copia de la ruta actual del usuario |Users|nombre_de_usuario|.
-			$path_project 	= $path;
-			$path_team 		= $path;
+			$path_project 		= $path;
+			$path_team 			= $path;
+			$path_team_member 	= $path;
 
 			#Se concatena img_perfil, este será otro directorio dentro del directorio usuario.
 			$path .= "img_perfil/";
@@ -817,6 +818,11 @@
 			#Se verifica la existencia del directorio |Users|nombre_de_usuario|img_team|
 			if (!file_exists($path_team))
 				@mkdir($path_team, 0777);			#En caso que no exista, se crea el directorio.
+
+			$path_team_member .= "img_team_member/";
+			#Se verifica la existencia del directorio |Users|nombre_de_usuario|img_team_member|
+			if (!file_exists($path_team_member))
+				@mkdir($path_team_member, 0777);			#En caso que no exista, se crea el directorio.
 
 			#Retornamos verdadero, que todo ha salido correctamente.
 			return true;
