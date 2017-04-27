@@ -1312,3 +1312,18 @@ function OutMsgImgTeam(msg){
 function AddNewTeamMemberModal(){
 	$(".AddNewTeamMemberModal").click();
 }
+
+// function OnItemClickTrTeamProjectMouseOverChangeID(value){
+// 	var TeamID = value.getElementsByTagName("td")[0].innerHTML;
+
+// 	$("#IDInputIDTeam").val(TeamID);
+
+// 	$.ajax({
+// 	    url: "private/desktop0/html/build/ChgSessionIDTeam.php",
+// 	    type: "POST",
+// 	    data: $("#AssignSessionIDTeam").serialize(),
+// 	    success: function(data){
+//    			console.log("Sesión modificada");
+// 	    }
+//   	});
+// }
