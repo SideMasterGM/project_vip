@@ -1331,7 +1331,7 @@ function UploadImgTeamMemberProject(){
 	var formData = new FormData($("#FormImgTeamMemberProjectUpdate")[0]);
 
 	$.ajax({
-    	url: "private/desktop0/html/build/UploadImgTeamProject.php",
+    	url: "private/desktop0/html/build/UploadImgTeamMemberProject.php",
     	type: "POST",
     	data: formData,
     	contentType: false,
