@@ -30,7 +30,7 @@
                   position: relative;
                   background: url('<?php echo "private/desktop0/".$path.$_FILES['ChgImgTPMemberUpdate']['name']; ?>'); 
                   width: 100%; 
-                  height:230px; 
+                  height:130px; 
                   background-size: cover; 
                   border: 3px solid lightgrey; 
                   float: left;
