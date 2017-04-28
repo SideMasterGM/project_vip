@@ -1957,6 +1957,45 @@
 	    }
 
 	    /**
+			* Método que obtiene la imagen de perfil de un miembro de equipo.
+			*@param: $date_log_unix.
+		*/
+	    public function getTeamMemberImgPerfilByDateLogUNIX($date_log_unix){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team_members_img.
+		    #Atributos: date_log_unix.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE date_log_unix=".$date_log_unix." LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id' 				=> $row['id'], 
+	    				'id_team' 			=> $row['id_team'], 
+	    				'id_member' 		=> $row['id_member'], 
+	    				'folder' 			=> $row['folder'], 
+	    				'src' 				=> $row['src'], 
+	    				'date_log' 			=> $row['date_log'],
+	    				'date_log_unix' 	=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que agrega una imagen a un miembro de un equipo.
 			*@param: $id_team (ID del equipo), $folder (Ruta de almacenamiento), $src (Nombre del recurso).
 		*/
@@ -2001,9 +2040,34 @@
 
 				    	#Se agrega una nueva actividad sobre la acción.
 				    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
-				    	if ($this->addActivity($usr, 32, "Actualizando la imagen de un integrante de equipo con ID: ".$id_member." con ID de equipo: ".$id_team))
-					    	if ($QImgTeamMember->execute())
-					    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
+				    	if ($this->addActivity($usr, 32, "Actualizando la imagen de un integrante de equipo con ID: ".$id_member." con ID de equipo: ".$id_team)){
+					    	
+				    		#Ejecutando la consulta.
+					    	if ($QImgTeamMember->execute()){
+
+					    		#Comprobando la información devuelta por el método.
+					    		if (is_array($this->getTeamMemberImgPerfilByDateLogUNIX($date_log_unix))){
+
+					    			#Recorriendo la información.
+					    			foreach ($this->getTeamMemberImgPerfilByDateLogUNIX($date_log_unix) as $TMIP) {
+					    				#Asignando el ID de la imagen de perfil de un miembro de equipo a id_img.
+					    				$id_img = $TMIP['id'];
+
+							    		#Actualizando un miembro de equipo con id_member, agregando id_team y id_img.
+							    		if ($this->updateTeamMemberById($id_member, $id_team, $id_img)){
+							    			
+							    		}
+
+							    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
+					    				
+					    			}
+
+					    		} else if ($this->getTeamMemberImgPerfilByDateLogUNIX($date_log_unix)){
+					    			return false;
+					    		}
+
+					    	}
+				    	}
 	    				
 	    			}
 
