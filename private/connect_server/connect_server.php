@@ -1411,7 +1411,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-	        	if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+	        	if ($this->addActivity($usr, 24, "Actualización de un proyecto llamado: ".$name." con ID: ".$id_project))
 	    			return true;
 			    
 	    	}
@@ -1947,13 +1947,52 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-	        	if ($this->addActivity($usr, 34, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+	        	if ($this->addActivity($usr, 34, "Actualización de un miembro de equipo con ID: ".$id_member))
 	    			return true;
 			    
 	    	}
 
 		    #Se devuelve un valor booleano falso cuando algo ha fallado.
 		    return false;
+	    }
+
+	    /**
+			* Método que obtiene la imagen de perfil de un miembro de equipo identificado.
+			*@param: $id_img.
+		*/
+	    public function getTeamMemberImgPerfilById($id_img, $Order, $Limit){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team_members_img.
+		    #Atributos: id_img.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE id=".$id_img." ORDER BY id ".$Order." LIMIT ".$Limit.";");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$getData[] = [
+	    				'id' 				=> $row['id'], 
+	    				'id_team' 			=> $row['id_team'], 
+	    				'id_member' 		=> $row['id_member'], 
+	    				'folder' 			=> $row['folder'], 
+	    				'src' 				=> $row['src'], 
+	    				'date_log' 			=> $row['date_log'],
+	    				'date_log_unix' 	=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $getData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
 	    }
 
 	    /**
@@ -2052,6 +2091,9 @@
 					    			foreach ($this->getTeamMemberImgPerfilByDateLogUNIX($date_log_unix) as $TMIP) {
 					    				#Asignando el ID de la imagen de perfil de un miembro de equipo a id_img.
 					    				$id_img = $TMIP['id'];
+
+					    				#Agregando una variable de global.
+					    				@$_SESSION['id_img_member'] = $id_img;
 
 							    		#Actualizando un miembro de equipo con id_member, agregando id_team y id_img.
 							    		if ($this->updateTeamMemberById($id_member, $id_team, $id_img)){
