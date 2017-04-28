@@ -12,10 +12,12 @@
   <style>
 
     <?php
-      $QImg = $CN_VIP->getTeamImgPerfil($_SESSION['id_team'], "DESC", 1);
+      $QImg = $CN_VIP->getTeamMemberImgPerfilById(@$_SESSION['id_img_member'], "DESC", 1);
 
       if (is_array($QImg)){
         foreach ($QImg as $value) {
+            $TeamDateLog        = $value['date_log'];
+            $TeamDateLogUNIX    = $value['date_log_unix'];
           ?>
             .PhotoTeamMemberProject {
               position: relative;
@@ -82,16 +84,6 @@
     <input type="file" id="ChgImgTPMemberUpdate" name="ChgImgTPMemberUpdate" onchange="javascript: UploadImgTeamMemberProject();" />
 </form>
 
-<?php
-    foreach ($CN_VIP->getTeamProjectById(@$_SESSION['id_team']) as $value) {
-        $TeamID = $value['id_team'];
-        $TeamName = $value['nombre'];
-        $TeamDateLog = $value['date_log'];
-        $TeamDateLogUNIX = $value['date_log_unix'];
-        $TeamIDProject = $value['id_project'];
-    }
-?>
-
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
   <div class="panel">
@@ -106,7 +98,7 @@
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
           <?php 
-            foreach ($CN_VIP->getProjectsOnlyById($TeamIDProject) as $value) {
+            foreach ($CN_VIP->getProjectsOnlyById($_SESSION['id_project']) as $value) {
               $ProjectName = $value['nombre'];
             }
             echo $ProjectName;
