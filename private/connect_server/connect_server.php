@@ -1847,9 +1847,6 @@
 	    	@session_start();
 	    	$usr = @$_SESSION['usr'];
 
-	    	#Se limpia el nombre del recurso.
-	    	$src = $this->CleanString($src);
-
 	    	#Statement: Consulta preparada. 
 	    	#Tabla: vip_team_members.
 	    	#Atributos: id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix.
@@ -1858,8 +1855,8 @@
 	    	$QImgTeamMember = $this->db->prepare("INSERT INTO vip_team_members (id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix) VALUES (:id_team,:id_img,:firts_name,:last_name,:grado_academico,:dependencia_academica,:tipo_contratacion,:hrs_semanales_dedicacion,:date_log,:date_log_unix)");
 
 	    	#Se vinculan los valores con los parámetros.
-	    	$QImgTeamMember->bindValue(":id_team", 					"");
-	    	$QImgTeamMember->bindValue(":id_img", 					"");
+	    	$QImgTeamMember->bindValue(":id_team", 					1);
+	    	$QImgTeamMember->bindValue(":id_img", 					0);
 
 	    	$QImgTeamMember->bindValue(":firts_name", 				"");
 	    	$QImgTeamMember->bindValue(":last_name", 				"");
@@ -1891,7 +1888,50 @@
 		    #Atributos: date_log_unix.
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_team_members WHERE date_log_unix=".$date_log_unix." LIMIT 1;");
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members WHERE date_log_unix='".$date_log_unix."' LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$getData[] = [
+	    				'id_member' 				=> $row['id_member'], 
+	    				'id_team' 					=> $row['id_team'], 
+	    				'id_img' 					=> $row['id_img'], 
+	    				'firts_name' 				=> $row['firts_name'], 
+	    				'last_name' 				=> $row['last_name'], 
+	    				'grado_academico' 			=> $row['grado_academico'], 
+	    				'dependencia_academica' 	=> $row['dependencia_academica'], 
+	    				'tipo_contratacion' 		=> $row['tipo_contratacion'], 
+	    				'hrs_semanales_dedicacion' 	=> $row['hrs_semanales_dedicacion'], 
+	    				'date_log' 					=> $row['date_log'],
+	    				'date_log_unix' 			=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $getData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que obtiene todos los miembros registrados.
+			*@param: No hay.
+		*/
+	    public function getTeamMembers(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team_members.
+		    #Atributos: No hay.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -1960,7 +2000,7 @@
 			* Método que obtiene la imagen de perfil de un miembro de equipo identificado.
 			*@param: $id_img.
 		*/
-	    public function getTeamMemberImgPerfilById($id_img, $Order, $Limit){
+	    public function getTeamMemberImgPerfilById($id_team, $id_img, $Order, $Limit){
 	    	#Statement: Consulta no preparada. 
 		    #Tabla: vip_team_members_img.
 		    #Atributos: id_img.
@@ -1970,7 +2010,7 @@
 		    	$id_img = 1;
 		    }
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE id=".$id_img." ORDER BY date_log_unix ".$Order." LIMIT ".$Limit.";");
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE id_team=".$id_team." AND id=".$id_img." ORDER BY date_log_unix ".$Order." LIMIT ".$Limit.";");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -2009,7 +2049,7 @@
 		    #Atributos: date_log_unix.
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE date_log_unix=".$date_log_unix." LIMIT 1;");
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE date_log_unix='".$date_log_unix."' LIMIT 1;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
