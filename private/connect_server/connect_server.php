@@ -1536,7 +1536,7 @@
 		    #Atributos: id_project
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto WHERE id_project='".$id_project."' LIMIT 1;");
+	    	$stmt = $this->db->query("SELECT * FROM vip_proyecto WHERE id_project=".$id_project." LIMIT 1;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -1966,7 +1966,11 @@
 		    #Atributos: id_img.
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE id=".$id_img." ORDER BY id ".$Order." LIMIT ".$Limit.";");
+		    if ($id_img == "" && !isset($_SESSION['id_img_member'])){
+		    	$id_img = 1;
+		    }
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members_img WHERE id=".$id_img." ORDER BY date_log_unix ".$Order." LIMIT ".$Limit.";");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -2075,7 +2079,7 @@
 				    	$QImgTeamMember->bindValue(":folder", 			$folder);
 				    	$QImgTeamMember->bindValue(":src", 				$src);
 				    	$QImgTeamMember->bindValue(":date_log", 		$date_log);
-				    	$QImgTeamMember->bindValue(":date_log_unix", 	$date_log_unix;
+				    	$QImgTeamMember->bindValue(":date_log_unix", 	$date_log_unix);
 
 				    	#Se agrega una nueva actividad sobre la acción.
 				    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
