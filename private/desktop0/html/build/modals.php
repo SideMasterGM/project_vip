@@ -93,7 +93,7 @@
 <input type="hidden" class="AddNewTeamMemberModal" data-toggle="modal" data-target="#AddNewTeamMemberModal"  />
 
 <!-- Modal -->
-<div class="modal fade modal-primary" id="AddNewTeamMemberModal" tabindex="1" role="dialog" aria-labelledby="MyNewTeamMemberModal" onclick="javascript: getFacCurEsc();" aria-hidden="true">
+<div class="modal fade modal-primary" id="AddNewTeamMemberModal" tabindex="1" role="dialog" aria-labelledby="MyNewTeamMemberModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
