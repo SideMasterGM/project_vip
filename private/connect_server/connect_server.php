@@ -1468,7 +1468,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_project' 				=> $row['id_project'], 
 	    				'nombre' 					=> $row['nombre'],
 	    				'id_facultad_cur_escuela' 	=> $row['id_facultad_cur_escuela'],
@@ -1480,7 +1480,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -1546,7 +1546,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_project' 				=> $row['id_project'], 
 	    				'nombre' 					=> $row['nombre'],
 	    				'id_facultad_cur_escuela' 	=> $row['id_facultad_cur_escuela'],
@@ -1558,7 +1558,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -1585,14 +1585,14 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_project' 				=> $row['id_project'], 
 	    				'otros' 					=> $row['otros']
 	    			];
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -1683,7 +1683,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_team' 			=> $row['id_team'], 
 	    				'nombre' 			=> $row['nombre'], 
 	    				'id_project' 		=> $row['id_project'], 
@@ -1693,7 +1693,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -1725,7 +1725,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_team' 			=> $row['id_team'], 
 	    				'nombre' 			=> $row['nombre'], 
 	    				'id_project' 		=> $row['id_project'], 
@@ -1735,7 +1735,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -1901,7 +1901,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_member' 				=> $row['id_member'], 
 	    				'id_team' 					=> $row['id_team'], 
 	    				'id_img' 					=> $row['id_img'], 
@@ -1917,7 +1917,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -1976,7 +1976,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id' 				=> $row['id'], 
 	    				'id_team' 			=> $row['id_team'], 
 	    				'id_member' 		=> $row['id_member'], 
@@ -1988,7 +1988,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -2055,26 +2055,20 @@
 
 							    		#Actualizando un miembro de equipo con id_member, agregando id_team y id_img.
 							    		if ($this->updateTeamMemberById($id_member, $id_team, $id_img)){
-							    			
+							    			return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
 							    		}
 
-							    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
-					    				
 					    			}
 
 					    		} else if ($this->getTeamMemberImgPerfilByDateLogUNIX($date_log_unix)){
 					    			return false;
 					    		}
-
 					    	}
 				    	}
-	    				
 	    			}
-
 	    		} else if (is_bool($this->getTeamMemberByDateLogUNIX($date_log_unix))){
 	    			return false;
 	    		}
-
 	    	}
 
 		    #Si algo falla, se retorna un valor booleano falso.
@@ -2283,7 +2277,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_project' 					=> $row['id_project'], 
 	    				'id_comunidad_poblacion' 		=> $row['id_comunidad_poblacion'],
 	    				'cantidad_personas_atendidas' 	=> $row['cantidad_personas_atendidas'],
@@ -2292,7 +2286,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -2389,7 +2383,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_project' 			=> $row['id_project'], 
 	    				'duracion_meses' 		=> $row['duracion_meses'],
 	    				'fecha_inicio' 			=> $row['fecha_inicio'],
@@ -2399,7 +2393,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -2426,7 +2420,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_project' 		=> $row['id_project'], 
 	    				'nombre_organismo' 	=> $row['nombre_organismo'],
 	    				'monto_financiado' 	=> $row['monto_financiado'],
@@ -2435,7 +2429,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -2462,7 +2456,7 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id_project' 		=> $row['id_project'], 
 	    				'tipo_publicacion' 	=> $row['tipo_publicacion'],
 	    				'datos_publicacion' => $row['datos_publicacion'],
@@ -2471,7 +2465,7 @@
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -2837,14 +2831,14 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'codigo_facultad' 	=> $row['codigo_facultad'], 
 	    				'nombrefac' 		=> $row['nombrefac']
 	    			];
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
@@ -3027,14 +3021,14 @@
 	    		#Se recorren todos los registros.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
 	    			#Se asocian los resultados.
-	    			$UsersData[] = [
+	    			$getData[] = [
 	    				'id' 							=> $row['id'], 
 	    				'nombre_instancia_aprobacion' 	=> $row['nombre_instancia_aprobacion']
 	    			];
 	    		}
 
 	    		#Retorno del array cargado de información.
-	    		return $UsersData;
+	    		return $getData;
 	    	}
 
 	    	#Si algo falla, se retorna un valor booleano falso.
