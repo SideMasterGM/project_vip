@@ -1337,9 +1337,14 @@ function UploadImgTeamMemberProject(){
     	contentType: false,
     	processData: false,
     	success: function(data){
-	      OutMsgImgTeam(data);
+	      OutMsgImgTeamMember(data);
     	}
   	});
+}
+
+function OutMsgImgTeamMember(msg){
+	$('.ContainerReturnTeamMemberProject').html(msg);
+	$(".ContainerReturnTeamMemberProject").delay(800).fadeIn(2000);
 }
 
 // function OnItemClickTrTeamProjectMouseOverChangeID(value){
