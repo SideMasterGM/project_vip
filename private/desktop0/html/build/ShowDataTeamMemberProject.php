@@ -12,37 +12,62 @@
   <style>
 
     <?php
-      $QImg = $CN_VIP->getTeamMemberImgPerfilById(@$_SESSION['id_img_member'], "DESC", 1);
+        
+        if (is_array($CN_VIP->getTeamMembers())){
+            
+            foreach ($CN_VIP->getTeamMembers() as $ValueTeamMembers) {
+                if ($ValueTeamMembers['firts_name'] == ""){
+                    $id_member  = $ValueTeamMembers['id_member'];
+                    $id_img     = $ValueTeamMembers['id_img'];
+                    $id_team    = $_SESSION['id_team'];
+                    
+                    $QImg = $CN_VIP->getTeamMemberImgPerfilById($id_team, $id_img, "DESC", 1);
+                    
+                    if (is_array($QImg)){
+                        foreach ($QImg as $value) {
+                            $TeamDateLog        = $value['date_log'];
+                            $TeamDateLogUNIX    = $value['date_log_unix'];
+                          ?>
+                            .PhotoTeamMemberProject {
+                              position: relative;
+                              background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>');
+                              width: 100%; 
+                              height:130px; 
+                              background-size: cover; 
+                              border: 3px solid lightgrey; 
+                              float: left;
+                            }
+                          <?php
+                        }
+                      } else if (is_bool($QImg)){
+                        ?>
+                            .PhotoTeamMemberProject {
+                              position: relative;
+                              background: url('private/desktop0/img/img-default/team.jpg'); 
+                              width: 100%; 
+                              height:130px; 
+                              background-size: cover; 
+                              border: 3px solid lightgrey; 
+                              float: left;
+                            }
+                        <?php
+                      }
+                }
+            }   
 
-      if (is_array($QImg)){
-        foreach ($QImg as $value) {
-            $TeamDateLog        = $value['date_log'];
-            $TeamDateLogUNIX    = $value['date_log_unix'];
-          ?>
-            .PhotoTeamMemberProject {
-              position: relative;
-              background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>');
-              width: 100%; 
-              height:130px; 
-              background-size: cover; 
-              border: 3px solid lightgrey; 
-              float: left;
-            }
-          <?php
+        } else if (is_bool($CN_VIP->getTeamMembers())){
+            ?>
+                .PhotoTeamMemberProject {
+                  position: relative;
+                  background: url('private/desktop0/img/img-default/team.jpg'); 
+                  width: 100%; 
+                  height:130px; 
+                  background-size: cover; 
+                  border: 3px solid lightgrey; 
+                  float: left;
+                }
+            <?php
         }
-      } else if (is_bool($QImg)){
-        ?>
-            .PhotoTeamMemberProject {
-              position: relative;
-              background: url('private/desktop0/img/img-default/team.jpg'); 
-              width: 100%; 
-              height:130px; 
-              background-size: cover; 
-              border: 3px solid lightgrey; 
-              float: left;
-            }
-        <?php
-      }
     ?>
   
     .PhotoTeamMemberProject .camNewPhoto {
