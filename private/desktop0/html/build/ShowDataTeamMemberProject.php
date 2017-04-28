@@ -87,40 +87,41 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
   <div class="panel">
-    <div class="panel-heading" role="tab" id="headingOne">
+    <div class="panel-heading" role="tab" id="headingVisibleOne">
         <span class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseVisibleOne" aria-expanded="false" aria-controls="collapseVisibleOne">
               Vínculo de proyecto
           </a>
         </span>
     </div>
 
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapseVisibleOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingVisibleOne">
       <div class="panel-body">
-          <?php 
-            foreach ($CN_VIP->getProjectsOnlyById($_SESSION['id_project']) as $value) {
-              $ProjectName = $value['nombre'];
-            }
-            echo $ProjectName;
-          ?>                          
+          Algun valor que se guarda                          
         </div>
     </div>                
   </div>
 
-  <div class="panel">
-     <div class="panel-heading" role="tab" id="headingTwo">
-        <span class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Fecha de creación
-          </a>
-        </span>
-    </div>
+    <?php
+        if ((isset($TeamDateLog) && $TeamDateLog != "") && (isset($TeamDateLogUNIX) && $TeamDateLogUNIX != "")){
+            ?>
+                <div class="panel">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <span class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              Fecha de creación
+                          </a>
+                        </span>
+                    </div>
 
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-         <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX));; ?>
-      </div>
-    </div>                
-  </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX));; ?>
+                        </div>
+                    </div>                
+                </div>
+            <?php
+        }
+    ?>
 
 </div>
