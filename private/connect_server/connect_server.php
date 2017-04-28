@@ -90,6 +90,7 @@
 			|   31	|	Actualización de la imagen de un equipo					|
 			|   32	|	Actualización de la imagen de un miembro de equipo		|
 			|   33	|	Creación de un miembro de equipo 						|
+			|   34	|	Actualización de un miembro de equipo 					|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1925,20 +1926,20 @@
 
 	    /**
 			* Método que actualiza la información de un miembro de equipo.
-			*@param: $id_project (Identificador del proyecto), $name (Nombre), $content (Objetivos y resultados), $IDFacCurEsc (Identificador).
+			*@param: $id_member (Identificador del miembro de equipo), $id_team (ID del equipo), $id_img (ID de imagen de perfil).
 		*/
-	    public function updateTeamMemberById($id_project, $name, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion){
+	    public function updateTeamMemberById($id_member, $id_team, $id_img){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 	    	$usr = @$_SESSION['usr'];
 
 	    	#Statement: Consulta no preparada. 
-	    	#Tabla: vip_proyecto.
-	    	#Atributos: id_project, nombre, id_facultad_cur_escuela, contenido, fecha_aprobacion, cod_dictamen_economico, id_instancia_aprobacion.
+	    	#Tabla: vip_team_members.
+	    	#Atributos: id_member, id_team, id_img.
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-	    	$Reason = "UPDATE vip_proyecto SET nombre='".$name."', id_facultad_cur_escuela='".$IDFacCurEsc."', contenido='".$content."', fecha_aprobacion='".$FechaAprobacion."', cod_dictamen_economico='".$CodigoDictamen."', id_instancia_aprobacion='".$IDInstanciaAprobacion."' WHERE id_project='".$id_project."'";
+	    	$Reason = "UPDATE vip_team_members SET id_team='".$id_team."', id_img='".$id_img."' WHERE id_member='".$id_member."'";
 	    	
 	    	#Se ejecuta.
 	    	$Execution = $this->db->query($Reason);
@@ -1946,7 +1947,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-	        	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+	        	if ($this->addActivity($usr, 34, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
 	    			return true;
 			    
 	    	}
