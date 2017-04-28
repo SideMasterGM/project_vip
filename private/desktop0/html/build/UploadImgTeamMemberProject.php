@@ -23,7 +23,7 @@
 
           $path = "users/".$_SESSION['usr']."/img_team_member/";
 
-          if ($CN->addTeamImgPerfil(@$_SESSION['id_team'], $path, $_FILES['ChgImgTPMemberUpdate']['name'])){
+          if ($CN->addTeamMemberImgPerfil(@$_SESSION['id_team'], $path, $_FILES['ChgImgTPMemberUpdate']['name'])){
             ?>
               <style>
                 .PhotoTeamMemberProject {
