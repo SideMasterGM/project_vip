@@ -83,9 +83,13 @@
 			|   27	|	Actualización de la información financiera				|
 			|   28	|	Actualización de los resultados de un Proyecto			|
 			|   29	|	Actualización del informe final de un Proyecto			|
+			+-------+-----------------------------------------------------------+
+			| Code 	|	Descripción	-> Equipos y miembros						|
+			+-------+-----------------------------------------------------------+
 			|   30	|	Creación de un equipo									|
 			|   31	|	Actualización de la imagen de un equipo					|
 			|   32	|	Actualización de la imagen de un miembro de equipo		|
+			|   33	|	Creación de un miembro de equipo 						|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1406,7 +1410,7 @@
 	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
 	    	if ($Execution){
 	        	#Se crea una nueva actividad.
-	        	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+	        	if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
 	    			return true;
 			    
 	    	}
@@ -1794,7 +1798,7 @@
 			* Método que agrega un miembro a un equipo.
 			*@param: $id_team (ID del equipo), $folder (Ruta de almacenamiento), $src (Nombre del recurso).
 		*/
-	    public function addTeamMemberImgPerfil($id_team, $folder, $src){
+	    public function addTeamMember($id_team, $folder, $src){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 	    	$usr = @$_SESSION['usr'];
@@ -1803,8 +1807,8 @@
 	    	$src = $this->CleanString($src);
 
 	    	#Statement: Consulta preparada. 
-	    	#Tabla: vip_team_members_img.
-	    	#Atributos: id_team, folder, src, date_log, date_log_unix.
+	    	#Tabla: vip_team_members.
+	    	#Atributos: id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	$QImgTeamMember = $this->db->prepare("INSERT INTO vip_team_members (id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix) VALUES (:id_team,:id_img,:firts_name,:last_name,:grado_academico,:dependencia_academica,:tipo_contratacion,:hrs_semanales_dedicacion,:date_log,:date_log_unix)");
@@ -1812,23 +1816,143 @@
 	    	#Se vinculan los valores con los parámetros.
 	    	$QImgTeamMember->bindValue(":id_team", 					$id_team);
 	    	$QImgTeamMember->bindValue(":id_img", 					$id_img);
+
 	    	$QImgTeamMember->bindValue(":firts_name", 				$firts_name);
 	    	$QImgTeamMember->bindValue(":last_name", 				$last_name);
 	    	$QImgTeamMember->bindValue(":grado_academico", 			$grado_academico);
 	    	$QImgTeamMember->bindValue(":dependencia_academica", 	$dependencia_academica);
 	    	$QImgTeamMember->bindValue(":tipo_contratacion", 		$tipo_contratacion);
 	    	$QImgTeamMember->bindValue(":hrs_semanales_dedicacion", $hrs_semanales_dedicacion);
+
 	    	$QImgTeamMember->bindValue(":date_log", 				date('Y-n-j'));
 	    	$QImgTeamMember->bindValue(":date_log_unix", 			time());
 
 	    	#Se agrega una nueva actividad sobre la acción.
 	    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
-	    	if ($this->addActivity($usr, 32, "Actualizando la imagen de un integrante de equipo con ID: ".$id_member." con ID de equipo: ".$id_team))
+	    	if ($this->addActivity($usr, 33, "Creación de un miembro llamado: ".$firts_name.", con ID de equipo: ".$id_team))
 		    	if ($QImgTeamMember->execute())
 		    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
 
 		    #Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    /**
+			* Método que agrega un miembro a un equipo de forma temporal, hasta que el usuario agregue toda la información.
+			*@param: $id_team (ID del equipo), $folder (Ruta de almacenamiento), $src (Nombre del recurso).
+		*/
+	    public function addTeamMemberDataDefault($date_log, $date_log_unix){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
+	    	#Se limpia el nombre del recurso.
+	    	$src = $this->CleanString($src);
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_team_members.
+	    	#Atributos: id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix.
+	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+	    	$QImgTeamMember = $this->db->prepare("INSERT INTO vip_team_members (id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix) VALUES (:id_team,:id_img,:firts_name,:last_name,:grado_academico,:dependencia_academica,:tipo_contratacion,:hrs_semanales_dedicacion,:date_log,:date_log_unix)");
+
+	    	#Se vinculan los valores con los parámetros.
+	    	$QImgTeamMember->bindValue(":id_team", 					"");
+	    	$QImgTeamMember->bindValue(":id_img", 					"");
+
+	    	$QImgTeamMember->bindValue(":firts_name", 				"");
+	    	$QImgTeamMember->bindValue(":last_name", 				"");
+	    	$QImgTeamMember->bindValue(":grado_academico", 			"");
+	    	$QImgTeamMember->bindValue(":dependencia_academica", 	"");
+	    	$QImgTeamMember->bindValue(":tipo_contratacion", 		"");
+	    	$QImgTeamMember->bindValue(":hrs_semanales_dedicacion", "");
+
+	    	$QImgTeamMember->bindValue(":date_log", 				$date_log);
+	    	$QImgTeamMember->bindValue(":date_log_unix", 			$date_log_unix);
+
+	    	#Se agrega una nueva actividad sobre la acción.
+	    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
+	    	if ($this->addActivity($usr, 33, "Creación de un miembro con fecha: ".$date_log.", con valor decimal: ".$date_log_unix))
+		    	if ($QImgTeamMember->execute())
+		    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
+
+		    #Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que obtiene un miembro en específico de un equipo.
+			*@param: $date_log_unix.
+		*/
+	    public function getTeamMemberByDateLogUNIX($date_log_unix){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team_members.
+		    #Atributos: date_log_unix.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members WHERE date_log_unix=".$date_log_unix." LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$UsersData[] = [
+	    				'id_member' 				=> $row['id_member'], 
+	    				'id_team' 					=> $row['id_team'], 
+	    				'id_img' 					=> $row['id_img'], 
+	    				'firts_name' 				=> $row['firts_name'], 
+	    				'last_name' 				=> $row['last_name'], 
+	    				'grado_academico' 			=> $row['grado_academico'], 
+	    				'dependencia_academica' 	=> $row['dependencia_academica'], 
+	    				'tipo_contratacion' 		=> $row['tipo_contratacion'], 
+	    				'hrs_semanales_dedicacion' 	=> $row['hrs_semanales_dedicacion'], 
+	    				'date_log' 					=> $row['date_log'],
+	    				'date_log_unix' 			=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que actualiza la información de un miembro de equipo.
+			*@param: $id_project (Identificador del proyecto), $name (Nombre), $content (Objetivos y resultados), $IDFacCurEsc (Identificador).
+		*/
+	    public function updateTeamMemberById($id_project, $name, $content, $IDFacCurEsc, $FechaAprobacion, $CodigoDictamen, $IDInstanciaAprobacion){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
+	    	#Statement: Consulta no preparada. 
+	    	#Tabla: vip_proyecto.
+	    	#Atributos: id_project, nombre, id_facultad_cur_escuela, contenido, fecha_aprobacion, cod_dictamen_economico, id_instancia_aprobacion.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = "UPDATE vip_proyecto SET nombre='".$name."', id_facultad_cur_escuela='".$IDFacCurEsc."', contenido='".$content."', fecha_aprobacion='".$FechaAprobacion."', cod_dictamen_economico='".$CodigoDictamen."', id_instancia_aprobacion='".$IDInstanciaAprobacion."' WHERE id_project='".$id_project."'";
+	    	
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
+
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+	        	//if ($this->addActivity($usr, 24, "Actualización de un proyecto con llamado: ".$name." con ID: ".$id_project))
+	    			return true;
+			    
+	    	}
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
 	    }
 
 	    /**
@@ -1843,26 +1967,50 @@
 	    	#Se limpia el nombre del recurso.
 	    	$src = $this->CleanString($src);
 
-	    	#Statement: Consulta preparada. 
-	    	#Tabla: vip_team_members_img.
-	    	#Atributos: id_team, id_member, folder, src, date_log, date_log_unix.
-	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+	    	$date_log 		= date('Y-n-j');
+	    	$date_log_unix 	= time();
 
-	    	$QImgTeamMember = $this->db->prepare("INSERT INTO vip_team_members_img (id_team, id_member, folder, src, date_log, date_log_unix) VALUES (:id_team,:id_member,:folder,:src,:date_log,:date_log_unix)");
+	    	#Aperturando el integrante o miembro de equipo, para luego obtener el ID asignado.
+	    	#La orientación se estará ejecutando con el valor decimal date_log_unix.
+	    	if ($this->addTeamMemberDataDefault($date_log, $date_log_unix)){
 
-	    	#Se vinculan los valores con los parámetros.
-	    	$QImgTeamMember->bindValue(":id_team", $id_team);
-	    	$QImgTeamMember->bindValue(":id_member", $id_member);
-	    	$QImgTeamMember->bindValue(":folder", $folder);
-	    	$QImgTeamMember->bindValue(":src", $src);
-	    	$QImgTeamMember->bindValue(":date_log", date('Y-n-j'));
-	    	$QImgTeamMember->bindValue(":date_log_unix", time());
+	    		#Obtener la información anteriormente almacenada en este registro del miembro. 
+	    		#Extrae la información por el date_log_unix que fue agregado para identificar.
+	    		if (is_array($this->getTeamMemberByDateLogUNIX($date_log_unix))){
 
-	    	#Se agrega una nueva actividad sobre la acción.
-	    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
-	    	if ($this->addActivity($usr, 32, "Actualizando la imagen de un integrante de equipo con ID: ".$id_member." con ID de equipo: ".$id_team))
-		    	if ($QImgTeamMember->execute())
-		    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
+	    			#Recorriendo los valores que devuelve el array.
+	    			foreach ($this->getTeamMemberByDateLogUNIX($date_log_unix) as $value) {
+	    				#Obteniendo el valor id_member;
+	    				$id_member = $value['id_member'];
+
+				    	#Statement: Consulta preparada. 
+				    	#Tabla: vip_team_members_img.
+				    	#Atributos: id_team, id_member, folder, src, date_log, date_log_unix.
+				    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
+
+				    	$QImgTeamMember = $this->db->prepare("INSERT INTO vip_team_members_img (id_team, id_member, folder, src, date_log, date_log_unix) VALUES (:id_team,:id_member,:folder,:src,:date_log,:date_log_unix)");
+
+				    	#Se vinculan los valores con los parámetros.
+				    	$QImgTeamMember->bindValue(":id_team", 			$id_team);
+				    	$QImgTeamMember->bindValue(":id_member", 		$id_member);
+				    	$QImgTeamMember->bindValue(":folder", 			$folder);
+				    	$QImgTeamMember->bindValue(":src", 				$src);
+				    	$QImgTeamMember->bindValue(":date_log", 		$date_log);
+				    	$QImgTeamMember->bindValue(":date_log_unix", 	$date_log_unix;
+
+				    	#Se agrega una nueva actividad sobre la acción.
+				    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
+				    	if ($this->addActivity($usr, 32, "Actualizando la imagen de un integrante de equipo con ID: ".$id_member." con ID de equipo: ".$id_team))
+					    	if ($QImgTeamMember->execute())
+					    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
+	    				
+	    			}
+
+	    		} else if (is_bool($this->getTeamMemberByDateLogUNIX($date_log_unix))){
+	    			return false;
+	    		}
+
+	    	}
 
 		    #Si algo falla, se retorna un valor booleano falso.
 	    	return false;
