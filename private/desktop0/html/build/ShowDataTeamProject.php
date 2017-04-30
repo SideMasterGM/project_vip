@@ -6,8 +6,6 @@
   @session_start();
 ?>
 
-<!-- Acá existe un problema, la imagen de perfil no se muestra -->
-
 <div class="ContainerReturnTeamProject">
   <style>
 
