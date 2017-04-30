@@ -109,7 +109,7 @@
                     </span>
                     <span class="panel-title">Por favor, rellene todos los campos para crear un integrante.</span>
                   </div>
-                  <div class="panel-body">
+                  <div class="panel-body" style="height: 530px;">
                     
                     <div class="row">
                         <div class="col-xs-4">
@@ -123,7 +123,7 @@
 
                         </div>
                         
-                        <div class="col-xs-8">
+                        <div class="col-xs-8" style="margin-bottom: 0;">
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-xs-12">
@@ -133,8 +133,8 @@
                                             </div>
 
                                             <div class="panel-body">
-                                                <input type="text" class="form-control" id="id_team_member_firstname" placeholder="* Nombre(s)" /><br/>
-                                                <input type="text" class="form-control" id="id_team_member_lastname" placeholder="* Apellido(s)" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_firstname" placeholder="* Nombre(s)" onkeyup="javascript: ChgCharacterTitleMemberModal();" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_lastname" placeholder="* Apellido(s)" onkeyup="javascript: ChgCharacterTitleMemberModal();" /><br/>
                                             </div>
                                         </div>
 
@@ -144,7 +144,7 @@
                                             </div>
 
                                             <div class="panel-body">
-                                                <input type="text" class="form-control" id="id_team_member_grado_academico" placeholder="* Grado académico" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_grado_academico" placeholder="* Grado académico"/><br/>
                                                 <input type="text" class="form-control" id="id_team_member_dependencia_academica" placeholder="* Dependencia académica" /><br/>
                                                 <input type="text" class="form-control" id="id_team_member_tipo_contratacion" placeholder="* Tipo de contratación" /><br/>
                                                 <input type="text" class="form-control" id="id_team_member_hrs_semanales_dedicacion" placeholder="* Horas semanales de dedicación" /><br/>
