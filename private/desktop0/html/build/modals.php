@@ -123,19 +123,31 @@
 
                         </div>
                         
-
-
                         <div class="col-xs-8">
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i></h3>
+                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Nombre(s) y apellido(s) <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
                                             </div>
 
-                                            <div class="">
-                                                Something for else.
+                                            <div class="panel-body">
+                                                <input type="text" class="form-control" id="id_team_member_firstname" placeholder="* Nombre(s)" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_lastname" placeholder="* Apellido(s)" /><br/>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Académico <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
+                                            </div>
+
+                                            <div class="panel-body">
+                                                <input type="text" class="form-control" id="id_team_member_grado_academico" placeholder="* Grado académico" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_dependencia_academica" placeholder="* Dependencia académica" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_tipo_contratacion" placeholder="* Tipo de contratación" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_hrs_semanales_dedicacion" placeholder="* Horas semanales de dedicación" /><br/>
                                             </div>
                                         </div>
 
