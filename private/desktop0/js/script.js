@@ -1347,17 +1347,10 @@ function OutMsgImgTeamMember(msg){
 	$(".ContainerReturnTeamMemberProject").delay(800).fadeIn(2000);
 }
 
-// function OnItemClickTrTeamProjectMouseOverChangeID(value){
-// 	var TeamID = value.getElementsByTagName("td")[0].innerHTML;
-
-// 	$("#IDInputIDTeam").val(TeamID);
-
-// 	$.ajax({
-// 	    url: "private/desktop0/html/build/ChgSessionIDTeam.php",
-// 	    type: "POST",
-// 	    data: $("#AssignSessionIDTeam").serialize(),
-// 	    success: function(data){
-//    			console.log("Sesión modificada");
-// 	    }
-//   	});
-// }
+function ChgCharacterTitleMemberModal(value){
+	if ($(value).val() != ""){
+		$("#showTitleTeamProject").text("Equipo: " + $(value).val());
+	} else {
+		$("#showTitleTeamProject").text("Nuevo equipo");
+	}
+}
