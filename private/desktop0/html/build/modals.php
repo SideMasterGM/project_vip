@@ -133,8 +133,8 @@
                                             </div>
 
                                             <div class="panel-body">
-                                                <input type="text" class="form-control" id="id_team_member_firstname" placeholder="* Nombre(s)" onkeyup="javascript: ChgCharacterTitleMemberModal();" /><br/>
-                                                <input type="text" class="form-control" id="id_team_member_lastname" placeholder="* Apellido(s)" onkeyup="javascript: ChgCharacterTitleMemberModal();" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_firstname" placeholder="* Nombre(s)" onkeyup="javascript: ChgCharacterTitleMemberModal(this);" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_lastname" placeholder="* Apellido(s)" onkeyup="javascript: ChgCharacterTitleMemberModal(this);" /><br/>
                                             </div>
                                         </div>
 
