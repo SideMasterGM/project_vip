@@ -12,15 +12,15 @@
   <style>
 
     <?php
-        
-        if (is_array($CN_VIP->getTeamMembers())){
+        $id_team = @$_SESSION['id_team'];
+
+        if (is_array($CN_VIP->getTeamMembers($id_team))){
             
-            foreach ($CN_VIP->getTeamMembers() as $ValueTeamMembers) {
+            foreach ($CN_VIP->getTeamMembers($id_team) as $ValueTeamMembers) {
                 if ($ValueTeamMembers['firts_name'] == ""){
                     $id_member  = $ValueTeamMembers['id_member'];
                     $id_img     = $ValueTeamMembers['id_img'];
-                    $id_team    = $_SESSION['id_team'];
-                    
+
                     $QImg = $CN_VIP->getTeamMemberImgPerfilById($id_team, $id_img, "DESC", 1);
                     
                     if (is_array($QImg)){
@@ -55,8 +55,7 @@
                 }
             }
 
-        } else if (is_bool($CN_VIP->getTeamMembers())){
-            echo "Haber que pasa por acá";
+        } else if (is_bool($CN_VIP->getTeamMembers($id_team))){
             ?>
                 .PhotoTeamMemberProject {
                   position: relative;
