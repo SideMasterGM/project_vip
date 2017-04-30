@@ -131,15 +131,15 @@
         if ((isset($TeamDateLog) && $TeamDateLog != "") && (isset($TeamDateLogUNIX) && $TeamDateLogUNIX != "")){
             ?>
                 <div class="panel">
-                    <div class="panel-heading" role="tab" id="headingTwo">
+                    <div class="panel-heading" role="tab" id="headingMemberInfo">
                         <span class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseMemberInfo" aria-expanded="false" aria-controls="collapseMemberInfo">
                               Fecha de creación
                           </a>
                         </span>
                     </div>
 
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div id="collapseMemberInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMemberInfo">
                         <div class="panel-body">
                             <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX));; ?>
                         </div>
