@@ -53,9 +53,10 @@
                         <?php
                       }
                 }
-            }   
+            }
 
         } else if (is_bool($CN_VIP->getTeamMembers())){
+            echo "Haber que pasa por acá";
             ?>
                 .PhotoTeamMemberProject {
                   position: relative;
