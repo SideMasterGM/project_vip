@@ -1410,6 +1410,20 @@ function addMemberToTeam(){
 		$("#dataSendIDs_dependencia_academica").val(dependencia_academica);
 		$("#dataSendIDs_tipo_contratacion").val(tipo_contratacion);
 		$("#dataSendIDs_hrs_semanales_dedicacion").val(hrs_semanales);
+
+		$.ajax({
+		    url: "private/desktop0/html/build/addTeamToMember.php",
+		    type: "POST",
+		    data: $("#dataSendIDs").serialize(),
+		    success: function(data){
+		    	if (data == "OK"){
+
+		    	} else {
+		    		alert("Ha ocurrido un problema, por favor, vuelva a intentarlo!.");
+		    	}
+		    }
+	  	});
+
 	} else {
 		$(".TeamMemberValidationFields").click();
 	}
