@@ -190,10 +190,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myTeamMemberValidationFields"></h4>
+                <h4 class="modal-title" id="myTeamMemberValidationFields">¡Hey, hey!. Un momento.</h4>
             </div>
             <div class="modal-body">
-                <h4>¡Hey, hey!. Por favor, rellene todos los campos.</h4>
+                <h4>Por favor, rellene todos los campos.</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="javascript: CloseMyModalOpenOtherModal()" data-dismiss="modal">¡Entendido!...</button>
