@@ -1347,10 +1347,59 @@ function OutMsgImgTeamMember(msg){
 	$(".ContainerReturnTeamMemberProject").delay(800).fadeIn(2000);
 }
 
-function ChgCharacterTitleMemberModal(value){
-	if ($(value).val() != ""){
-		$("#showTitleTeamProject").text("Equipo: " + $(value).val());
-	} else {
-		$("#showTitleTeamProject").text("Nuevo equipo");
+function ChgCharacterTitleFirstNameModal(value){
+	var firstname = $(value).val();
+	var lastnames = $("#id_team_member_lastname").val();
+
+	var FN = firstname.split(" ");
+	var LN = lastnames.split(" ");
+
+	if (lastnames == ""){
+		if (firstname != ""){
+			$(".showTitleTeamMemberProject").text(FN[0]);
+		} else {
+			$(".showTitleTeamMemberProject").text("Identidad");
+		}
+	} else if (lastnames != "") {
+		if (firstname != ""){
+			$(".showTitleTeamMemberProject").text(FN[0] + " " + LN[0]);
+		} else {
+			$(".showTitleTeamMemberProject").text(LN[0]);
+		}
 	}
+}
+
+function ChgCharacterTitleLastNameModal(value){
+	var lastnames = $(value).val();
+	var firstname = $("#id_team_member_firstname").val();
+
+	var FN = firstname.split(" ");
+	var LN = lastnames.split(" ");
+
+	if (firstname == ""){
+		if (lastnames != ""){
+			$(".showTitleTeamMemberProject").text(LN[0]);
+		} else {
+			$(".showTitleTeamMemberProject").text("Identidad");
+		}
+	} else if (firstname != "") {
+		if (lastnames != ""){
+			$(".showTitleTeamMemberProject").text(FN[0] + " " + LN[0]);
+		} else {
+			$(".showTitleTeamMemberProject").text(FN[0]);
+		}
+	}
+}
+
+function OpenMenuGradoAcademicoButtonVal(value){
+	$("#id_team_member_grado_academico").val($(value).val());
+}
+
+function addMemberToTeam(){
+	$("#dataSendIDs_firstname").val($("#id_team_member_firstname").val());
+	$("#dataSendIDs_lastname").val($("#id_team_member_lastname").val());
+	$("#dataSendIDs_grado_academico").val($("#id_team_member_grado_academico").val());
+	$("#dataSendIDs_dependencia_academica").val($("#id_team_member_dependencia_academica").val());
+	$("#dataSendIDs_tipo_contratacion").val($("#id_team_member_tipo_contratacion").val());
+	$("#dataSendIDs_hrs_semanales_dedicacion").val($("#id_team_member_hrs_semanales_dedicacion").val());
 }
