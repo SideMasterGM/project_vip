@@ -129,7 +129,7 @@
                                     <div class="col-xs-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Datos personales <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
+                                                <h3 class="panel-title"><span class="icon fa fa-info-circle"></span> Datos personales <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
                                             </div>
 
                                             <div class="panel-body">
@@ -140,7 +140,7 @@
 
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Académico <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
+                                                <h3 class="panel-title"><span class="icon fa fa-cubes"></span> Académico <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
                                             </div>
 
                                             <div class="panel-body">
