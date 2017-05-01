@@ -111,22 +111,6 @@
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   
-  <div class="panel">
-    <div class="panel-heading" role="tab" id="headingVisibleOne">
-        <span class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseVisibleOne" aria-expanded="false" aria-controls="collapseVisibleOne">
-              Vínculo de proyecto
-          </a>
-        </span>
-    </div>
-
-    <div id="collapseVisibleOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingVisibleOne">
-      <div class="panel-body">
-          Algun valor que se guarda                          
-        </div>
-    </div>                
-  </div>
-
     <?php
         if ((isset($TeamDateLog) && $TeamDateLog != "") && (isset($TeamDateLogUNIX) && $TeamDateLogUNIX != "")){
             ?>
@@ -148,5 +132,59 @@
             <?php
         }
     ?>
+
+    <div class="panel">
+        <div class="panel-heading" role="tab" id="headingDesgracia">
+            <span class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseDesgracia" aria-expanded="false" aria-controls="collapseDesgracia">
+                    Grado Académico
+                </a>
+            </span>
+        </div>
+
+        <form id="dataSendIDs">
+            <input type="hidden" id="dataSendIDs_id_team" name="dataSendIDs_id_team" value="<?php echo $id_team; ?>" />
+            <input type="hidden" id="dataSendIDs_id_member" name="dataSendIDs_id_member" value="<?php echo @$id_member; ?>" />
+            
+            <input type="hidden" id="dataSendIDs_firstname" name="dataSendIDs_firstname" value="" />
+            <input type="hidden" id="dataSendIDs_lastname" name="dataSendIDs_lastname" value="" />
+            
+            <input type="hidden" id="dataSendIDs_grado_academico" name="dataSendIDs_grado_academico" value="" />
+            <input type="hidden" id="dataSendIDs_dependencia_academica" name="dataSendIDs_dependencia_academica" value="" />
+            
+            <input type="hidden" id="dataSendIDs_tipo_contratacion" name="dataSendIDs_tipo_contratacion" value="" />
+            <input type="hidden" id="dataSendIDs_hrs_semanales_dedicacion" name="dataSendIDs_hrs_semanales_dedicacion" value="" />
+        </form>
+
+        <div id="collapseDesgracia" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDesgracia">
+            <div class="panel-body">
+                <input type="button" id="grado_academico_one" value="Licenciado" onclick="javascript: OpenMenuGradoAcademicoButtonVal(this);" />
+                <input type="button" id="grado_academico_two" value="Ingeniero" onclick="javascript: OpenMenuGradoAcademicoButtonVal(this);"/>
+                <input type="button" id="grado_academico_three" value="Master" onclick="javascript: OpenMenuGradoAcademicoButtonVal(this);"/>
+                <input type="button" id="grado_academico_four" value="Especialista" onclick="javascript: OpenMenuGradoAcademicoButtonVal(this);"/>
+                <input type="button" id="grado_academico_five" value="Doctor" onclick="javascript: OpenMenuGradoAcademicoButtonVal(this);"/>                    
+            </div>
+        </div> 
+
+
+      <style>
+          div#collapseDesgracia input[type="button"] {
+            width: 100%;
+            padding: 4px;
+            border: none;
+            background-color: steelblue;
+            color: #fff;
+            margin-bottom: 2px;
+          }
+
+          div#collapseDesgracia input[type="button"]:hover {
+            background-color: teal;
+          }
+
+          div#collapseDesgracia input[type="button"]:focus {
+            background-color: rgba(0,0,0,0.4);
+          }
+      </style>               
+  </div>
 
 </div>
