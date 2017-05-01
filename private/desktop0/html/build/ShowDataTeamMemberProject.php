@@ -142,20 +142,6 @@
             </span>
         </div>
 
-        <form id="dataSendIDs">
-            <input type="hidden" id="dataSendIDs_id_team" name="dataSendIDs_id_team" value="<?php echo $id_team; ?>" />
-            <input type="hidden" id="dataSendIDs_id_member" name="dataSendIDs_id_member" value="<?php echo @$id_member; ?>" />
-            
-            <input type="hidden" id="dataSendIDs_firstname" name="dataSendIDs_firstname" value="" />
-            <input type="hidden" id="dataSendIDs_lastname" name="dataSendIDs_lastname" value="" />
-            
-            <input type="hidden" id="dataSendIDs_grado_academico" name="dataSendIDs_grado_academico" value="" />
-            <input type="hidden" id="dataSendIDs_dependencia_academica" name="dataSendIDs_dependencia_academica" value="" />
-            
-            <input type="hidden" id="dataSendIDs_tipo_contratacion" name="dataSendIDs_tipo_contratacion" value="" />
-            <input type="hidden" id="dataSendIDs_hrs_semanales_dedicacion" name="dataSendIDs_hrs_semanales_dedicacion" value="" />
-        </form>
-
         <div id="collapseDesgracia" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDesgracia">
             <div class="panel-body">
                 <input type="button" id="grado_academico_one" value="Licenciado" onclick="javascript: OpenMenuGradoAcademicoButtonVal(this);" />
