@@ -151,6 +151,18 @@
                                             </div>
                                         </div>
 
+                                        <form id="dataSendIDs">
+                                            
+                                            <input type="hidden" id="dataSendIDs_firstname" name="dataSendIDs_firstname" value="" />
+                                            <input type="hidden" id="dataSendIDs_lastname" name="dataSendIDs_lastname" value="" />
+                                            
+                                            <input type="hidden" id="dataSendIDs_grado_academico" name="dataSendIDs_grado_academico" value="" />
+                                            <input type="hidden" id="dataSendIDs_dependencia_academica" name="dataSendIDs_dependencia_academica" value="" />
+                                            
+                                            <input type="hidden" id="dataSendIDs_tipo_contratacion" name="dataSendIDs_tipo_contratacion" value="" />
+                                            <input type="hidden" id="dataSendIDs_hrs_semanales_dedicacion" name="dataSendIDs_hrs_semanales_dedicacion" value="" />
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -164,6 +176,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="javascript: addMemberToTeam();" data-dismiss="modal">¡Agregar!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mostrar mensaje de que escriba en todos los campos de texto!. -->
+<input type="hidden" class="TeamMemberValidationFields" data-toggle="modal" data-target="#TeamMemberValidationFields"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="TeamMemberValidationFields" tabindex="1" role="dialog" aria-labelledby="myTeamMemberValidationFields" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myTeamMemberValidationFields"></h4>
+            </div>
+            <div class="modal-body">
+                <h4>¡Hey, hey!. Por favor, rellene todos los campos.</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: CloseMyModalOpenOtherModal()" data-dismiss="modal">¡Entendido!...</button>
             </div>
         </div>
     </div>
