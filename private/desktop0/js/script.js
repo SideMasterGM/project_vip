@@ -1396,14 +1396,23 @@ function OpenMenuGradoAcademicoButtonVal(value){
 }
 
 function addMemberToTeam(){
-	$("#dataSendIDs_firstname").val($("#id_team_member_firstname").val());
-	$("#dataSendIDs_lastname").val($("#id_team_member_lastname").val());
-	$("#dataSendIDs_grado_academico").val($("#id_team_member_grado_academico").val());
-	$("#dataSendIDs_dependencia_academica").val($("#id_team_member_dependencia_academica").val());
-	$("#dataSendIDs_tipo_contratacion").val($("#id_team_member_tipo_contratacion").val());
-	$("#dataSendIDs_hrs_semanales_dedicacion").val($("#id_team_member_hrs_semanales_dedicacion").val());
+	var firstname = $("#id_team_member_firstname").val();
+	var lastnames = $("#id_team_member_lastname").val();
+	var grado_academico = $("#id_team_member_grado_academico").val();
+	var dependencia_academica = $("#id_team_member_dependencia_academica").val();
+	var tipo_contratacion = $("#id_team_member_tipo_contratacion").val();
+	var hrs_semanales = $("#id_team_member_hrs_semanales_dedicacion").val();
 
-	$(".TeamMemberValidationFields").click();
+	if (firstname != ""  && lastnames != "" && grado_academico != "" && dependencia_academica != "" && tipo_contratacion != "" && hrs_semanales != ""){
+		$("#dataSendIDs_firstname").val(firstname);
+		$("#dataSendIDs_lastname").val(lastnames);
+		$("#dataSendIDs_grado_academico").val(grado_academico);
+		$("#dataSendIDs_dependencia_academica").val(dependencia_academica);
+		$("#dataSendIDs_tipo_contratacion").val(tipo_contratacion);
+		$("#dataSendIDs_hrs_semanales_dedicacion").val(hrs_semanales);
+	} else {
+		$(".TeamMemberValidationFields").click();
+	}
 }
 
 function CloseMyModalOpenOtherModal(){
