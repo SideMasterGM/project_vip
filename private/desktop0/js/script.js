@@ -1402,4 +1402,11 @@ function addMemberToTeam(){
 	$("#dataSendIDs_dependencia_academica").val($("#id_team_member_dependencia_academica").val());
 	$("#dataSendIDs_tipo_contratacion").val($("#id_team_member_tipo_contratacion").val());
 	$("#dataSendIDs_hrs_semanales_dedicacion").val($("#id_team_member_hrs_semanales_dedicacion").val());
+
+	$(".TeamMemberValidationFields").click();
+}
+
+function CloseMyModalOpenOtherModal(){
+	$("#TeamMemberValidationFields").click();
+	AddNewTeamMemberModal();
 }
