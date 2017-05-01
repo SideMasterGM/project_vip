@@ -1797,41 +1797,38 @@
 
 	    /**
 			* Método que agrega un miembro a un equipo.
-			*@param: $id_team (ID del equipo), $folder (Ruta de almacenamiento), $src (Nombre del recurso).
+			*@param: $id_team (ID del equipo).
 		*/
-	    public function addTeamMember($id_team, $folder, $src){
+	    public function addTeamMember($id_team, $firstname, $lastnames, $grado_academico, $dependencia_academica, $tipo_contratacion, $hrs_semanales_dedicacion){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 	    	$usr = @$_SESSION['usr'];
-
-	    	#Se limpia el nombre del recurso.
-	    	$src = $this->CleanString($src);
 
 	    	#Statement: Consulta preparada. 
 	    	#Tabla: vip_team_members.
 	    	#Atributos: id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
-	    	$QImgTeamMember = $this->db->prepare("INSERT INTO vip_team_members (id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix) VALUES (:id_team,:id_img,:firts_name,:last_name,:grado_academico,:dependencia_academica,:tipo_contratacion,:hrs_semanales_dedicacion,:date_log,:date_log_unix)");
+	    	$TeamMember = $this->db->prepare("INSERT INTO vip_team_members (id_team, id_img, firts_name, last_name, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion, date_log, date_log_unix) VALUES (:id_team,:id_img,:firts_name,:last_name,:grado_academico,:dependencia_academica,:tipo_contratacion,:hrs_semanales_dedicacion,:date_log,:date_log_unix)");
 
 	    	#Se vinculan los valores con los parámetros.
-	    	$QImgTeamMember->bindValue(":id_team", 					$id_team);
-	    	$QImgTeamMember->bindValue(":id_img", 					$id_img);
+	    	$TeamMember->bindValue(":id_team", 					$id_team);
+	    	$TeamMember->bindValue(":id_img", 					1);
 
-	    	$QImgTeamMember->bindValue(":firts_name", 				$firts_name);
-	    	$QImgTeamMember->bindValue(":last_name", 				$last_name);
-	    	$QImgTeamMember->bindValue(":grado_academico", 			$grado_academico);
-	    	$QImgTeamMember->bindValue(":dependencia_academica", 	$dependencia_academica);
-	    	$QImgTeamMember->bindValue(":tipo_contratacion", 		$tipo_contratacion);
-	    	$QImgTeamMember->bindValue(":hrs_semanales_dedicacion", $hrs_semanales_dedicacion);
+	    	$TeamMember->bindValue(":firts_name", 				$firstname);
+	    	$TeamMember->bindValue(":last_name", 				$lastnames);
+	    	$TeamMember->bindValue(":grado_academico", 			$grado_academico);
+	    	$TeamMember->bindValue(":dependencia_academica", 	$dependencia_academica);
+	    	$TeamMember->bindValue(":tipo_contratacion", 		$tipo_contratacion);
+	    	$TeamMember->bindValue(":hrs_semanales_dedicacion", $hrs_semanales_dedicacion);
 
-	    	$QImgTeamMember->bindValue(":date_log", 				date('Y-n-j'));
-	    	$QImgTeamMember->bindValue(":date_log_unix", 			time());
+	    	$TeamMember->bindValue(":date_log", 				date('Y-n-j'));
+	    	$TeamMember->bindValue(":date_log_unix", 			time());
 
 	    	#Se agrega una nueva actividad sobre la acción.
 	    	#Seguidamente se ejecuta la consulta preparada para agregar la información.
-	    	if ($this->addActivity($usr, 33, "Creación de un miembro llamado: ".$firts_name.", con ID de equipo: ".$id_team))
-		    	if ($QImgTeamMember->execute())
+	    	if ($this->addActivity($usr, 33, "Creación de un miembro llamado: ".$firstname.", con ID de equipo: ".$id_team))
+		    	if ($TeamMember->execute())
 		    		return true; #Se retorna un valor booleano verdadero cuando ha salido todo bien.
 
 		    #Si algo falla, se retorna un valor booleano falso.
@@ -1876,6 +1873,74 @@
 
 		    #Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    /**
+			* Método que actualiza la información de un miembro de equipo.
+			*@param: $id_team (ID del equipo), 
+			*@param: $firstname, $lastnames, $grado_academico, $dependencia_academica, $tipo_contratacion, $hrs_semanales_dedicacion.
+		*/
+	    public function updateTeamMemberDataById($id_team, $firstname, $lastnames, $grado_academico, $dependencia_academica, $tipo_contratacion, $hrs_semanales_dedicacion){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+	    	$usr = @$_SESSION['usr'];
+
+	    	#Statement: Consulta no preparada. 
+	    	#Tabla: vip_team_members.
+	    	#Atributos: id_team, firstname, lastnames, grado_academico, dependencia_academica, tipo_contratacion, hrs_semanales_dedicacion.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara una nueva consulta para obtener por medio de id_team, id_img, id_member.
+	        if (is_array($this->getTeamMembers($id_team))){
+	            #Se recorren los miembros registrados en un equipo en específico.
+	            foreach ($this->getTeamMembers($id_team) as $ValueTeamMembers) {
+	            	#Se verifica que nombres y apellidos se encuentren vacíos.
+	                if ($ValueTeamMembers['firts_name'] == "" && $ValueTeamMembers['last_name'] == ""){
+	                    $id_member  = $ValueTeamMembers['id_member'];	#Recuperando id_member;
+	                    $id_img     = $ValueTeamMembers['id_img'];		#Recuperando id_img;
+
+	                    #Query Img.
+	                    $QImg = $this->getTeamMemberImgPerfilById($id_team, $id_img, "DESC", 1);
+	                    
+	                    #Se reconoce como Array asociativo.
+	                    if (is_array($QImg)){
+	                    	#Se recorre el array.
+	                        foreach ($QImg as $value) {
+	                        	#Se recuperan los datos, entre ellos el más importante, date_log_unix que es la marca de tiempo.
+	                            $TeamDateLog        = $value['date_log'];
+	                            $TeamDateLogUNIX    = $value['date_log_unix'];
+	                        }
+	                    } else if (is_bool($QImg)){
+	                    	echo "Not found.";
+	                    }
+	                }
+	            }
+	        }
+
+	        #Si está establecida la variable.
+	        if (isset($TeamDateLogUNIX)){
+	        	#Se agrega la instrucción SQL en la variable $Reason.
+	    		$Reason = "UPDATE vip_team_members SET firts_name='".$firstname."', last_name='".$lastnames."', grado_academico='".$grado_academico."', dependencia_academica='".$dependencia_academica."', tipo_contratacion='".$tipo_contratacion."', hrs_semanales_dedicacion='".$hrs_semanales_dedicacion."' WHERE id_team=".$id_team." AND date_log_unix='".$TeamDateLogUNIX."'";
+	        } else {
+	        	#Si devuelve un valor true, todo bien y se retorna true.
+	    		if ($this->addTeamMember($id_team, $firstname, $lastnames, $grado_academico, $dependencia_academica, $tipo_contratacion, $hrs_semanales_dedicacion)){
+	    			return true;
+	    		}
+	        }
+
+	    	#Se ejecuta.
+	    	$Execution = $this->db->query($Reason);
+
+	    	#Se observa el dato devuelto, si es 1 o true, todo ha salido correctamente.
+	    	if ($Execution){
+	        	#Se crea una nueva actividad.
+	        	if ($this->addActivity($usr, 34, "Actualización de un miembro del equipo llamado: ".$firstname." ".$lastnames))
+	    			return true;
+			    
+	    	}
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
 	    }
 
 	    /**
