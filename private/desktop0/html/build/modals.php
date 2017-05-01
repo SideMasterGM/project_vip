@@ -114,7 +114,7 @@
                     <div class="row">
                         <div class="col-xs-4">
                             <div class="panel-heading">
-                                <h3 class="panel-title showTitleTeamProject">Nombres y apellidos</h3>
+                                <h3 class="panel-title showTitleTeamMemberProject">Identidad</h3>
                             </div>
 
                             <div class="ShowInfoTeamMemberProjectAdd">
@@ -129,12 +129,12 @@
                                     <div class="col-xs-12">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Nombre(s) y apellido(s) <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
+                                                <h3 class="panel-title"><span class="icon fa fa-users"></span> Datos personales <!-- <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i>--> </h3>
                                             </div>
 
                                             <div class="panel-body">
-                                                <input type="text" class="form-control" id="id_team_member_firstname" placeholder="* Nombre(s)" onkeyup="javascript: ChgCharacterTitleMemberModal(this);" /><br/>
-                                                <input type="text" class="form-control" id="id_team_member_lastname" placeholder="* Apellido(s)" onkeyup="javascript: ChgCharacterTitleMemberModal(this);" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_firstname" placeholder="* Nombre(s)" onkeyup="javascript: ChgCharacterTitleFirstNameModal(this);" /><br/>
+                                                <input type="text" class="form-control" id="id_team_member_lastname" placeholder="* Apellido(s)" onkeyup="javascript: ChgCharacterTitleLastNameModal(this);" /><br/>
                                             </div>
                                         </div>
 
@@ -144,7 +144,7 @@
                                             </div>
 
                                             <div class="panel-body">
-                                                <input type="text" class="form-control" id="id_team_member_grado_academico" placeholder="* Grado académico"/><br/>
+                                                <input type="text" class="form-control" id="id_team_member_grado_academico" placeholder="* Grado académico" title="Seleccione el grado en la parte inferior izquierda de esta ventana" /><br/>
                                                 <input type="text" class="form-control" id="id_team_member_dependencia_academica" placeholder="* Dependencia académica" /><br/>
                                                 <input type="text" class="form-control" id="id_team_member_tipo_contratacion" placeholder="* Tipo de contratación" /><br/>
                                                 <input type="text" class="form-control" id="id_team_member_hrs_semanales_dedicacion" placeholder="* Horas semanales de dedicación" /><br/>
@@ -163,7 +163,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: getFacCurEsc();" data-dismiss="modal">¡Agregar!...</button>
+                <button type="button" class="btn btn-default" onclick="javascript: addMemberToTeam();" data-dismiss="modal">¡Agregar!...</button>
             </div>
         </div>
     </div>
