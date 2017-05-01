@@ -1396,12 +1396,12 @@ function OpenMenuGradoAcademicoButtonVal(value){
 }
 
 function addMemberToTeam(){
-	var firstname = $("#id_team_member_firstname").val();
-	var lastnames = $("#id_team_member_lastname").val();
-	var grado_academico = $("#id_team_member_grado_academico").val();
-	var dependencia_academica = $("#id_team_member_dependencia_academica").val();
-	var tipo_contratacion = $("#id_team_member_tipo_contratacion").val();
-	var hrs_semanales = $("#id_team_member_hrs_semanales_dedicacion").val();
+	var firstname 				= $("#id_team_member_firstname").val();
+	var lastnames 				= $("#id_team_member_lastname").val();
+	var grado_academico 		= $("#id_team_member_grado_academico").val();
+	var dependencia_academica 	= $("#id_team_member_dependencia_academica").val();
+	var tipo_contratacion 		= $("#id_team_member_tipo_contratacion").val();
+	var hrs_semanales 			= $("#id_team_member_hrs_semanales_dedicacion").val();
 
 	if (firstname != ""  && lastnames != "" && grado_academico != "" && dependencia_academica != "" && tipo_contratacion != "" && hrs_semanales != ""){
 		$("#dataSendIDs_firstname").val(firstname);
@@ -1417,7 +1417,19 @@ function addMemberToTeam(){
 		    data: $("#dataSendIDs").serialize(),
 		    success: function(data){
 		    	if (data == "OK"){
+		    		$("#id_team_member_firstname").val("");
+		    		$("#id_team_member_lastname").val("");
+		    		$("#id_team_member_grado_academico").val("");
+		    		$("#id_team_member_dependencia_academica").val("");
+		    		$("#id_team_member_tipo_contratacion").val("");
+		    		$("#id_team_member_hrs_semanales_dedicacion").val("");
 
+		    		$("#dataSendIDs_firstname").val("");
+					$("#dataSendIDs_lastname").val("");
+					$("#dataSendIDs_grado_academico").val("");
+					$("#dataSendIDs_dependencia_academica").val("");
+					$("#dataSendIDs_tipo_contratacion").val("");
+					$("#dataSendIDs_hrs_semanales_dedicacion").val("");
 		    	} else {
 		    		alert("Ha ocurrido un problema, por favor, vuelva a intentarlo!.");
 		    	}
