@@ -13,16 +13,12 @@
   	$dependencia_academica 		= $_POST['dataSendIDs_dependencia_academica'];
 
   	$tipo_contratacion 			= $_POST['dataSendIDs_tipo_contratacion'];
-  	$hrs_semanales_dedicacion 	= $_POST['ataSendIDs_hrs_semanales_dedicacion'];
+  	$hrs_semanales_dedicacion 	= $_POST['dataSendIDs_hrs_semanales_dedicacion'];
 
-  	if (is_array( $CN_VIP->() )){
-
-  		foreach ($CN_VIP->() as $value) {
-  			# code...
-  		}
-
-  	} else if (is_bool( $CN_VIP->() )){
-
+  	if ($CN_VIP->updateTeamMemberDataById($id_team, $firstname, $lastnames, $grado_academico, $dependencia_academica, $tipo_contratacion, $hrs_semanales_dedicacion)){
+  		echo "OK";
+  	} else {
+  		echo "Fail";
   	}
 
 ?>
