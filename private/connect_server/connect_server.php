@@ -91,6 +91,7 @@
 			|   32	|	Actualización de la imagen de un miembro de equipo		|
 			|   33	|	Creación de un miembro de equipo 						|
 			|   34	|	Actualización de un miembro de equipo 					|
+			|   35	|	Eliminación de un miembro de equipo 					|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -1833,6 +1834,47 @@
 
 		    #Si algo falla, se retorna un valor booleano falso.
 	    	return false;
+	    }
+
+	    /**
+			* Método que elimina un miembro de equipo.
+			*@param: $project_id (Identificador de la población).
+		*/
+	    public function delMemberTeamById($id_team, $id_member){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	$id_img = $id_member;
+
+	    	#Statement: Consulta preparada. 
+		    #Tabla: vip_team_members.
+		    #Atributos: id_project.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM vip_team_members '
+                . 'WHERE id_member = :id_member');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':id_member', $id_member);
+
+		    #Se hace uso de esta nueva y temporal conexión.
+        	if ($this->addActivity(@$_SESSION['usr'], 35, "Eliminación de un miembro con ID: ".$id_member." del grupo con ID: ".$id_team)){
+	        	if ($Reason->execute()){
+
+	        		$ReasonTwo = $this->db->prepare('DELETE FROM vip_team_members_img '
+                		. 'WHERE id = :id');
+
+	        		#Se vincula el valor con el parámetro.
+        			$ReasonTwo->bindValue(':id', $id_img);
+
+	        		if ($ReasonTwo->execute()){
+		       			return true;
+	        		}
+	        	}
+        	}
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
 	    }
 
 	    /**
