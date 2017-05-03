@@ -1458,21 +1458,34 @@ function CloseMyModalOpenOtherModal(){
 function AreYouSureDeleteMember(value){
 
 	var id = $(value).attr("id").split("_")[1];
-
 	$("#InputTextIDTeamMemberSend").val(id);
 
+	$(".TeamProjectAreYouSureDeleting").click();
+
+}
+
+/*Add function on Click Delete Team Member*/
+function onClickDeleteTeamMember(){
 	$.ajax({
-	    url: "private/desktop0/html/build/addTeamToMember.php",
+	    url: "private/desktop0/html/build/delIDTeamMember.php",
 	    type: "POST",
-	    data: $("#dataSendIDs").serialize(),
+	    data: $("#FormIDTeamMemberSend").serialize(),
 	    success: function(data){
 	    	if (data == "OK"){
-	    		//
+	    		
+	    		$.ajax({
+				    url: "private/desktop0/html/build/ShowDataMembersTeamProject.php",
+				    type: "POST",
+				    success: function(data){
+				    	$(".ShowInfoMembersTeamProject").html(data);
+				    }
+			  	});
+
+			  	$("#TeamProjectAreYouSureDeleting").click();
+
 	    	} else {
 	    		alert("Ha ocurrido un problema, por favor, vuelva a intentarlo!.");
 	    	}
 	    }
   	});
-
-	$(".TeamProjectAreYouSureDeleting").click();
 }
