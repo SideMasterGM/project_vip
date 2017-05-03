@@ -1430,6 +1430,15 @@ function addMemberToTeam(){
 					$("#dataSendIDs_dependencia_academica").val("");
 					$("#dataSendIDs_tipo_contratacion").val("");
 					$("#dataSendIDs_hrs_semanales_dedicacion").val("");
+
+					$.ajax({
+					    url: "private/desktop0/html/build/ShowDataMembersTeamProject.php",
+					    type: "POST",
+					    success: function(data){
+					    	$(".ShowInfoMembersTeamProject").html(data);
+					    }
+				  	});
+
 		    	} else {
 		    		alert("Ha ocurrido un problema, por favor, vuelva a intentarlo!.");
 		    	}
@@ -1444,4 +1453,26 @@ function addMemberToTeam(){
 function CloseMyModalOpenOtherModal(){
 	$("#TeamMemberValidationFields").click();
 	AddNewTeamMemberModal();
+}
+
+function AreYouSureDeleteMember(value){
+
+	var id = $(value).attr("id").split("_")[1];
+
+	$("#InputTextIDTeamMemberSend").val(id);
+
+	$.ajax({
+	    url: "private/desktop0/html/build/addTeamToMember.php",
+	    type: "POST",
+	    data: $("#dataSendIDs").serialize(),
+	    success: function(data){
+	    	if (data == "OK"){
+	    		//
+	    	} else {
+	    		alert("Ha ocurrido un problema, por favor, vuelva a intentarlo!.");
+	    	}
+	    }
+  	});
+
+	$(".TeamProjectAreYouSureDeleting").click();
 }
