@@ -109,7 +109,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">¡Cancelar!...</button>
-                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">¡Eliminar!...</button>
+                <button type="button" class="btn btn-danger" onclick="javascript: onClickDeleteTeamMember();">¡Eliminar!...</button>
             </div>
         </div>
     </div>
