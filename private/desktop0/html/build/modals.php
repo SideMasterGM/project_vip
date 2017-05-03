@@ -62,13 +62,17 @@
                             <div class="col-xs-12">
                                 <div class="panel panel-default" style="padding-bottom: 15px;">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AreYouSureDeleteMember();" aria-hidden="true" title="Agregar nuevo integrante"></i></h3>
+                                        <h3 class="panel-title"><span class="icon fa fa-users"></span> Miembros del equipo <i class="fa fa-plus-circle buttons_addPanel" onclick="javascript: AddNewTeamMemberModal();" aria-hidden="true" title="Agregar nuevo integrante"></i></h3>
                                     </div>
 
                                     <div class="ShowInfoMembersTeamProject">
                                         
                                     </div>
                                 </div>
+                            
+                                <form id="FormIDTeamMemberSend">
+                                    <input type="hidden" id="InputTextIDTeamMemberSend" name="InputTextIDTeamMemberSend" value="" />
+                                </form>
 
                             </div>
                         </div>
@@ -104,7 +108,7 @@
                 <h4>Disculpe por desconfiar, ¿Está seguro que desea eliminar el miembro de este equipo?.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: window.location.reload();" data-dismiss="modal">¡Cancelar!...</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">¡Cancelar!...</button>
                 <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">¡Eliminar!...</button>
             </div>
         </div>
