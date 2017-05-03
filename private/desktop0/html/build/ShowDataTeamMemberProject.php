@@ -135,7 +135,7 @@
 
                     <div id="collapseMemberInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingMemberInfo">
                         <div class="panel-body">
-                            <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX));; ?>
+                            <?php echo $TeamDateLog." - ".nicetime(date("Y-m-d H:i", $TeamDateLogUNIX)); ?>
                         </div>
                     </div>                
                 </div>
