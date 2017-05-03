@@ -1948,7 +1948,7 @@
 			*@param: $date_log_unix.
 		*/
 	    public function getTeamMemberByDateLogUNIX($date_log_unix){
-	    	#Statement: Consulta no preparada. 
+	    	#Statement: Consulta no preparada.
 		    #Tabla: vip_team_members.
 		    #Atributos: date_log_unix.
 		    #Valores devueltos: Todos los datos posibles (*).
@@ -2018,6 +2018,49 @@
 		    #Valores devueltos: Todos los datos posibles (*).
 
 	    	$stmt = $this->db->query("SELECT * FROM vip_team_members WHERE id_team=".$id_team." ORDER BY id_member DESC LIMIT 1;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$getData[] = [
+	    				'id_member' 				=> $row['id_member'], 
+	    				'id_team' 					=> $row['id_team'], 
+	    				'id_img' 					=> $row['id_img'], 
+	    				'firts_name' 				=> $row['firts_name'], 
+	    				'last_name' 				=> $row['last_name'], 
+	    				'grado_academico' 			=> $row['grado_academico'], 
+	    				'dependencia_academica' 	=> $row['dependencia_academica'], 
+	    				'tipo_contratacion' 		=> $row['tipo_contratacion'], 
+	    				'hrs_semanales_dedicacion' 	=> $row['hrs_semanales_dedicacion'], 
+	    				'date_log' 					=> $row['date_log'],
+	    				'date_log_unix' 			=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $getData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que obtiene los miembros de un equipo.
+			*@param: No hay.
+		*/
+	    public function getTeamMembersAll($id_team){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team_members.
+		    #Atributos: No hay.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members WHERE id_team=".$id_team." ORDER BY id_member DESC;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
