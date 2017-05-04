@@ -83,10 +83,10 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" style="float: left;" onclick="javascript: ProjectResult();">Resultados</button>
+                <!-- <button type="button" class="btn btn-primary" style="float: left;" onclick="javascript: ProjectResult();">Resultados</button> -->
                 
                 <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">Eliminar</button>
-                <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button>
+                <!-- <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button> -->
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
