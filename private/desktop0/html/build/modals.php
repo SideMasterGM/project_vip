@@ -105,7 +105,7 @@
                 <h4 class="modal-title" id="myTeamProjectAreYouSureDeleting">Eliminar miembro</h4>
             </div>
             <div class="modal-body">
-                <h4>Disculpe por desconfiar, ¿Está seguro que desea eliminar el miembro de este equipo?.</h4>
+                <h4>Disculpe por desconfiar, pero, ¿Está seguro que desea eliminar el miembro de este equipo?.</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">¡Cancelar!...</button>
