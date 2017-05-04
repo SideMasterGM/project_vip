@@ -1509,7 +1509,18 @@ function ChgCBCoordinate(value){
 	    data: $("#FormIDTeamCoordinateSend").serialize(),
 	    success: function(data){
 	    	if (data == "OK"){
-				console.log("Consulta de agregar o eliminar un coordinador es exitosa");
+
+	    		$.ajax({
+				    url: "private/desktop0/html/build/ShowDataMembersTeamProject.php",
+				    type: "POST",
+				    success: function(data){
+						console.log("Consulta de agregar o eliminar un coordinador es exitosa");
+						$(".ShowInfoMembersTeamProject").fadeOut(500);
+						$(".ShowInfoMembersTeamProject").html(data);
+				    	$(".ShowInfoMembersTeamProject").fadeIn(500);
+				    }
+			  	});
+
 	    	} else {
 	    		alert("Ha ocurrido un problema, por favor, recargue y vuelva a intentarlo!.");
 	    	}
