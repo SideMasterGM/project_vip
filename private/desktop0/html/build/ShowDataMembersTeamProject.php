@@ -46,7 +46,7 @@
 											?>
 
 											<hr>
-											<input type="checkbox" name="InputCheckBoxCoordinate" id="InputCheckBoxCoordinate<?php echo $CountAccordion; ?>" checked="">
+											<input type="checkbox" name="InputCheckBoxCoordinate" onclick="javascript: ChgCBCoordinate(this);" id_member="<?php echo $val['id_member']; ?>" id="InputCheckBoxCoordinate<?php echo $CountAccordion; ?>" />
 											<label for="InputCheckBoxCoordinate<?php echo $CountAccordion; ?>" style="cursor: pointer;">Nombrar coordinador</label>
 
 											<hr>
