@@ -97,19 +97,19 @@
     <div class="panel-heading" role="tab" id="headingOne">
         <span class="panel-title">
             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              Vínculo de proyecto
-          </a>
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Vínculo de proyecto
+            </a>
         </span>
     </div>
 
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-          <?php 
-            foreach ($CN_VIP->getProjectsOnlyById($TeamIDProject) as $value) {
-              $ProjectName = $value['nombre'];
-            }
-            echo $ProjectName;
-          ?>                          
+            <?php 
+                foreach ($CN_VIP->getProjectsOnlyById($TeamIDProject) as $value) {
+                  $ProjectName = $value['nombre'];
+                }
+                echo $ProjectName;
+            ?>
         </div>
     </div>                
   </div>
@@ -118,7 +118,7 @@
      <div class="panel-heading" role="tab" id="headingTwo">
         <span class="panel-title">
             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Fecha de creación
+              <i class="fa fa-clock-o" aria-hidden="true"></i> Fecha de creación
           </a>
         </span>
     </div>
