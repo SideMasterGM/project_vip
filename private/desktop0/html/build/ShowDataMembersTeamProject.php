@@ -46,6 +46,10 @@
 											?>
 
 											<hr>
+											<input type="checkbox" name="InputCheckBoxCoordinate" id="InputCheckBoxCoordinate<?php echo $CountAccordion; ?>" checked="">
+											<label for="InputCheckBoxCoordinate<?php echo $CountAccordion; ?>" style="cursor: pointer;">Nombrar coordinador</label>
+
+											<hr>
 
 											<label><i class="fa fa-globe" aria-hidden="true"></i> Tiempo de registro</label>
 											<p><?php echo $val['date_log']." | ".nicetime(date("Y-m-d H:i", $val['date_log_unix'])); ?></p>
