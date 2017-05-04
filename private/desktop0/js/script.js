@@ -1506,15 +1506,13 @@ function ChgCBCoordinate(value){
 	$.ajax({
 	    url: "private/desktop0/html/build/addDelCoordinate.php",
 	    type: "POST",
-	    data: $("#FormIDTeamMemberSend").serialize(),
+	    data: $("#FormIDTeamCoordinateSend").serialize(),
 	    success: function(data){
 	    	if (data == "OK"){
-				
+				console.log("Consulta de agregar o eliminar un coordinador es exitosa");
 	    	} else {
-	    		alert("Ha ocurrido un problema, por favor, vuelva a intentarlo!.");
+	    		alert("Ha ocurrido un problema, por favor, recargue y vuelva a intentarlo!.");
 	    	}
 	    }
   	});
-
-	alert("ID del integrante: " + id_member + ", Ready: " + CBValueFinal);
 }
