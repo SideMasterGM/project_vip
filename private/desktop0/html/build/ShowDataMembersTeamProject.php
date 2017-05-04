@@ -13,16 +13,51 @@
 
 		foreach ($CN_VIP->getTeamMembersAll($id_team) as $val) {
 			if (!empty($val['firts_name']) && !empty($val['last_name'])){
+
+				$CountCoords = 0;
+				if (is_array($CN_VIP->getCoordinators())){
+
+					foreach ($CN_VIP->getCoordinators() as $Coords) {
+						if ($Coords['id_member'] == $val['id_member']){
+							$CBContent = "<hr><input type='checkbox' name='InputCheckBoxCoordinate' onclick='javascript: ChgCBCoordinate(this);' id_member='".$val['id_member']."' id='InputCheckBoxCoordinate".$CountAccordion."' checked='' /><label for='InputCheckBoxCoordinate".$CountAccordion."' style='cursor: pointer;'> Nombrar coordinador</label>";
+							$CountCoords++;
+						}
+					}
+
+				} else if (is_bool($CN_VIP->getCoordinators())){
+					$CBContent = "<hr><input type='checkbox' name='InputCheckBoxCoordinate' onclick='javascript: ChgCBCoordinate(this);' id_member='".$val['id_member']."' id='InputCheckBoxCoordinate".$CountAccordion."'/><label for='InputCheckBoxCoordinate".$CountAccordion."' style='cursor: pointer;'> Nombrar coordinador</label>";
+				}
+
 				?>
 					<div class="panel-body">
-					  	<div class="panel" style="margin-bottom: -20px;">
-							<div class="panel-heading" role="tab" id="headingTeamMembers<?php echo $CountAccordion; ?>">
-							    <span class="panel-title">
-							      	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTeamMembers<?php echo $CountAccordion; ?>" aria-expanded="false" aria-controls="collapseTeamMembers<?php echo $CountAccordion; ?>"><span class="icon fa fa-user"></span>
-							        	<?php echo explode(" ", $val['firts_name'])[0]." ".explode(" ", $val['last_name'])[0]; ?>
-								    </a>
-								    <i class="fa fa-trash buttons_addPanel" id="idTeamMember_<?php echo $val['id_member']; ?>" onclick="javascript: AreYouSureDeleteMember(this);" aria-hidden="true" title="Eliminar miembro"></i>
-							    </span>
+
+						<?php
+							if ($CountCoords == 0){
+								$CBContent = "<hr><input type='checkbox' name='InputCheckBoxCoordinate' onclick='javascript: ChgCBCoordinate(this);' id_member='".$val['id_member']."' id='InputCheckBoxCoordinate".$CountAccordion."'/><label for='InputCheckBoxCoordinate".$CountAccordion."' style='cursor: pointer;'> Nombrar coordinador</label>";
+							
+								?>
+									<div class="panel" style="margin-bottom: -20px;">
+										<div class="panel-heading" role="tab" id="headingTeamMembers<?php echo $CountAccordion; ?>">
+											<span class="panel-title">
+										      	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTeamMembers<?php echo $CountAccordion; ?>" aria-expanded="false" aria-controls="collapseTeamMembers<?php echo $CountAccordion; ?>"><span class="icon fa fa-user"></span>
+										        	<?php echo explode(" ", $val['firts_name'])[0]." ".explode(" ", $val['last_name'])[0]; ?>
+											    </a>
+											    <i class="fa fa-trash buttons_addPanel" id="idTeamMember_<?php echo $val['id_member']; ?>" onclick="javascript: AreYouSureDeleteMember(this);" aria-hidden="true" title="Eliminar miembro"></i>
+										    </span>
+								<?php
+							} else {
+								?>
+									<div class="panel" style="margin-bottom: -20px; background-color: steelblue; color: #fff;">
+										<div class="panel-heading" role="tab" id="headingTeamMembers<?php echo $CountAccordion; ?>" style="background-color: #353D47;">
+											<span class="panel-title">
+										      	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTeamMembers<?php echo $CountAccordion; ?>" aria-expanded="false" aria-controls="collapseTeamMembers<?php echo $CountAccordion; ?>" style="color: #fff;"><span class="icon fa fa-user"></span>
+										        	<?php echo explode(" ", $val['firts_name'])[0]." ".explode(" ", $val['last_name'])[0]; ?>
+											    </a>
+											    <i class="fa fa-trash buttons_addPanel" id="idTeamMember_<?php echo $val['id_member']; ?>" onclick="javascript: AreYouSureDeleteMember(this);" aria-hidden="true" title="Eliminar miembro"></i>
+										    </span>
+								<?php
+							}
+						?>
 							</div>
 
 						    <div id="collapseTeamMembers<?php echo $CountAccordion; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTeamMembers<?php echo $CountAccordion; ?>">
@@ -43,11 +78,9 @@
 														<img src="private/desktop0/img/img-default/team.jpg" width="100%" alt="Imagen por defecto"/>
 													<?php
 												}
-											?>
 
-											<hr>
-											<input type="checkbox" name="InputCheckBoxCoordinate" onclick="javascript: ChgCBCoordinate(this);" id_member="<?php echo $val['id_member']; ?>" id="InputCheckBoxCoordinate<?php echo $CountAccordion; ?>" />
-											<label for="InputCheckBoxCoordinate<?php echo $CountAccordion; ?>" style="cursor: pointer;">Nombrar coordinador</label>
+												echo $CBContent;
+											?>
 
 											<hr>
 
