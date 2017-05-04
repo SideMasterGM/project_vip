@@ -1489,3 +1489,32 @@ function onClickDeleteTeamMember(){
 	    }
   	});
 }
+
+function ChgCBCoordinate(value){
+	var CBValue 	= $(value).prop("checked");
+	var id_member 	= $(value).attr("id_member");
+	var CBValueFinal;
+
+	if (CBValue)
+		CBValueFinal = 1;
+	else
+		CBValueFinal = 0;
+
+	$("#InputTextCoordinateIdMember").val(id_member);
+	$("#InputTextMemberCBValue").val(CBValueFinal);
+
+	$.ajax({
+	    url: "private/desktop0/html/build/addDelCoordinate.php",
+	    type: "POST",
+	    data: $("#FormIDTeamMemberSend").serialize(),
+	    success: function(data){
+	    	if (data == "OK"){
+				
+	    	} else {
+	    		alert("Ha ocurrido un problema, por favor, vuelva a intentarlo!.");
+	    	}
+	    }
+  	});
+
+	alert("ID del integrante: " + id_member + ", Ready: " + CBValueFinal);
+}
