@@ -74,6 +74,11 @@
                                     <input type="hidden" id="InputTextIDTeamMemberSend" name="InputTextIDTeamMemberSend" value="" />
                                 </form>
 
+                                <form id="FormIDTeamCoordinateSend">
+                                    <input type="hidden" id="InputTextCoordinateIdMember" name="InputTextCoordinateIdMember" value="" />
+                                    <input type="hidden" id="InputTextMemberCBValue" name="InputTextMemberCBValue" value="" />
+                                </form>
+
                             </div>
                         </div>
                     </div>
