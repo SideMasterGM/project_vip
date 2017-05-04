@@ -3575,6 +3575,95 @@
 	    }
 
 	    /**
+			* Método que obtiene los coordinadores de equipos.
+			*@param: No hay.
+		*/
+	    public function getCoordinators(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_coordinate.
+		    #Atributos: No hay.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_coordinate;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$getData[] = [
+	    				'id_coord' 			=> $row['id_coord'], 
+	    				'id_member' 		=> $row['id_member'], 
+	    				'date_log' 			=> $row['date_log'],
+	    				'date_log_unix' 	=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $getData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que agrega un coordinador.
+			*@param: $id_member (Identificador del integrante seleccionado).
+		*/
+		public function addCoordinator($id_member){
+			#Statement: Consulta preparada. 
+		    #Tabla: vip_coordinate.
+		    #Atributos: id_member.
+		    #Valores devueltos: No devuelve ya que se intenta INSERTAR.
+
+			#Variable que almacena las instrucciones de la consulta.
+	    	$q = "INSERT INTO vip_coordinate (id_member, date_log, date_log_unix) VALUES (:id_member,:date_log,:date_log_unix);";
+	    
+	    	#Se prepara la consulta.
+	    	$stmt = $this->db->prepare($q);
+
+	    	#Se vinculan los valores con los parámetros.
+	    	$stmt->bindValue(":id_member", 		$id_member);
+	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
+	    	$stmt->bindValue(":date_log_unix", 	time());
+
+	    	#Se ejecuta la consulta preparada.
+	    	if ($stmt->execute())
+	    		return true;	#Todo bien.
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que elimina un coordinador de equipo.
+			*@param: $id_member (Identificador del integrante).
+		*/
+	    public function delCoordinator($id_member){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_coordinate.
+		    #Atributos: src.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM vip_coordinate '
+                . 'WHERE id_member = :id_member');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':id_member', $id_member);
+
+        	#Se ejecuta la consulta.
+        	if ($Reason->execute())
+	       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
+	    }
+
+	    /**
 			* Método que agrega imágenes al proyecto.
 			*@param: $id_project (Identificador del proyecto), $folder (Directorio donde se almacenan los recursos), $src (Recurso de la imagen: nombre).
 		*/
