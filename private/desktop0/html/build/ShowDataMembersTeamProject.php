@@ -19,7 +19,7 @@
 
 					foreach ($CN_VIP->getCoordinators() as $Coords) {
 						if ($Coords['id_member'] == $val['id_member']){
-							$CBContent = "<hr><input type='checkbox' name='InputCheckBoxCoordinate' onclick='javascript: ChgCBCoordinate(this);' id_member='".$val['id_member']."' id='InputCheckBoxCoordinate".$CountAccordion."' checked='' /><label for='InputCheckBoxCoordinate".$CountAccordion."' style='cursor: pointer;'> Nombrar coordinador</label>";
+							$CBContent = "<hr><input type='checkbox' name='InputCheckBoxCoordinate' onclick='javascript: ChgCBCoordinate(this);' id_member='".$val['id_member']."' id='InputCheckBoxCoordinate".$CountAccordion."' checked='' /><label for='InputCheckBoxCoordinate".$CountAccordion."' style='cursor: pointer;'> Nombrado como coordinador</label>";
 							$CountCoords++;
 						}
 					}
@@ -47,13 +47,13 @@
 								<?php
 							} else {
 								?>
-									<div class="panel" style="margin-bottom: -20px; background-color: steelblue; color: #fff;">
+									<div class="panel" style="margin-bottom: -20px; background-color: #494F59; color: #fff;">
 										<div class="panel-heading" role="tab" id="headingTeamMembers<?php echo $CountAccordion; ?>" style="background-color: #353D47;">
 											<span class="panel-title">
 										      	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTeamMembers<?php echo $CountAccordion; ?>" aria-expanded="false" aria-controls="collapseTeamMembers<?php echo $CountAccordion; ?>" style="color: #fff;"><span class="icon fa fa-user"></span>
-										        	<?php echo explode(" ", $val['firts_name'])[0]." ".explode(" ", $val['last_name'])[0]; ?>
+										        	<?php echo explode(" ", $val['firts_name'])[0]." ".explode(" ", $val['last_name'])[0]." (Coordinador)"; ?>
 											    </a>
-											    <i class="fa fa-trash buttons_addPanel" id="idTeamMember_<?php echo $val['id_member']; ?>" onclick="javascript: AreYouSureDeleteMember(this);" aria-hidden="true" title="Eliminar miembro"></i>
+											    <i class="fa fa-trash buttons_addPanel" style="color: #fff;" id="idTeamMember_<?php echo $val['id_member']; ?>" onclick="javascript: AreYouSureDeleteMember(this);" aria-hidden="true" title="Eliminar miembro"></i>
 										    </span>
 								<?php
 							}
