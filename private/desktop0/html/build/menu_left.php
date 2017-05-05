@@ -39,14 +39,22 @@
                         ?>
                             <li class="panel panel-default dropdown agents__item">
                                 <a data-toggle="collapse" href="#dropdown-option-agents">
-                                    <span class="icon fa fa-users"></span><span class="title">Miembros</span>
+                                    <span class="icon fa fa-users"></span><span class="title">Equipos</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-option-agents" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="team">Equipo</a></li>
-                                            <li><a href="coordination" onclick="javascript: addAgentNow();">Coordinación</a></li>
+                                            <li><a href="team">Mostrar equipos</a></li>
+                                            
+                                            <?php
+                                                if ($_SERVER['PHP_SELF'] == "/project_vip/team.php"){
+                                                    ?>
+                                                        <li><a href="#" onclick="javascript: CreateTeam();">Nuevo equipo</a></li>
+                                                    <?php
+                                                }
+                                            ?>
+                                            <li><a href="#" onclick="javascript: viewAllCoordinators();">Coordinadores</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -67,19 +75,19 @@
 
                 <li class="add_property__item">
                     <a href="#" onclick="javascript: AddNewInstanciaAprobacion();">
-                        <span class="icon fa fa-briefcase"></span><span class="title">Agregar Instancia de Aprobación</span>
+                        <span class="icon fa fa-briefcase"></span><span class="title">Instancias de Aprobación</span>
                     </a>
                 </li>
 
                 <li class="add_property__item">
                     <a href="#" onclick="javascript: AddNewFacCurEsc();">
-                        <span class="icon fa fa-graduation-cap"></span><span class="title">Agregar Facultad | CUR | Escuela</span>
+                        <span class="icon fa fa-graduation-cap"></span><span class="title">Facultad | CUR | Escuela</span>
                     </a>
                 </li>
 
                  <li class="add_property__item">
                     <a href="#" onclick="javascript: AddNewComunidadPoblacion();">
-                        <span class="icon fa fa-map-marker"></span><span class="title">Agregar Comunidad | Población</span>
+                        <span class="icon fa fa-map-marker"></span><span class="title">Comunidades | Población</span>
                     </a>
                 </li>
 
