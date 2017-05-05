@@ -1569,3 +1569,7 @@ function viewAllCoordinators(){
 
 	$(".ShowingAllTeamCoordinators").click();
 }
+
+function WebPageTeam(){
+	window.location.href="./team";
+}
