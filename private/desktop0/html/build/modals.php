@@ -98,6 +98,7 @@
     </div>
 </div>
 
+
 <!-- Mostrar una centinela, preguntando si realmente desea eliminar el equipo seleccionado!. -->
 <input type="hidden" class="TeamProjectDelComplete" data-toggle="modal" data-target="#TeamProjectDelComplete"  />
 
@@ -117,6 +118,29 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">¡Cancelar!...</button>
                 <button type="button" class="btn btn-danger" onclick="javascript: onClickDeleteTeamComplete();">¡Eliminar!...</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mostrando todos los miembros registrados!. -->
+<input type="hidden" class="ShowingAllTeamCoordinators" data-toggle="modal" data-target="#ShowingAllTeamCoordinators"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="ShowingAllTeamCoordinators" tabindex="1" role="dialog" aria-labelledby="myShowingAllTeamCoordinators" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myShowingAllTeamCoordinators">Coordinadores de equipos</h4>
+            </div>
+            <div class="modal-body">
+                <div class="showingAllCoordinatorsTeam">
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">¡Okay!...</button>
             </div>
         </div>
     </div>
