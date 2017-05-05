@@ -140,6 +140,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" onclick="javascript: WebPageTeam();" class="btn btn-primary" style="float: left;">Miembros</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">¡Okay!...</button>
             </div>
         </div>
