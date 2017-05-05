@@ -92,6 +92,7 @@
 			|   33	|	Creación de un miembro de equipo 						|
 			|   34	|	Actualización de un miembro de equipo 					|
 			|   35	|	Eliminación de un miembro de equipo 					|
+			|   36	|	Eliminación de un equipo 			 					|
 			+-------+-----------------------------------------------------------+
 		*/
 
@@ -2093,6 +2094,49 @@
 	    }
 
 	    /**
+			* Método que obtiene los miembros de todos los equipos.
+			*@param: No hay.
+		*/
+	    public function getTeamMembersToAll(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_team_members.
+		    #Atributos: No hay.
+		    #Valores devueltos: Todos los datos posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_team_members;");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Definición de un array multidimensional.
+	    		$getData = [];
+
+	    		#Se recorren todos los registros.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se asocian los resultados.
+	    			$getData[] = [
+	    				'id_member' 				=> $row['id_member'], 
+	    				'id_team' 					=> $row['id_team'], 
+	    				'id_img' 					=> $row['id_img'], 
+	    				'firts_name' 				=> $row['firts_name'], 
+	    				'last_name' 				=> $row['last_name'], 
+	    				'grado_academico' 			=> $row['grado_academico'], 
+	    				'dependencia_academica' 	=> $row['dependencia_academica'], 
+	    				'tipo_contratacion' 		=> $row['tipo_contratacion'], 
+	    				'hrs_semanales_dedicacion' 	=> $row['hrs_semanales_dedicacion'], 
+	    				'date_log' 					=> $row['date_log'],
+	    				'date_log_unix' 			=> $row['date_log_unix']
+	    			];
+	    		}
+
+	    		#Retorno del array cargado de información.
+	    		return $getData;
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
 			* Método que obtiene los miembros de un equipo.
 			*@param: No hay.
 		*/
@@ -3415,7 +3459,7 @@
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
-		    #Tabla: vip_tmp_img.
+		    #Tabla: vip_proyecto_instancia_aprob.
 		    #Atributos: id.
 		    #Valores devueltos: No hay, ya que es un DELETE.
 
@@ -3919,7 +3963,37 @@
 	    #####################################################################################
 	    #										FIN 										#
 	    #####################################################################################
+		
+		/**
+			* Método que elimina un equipo.
+			*@param: $id_team (Identificador del equipo).
+		*/
+	    public function DelTeamComplete($id_team){
+	    	#Se habilita el uso de sesiones.
+	    	@session_start();
+
+	    	#Statement: Consulta preparada. 
+		    #Tabla: vip_team.
+		    #Atributos: id_team.
+		    #Valores devueltos: No hay, ya que es un DELETE.
+
+	    	$Reason = $this->db->prepare('DELETE FROM vip_team '
+                . 'WHERE id_team = :id_team');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':id_team', $id_team);
+
+        	#Agregando una nueva actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 36, "Eliminando el equipo con ID: ".$id_team)) #Agrega una actividad.
+	        	if ($Reason->execute()) #Se ejecuta la consulta.
+		       		return true; #Buen resultado.
+
+	       	#Si algo falla, se retorna un valor booleano falso.
+        	return false;
+	    }
+
 	}
+
 
 	/**
 		* Función que verifica las sesión, si está logueado o no.
