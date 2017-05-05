@@ -1527,3 +1527,16 @@ function ChgCBCoordinate(value){
 	    }
   	});
 }
+
+function DelTeamComplete(){
+	$(".TeamProjectDelComplete").click();
+}
+
+function onClickDeleteTeamComplete(){
+	$.ajax({
+	    url: "private/desktop0/html/build/DelTeamComplete.php",
+	    success: function(data){
+			window.location.href="./";
+	    }
+  	});
+}
