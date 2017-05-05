@@ -33,7 +33,7 @@
                                 
                                 <i class="fa fa-users fa-2x" aria-hidden="true" title="Crear un nuevo equipo" onclick="javascript: CreateTeam();" ></i>
                                 
-                                <i class="fa fa-sitemap fa-2x" aria-hidden="true" title="Coordinación" onclick="javascript: CreateUserNow();" ></i>
+                                <i class="fa fa-sitemap fa-2x" aria-hidden="true" title="Coordinación" onclick="javascript: viewAllCoordinators();" ></i>
                         		
                                 <i class="fa fa-refresh fa-2x" aria-hidden="true" title="Recargar" onclick="javascript: window.location.reload();" ></i>
                         	</div>
