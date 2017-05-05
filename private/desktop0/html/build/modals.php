@@ -90,9 +90,33 @@
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-primary" style="float: left;" onclick="javascript: ProjectResult();">Resultados</button> -->
                 
-                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">Eliminar</button>
+                <button type="button" class="btn btn-danger" onclick="javascript: DelTeamComplete();">Eliminar</button>
                 <!-- <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button> -->
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mostrar una centinela, preguntando si realmente desea eliminar el equipo seleccionado!. -->
+<input type="hidden" class="TeamProjectDelComplete" data-toggle="modal" data-target="#TeamProjectDelComplete"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="TeamProjectDelComplete" tabindex="1" role="dialog" aria-labelledby="myTeamProjectDelComplete" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myTeamProjectDelComplete">Eliminar equipo</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Disculpe por desconfiar, pero, ¿Está seguro que desea eliminar el equipo?.</h4>
+                <hr>
+                <p>¡Atención!, si elimina el equipo, lo miembros que lo conforman también serán eliminados.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">¡Cancelar!...</button>
+                <button type="button" class="btn btn-danger" onclick="javascript: onClickDeleteTeamComplete();">¡Eliminar!...</button>
             </div>
         </div>
     </div>
