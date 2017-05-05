@@ -3992,6 +3992,22 @@
         	return false;
 	    }
 
+	    /**
+			* Método que obtiene el número de miembros coordinadores que están registrados.
+			*@param: No hay.
+		*/
+	    public function getMemberCoordinateCount(){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_coordinate.
+		    #Atributos: No hay.
+		    #Valores devueltos: Todos los posibles (*).
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_coordinate;");
+	    	
+	    	#Se retorna la cantidad de filas devueltas por la consulta.
+	    	return $stmt->rowCount();
+	    }
+
 	}
 
 
