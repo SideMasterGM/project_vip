@@ -1,20 +1,16 @@
-<?php
-    include ("build/verify.php");
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include ("build/head.php"); ?>
+        <?php include ("private/desktop0/html/build/head.php"); ?>
     </head>
 
-   <body class="flat-blue" style="background-image: url('../../images/back/bg1.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+   <body class="flat-blue" style="background-image: url('source/img/back/bg1.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="app-container">
             <div class="row content-container">
 
-                <?php include ("build/tape.php"); ?>
+                <?php include ("private/desktop0/html/build/tape.php"); ?>
 
-                <?php include ("build/menu_left.php"); ?>
+                <?php include ("private/desktop0/html/build/menu_left.php"); ?>
 
                 <div class="container-fluid">
                     <div class="side-body">
@@ -53,14 +49,14 @@
                                 </div>
                             </div>
                         </div>
-                        <?php include ("build/modals.php"); ?>
+                        <?php include ("private/desktop0/html/build/modals.php"); ?>
                     </div>
                 </div>
             </div>
-            <?php include ("build/footer.php"); ?>
+            <?php include ("private/desktop0/html/build/footer.php"); ?>
 
             <div>
-            <?php include ("build/scripts.php"); ?>
+            <?php include ("private/desktop0/html/build/scripts.php"); ?>
             <script type="text/javascript">
                 setTimeout(function(){
                     $("navbar-nav .active").removeClass("active");
