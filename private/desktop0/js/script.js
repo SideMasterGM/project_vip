@@ -1477,7 +1477,15 @@ function onClickDeleteTeamMember(){
 				    url: "private/desktop0/html/build/ShowDataMembersTeamProject.php",
 				    type: "POST",
 				    success: function(data){
-				    	$(".ShowInfoMembersTeamProject").html(data);
+				    	// $(".ShowInfoMembersTeamProject").html(data);
+
+				    	$(".ShowInfoMembersTeamProject").fadeOut(500);
+						$(".ShowInfoMembersTeamProject").html(data);
+				    	$(".ShowInfoMembersTeamProject").fadeIn(500);
+
+				    	$(".showingAllCoordinatorsTeam").fadeOut(500);
+						$(".showingAllCoordinatorsTeam").html(data);
+				    	$(".showingAllCoordinatorsTeam").fadeIn(500);
 				    }
 			  	});
 
@@ -1518,6 +1526,10 @@ function ChgCBCoordinate(value){
 						$(".ShowInfoMembersTeamProject").fadeOut(500);
 						$(".ShowInfoMembersTeamProject").html(data);
 				    	$(".ShowInfoMembersTeamProject").fadeIn(500);
+
+				    	$(".showingAllCoordinatorsTeam").fadeOut(500);
+						$(".showingAllCoordinatorsTeam").html(data);
+				    	$(".showingAllCoordinatorsTeam").fadeIn(500);
 				    }
 			  	});
 
@@ -1536,7 +1548,24 @@ function onClickDeleteTeamComplete(){
 	$.ajax({
 	    url: "private/desktop0/html/build/DelTeamComplete.php",
 	    success: function(data){
-			window.location.href="./";
+			if (data == "OK"){
+				window.location.href="./team";
+			}
 	    }
   	});
+}
+
+function viewAllCoordinators(){
+
+	$.ajax({
+	    url: "private/desktop0/html/build/ShowDataMembersOfTypeCoordinators.php",
+	    type: "POST",
+	    success: function(data){
+			$(".showingAllCoordinatorsTeam").fadeOut(500);
+			$(".showingAllCoordinatorsTeam").html(data);
+	    	$(".showingAllCoordinatorsTeam").fadeIn(500);
+	    }
+  	});
+
+	$(".ShowingAllTeamCoordinators").click();
 }
