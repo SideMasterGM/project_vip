@@ -71,7 +71,7 @@
                                                 <div class="panel-body">
                                                     <div>
                                                         <?php
-                                                            $CNEx = CDB("all");
+                                                            $CNEx = CDB("vip");
 
                                                             ?>
                                                                 <select id="select_fac_cur_esc" style="width: 100%;">
@@ -176,7 +176,7 @@
                                                     <div>
 
                                                     <?php
-                                                        $CNEx = CDB("all");
+                                                        $CNEx = CDB("vip");
                                                         ?>
                                                             <select id="select_comunidad_poblacion" style="width: 100%;">
                                                                 <optgroup label="Lista de centros">
