@@ -721,7 +721,7 @@
                     </form>
                     <div class="setDataComunidadPoblacion">
                        <?php
-                            $CNEx = CDB("all");
+                            $CNEx = CDB("vip");
 
                             if (is_array($CNEx->getProjectComunidadPoblacion())){
                                 foreach ($CNEx->getProjectComunidadPoblacion() as $value) {
@@ -785,7 +785,7 @@
                     </form>
                     <div class="setDataFacCurEsc">
                        <?php
-                            $CNEx = CDB("all");
+                            $CNEx = CDB("vip");
 
                             if (is_array($CNEx->getProjectFacCurEsc())){
                                 foreach ($CNEx->getProjectFacCurEsc() as $value) {
