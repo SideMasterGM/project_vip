@@ -1,6 +1,6 @@
 <?php
 	include ("../../../connect_server/connect_server.php");
-	$CN = CDB("all");
+	$CN = CDB("vip");
 
 	$id = $_POST['DelTagFacCurEsc'];
 
