@@ -2970,11 +2970,11 @@
 		*/
 	    public function getProjectComunidadPoblacion(){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: municipios.
+		    #Tabla: vip_import_municipios.
 		    #Atributos: -
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM municipios ORDER BY cod_muni DESC;");
+	    	$stmt = $this->db->query("SELECT * FROM vip_import_municipios ORDER BY cod_muni DESC;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -3000,16 +3000,16 @@
 	    }
 
 	    /**
-			* Método que obtiene el campo cod_muni del último registro de la tabla municipios.
+			* Método que obtiene el campo cod_muni del último registro de la tabla vip_import_municipios.
 			*@param: No hay.
 		*/
 	    public function getOnlyLastCodeComunidadPoblacion(){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: municipios.
+		    #Tabla: vip_import_municipios.
 		    #Atributos: cod_muni.
 		    #Valores devueltos: Todo los posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM municipios ORDER BY cod_muni DESC LIMIT 1");
+	    	$stmt = $this->db->query("SELECT * FROM vip_import_municipios ORDER BY cod_muni DESC LIMIT 1");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -3043,11 +3043,11 @@
 		*/
 	    public function getOnlyComunidadPoblacion($id){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: municipios.
+		    #Tabla: vip_import_municipios.
 		    #Atributos: cod_muni.
 		    #Valores devueltos: Todo los posibles (*).
 
-	    	$stmt = $this->db->query("SELECT nombre_muni FROM municipios WHERE cod_muni='".$id."'");
+	    	$stmt = $this->db->query("SELECT nombre_muni FROM vip_import_municipios WHERE cod_muni='".$id."'");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -3084,12 +3084,12 @@
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
-	    	#Tabla: municipios.
+	    	#Tabla: vip_import_municipios.
 	    	#Atributos: cod_muni, nombre_muni, cod_dpto.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
-	    	$q = "INSERT INTO municipios (cod_muni, nombre_muni, cod_dpto) VALUES (:cod_muni,:nombre_muni,:cod_dpto);";
+	    	$q = "INSERT INTO vip_import_municipios (cod_muni, nombre_muni, cod_dpto) VALUES (:cod_muni,:nombre_muni,:cod_dpto);";
 	    
 	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
@@ -3123,11 +3123,11 @@
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
-		    #Tabla: municipios.
+		    #Tabla: vip_import_municipios.
 		    #Atributos: id.
 		    #Valores devueltos: No hay, ya que es un DELETE.
 
-	    	$Reason = $this->db->prepare('DELETE FROM municipios '
+	    	$Reason = $this->db->prepare('DELETE FROM vip_import_municipios '
                 . 'WHERE cod_muni = :cod_muni');
 
 	    	#Se vincula el valor con el parámetro.
@@ -3156,16 +3156,16 @@
 	    #			Métodos utilizados para gestionar Facultad | CUR | Escuela.				#
 	    #####################################################################################
 	    /**
-			* Método que obtiene las Facultades, Curs o Escuelas.
+			* Método que obtiene las vip_import_facultades, Curs o Escuelas.
 			*@param: No hay.
 		*/
 	    public function getProjectFacCurEsc(){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: facultades.
+		    #Tabla: vip_import_facultades.
 		    #Atributos: -
 		    #Valores devueltos: Todos los datos posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM facultades ORDER BY codigo_facultad DESC;");
+	    	$stmt = $this->db->query("SELECT * FROM vip_import_facultades ORDER BY codigo_facultad DESC;");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -3190,16 +3190,16 @@
 	    }
 
 	    /**
-			* Método que obtiene el campo codigo_facultad del último registro de la tabla facultades.
+			* Método que obtiene el campo codigo_facultad del último registro de la tabla vip_import_facultades.
 			*@param: No hay.
 		*/
 	    public function getOnlyLastCodeFacCurEsc(){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: facultades.
+		    #Tabla: vip_import_facultades.
 		    #Atributos: username.
 		    #Valores devueltos: Todo los posibles (*).
 
-	    	$stmt = $this->db->query("SELECT * FROM facultades ORDER BY codigo_facultad DESC LIMIT 1");
+	    	$stmt = $this->db->query("SELECT * FROM vip_import_facultades ORDER BY codigo_facultad DESC LIMIT 1");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -3233,11 +3233,11 @@
 		*/
 	    public function getOnlyFacCurEsc($id){
 	    	#Statement: Consulta no preparada. 
-		    #Tabla: facultades.
+		    #Tabla: vip_import_facultades.
 		    #Atributos: username.
 		    #Valores devueltos: Todo los posibles (*).
 
-	    	$stmt = $this->db->query("SELECT nombrefac FROM facultades WHERE codigo_facultad='".$id."'");
+	    	$stmt = $this->db->query("SELECT nombrefac FROM vip_import_facultades WHERE codigo_facultad='".$id."'");
 
 	    	#Si existen registros.
 	    	if ($stmt->rowCount() > 0){
@@ -3274,12 +3274,12 @@
 	    	@session_start();
 
 	    	#Statement: Consulta preparada. 
-	    	#Tabla: facultades.
+	    	#Tabla: vip_import_facultades.
 	    	#Atributos: codigo_facultad, nombrefac.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
-	    	$q = "INSERT INTO facultades (codigo_facultad, nombrefac) VALUES (:codigo_facultad,:nombrefac);";
+	    	$q = "INSERT INTO vip_import_facultades (codigo_facultad, nombrefac) VALUES (:codigo_facultad,:nombrefac);";
 	    
 	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
@@ -3316,7 +3316,7 @@
 		    #Atributos: id.
 		    #Valores devueltos: No hay, ya que es un DELETE.
 
-	    	$Reason = $this->db->prepare('DELETE FROM facultades '
+	    	$Reason = $this->db->prepare('DELETE FROM vip_import_facultades '
                 . 'WHERE codigo_facultad = :codigo_facultad');
 
 	    	#Se vincula el valor con el parámetro.
@@ -4009,7 +4009,6 @@
 	    }
 
 	}
-
 
 	/**
 		* Función que verifica las sesión, si está logueado o no.
