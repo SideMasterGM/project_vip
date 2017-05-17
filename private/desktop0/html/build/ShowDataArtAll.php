@@ -8,7 +8,7 @@
   include ("../../../connect_server/connect_server.php");
   
   $CN_VIP = CDB("vip");
-  $CN_ALL = CDB("all");
+  $CN_ALL = CDB("vip");
   
   $id_project = $_POST['ValueArticleByID'];
 ?>
