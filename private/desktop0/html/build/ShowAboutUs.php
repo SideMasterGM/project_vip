@@ -1,4 +1,10 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	include ("../../connect_server/connect_server.php");
 
 	$Dato = $Conexion->query("SELECT * FROM about_us ORDER BY id DESC LIMIT 1");

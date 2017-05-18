@@ -1,4 +1,10 @@
 <?php
+
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
 	
 	@session_start();
 	include ("../../connect_server/connect_server.php");

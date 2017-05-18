@@ -1,4 +1,10 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+	
 	$IDProject 	= $_POST['IDProject'];
 	$TeamName 	= $_POST['TeamName'];
 

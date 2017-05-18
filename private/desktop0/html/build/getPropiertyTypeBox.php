@@ -1,4 +1,10 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	include ("../../connect_server/connect_server.php");
 
 	$NewD = $Conexion->query("SELECT * FROM property_type;");

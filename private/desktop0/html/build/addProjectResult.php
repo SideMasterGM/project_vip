@@ -1,4 +1,10 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	$idp_result 	= $_POST['idp_result'];
 	$fpr_content 	= $_POST['fpr_content'];
 

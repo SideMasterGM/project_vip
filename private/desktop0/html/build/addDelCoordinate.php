@@ -1,4 +1,11 @@
 <?php
+
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	include ("../../../connect_server/connect_server.php");
 
 	$CN_VIP = CDB("vip");

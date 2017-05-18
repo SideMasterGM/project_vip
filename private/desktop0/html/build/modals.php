@@ -1,3 +1,11 @@
+<!-- 
+    /**
+        * --------------------------------------------- *
+        * @author: Jerson A. Martínez M. (Side Master)  *
+        * --------------------------------------------- *
+    */
+ -->
+
 <input type="hidden" class="change-img_perfil" data-toggle="modal" data-target="#ChangeImgPerfil"  />
 
 <!-- Modal -->

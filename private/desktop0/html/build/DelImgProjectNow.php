@@ -1,4 +1,10 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	#Se llama a la conexión.
 	include ("../../../connect_server/connect_server.php");
 

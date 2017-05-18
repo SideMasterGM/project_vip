@@ -1,3 +1,9 @@
+/**
+	* --------------------------------------------- *
+	* @author: Jerson A. Martínez M. (Side Master)  *
+	* --------------------------------------------- *
+*/
+
 window.onload = function(){
 	$("#QuizePonerleID").click();
 }

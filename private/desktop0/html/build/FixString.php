@@ -1,5 +1,11 @@
 <?php
     /**
+        * --------------------------------------------- *
+        * @author: Jerson A. Martínez M. (Side Master)  *
+        * --------------------------------------------- *
+    */
+
+    /**
      * Reemplaza todos los acentos por sus equivalentes sin ellos
      *
      * @param $string

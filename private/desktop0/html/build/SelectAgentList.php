@@ -1,4 +1,10 @@
 <?php
+    /**
+        * --------------------------------------------- *
+        * @author: Jerson A. Martínez M. (Side Master)  *
+        * --------------------------------------------- *
+    */
+
 	include ("../../connect_server/connect_server.php");
 	$ExAgentUser = $Conexion->query("SELECT DISTINCT username FROM agents;");
 	while ($RExAgentUser = $ExAgentUser->fetch_array(MYSQLI_ASSOC)){

@@ -1,4 +1,10 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	if ($_FILES["new_imagen"]["error"] > 0){
 		echo "Ha ocurrido un error";
 	} else {

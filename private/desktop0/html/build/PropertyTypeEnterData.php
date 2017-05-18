@@ -1,5 +1,11 @@
 <?php
 	
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+	
 	include ("../../connect_server/connect_server.php");
 
 	$Enter = $_POST['writeTagProperty_type'];

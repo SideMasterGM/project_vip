@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
     <?php 
+        /**
+            * --------------------------------------------- *
+            * @author: Jerson A. Martínez M. (Side Master)  *
+            * --------------------------------------------- *
+        */
+        
         @session_start();
         //session_destroy();
         if (!isset($_SESSION['session']) || $_SESSION['session'] == "No"){

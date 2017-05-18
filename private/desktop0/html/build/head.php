@@ -1,4 +1,10 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	include ("private/desktop0/connect_server/connect_server.php");
 	include ("private/connect_server/connect_server.php");
     ?>

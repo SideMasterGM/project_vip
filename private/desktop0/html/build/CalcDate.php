@@ -1,4 +1,10 @@
 <?php
+    /**
+        * --------------------------------------------- *
+        * @author: Jerson A. Martínez M. (Side Master)  *
+        * --------------------------------------------- *
+    */
+
 	function getStardate(){
       $offset = 2000;
       $seconds_per_stardate = 31449.6;

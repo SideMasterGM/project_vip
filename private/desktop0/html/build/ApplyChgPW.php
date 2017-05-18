@@ -1,5 +1,12 @@
 <?php
+	/**
+		* --------------------------------------------- *
+		* @author: Jerson A. Martínez M. (Side Master)  *
+		* --------------------------------------------- *
+	*/
+
 	include ("../../../connect_server/connect_server.php");
+	
 	$CN = CDB("vip");
 	@session_start();
 	
