@@ -50,7 +50,7 @@
                                 <?php
 
                                     $Connect_VIP = CDB("vip");
-                                    $Connect_ALL = CDB("all");
+                                    $Connect_ALL = CDB("vip");
 
                                     if (is_array($Connect_VIP->getProjects())){
                                         foreach ($Connect_VIP->getProjects() as $value) {
