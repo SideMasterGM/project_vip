@@ -150,54 +150,83 @@
                                                             </div>
                                                             <div class="panel-body">
                                                                 <div>
-                                                                    <div class="row">
-                                                                        <div class="col-xs-8">
-                                                                            <p>
-                                                                                <b>Equipo I</b>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-xs-4">
-                                                                             <p>
-                                                                                <?php echo $id; ?>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <?php
+                                                                        $ProjectTeams = $CN_VIP->getTeamProject();
 
-                                                                    <div class="row">
-                                                                        <div class="col-xs-8">
-                                                                            <p>
-                                                                                <b>Equipo II</b>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-xs-4">
-                                                                             <p>
-                                                                                <?php echo $ProjectIDFacCurEsc; ?>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
+                                                                        $ProjectTeamsCount = 0;
+                                                                        if (is_array($ProjectTeams)){
+                                                                            foreach ($ProjectTeams as $value) { 
+                                                                                if ($value['id_project'] == $id){
+                                                                                    $ProjectTeamsCount++;
+                                                                                    ?>
+                                                                                        <div class="row">
+                                                                                            <div class="col-xs-4">
+                                                                                                <p>
+                                                                                                    <b>Equipo <?php echo $ProjectTeamsCount; ?></b>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                            <div class="col-xs-8">
+                                                                                                 <p>
+                                                                                                    <?php echo $value['nombre']; ?>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    <?php
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            echo "No hay información que mostrar";
+                                                                        }
+                                                                    ?>
                                                                 </div>
                                                             </div>
                                                         </div>
 
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading" style="background-color: #353D47; color: #fff;">
-                                                                <h3 class="panel-title">Coordinadores
+                                                                <h3 class="panel-title">Coordinadores de equipos
                                                             </div>
                                                             <div class="panel-body">
                                                                 <div>
-                                                                    <div class="row">
-                                                                        <div class="col-xs-8">
-                                                                            <p>
-                                                                                <b>Coodinadores de equipo</b>
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-xs-4">
-                                                                             <p>
-                                                                                <?php echo $id; ?>
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <?php
+                                                                        $ProjectTeams = $CN_VIP->getTeamProject();
 
+                                                                        if (is_array($ProjectTeams)){
+                                                                            foreach ($ProjectTeams as $valueOne) { 
+                                                                                if ($valueOne['id_project'] == $id){
+
+                                                                                    $ProjectTeamsMembers = $CN_VIP->getTeamMembers($valueOne['id_team']);
+
+                                                                                    if (is_array($ProjectTeamsMembers)){
+                                                                                        foreach ($ProjectTeamsMembers as $ValueTwo) {
+                                                                                            
+                                                                                            $ProjectTeamsMembersCoordinate = $CN_VIP->getCoordinators();
+                                                                                            foreach ($ProjectTeamsMembersCoordinate as $ValueThree) {
+                                                                                                if ($ValueTwo['id_member'] == $ValueThree['id_member']){
+                                                                                                    ?>
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-xs-6">
+                                                                                                                <p>
+                                                                                                                    <b><?php echo $valueOne['nombre']; ?></b>
+                                                                                                                </p>
+                                                                                                            </div>
+                                                                                                            <div class="col-xs-6">
+                                                                                                                 <p>
+                                                                                                                    <?php echo $ValueTwo['firts_name']." ".$ValueTwo['last_name']; ?>
+                                                                                                                </p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    <?php
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            echo "No hay información que mostrar";
+                                                                        }
+                                                                    ?>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -215,7 +244,7 @@
                                                                             </p>
                                                                         </div>
                                                                         <div class="col-xs-4">
-                                                                             <p>
+                                                                            <p>
                                                                                 <?php echo $id; ?>
                                                                             </p>
                                                                         </div>
