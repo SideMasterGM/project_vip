@@ -4,7 +4,18 @@
         * @author: Jerson A. Martínez M. (Side Master)  *
         * --------------------------------------------- *
     */
- ?>
+
+    include ("private/desktop0/html/build/modals.php");
+
+    if (!isset($_POST['GenerateReportArticleID'])){
+        ?>
+            <script>
+                alert("No hay algo seleccionado");
+            </script>
+        <?php   
+    }
+
+?>
 
 <div class="container-fluid">
     <div class="side-body padding-top">
@@ -17,7 +28,7 @@
                         		<i class="fa fa-pencil"></i> <?php echo "Título del proyecto"; ?>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" style="float: right; margin: 10px;" onclick="javascript: GenerateReport();" title="Generar un reporte completo del proyecto">Descargar en PDF</button>
+                        <button type="button" class="btn btn-primary" style="float: right; margin: 12px;" onclick="javascript: GenerateReport();" title="Generar un reporte completo del proyecto">Descargar en PDF</button>
                     </div>
                     <div class="card-body">
                         
@@ -27,7 +38,7 @@
                     </form>
                 </div>
             </div>
-			<?php include ("private/desktop0/html/build/modals.php"); ?>
+			
         </div>
     </div>
 </div>
