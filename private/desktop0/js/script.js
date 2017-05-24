@@ -1584,3 +1584,7 @@ function WebPageTeam(){
 function GenerateReport(){
 	document.getElementById("GenerateReportFormGo").submit();
 }
+
+function GenerateReportGoProjects(){
+	window.location.href="./projects";
+}
