@@ -93,7 +93,7 @@
                                                                         </div>
                                                                         <div class="col-xs-4">
                                                                              <p>
-                                                                                <?php foreach ($ProjectInfo as $value) { echo $value['id_facultad_cur_escuela']; } ?>
+                                                                                <?php echo $ProjectIDFacCurEsc; ?>
                                                                             </p>
                                                                         </div>
                                                                     </div>
