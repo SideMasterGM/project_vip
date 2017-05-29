@@ -49,6 +49,7 @@
                                         foreach ($ProjectInfo as $value) { 
                                             $ProjectNombre          = $value['nombre']; 
                                             $ProjectIDFacCurEsc     = $value['id_facultad_cur_escuela']; 
+                                            $ProjectFechaAprobacion = $value['fecha_aprobacion']; 
                                         }
 
                                         $ProjectFacCurEsc = $CN_VIP->getOnlyFacCurEsc($id);
@@ -106,7 +107,7 @@
                                                                         </div>
                                                                         <div class="col-xs-4">
                                                                              <p>
-                                                                                <?php foreach ($ProjectInfo as $value) { echo $value['fecha_aprobacion']; } ?>
+                                                                                <?php $ProjectFechaAprobacion; ?>
                                                                             </p>
                                                                         </div>
                                                                     </div>
