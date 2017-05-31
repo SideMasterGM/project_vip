@@ -54,7 +54,7 @@
                                             $ProjectIDInstanciaApro = $value['id_instancia_aprobacion']; 
                                         }
 
-                                        $ProjectFacCurEsc = $CN_VIP->getOnlyFacCurEsc($id);
+                                        $ProjectFacCurEsc = $CN_VIP->getOnlyFacCurEsc($ProjectIDFacCurEsc);
 
                                         ?>
                                             <div class="card-header">
@@ -154,26 +154,22 @@
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
                                                                             <div class="panel">
-                                                                                <div class="panel-heading" role="tab" id="headingTeamMembers34" style="background-color: #5587CB;">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_FacCurEsc" style="background-color: #5587CB;">
                                                                                     <span class="panel-title">
-                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTeamMembers34" aria-expanded="false" aria-controls="collapseTeamMembers34" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_FacCurEs" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
                                                                                             Facultad | CUR | Escuela
                                                                                         </a>
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div id="collapseTeamMembers34" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTeamMembers34">
+                                                                            <div id="collapseGenerateReport_FacCurEs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_FacCurEsc">
                                                                                 <div class="panel-body">
                                                                                     <div class="row">
                                                                                         <div class="col-xs-6">
                                                                                             <?php 
-                                                                                                if (is_bool($ProjectFacCurEsc)){
-                                                                                                    echo "No hay";
-                                                                                                } else {
-                                                                                                     echo $ProjectFacCurEsc;
-                                                                                                }
-                                                                                                ?>
+                                                                                                echo $ProjectFacCurEsc;
+                                                                                            ?>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
