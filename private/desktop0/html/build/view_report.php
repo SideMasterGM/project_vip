@@ -174,14 +174,35 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <p>
-                                                                                <b>Identificador</b>
-                                                                            </p>
                                                                         </div>
                                                                         <div class="col-xs-6">
-                                                                             <p>
-                                                                                <?php echo $id; ?>
-                                                                            </p>
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_InstanciaAprob" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_InstanciaAprob" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Instancia de aprobación
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_InstanciaAprob" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_InstanciaAprob">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-6">
+                                                                                            <?php 
+
+                                                                                                if (!is_bool($CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro))){
+                                                                                                    echo $CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro);
+                                                                                                } else {
+                                                                                                    echo "-";
+                                                                                                }
+
+                                                                                            ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
 
