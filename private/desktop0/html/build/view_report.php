@@ -166,7 +166,7 @@
                                                                             <div id="collapseGenerateReport_FacCurEs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_FacCurEsc">
                                                                                 <div class="panel-body">
                                                                                     <div class="row">
-                                                                                        <div class="col-xs-6">
+                                                                                        <div class="col-xs-12">
                                                                                             <?php 
                                                                                                 echo $ProjectFacCurEsc;
                                                                                             ?>
@@ -189,7 +189,7 @@
                                                                             <div id="collapseGenerateReport_InstanciaAprob" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_InstanciaAprob">
                                                                                 <div class="panel-body">
                                                                                     <div class="row">
-                                                                                        <div class="col-xs-6">
+                                                                                        <div class="col-xs-12">
                                                                                             <?php 
 
                                                                                                 if (!is_bool($CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro))){
@@ -208,14 +208,105 @@
 
                                                                     <div class="row">
                                                                         <div class="col-xs-6">
-                                                                            <p>
-                                                                                <b>ID Facultad | CUR | Escuela</b>
-                                                                            </p>
+                                                                           <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_InfoFinanciera" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_InfoFinanciera" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Información financiera
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_InfoFinanciera" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_InfoFinanciera">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <?php 
+                                                                                            $ProjectInfoFinanciera = $CN_VIP->getProyectoFinancieraOnlyById($id);
+                                                                                            if (is_array($ProjectInfoFinanciera)){
+                                                                                                
+                                                                                                foreach ($ProjectInfoFinanciera as $value) { 
+                                                                                                    $IFnombre_organismo = $value['nombre_organismo'];
+                                                                                                    $IFmonto_financiado = $value['monto_financiado'];
+                                                                                                    $IFaporte_unan      = $value['aporte_unan'];
+                                                                                                }
+
+                                                                                                ?>
+                                                                                                    <div class="col-xs-6">
+                                                                                                        <p><b>Nombre del organismo </b></p>
+                                                                                                        <p><b>Monto financiado </b></p>
+                                                                                                        <p><b>Aporte UNAN </b></p>
+                                                                                                    </div>
+
+                                                                                                    <div class="col-xs-6">
+                                                                                                        <p><?php echo $IFnombre_organismo; ?></p>
+
+                                                                                                        <p><?php echo $IFmonto_financiado; ?></p>
+
+                                                                                                        <p><?php echo $IFaporte_unan; ?></p>
+                                                                                                    </div>
+
+                                                                                                <?php
+                                                                                            } else {
+                                                                                                echo "-";
+                                                                                            }
+
+                                                                                        ?>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="col-xs-6">
-                                                                             <p>
-                                                                                <?php foreach ($ProjectInfo as $value) { echo $value['id_facultad_cur_escuela']; } ?>
-                                                                            </p>
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_Temporalidad" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_Temporalidad" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Temporalidad
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_Temporalidad" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_Temporalidad">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <?php 
+                                                                                            $ProjectTemporalidad = $CN_VIP->getProyectoTemporalidadOnlyById($id);
+                                                                                            if (is_array($ProjectTemporalidad)){
+                                                                                                
+                                                                                                foreach ($ProjectTemporalidad as $value) { 
+                                                                                                    $Tmpduracion_meses      = $value['duracion_meses'];
+                                                                                                    $Tmpfecha_inicio        = $value['fecha_inicio'];
+                                                                                                    $Tmpfecha_finalizacion  = $value['fecha_finalizacion'];
+                                                                                                    $Tmpfecha_monitoreo     = $value['fecha_monitoreo'];
+                                                                                                }
+
+                                                                                                ?>
+                                                                                                    <div class="col-xs-8">
+                                                                                                        <p><b>Duración en meses </b></p>
+                                                                                                        <p><b>Fecha de inicio </b></p>
+                                                                                                        <p><b>Fecha de finalización </b></p>
+                                                                                                        <p><b>Fecha de monitoreo </b></p>
+                                                                                                    </div>
+
+                                                                                                    <div class="col-xs-4">
+                                                                                                        <p><?php echo $Tmpduracion_meses; ?></p>
+                                                                                                        <p><?php echo $Tmpfecha_inicio; ?></p>
+                                                                                                        <p><?php echo $Tmpfecha_finalizacion; ?></p>
+                                                                                                        <p><?php echo $Tmpfecha_monitoreo; ?></p>
+                                                                                                    </div>
+
+                                                                                                <?php
+                                                                                            } else {
+                                                                                                echo "-";
+                                                                                            }
+
+                                                                                        ?>
+                                                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
 
