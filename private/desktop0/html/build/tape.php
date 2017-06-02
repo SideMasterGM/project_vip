@@ -37,11 +37,21 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o fa-2x"></i></a>
                 <ul class="dropdown-menu animated fadeInDown">
-                    <li class="title">
+                    <li class="title" style="cursor: pointer;" onclick="CallModalActivityMessageMe();">
                         Notificaciones <span class="badge pull-right"><?php echo $QuantityTotal; ?></span>
                     </li>
                     <li class="message">
-                        No hay nuevas notificaciones
+                        <?php
+                            if ($QuantityTotal == 0){
+                                ?>
+                                    No hay nuevas notificaciones
+                                <?php
+                            } else {
+                                ?>
+                                    Hay notificaciones de mensaje
+                                <?php
+                            }
+                        ?>
                     </li>
                 </ul>
             </li>

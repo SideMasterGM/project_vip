@@ -125,7 +125,7 @@
 	    	#Si algo ha fallado, se retorna un valor booleano falso.
 	    	return false;
 	    }
-
+		
 	    /**
 			* Método que obtiene una actividad de usuario.
 			*@param: $id_activity (ID de una actividad), $Quantity (Límite de resultados).
