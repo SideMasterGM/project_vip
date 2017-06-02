@@ -11,7 +11,7 @@ body {
   outline: none; }
 
 .row > [class*="col-"] {
-  margin-bottom: 25px; }
+  margin-bottom: 5px; }
 
 .row.no-margin-bottom > [class*="col-"] {
   margin-bottom: 10px; }
