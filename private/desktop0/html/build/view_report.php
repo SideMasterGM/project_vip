@@ -142,9 +142,135 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading" style="background-color: #353D47; color: #fff;">
+                                                                <h3 class="panel-title">Personas atendidas
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-8">
+                                                                            <p>
+                                                                                <b>Identificador</b>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-xs-4">
+                                                                             <p>
+                                                                                <?php echo $id; ?>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-xs-8">
+                                                                            <p>
+                                                                                <b>ID Facultad | CUR | Escuela</b>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-xs-4">
+                                                                             <p>
+                                                                                <?php echo $ProjectIDFacCurEsc; ?>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
 
                                                     <div class="col-xs-8">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading" style="background-color: #353D47; color: #fff;">
+                                                                <h3 class="panel-title">Redacción del proyecto
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_Objects" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_Objects" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Objetivos Generales, Específicos y resultados esperados
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_Objects" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_Objects">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <?php 
+                                                                                                echo $ProjectFacCurEsc;
+                                                                                            ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-xs-6">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_Objects" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_Objects" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Facultad | CUR | Escuela
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_Objects" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_Objects">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <?php 
+                                                                                                echo $ProjectFacCurEsc;
+                                                                                            ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-xs-6">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_InstanciaAprob" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_InstanciaAprob" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Instancia de aprobación
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_InstanciaAprob" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_InstanciaAprob">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <?php 
+
+                                                                                                if (!is_bool($CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro))){
+                                                                                                    echo $CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro);
+                                                                                                } else {
+                                                                                                    echo "-";
+                                                                                                }
+
+                                                                                            ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading" style="background-color: #353D47; color: #fff;">
                                                                 <h3 class="panel-title">Identificación del proyecto
@@ -309,14 +435,11 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         <?php
 
