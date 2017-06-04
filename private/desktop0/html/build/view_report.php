@@ -182,7 +182,7 @@
                                                     <div class="col-xs-8">
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading" style="background-color: #353D47; color: #fff;">
-                                                                <h3 class="panel-title">Redacción del proyecto
+                                                                <h3 class="panel-title">Redacción | Recursos
                                                             </div>
                                                             <div class="panel-body">
                                                                 <div>
@@ -203,59 +203,13 @@
                                                                                     <div class="row">
                                                                                         <div class="col-xs-12">
                                                                                             <?php 
-                                                                                                echo $ProjectFacCurEsc;
-                                                                                            ?>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                    </div>
+                                                                                                $ProjectContentObjects = $CN_VIP->getProjectsOnlyById($id);
+                                                                                                if (is_array($ProjectContentObjects)){
+                                                                                                    
+                                                                                                    foreach ($ProjectContentObjects as $value) { 
+                                                                                                        echo $value['contenido'];
+                                                                                                    }
 
-                                                                    <div class="row">
-                                                                        <div class="col-xs-6">
-                                                                            <div class="panel">
-                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_Objects" style="background-color: #5587CB;">
-                                                                                    <span class="panel-title">
-                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_Objects" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
-                                                                                            Facultad | CUR | Escuela
-                                                                                        </a>
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div id="collapseGenerateReport_Objects" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_Objects">
-                                                                                <div class="panel-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-12">
-                                                                                            <?php 
-                                                                                                echo $ProjectFacCurEsc;
-                                                                                            ?>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-xs-6">
-                                                                            <div class="panel">
-                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_InstanciaAprob" style="background-color: #5587CB;">
-                                                                                    <span class="panel-title">
-                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_InstanciaAprob" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
-                                                                                            Instancia de aprobación
-                                                                                        </a>
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div id="collapseGenerateReport_InstanciaAprob" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_InstanciaAprob">
-                                                                                <div class="panel-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-xs-12">
-                                                                                            <?php 
-
-                                                                                                if (!is_bool($CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro))){
-                                                                                                    echo $CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro);
                                                                                                 } else {
                                                                                                     echo "-";
                                                                                                 }
@@ -267,6 +221,83 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_ResourcesImages" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_ResourcesImages" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Imágenes almacenadas
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_ResourcesImages" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_ResourcesImages">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <div class="row">
+                                                                                                    <?php 
+                                                                                                        $getProjectImages = $CN_VIP->getProjectImgOnlyById($id);
+                                                                                                        $CountParts = count($getProjectImages);
+                                                                                                        $FirstPart  = floor($CountParts / 2);
+                                                                                                        $SecondPart = $CountParts - $FirstPart;
+
+                                                                                                        if (is_array($getProjectImages)){
+                                                                                                            $CounterInit = 0;
+                                                                                                            foreach ($getProjectImages as $value) {
+
+                                                                                                                if ($CounterInit < $FirstPart){
+                                                                                                                    if ($CounterInit == 0){
+                                                                                                                        ?>
+                                                                                                                            <div class="col-xs-6">
+                                                                                                                                <div class="container_imgnowtest">
+                                                                                                                                    <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
+                                                                                                                                </div>
+                                                                                                                        <?php
+                                                                                                                    } else {
+                                                                                                                        ?>
+                                                                                                                            <div class="container_imgnowtest">
+                                                                                                                                <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
+                                                                                                                            </div>
+                                                                                                                        <?php
+                                                                                                                    }
+                                                                                                                } else if ($CounterInit == $FirstPart) {
+
+                                                                                                                    ?>
+                                                                                                                        </div>
+                                                                                                                        <div class="col-xs-6">
+                                                                                                                            <div class="container_imgnowtest">
+                                                                                                                                <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
+                                                                                                                            </div>
+                                                                                                                    <?php
+                                                                                                                } else if ($CounterInit > $FirstPart && $CounterInit < $CountParts){
+                                                                                                                    ?>
+                                                                                                                        <div class="container_imgnowtest">
+                                                                                                                            <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
+                                                                                                                        </div>
+                                                                                                                    <?php
+                                                                                                                } else {
+                                                                                                                    ?>
+                                                                                                                        </div>
+                                                                                                                    <?php
+                                                                                                                }
+
+                                                                                                                $CounterInit++;
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ?>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
