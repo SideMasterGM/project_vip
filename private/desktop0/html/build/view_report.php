@@ -4,7 +4,8 @@
         * @author: Jerson A. Martínez M. (Side Master)  *
         * --------------------------------------------- *
     */
-
+    include ("private/desktop0/html/build/modals.php");
+    
     if (!isset($_POST['GenerateReportArticleID'])){
         ?>
             <div class="side-body padding-top" style="margin-left: 25%;">
