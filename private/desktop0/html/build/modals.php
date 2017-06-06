@@ -1107,7 +1107,15 @@
             </form>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModalImage();">Eliminar</button>
+                
+                <?php
+                    if ($_SERVER['PHP_SELF'] != "/project_vip/report.php"){
+                        ?>
+                            <button type="button" class="btn btn-danger" onclick="javascript: DelArtModalImage();">Eliminar</button>
+                        <?php
+                    }
+                ?>
+
                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
