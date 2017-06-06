@@ -1260,6 +1260,15 @@ body.login-page {
   transform: scale(1.0);
 }
 
+.container_imgnowtest:hover {
+  cursor: pointer;
+  z-index: 10;
+  transition-duration: .3s;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
 .container_imgnow:hover {
   cursor: pointer;
   z-index: 10;
