@@ -574,21 +574,29 @@
                                                                 <div class="row">
                                                                     <div class="col-xs-12">
                                                                         <div class="panel">
-                                                                            <div class="panel-heading" role="tab" id="headingGenerateReport_FacCurEsc" style="background-color: #5587CB;">
+                                                                            <div class="panel-heading" role="tab" id="headingGenerateReport_ResultadosFinales" style="background-color: #5587CB;">
                                                                                 <span class="panel-title">
-                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_FacCurEsc" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_ResultadosFinales" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
                                                                                         Redacción de resultados finales
                                                                                     </a>
                                                                                 </span>
                                                                             </div>
                                                                         </div>
 
-                                                                        <div id="collapseGenerateReport_FacCurEsc" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_FacCurEsc">
+                                                                        <div id="collapseGenerateReport_ResultadosFinales" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_ResultadosFinales">
                                                                             <div class="panel-body">
                                                                                 <div class="row">
                                                                                     <div class="col-xs-12">
                                                                                         <?php 
-                                                                                            echo $ProjectFacCurEsc;
+                                                                                            $ProjectResultadosFinales = $CN_VIP->getProjectsResultById($id);
+                                                                                            
+                                                                                            if (is_array($ProjectResultadosFinales)){
+                                                                                                foreach ($ProjectResultadosFinales as $value) {
+                                                                                                    echo $value['otros'];
+                                                                                                }
+                                                                                            } else {
+                                                                                                echo "-";
+                                                                                            }
                                                                                         ?>
                                                                                     </div>
                                                                                 </div>
