@@ -302,6 +302,7 @@
                                                         </div>
                                                     </div>
 
+                                                    
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading" style="background-color: #353D47; color: #fff;">
                                                             <h3 class="panel-title">Identificación del proyecto
@@ -494,7 +495,7 @@
                                                                                                         <div class="col-xs-8">
                                                                                                             <p><b>Cantidad de personas atendidas </b></p>
                                                                                                             <p><b>Comunidad </b></p>
-                                                                                                            <p><b>Población </b></p>
+                                                                                                            <p><b>Zona geográfica </b></p>
                                                                                                         </div>
 
                                                                                                         <div class="col-xs-4">
@@ -514,7 +515,86 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    
+                                                                    <div class="col-xs-6">
+                                                                        <div class="panel">
+                                                                            <div class="panel-heading" role="tab" id="headingGenerateReport_Resultados" style="background-color: #5587CB;">
+                                                                                <span class="panel-title">
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_Resultados" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                        Resultados
+                                                                                    </a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div id="collapseGenerateReport_Resultados" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_Resultados">
+                                                                            <div class="panel-body">
+                                                                                <div class="row">
+                                                                                    <?php 
+                                                                                        $ProjectResultados = $CN_VIP->getProyectoResultadosOnlyById($id);
+                                                                                        
+                                                                                        if (is_array($ProjectResultados)){
+                                                                                            foreach ($ProjectResultados as $value) {
+                                                                                                $RTipoPublicacion   = $value['tipo_publicacion'];
+                                                                                                $Rdatos_publicacion = $value['datos_publicacion'];
+                                                                                                $Rotros_resultados  = $value['otros_resultados'];
+                                                                                            
+                                                                                                ?>
+                                                                                                    <div class="col-xs-6">
+                                                                                                        <p><b>Tipo de publicación </b></p>
+                                                                                                        <p><b>Datos de publicación </b></p>
+                                                                                                        <p><b>Otros resultados </b></p>
+                                                                                                    </div>
+
+                                                                                                    <div class="col-xs-6">
+                                                                                                        <p><?php echo $RTipoPublicacion; ?></p>
+                                                                                                        <p><?php echo $Rdatos_publicacion; ?></p>
+                                                                                                        <p><?php echo $Rotros_resultados; ?></p>
+                                                                                                    </div>
+                                                                                                <?php
+                                                                                            }
+                                                                                        } else {
+                                                                                            echo "-";
+                                                                                        }
+                                                                                    ?>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="background-color: #353D47; color: #fff;">
+                                                            <h3 class="panel-title">Identificación del proyecto
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div>
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <div class="panel">
+                                                                            <div class="panel-heading" role="tab" id="headingGenerateReport_FacCurEsc" style="background-color: #5587CB;">
+                                                                                <span class="panel-title">
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_FacCurEsc" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                        Redacción de resultados finales
+                                                                                    </a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div id="collapseGenerateReport_FacCurEsc" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_FacCurEsc">
+                                                                            <div class="panel-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-12">
+                                                                                        <?php 
+                                                                                            echo $ProjectFacCurEsc;
+                                                                                        ?>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
