@@ -212,7 +212,7 @@
                                                                                                     }
 
                                                                                                 } else {
-                                                                                                    echo "-";
+                                                                                                    echo "No hay información que mostrar";
                                                                                                 }
 
                                                                                             ?>
@@ -353,7 +353,7 @@
                                                                                             if (!is_bool($CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro))){
                                                                                                 echo $CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro);
                                                                                             } else {
-                                                                                                echo "-";
+                                                                                                echo "No hay información que mostrar";
                                                                                             }
 
                                                                                         ?>
@@ -406,7 +406,7 @@
 
                                                                                             <?php
                                                                                         } else {
-                                                                                            echo "-";
+                                                                                            echo "No hay información que mostrar";
                                                                                         }
 
                                                                                     ?>
@@ -457,7 +457,7 @@
 
                                                                                             <?php
                                                                                         } else {
-                                                                                            echo "-";
+                                                                                            echo "No hay información que mostrar";
                                                                                         }
                                                                                     ?>
                                                                                 </div>
@@ -507,7 +507,7 @@
                                                                                                 }
                                                                                             }
                                                                                         } else {
-                                                                                            echo "-";
+                                                                                            echo "No hay información que mostrar";
                                                                                         }
                                                                                     ?>
                                                                                 </div>
@@ -553,7 +553,7 @@
                                                                                                 <?php
                                                                                             }
                                                                                         } else {
-                                                                                            echo "-";
+                                                                                            echo "No hay información que mostrar";
                                                                                         }
                                                                                     ?>
                                                                                 </div>
@@ -595,7 +595,7 @@
                                                                                                     echo $value['otros'];
                                                                                                 }
                                                                                             } else {
-                                                                                                echo "-";
+                                                                                                echo "No hay información que mostrar";
                                                                                             }
                                                                                         ?>
                                                                                     </div>
