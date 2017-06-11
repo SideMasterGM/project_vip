@@ -146,14 +146,14 @@
 
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading" style="background-color: #353D47; color: #fff;">
-                                                                <h3 class="panel-title">Personas atendidas
+                                                                <h3 class="panel-title">Equipos vinculados
                                                             </div>
                                                             <div class="panel-body">
                                                                 <div>
                                                                     <div class="row">
                                                                         <div class="col-xs-8">
                                                                             <p>
-                                                                                <b>Identificador</b>
+                                                                                <b>Equipo I</b>
                                                                             </p>
                                                                         </div>
                                                                         <div class="col-xs-4">
@@ -166,7 +166,7 @@
                                                                     <div class="row">
                                                                         <div class="col-xs-8">
                                                                             <p>
-                                                                                <b>ID Facultad | CUR | Escuela</b>
+                                                                                <b>Equipo II</b>
                                                                             </p>
                                                                         </div>
                                                                         <div class="col-xs-4">
@@ -175,6 +175,52 @@
                                                                             </p>
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading" style="background-color: #353D47; color: #fff;">
+                                                                <h3 class="panel-title">Coordinadores
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-8">
+                                                                            <p>
+                                                                                <b>Coodinadores de equipo</b>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-xs-4">
+                                                                             <p>
+                                                                                <?php echo $id; ?>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading" style="background-color: #353D47; color: #fff;">
+                                                                <h3 class="panel-title">Miemrbros de equipos
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-8">
+                                                                            <p>
+                                                                                <b>Miembros</b>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="col-xs-4">
+                                                                             <p>
+                                                                                <?php echo $id; ?>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -305,7 +351,7 @@
                                                     
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading" style="background-color: #353D47; color: #fff;">
-                                                            <h3 class="panel-title">Identificación del proyecto
+                                                            <h3 class="panel-title">Detalles de financiamiento, tiempo y lugar
                                                         </div>
                                                         <div class="panel-body">
                                                             <div>
@@ -567,7 +613,7 @@
 
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading" style="background-color: #353D47; color: #fff;">
-                                                            <h3 class="panel-title">Identificación del proyecto
+                                                            <h3 class="panel-title">Redacción | Resultados
                                                         </div>
                                                         <div class="panel-body">
                                                             <div>
@@ -577,7 +623,7 @@
                                                                             <div class="panel-heading" role="tab" id="headingGenerateReport_ResultadosFinales" style="background-color: #5587CB;">
                                                                                 <span class="panel-title">
                                                                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_ResultadosFinales" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
-                                                                                        Redacción de resultados finales
+                                                                                        Resultados finales
                                                                                     </a>
                                                                                 </span>
                                                                             </div>
