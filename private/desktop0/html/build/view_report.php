@@ -189,27 +189,41 @@
                                                             <div class="panel-body">
                                                                 <div>
                                                                     <?php
-
-                                                                        #Expulsar todos los miembros de los grupos tales
-                                                                        #Se llaman todos los equipos
                                                                         $ProjectTeams = $CN_VIP->getTeamProject();
                                                                         
-                                                                        #Se verifica que retorne un array de strings
                                                                         if (is_array($ProjectTeams)){
-                                                                            #A recorrer los equipos
                                                                             foreach ($ProjectTeams as $ValTeam) {
-                                                                                #Se compara el id de los equipos con el del proyecto actual
                                                                                 if ($ValTeam['id_project'] == $id){
-                                                                                    echo "<b>".$ValTeam['nombre']."</b><br/>";
 
                                                                                     $ProjectTeamsMember = $CN_VIP->getTeamMembersAll($ValTeam['id_team']);
 
                                                                                     if (is_array($ProjectTeamsMember)){
                                                                                         foreach ($ProjectTeamsMember as $ValMember) {
-                                                                                            echo $ValMember['firts_name'].": ".$ValMember['id_member']."<br/>";
+
+                                                                                            $ProjectTeamsCoord = $CN_VIP->getCoordinators();
+
+                                                                                            if (is_array($ProjectTeamsCoord)){
+                                                                                                foreach ($ProjectTeamsCoord as $ValCoord) {
+
+                                                                                                    if ($ValCoord['id_member'] == $ValMember['id_member']){
+                                                                                                        
+                                                                                                        ?>
+                                                                                                            <div class="col-xs-6">
+                                                                                                                <p>
+                                                                                                                    <b><?php echo $ValTeam['nombre']; ?></b>
+                                                                                                                </p>
+                                                                                                            </div>
+                                                                                                            <div class="col-xs-6">
+                                                                                                                <p>
+                                                                                                                    <?php echo $ValMember['firts_name']." ".$ValMember['last_name']; ?>
+                                                                                                                </p>
+                                                                                                            </div>
+                                                                                                        <?php
+                                                                                                    }
+                                                                                                }
+                                                                                            }
                                                                                         }
                                                                                     }
-
                                                                                 }
                                                                             }
                                                                         }
