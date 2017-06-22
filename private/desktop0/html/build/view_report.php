@@ -208,15 +208,17 @@
                                                                                                     if ($ValCoord['id_member'] == $ValMember['id_member']){
                                                                                                         
                                                                                                         ?>
-                                                                                                            <div class="col-xs-6">
-                                                                                                                <p>
-                                                                                                                    <b><?php echo $ValTeam['nombre']; ?></b>
-                                                                                                                </p>
-                                                                                                            </div>
-                                                                                                            <div class="col-xs-6">
-                                                                                                                <p>
-                                                                                                                    <?php echo $ValMember['firts_name']." ".$ValMember['last_name']; ?>
-                                                                                                                </p>
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-xs-6">
+                                                                                                                    <p>
+                                                                                                                        <b><?php echo $ValTeam['nombre']; ?></b>
+                                                                                                                    </p>
+                                                                                                                </div>
+                                                                                                                <div class="col-xs-6">
+                                                                                                                    <p>
+                                                                                                                        <?php echo $ValMember['firts_name']." ".$ValMember['last_name']; ?>
+                                                                                                                    </p>
+                                                                                                                </div>
                                                                                                             </div>
                                                                                                         <?php
                                                                                                     }
@@ -234,23 +236,64 @@
 
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading" style="background-color: #353D47; color: #fff;">
-                                                                <h3 class="panel-title">Miemrbros de equipos
+                                                                <h3 class="panel-title">Miembros de equipos
                                                             </div>
                                                             <div class="panel-body">
                                                                 <div>
                                                                     <div class="row">
-                                                                        <div class="col-xs-8">
-                                                                            <p>
-                                                                                <b>Miembros</b>
-                                                                            </p>
+                                                                        <div class="col-xs-6">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_FacCurEsc" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_FacCurEs" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Facultad | CUR | Escuela
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_FacCurEs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_FacCurEsc">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <?php 
+                                                                                                echo $ProjectFacCurEsc;
+                                                                                            ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-xs-4">
-                                                                            <p>
-                                                                                <?php echo $id; ?>
-                                                                            </p>
+                                                                        <div class="col-xs-6">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading" role="tab" id="headingGenerateReport_InstanciaAprob" style="background-color: #5587CB;">
+                                                                                    <span class="panel-title">
+                                                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_InstanciaAprob" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
+                                                                                            Instancia de aprobación
+                                                                                        </a>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div id="collapseGenerateReport_InstanciaAprob" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingGenerateReport_InstanciaAprob">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-xs-12">
+                                                                                            <?php 
+
+                                                                                                if (!is_bool($CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro))){
+                                                                                                    echo $CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro);
+                                                                                                } else {
+                                                                                                    echo "No hay información que mostrar";
+                                                                                                }
+
+                                                                                            ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                         </div>
