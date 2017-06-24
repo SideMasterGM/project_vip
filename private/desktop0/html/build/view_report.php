@@ -241,7 +241,7 @@
                                                             <div class="panel-body">
                                                                 <div>
                                                                     <div class="row">
-                                                                        <div class="col-xs-6">
+                                                                        <div class="col-xs-12">
                                                                             <div class="panel">
                                                                                 <div class="panel-heading" role="tab" id="headingGenerateReport_FacCurEsc" style="background-color: #5587CB;">
                                                                                     <span class="panel-title">
@@ -264,7 +264,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-xs-6">
+                                                                        <div class="col-xs-12">
                                                                             <div class="panel">
                                                                                 <div class="panel-heading" role="tab" id="headingGenerateReport_InstanciaAprob" style="background-color: #5587CB;">
                                                                                     <span class="panel-title">
