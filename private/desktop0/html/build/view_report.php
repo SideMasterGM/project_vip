@@ -209,14 +209,14 @@
                                                                                                         
                                                                                                         ?>
                                                                                                             <div class="row">
-                                                                                                                <div class="col-xs-6">
+                                                                                                                <div class="col-xs-5">
                                                                                                                     <p>
                                                                                                                         <b><?php echo $ValTeam['nombre']; ?></b>
                                                                                                                     </p>
                                                                                                                 </div>
-                                                                                                                <div class="col-xs-6">
+                                                                                                                <div class="col-xs-7">
                                                                                                                     <p>
-                                                                                                                        <?php echo $ValMember['firts_name']." ".$ValMember['last_name']; ?>
+                                                                                                                        <span class="fa fa-male"></span> <?php echo $ValMember['firts_name']." ".$ValMember['last_name']; ?>
                                                                                                                     </p>
                                                                                                                 </div>
                                                                                                             </div>
@@ -271,7 +271,7 @@
                                                                                                                         foreach ($ProjectTeamsMember as $ValTeamMember) {
                                                                                                                             ?>
                                                                                                                                 <p>
-                                                                                                                                    <?php echo $ValTeamMember['firts_name']." ".$ValTeamMember['last_name']; ?>
+                                                                                                                                    <span class="icon fa fa-user"></span> <?php echo $ValTeamMember['firts_name']." ".$ValTeamMember['last_name']; ?>
                                                                                                                                 </p>
                                                                                                                             <?php
                                                                                                                         }
@@ -486,8 +486,8 @@
                                                                        <div class="panel">
                                                                             <div class="panel-heading" role="tab" id="headingGenerateReport_InfoFinanciera" style="background-color: #5587CB;">
                                                                                 <span class="panel-title">
-                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_InfoFinanciera" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
-                                                                                        Información financiera
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_InfoFinanciera" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;">
+                                                                                        <span class="fa fa-money"></span> Información financiera
                                                                                     </a>
                                                                                 </span>
                                                                             </div>
@@ -515,9 +515,7 @@
 
                                                                                                 <div class="col-xs-6">
                                                                                                     <p><?php echo $IFnombre_organismo; ?></p>
-
                                                                                                     <p><?php echo $IFmonto_financiado; ?></p>
-
                                                                                                     <p><?php echo $IFaporte_unan; ?></p>
                                                                                                 </div>
 
@@ -585,8 +583,8 @@
                                                                         <div class="panel">
                                                                             <div class="panel-heading" role="tab" id="headingGenerateReport_ComunidadPoblacion" style="background-color: #5587CB;">
                                                                                 <span class="panel-title">
-                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_ComunidadPoblacion" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
-                                                                                        Comunidad | Población
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_ComunidadPoblacion" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;">
+                                                                                        <span class="fa fa-tint"></span> Comunidad | Población
                                                                                     </a>
                                                                                 </span>
                                                                             </div>
@@ -636,8 +634,8 @@
                                                                         <div class="panel">
                                                                             <div class="panel-heading" role="tab" id="headingGenerateReport_Resultados" style="background-color: #5587CB;">
                                                                                 <span class="panel-title">
-                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_Resultados" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
-                                                                                        Resultados
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_Resultados" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;">
+                                                                                        <span class="fa fa-road"></span> Resultados
                                                                                     </a>
                                                                                 </span>
                                                                             </div>
@@ -693,8 +691,8 @@
                                                                         <div class="panel">
                                                                             <div class="panel-heading" role="tab" id="headingGenerateReport_ResultadosFinales" style="background-color: #5587CB;">
                                                                                 <span class="panel-title">
-                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_ResultadosFinales" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;"><span class="icon fa fa-user"></span>
-                                                                                        Resultados finales
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseGenerateReport_ResultadosFinales" aria-expanded="false" aria-controls="collapseGenerateReport_FacCurEs" style="color: #fff;">
+                                                                                        <span class="fa fa-check-circle"></span> Resultados finales
                                                                                     </a>
                                                                                 </span>
                                                                             </div>
