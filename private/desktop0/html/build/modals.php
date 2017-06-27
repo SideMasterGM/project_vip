@@ -119,13 +119,13 @@
                 <h4 class="modal-title" id="myTeamProjectDelComplete">Eliminar equipo</h4>
             </div>
             <div class="modal-body">
-                <h4>Disculpe por desconfiar, pero, ¿Está seguro que desea eliminar el equipo?.</h4>
+                <h4>¿Está seguro que desea eliminar el equipo?</h4>
                 <hr>
                 <p>¡Atención!, si elimina el equipo, lo miembros que lo conforman también serán eliminados.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">¡Cancelar!...</button>
-                <button type="button" class="btn btn-danger" onclick="javascript: onClickDeleteTeamComplete();">¡Eliminar!...</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="javascript: onClickDeleteTeamComplete();">Eliminar</button>
             </div>
         </div>
     </div>
@@ -149,7 +149,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="javascript: WebPageTeam();" class="btn btn-primary" style="float: left;">Miembros</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">¡Okay!...</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
             </div>
         </div>
     </div>
@@ -167,11 +167,11 @@
                 <h4 class="modal-title" id="myTeamProjectAreYouSureDeleting">Eliminar miembro</h4>
             </div>
             <div class="modal-body">
-                <h4>Disculpe por desconfiar, pero, ¿Está seguro que desea eliminar el miembro de este equipo?.</h4>
+                <h4>¿Está seguro que desea eliminar el miembro de este equipo?</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">¡Cancelar!...</button>
-                <button type="button" class="btn btn-danger" onclick="javascript: onClickDeleteTeamMember();">¡Eliminar!...</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="javascript: onClickDeleteTeamMember();">Eliminar</button>
             </div>
         </div>
     </div>
@@ -277,13 +277,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myTeamMemberValidationFields">¡Hey, hey!. Un momento.</h4>
+                <h4 class="modal-title" id="myTeamMemberValidationFields">Advertencia</h4>
             </div>
             <div class="modal-body">
                 <h4>Por favor, rellene todos los campos.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: CloseMyModalOpenOtherModal()" data-dismiss="modal">¡Entendido!...</button>
+                <button type="button" class="btn btn-default" onclick="javascript: CloseMyModalOpenOtherModal()" data-dismiss="modal">Entendido</button>
             </div>
         </div>
     </div>
@@ -473,10 +473,10 @@
                 <h4 class="modal-title" id="myTeamProjectSuccessfull"></h4>
             </div>
             <div class="modal-body">
-                <h4>¡Genial!. El equipo ha sido creado con éxito. Haga click en cerrar.</h4>
+                <h4>El equipo ha sido creado con éxito. Haga click en cerrar.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: window.location.reload();" data-dismiss="modal">¡Cerrar!...</button>
+                <button type="button" class="btn btn-default" onclick="javascript: window.location.reload();" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -497,7 +497,7 @@
                 <h4>¡Up's!. Lo lamentamos, el equipo no ha podido ser creado, por favor, recargue e intente nuevamente.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">¡Okay!...</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
             </div>
         </div>
     </div>
@@ -518,7 +518,7 @@
                 <h4>¡Up's!. Por favor, escriba el nombre del grupo antes de intentar guardar.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">¡Entiendo!...</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Entiendo</button>
             </div>
         </div>
     </div>
@@ -561,7 +561,7 @@
                 <h4>¡Up's!. Algo ha salido mal. El reporte del proyecto no se ha podido agregar. Recargue e intente nuevamente.</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects';" data-dismiss="modal">¡Recargar!...</button>
+                <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects';" data-dismiss="modal">Recargar</button>
             </div>
         </div>
     </div>
@@ -579,7 +579,7 @@
                 <h4 class="modal-title" id="OKProjectResultSuccessfull"></h4>
             </div>
             <div class="modal-body">
-                <h4>¡Genial!. El reporte del proyecto se ha registrado con éxito.</h4>
+                <h4>El reporte del proyecto se ha registrado con éxito.</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects';" data-dismiss="modal">¡OK!...</button>
@@ -672,7 +672,7 @@
                 <h4 class="modal-title" id="MyInfoArtAddYes"></h4>
             </div>
             <div class="modal-body">
-                <h4>¡Genial!. El proyecto se ha registrado con éxito.</h4>
+                <h4>El proyecto se ha registrado con éxito.</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="javascript: window.location.href='./projects';" data-dismiss="modal">¡OK!...</button>
@@ -690,7 +690,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyRelleneTodosLosDatos">¡Hey, hey!. Datos incompletos.</h4>
+                <h4 class="modal-title" id="MyRelleneTodosLosDatos">Datos incompletos.</h4>
             </div>
             <div class="modal-body">
                 <p>Algunos campos del formulario se encuentran vacíos, al menos los que son obligatorios (*). Por favor, rellene los campos y vuelva a intentarlo.</p>
@@ -1658,7 +1658,7 @@
                 <h4 class="modal-title" id="OMContactUs">Contáctanos</h4>
             </div>
             <div class="modal-body modal_suscriptions_char">
-                <p>¡Genial!, los datos se han agregdado con éxito.</p>
+                <p>Los datos se han agregdado con éxito.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
@@ -1730,7 +1730,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="HeyhopeMoment">Hey, hey, hey, espera un momento!.</h4>
+                <h4 class="modal-title" id="HeyhopeMoment">Advertencia</h4>
             </div>
             <div class="modal-body">
                 <p>No ha rellenado el campo de mensaje, hasta que lo haga, el mensaje será enviado, por favor, escriba su mensaje. ¡Gracias!.</p>
