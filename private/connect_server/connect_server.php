@@ -2768,7 +2768,8 @@
 	    				'id_project' 		=> $row['id_project'], 
 	    				'nombre_organismo' 	=> $row['nombre_organismo'],
 	    				'monto_financiado' 	=> $row['monto_financiado'],
-	    				'aporte_unan'		=> $row['aporte_unan']
+	    				'aporte_unan'		=> $row['aporte_unan'],
+	    				'moneda'			=> $row['moneda']
 	    			];
 	    		}
 
@@ -2821,7 +2822,7 @@
 			*@param: $id_project (Identificador del proyecto), $NombreOrganismo.
 			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
 		*/
-	    public function addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN){
+	    public function addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN, $ProMoneda){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 
@@ -2831,7 +2832,7 @@
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
-	    	$q = "INSERT INTO vip_informacion_financiera (id_project, nombre_organismo, monto_financiado, aporte_unan) VALUES (:id_project,:nombre_organismo,:monto_financiado,:aporte_unan);";
+	    	$q = "INSERT INTO vip_informacion_financiera (id_project, nombre_organismo, monto_financiado, aporte_unan, moneda) VALUES (:id_project,:nombre_organismo,:monto_financiado,:aporte_unan,:moneda);";
 	    
 	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
@@ -2841,6 +2842,7 @@
 	    	$stmt->bindValue(":nombre_organismo", 		$NombreOrganismo);
 	    	$stmt->bindValue(":monto_financiado", 		$MontoFinanciado);
 	    	$stmt->bindValue(":aporte_unan", 			$AporteUNAN);
+	    	$stmt->bindValue(":moneda", 				$ProMoneda);
 
 	    	#Agregando la descripción completa de la nueva actividad.
 	    	$description = "Agregando la información financiera del proyecto con ID: ".$id_project;
@@ -2858,7 +2860,7 @@
 			*@param: $id_project (Identificador del proyecto), $NombreOrganismo.
 			*@param: $MontoFinanciado, $AporteUNAN (Aporte de la universidad).
 		*/
-	    public function updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN){
+	    public function updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN, $ProMoneda){
 	    	#Se habilita el uso de sesiones.
 	    	@session_start();
 	    	$usr = @$_SESSION['usr'];
@@ -2869,7 +2871,7 @@
 	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
 
 	    	#Se prepara la consulta.
-	    	$Reason = "UPDATE vip_informacion_financiera SET nombre_organismo='".$NombreOrganismo."', monto_financiado='".$MontoFinanciado."', aporte_unan='".$AporteUNAN."' WHERE id_project='".$id_project."'";
+	    	$Reason = "UPDATE vip_informacion_financiera SET nombre_organismo='".$NombreOrganismo."', monto_financiado='".$MontoFinanciado."', aporte_unan='".$AporteUNAN."', moneda='".$ProMoneda."' WHERE id_project='".$id_project."'";
 	    	
 	    	#Se ejecuta.
 	    	$Execution = $this->db->query($Reason);
