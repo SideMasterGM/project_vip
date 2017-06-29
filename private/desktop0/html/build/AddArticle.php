@@ -35,6 +35,7 @@
 	$NombreOrganismo 		= trim($_POST['pro_nombre_organismo']);
 	$MontoFinanciado 		= trim($_POST['pro_monto_financiado']);
 	$AporteUNAN 			= trim($_POST['pro_aporte_unan']);
+	$ProMoneda 				= trim($_POST['pro_moneda']);
 
 	#Tabla: vip_info_resultados_proyecto
 	$TipoPublicacion 		= trim($_POST['pro_tipo_publicacion']);
@@ -48,7 +49,7 @@
 
 			if ($CN->addProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo)){
 
-				if ($CN->addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
+				if ($CN->addProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN, $ProMoneda)){
 
 					if ($CN->addProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
 						#Se hace un valcado de imágenes.
