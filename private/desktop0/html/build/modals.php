@@ -1046,6 +1046,7 @@
                 <input type="hidden" class="form-control" id="pro_nombre_organismo" name="pro_nombre_organismo" />
                 <input type="hidden" class="form-control" id="pro_monto_financiado" name="pro_monto_financiado" />
                 <input type="hidden" class="form-control" id="pro_aporte_unan" name="pro_aporte_unan" />
+                <input type="hidden" class="form-control" id="pro_moneda" name="pro_moneda" /><br/>
                 
                 <input type="hidden" class="form-control" id="pro_zona_geografica" name="pro_zona_geografica" />
                 
