@@ -145,13 +145,14 @@
                         $nombre_organismo = $InfoFinanciera['nombre_organismo'];
                         $monto_financiado = $InfoFinanciera['monto_financiado'];
                         $aporte_unan      = $InfoFinanciera['aporte_unan'];
+                        $ProMoneda        = $InfoFinanciera['moneda'];
                       }
                     }
                   ?>
 
                  <input type="text" class="form-control" id="nombre_organismo" name="nombre_organismo" value="<?php echo $nombre_organismo; ?>" placeholder="* Nombre del organismo"/><br/>
                  <div class="input-group">
-                  <div class="input-group-addon">C$</div>
+                 <div class="input-group-addon ContainerMoneda" title="Cambiar tipo de moneda" style="cursor: cell;" onclick="javascript: ChangeTagMoney()"><?php echo $ProMoneda; ?></div>
                   <input type="number" class="form-control" id="monto_financiado" name="monto_financiado" value="<?php echo $monto_financiado; ?>" placeholder="* C$"/>
                   <div class="input-group-addon">Monto</div>
                 </div><br/>
