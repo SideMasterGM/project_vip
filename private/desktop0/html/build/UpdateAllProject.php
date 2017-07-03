@@ -36,6 +36,7 @@
 	$NombreOrganismo 		= trim($_POST['pro_nombre_organismo']);
 	$MontoFinanciado 		= trim($_POST['pro_monto_financiado']);
 	$AporteUNAN 			= trim($_POST['pro_aporte_unan']);
+	$ProMoneda 				= trim($_POST['pro_moneda']);
 
 	#Tabla: vip_info_resultados_proyecto
 	$TipoPublicacion 		= trim($_POST['pro_tipo_publicacion']);
@@ -48,7 +49,7 @@
 
 			if ($CN_VIP->updateProyectoTemporalidad($id_project, $DuracionMeses, $FechaInicio, $FechaFinalizacion, $FechaMonitoreo)){
 
-				if ($CN_VIP->updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN)){
+				if ($CN_VIP->updateProyectoInformacionFinanciera($id_project, $NombreOrganismo, $MontoFinanciado, $AporteUNAN, $ProMoneda)){
 
 					if ($CN_VIP->updateProyectoResultados($id_project, $TipoPublicacion, $DatosPublicacion, $OtrosDatos)){
 						echo "OK";
