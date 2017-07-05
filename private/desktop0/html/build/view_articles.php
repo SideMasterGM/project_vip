@@ -29,7 +29,7 @@
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Facultad | CUR | Escuela</th>
-                                    <th title="Código de Dictamen económico" >Dictamen económico</th>
+                                    <th title="Código de Dictamen económico">Dictamen económico</th>
                                     <th>Instancia de aprobación</th>
                                     <th title="Fecha de aprobación" >Fecha</th>
                                 </tr>
