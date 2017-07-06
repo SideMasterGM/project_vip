@@ -16,12 +16,12 @@
                             <div class="card-title" style="width: 105%;">
                                 <input type="text" class="form-control" style="width: 100%;" placeholder="* Escriba el nombre del proyecto" id="title_publish" name="title_publish" autofocus />
                             </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="card-title" style="width: 100%;">
+                                <button type="button" style="margin-bottom: -10px; margin-top: 0; float: right;" class="btn btn-primary" onclick="javascript: PreviewArticle();">Agregar proyecto</button>
                             </div>
-                            <div class="col-xs-2">
-                                <div class="card-title" style="width: 100%;">
-                                    <button type="button" style="margin-bottom: -10px; margin-top: 0; float: right;" class="btn btn-primary" onclick="javascript: PreviewArticle();">Agregar proyecto</button>
-                                </div>
-                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="step">
@@ -165,7 +165,7 @@
                                                     
                                                      <input type="text" class="form-control" id="nombre_organismo" name="nombre_organismo" placeholder="* Nombre del organismo"/><br/>
                                                      <div class="input-group">
-                                                      <div class="input-group-addon">C$</div>
+                                                      <div class="input-group-addon ContainerMoneda" title="Cambiar tipo de moneda" style="cursor: cell;" onclick="javascript: ChangeTagMoney()">C$</div>
                                                       <input type="number" class="form-control" id="monto_financiado" name="monto_financiado" placeholder="* C$"/>
                                                       <div class="input-group-addon">Monto</div>
                                                     </div><br/>
@@ -279,6 +279,7 @@
                 <input type="hidden" class="form-control" id="pro_nombre_organismo" name="pro_nombre_organismo" /><br/>
                 <input type="hidden" class="form-control" id="pro_monto_financiado" name="pro_monto_financiado" /><br/>
                 <input type="hidden" class="form-control" id="pro_aporte_unan" name="pro_aporte_unan" /><br/>
+                <input type="hidden" class="form-control" id="pro_moneda" name="pro_moneda" /><br/>
                 
                 <input type="hidden" class="form-control" id="pro_zona_geografica" name="pro_zona_geografica" /><br/>
                 
