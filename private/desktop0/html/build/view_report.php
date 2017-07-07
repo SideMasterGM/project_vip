@@ -28,7 +28,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -504,6 +503,7 @@
                                                                                                 $IFnombre_organismo = $value['nombre_organismo'];
                                                                                                 $IFmonto_financiado = $value['monto_financiado'];
                                                                                                 $IFaporte_unan      = $value['aporte_unan'];
+                                                                                                $IFPro_Moneda       = $value['moneda'];
                                                                                             }
 
                                                                                             ?>
@@ -515,8 +515,8 @@
 
                                                                                                 <div class="col-xs-6">
                                                                                                     <p><?php echo $IFnombre_organismo; ?></p>
-                                                                                                    <p><?php echo $IFmonto_financiado; ?></p>
-                                                                                                    <p><?php echo $IFaporte_unan; ?></p>
+                                                                                                    <p><?php echo $IFPro_Moneda.number_format($IFmonto_financiado, 2, '.', ','); ?></p>
+                                                                                                    <p><?php echo $IFPro_Moneda.number_format($IFaporte_unan, 2, '.', ','); ?></p>
                                                                                                 </div>
 
                                                                                             <?php
