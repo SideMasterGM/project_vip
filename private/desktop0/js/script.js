@@ -373,6 +373,7 @@ function PreviewArticle(){
 	$("#pro_nombre_organismo").val($("#nombre_organismo").val());
 	$("#pro_monto_financiado").val($("#monto_financiado").val());
 	$("#pro_aporte_unan").val($("#aporte_unan").val());
+	$("#pro_moneda").val($(".ContainerMoneda").html());
 
 	/*Zona geográfica, este también está ubicado en Comunidad.*/
 	$("#pro_zona_geografica").val($("#zona_geografica").val());
@@ -742,6 +743,7 @@ function UpdateListItemArt(){
 	$("#pro_nombre_organismo").val($("#nombre_organismo").val());
 	$("#pro_monto_financiado").val($("#monto_financiado").val());
 	$("#pro_aporte_unan").val($("#aporte_unan").val());
+	$("#pro_moneda").val($(".ContainerMoneda").html());
 
 	/*Zona geográfica, este también está ubicado en Comunidad.*/
 	$("#pro_zona_geografica").val($("#zona_geografica").val());
@@ -1587,4 +1589,16 @@ function GenerateReport(){
 
 function GenerateReportGoProjects(){
 	window.location.href="./projects";
+}
+
+function ChangeTagMoney(){
+	var Valor = $(".ContainerMoneda");
+
+	if (Valor.html() == "C$"){
+		Valor.html("$");
+		$("#monto_financiado").attr("placeholder", "Cantidad en dólares");
+	} else if (Valor.html("$")){
+		Valor.html("C$");
+		$("#monto_financiado").attr("placeholder", "Cantidad en córdobas");
+	}
 }
