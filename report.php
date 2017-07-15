@@ -25,7 +25,7 @@
                 </body>
             <?php
         } else {
-            include ("private/desktop0/html/users.php");
+            include ("private/desktop0/html/report.php");
         }
 
     ?>
