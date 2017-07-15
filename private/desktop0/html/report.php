@@ -28,7 +28,7 @@
         <script type="text/javascript">
             setTimeout(function(){
                 $("navbar-nav .active").removeClass("active");
-                $(".two__item").addClass("active");
+                $(".option_article__item").addClass("active");
             }, 100);
         </script>
     </body>
