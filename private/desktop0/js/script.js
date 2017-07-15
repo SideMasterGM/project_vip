@@ -625,6 +625,7 @@ function OnItemClickTrProject(value){
 	var dsec 		= value.getElementsByTagName("td")[5].innerHTML;
 
 	$("#ValueArticleByID").val(id_project);
+	$("#GenerateReportArticleID").val(id_project);
 
 	$(".show-optionsArticle").click();
 	$("#InsertTitleArticle").val(nombre);
@@ -1578,4 +1579,8 @@ function viewAllCoordinators(){
 
 function WebPageTeam(){
 	window.location.href="./team";
+}
+
+function GenerateReport(){
+	document.getElementById("GenerateReportFormGo").submit();
 }
