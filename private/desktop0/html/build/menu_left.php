@@ -41,7 +41,6 @@
                 </li>
 
                 <?php
-
                     $CN_VIP = CDB("vip");
                     if ($CN_VIP->getProjectsCount()){
                         ?>
@@ -79,7 +78,6 @@
                     }
 
                 ?>
-
 
                 <li class="add_property__item">
                     <a href="#" onclick="javascript: AddNewInstanciaAprobacion();">
