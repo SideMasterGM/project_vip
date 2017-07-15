@@ -1,10 +1,10 @@
-<!-- 
+<?php
     /**
         * --------------------------------------------- *
         * @author: Jerson A. Martínez M. (Side Master)  *
         * --------------------------------------------- *
     */
- -->
+?>
 
 <input type="hidden" class="change-img_perfil" data-toggle="modal" data-target="#ChangeImgPerfil"  />
 
@@ -1059,16 +1059,20 @@
             </form>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" style="float: left;" onclick="javascript: ProjectResult();">Resultados</button>
+                <form action="./report.php" method="POST" id="GenerateReportFormGo">
+                    <button type="button" class="btn btn-primary" style="float: left;" onclick="javascript: GenerateReport();" title="Generar un reporte completo del proyecto">Generar reporte</button>
+                    <input type="hidden" id="GenerateReportArticleID" name="GenerateReportArticleID" />
+                </form>
                 
-                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();">Eliminar</button>
-                <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();">Actualizar</button>
+                <button type="button" class="btn btn-info" style="float: left;" onclick="javascript: ProjectResult();" title="Agregar resultados finales al proyecto">Agregar resultados</button>
+                
+                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();" title="Eliminar el proyecto">Eliminar</button>
+                <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();" title="Actualizar información del proyecto">Actualizar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- Opciones de la imagen seleccionada!. -->
 <input type="hidden" class="SelectImgArticle" data-toggle="modal" data-target="#SelectImgArticle"  />
