@@ -1,10 +1,10 @@
-<!-- 
+<?php
     /**
         * --------------------------------------------- *
         * @author: Jerson A. Martínez M. (Side Master)  *
         * --------------------------------------------- *
     */
- -->
+?>
 
 <div class="side-menu sidebar-inverse">
     <nav class="navbar navbar-default" role="navigation">
