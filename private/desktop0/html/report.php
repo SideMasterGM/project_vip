@@ -18,7 +18,8 @@
                 <?php
                     include ("private/desktop0/html/build/tape.php");
                     include ("private/desktop0/html/build/menu_left.php");
-                    include ("private/desktop0/html/build/view_users.php");
+                    // include ("private/desktop0/html/build/view_users.php");
+                    include ("private/desktop0/html/build/view_report.php");
                 ?>
             </div>
 
