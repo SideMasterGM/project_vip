@@ -1,10 +1,10 @@
-<!-- 
+<?php
     /**
         * --------------------------------------------- *
         * @author: Jerson A. Martínez M. (Side Master)  *
         * --------------------------------------------- *
     */
- -->
+ ?>
 
 <div class="container-fluid">
     <div class="side-body padding-top">
