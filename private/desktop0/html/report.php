@@ -15,11 +15,11 @@
     <body class="flat-blue" style="background-image: url('source/img/back/bg1.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="app-container">
             <div class="row content-container">
-                <?php include ("private/desktop0/html/build/tape.php"); ?>
-                
-                <?php include ("private/desktop0/html/build/menu_left.php"); ?>
-                
-                <?php include ("private/desktop0/html/build/view_users.php"); ?>
+                <?php
+                    include ("private/desktop0/html/build/tape.php");
+                    include ("private/desktop0/html/build/menu_left.php");
+                    include ("private/desktop0/html/build/view_users.php");
+                ?>
             </div>
 
             <?php include ("private/desktop0/html/build/footer.php"); ?>
