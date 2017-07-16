@@ -12,7 +12,7 @@
         <?php include ("private/desktop0/html/build/head.php"); ?>
     </head>
 
-    <body class="flat-blue" style="background-image: url('source/img/back/bg1.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+    <body class="flat-blue" style="background-image: url('source/img/back/bg_test.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="app-container">
             <div class="row content-container">
                 <?php
