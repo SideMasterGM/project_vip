@@ -189,42 +189,29 @@
                                                             <div class="panel-body">
                                                                 <div>
                                                                     <?php
+
+                                                                        #Expulsar todos los miembros de los grupos tales
+                                                                        #Se llaman todos los equipos
                                                                         $ProjectTeams = $CN_VIP->getTeamProject();
-
+                                                                        
+                                                                        #Se verifica que retorne un array de strings
                                                                         if (is_array($ProjectTeams)){
-                                                                            foreach ($ProjectTeams as $valueOne) { 
-                                                                                if ($valueOne['id_project'] == $id){
+                                                                            #A recorrer los equipos
+                                                                            foreach ($ProjectTeams as $ValTeam) {
+                                                                                #Se compara el id de los equipos con el del proyecto actual
+                                                                                if ($ValTeam['id_project'] == $id){
+                                                                                    echo "<b>".$ValTeam['nombre']."</b><br/>";
 
-                                                                                    $ProjectTeamsMembers = $CN_VIP->getTeamMembers($valueOne['id_team']);
+                                                                                    $ProjectTeamsMember = $CN_VIP->getTeamMembersAll($ValTeam['id_team']);
 
-                                                                                    if (is_array($ProjectTeamsMembers)){
-                                                                                        foreach ($ProjectTeamsMembers as $ValueTwo) {
-                                                                                            
-                                                                                            $ProjectTeamsMembersCoordinate = $CN_VIP->getCoordinators();
-                                                                                            foreach ($ProjectTeamsMembersCoordinate as $ValueThree) {
-                                                                                                if ($ValueTwo['id_member'] == $ValueThree['id_member']){
-                                                                                                    ?>
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-xs-6">
-                                                                                                                <p>
-                                                                                                                    <b><?php echo $valueOne['nombre']; ?></b>
-                                                                                                                </p>
-                                                                                                            </div>
-                                                                                                            <div class="col-xs-6">
-                                                                                                                 <p>
-                                                                                                                    <?php echo $ValueTwo['firts_name']." ".$ValueTwo['last_name']; ?>
-                                                                                                                </p>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    <?php
-                                                                                                }
-                                                                                            }
+                                                                                    if (is_array($ProjectTeamsMember)){
+                                                                                        foreach ($ProjectTeamsMember as $ValMember) {
+                                                                                            echo $ValMember['firts_name'].": ".$ValMember['id_member']."<br/>";
                                                                                         }
                                                                                     }
+
                                                                                 }
                                                                             }
-                                                                        } else {
-                                                                            echo "No hay información que mostrar";
                                                                         }
                                                                     ?>
                                                                 </div>
