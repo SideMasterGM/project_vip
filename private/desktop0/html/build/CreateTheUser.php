@@ -16,12 +16,13 @@
 	$PassTwo 		= $_POST['Enter_RepeatPassWord'];
 	$date_log 		= date('Y-n-j');
 	$date_log_unix	= time();
+	$privilege		= $_POST['ValuePrivilege'];
 
 	if ($username == "" || $email == "" || $PassOne == "" || $PassTwo == ""){
 		echo "Rellene todos los campos!.";
 	} else {
 		if ($PassOne == $PassTwo){
-			if ($CN->addNewUser($username, $PassTwo, $email, @$_SESSION['usr'])){
+			if ($CN->addNewUser($username, $PassTwo, $email, @$_SESSION['usr'], $privilege)){
 				echo "OK";
 			} else {
 				echo "Fail";
