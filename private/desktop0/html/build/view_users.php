@@ -28,7 +28,7 @@
                                     <th>Nombre de usuario</th>
                                     <th>Correo electrónico</th>
                                     <th>Fecha de registro</th>
-                                    <th>Registrado</th>
+                                    <th>Privilegio</th>
                                     <th>Contraseña cifrada</th>
                                 </tr>
                             </thead>
@@ -38,7 +38,7 @@
                                     <th>Nombre de usuario</th>
                                     <th>Correo electrónico</th>
                                     <th>Fecha de registro</th>
-                                    <th>Registrado</th>
+                                    <th>Privilegio</th>
                                     <th>Contraseña cifrada</th>
                                 </tr>
                             </tfoot>
@@ -48,14 +48,24 @@
                                     foreach ($CN->getUsersAll() as $value) {
 
                                         $LastStartSession = $CN->getActivityLastStartSession($value['username']);
-                                        foreach ($LastStartSession as $LSS) {
-                                            $LastSS = $LSS['date_log_unix'];
+                                       
+                                        if (is_array($LastStartSession)){
+                                            foreach ($LastStartSession as $LSS) {
+                                                $LastSS = $LSS['date_log_unix'];
+                                            }
+                                        } else if (is_bool($LastStartSession)){
+                                            $LastSS = 0;
                                         }
 
                                         $LastCloseSession = $CN->getActivityLastCloseSession($value['username']);
-                                        foreach ($LastCloseSession as $LCS) {
-                                            $LastCS = $LCS['date_log_unix'];
-                                        }
+                                        
+                                        if (is_array($LastCloseSession)){
+                                            foreach ($LastCloseSession as $LCS) {
+                                                $LastCS = $LCS['date_log_unix'];
+                                            }
+                                        } else if (is_bool($LastCloseSession)){
+                                            $LastCS = 1;
+                                        }   
 
                                         ?>
                                             <tr onclick="javascript: OnItemClickTrUser(this);">
@@ -75,8 +85,8 @@
                                                     <input type="hidden" name="<?php echo "UsrHidden".$value['date_log_unix']; ?>" id="<?php echo "UsrHidden".$value['date_log_unix']; ?>" value="<?php echo $value['username']; ?>" />
                                                 </td>
                                                 <td><?php echo $value['email']; ?></td>
-                                                <td><?php echo $value['date_log']; ?></td>
-                                                <td atributo="<?php echo $value['date_log_unix']; ?>"><?php echo nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
+                                                <td atributo="<?php echo $value['date_log_unix']; ?>"><?php echo $value['date_log']." - ".nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
+                                                <td><?php echo $value['privilege'] ?></td>
                                                 <td><?php echo $CN->getUserPwd($value['username']); ?></td>
                                              </tr>
                                         <?php
