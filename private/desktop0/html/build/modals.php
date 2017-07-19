@@ -1494,6 +1494,14 @@
                                 <div class="panel-body">
                                     <input type="password" class="form-control" name="Enter_PassWord" id="Enter_PassWord" placeholder="* Contraseña" /><br/>
                                     <input type="password" class="form-control" name="Enter_RepeatPassWord" id="Enter_RepeatPassWord" placeholder="* Repita la contraseña" />
+
+                                   
+                                    
+                                    <div class="checkbox-custom fill checkbox-primary mb5">
+                                      <input checked="" id="checkboxExample14" type="checkbox">
+                                      <label for="checkboxExample14">Primary</label>
+                                    </div>
+
                                 </div>
                             </div>
                          </div>
