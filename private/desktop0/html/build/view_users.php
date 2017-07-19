@@ -15,7 +15,7 @@
                         <div class="card-title">
                             <div class="title">
                                 <i class="fa fa-pencil"></i> Registro de usuarios
-                                <button type="button" class="btn btn-primary" style="position: absolute; top: 7px; right: 15px;" onclick="javascript: CreateUserNow();" title="Crear un nuevo usuario"><span class="fa fa-user-md"></span> Nuevo usuario</button>
+                                <button type="button" class="btn btn-primary" style="position: absolute; top: 7px; right: 15px;" onclick="javascript: CreateUserNow();" title="Crear un nuevo usuario"><span class="fa fa-plus-circle"></span> Nuevo usuario</button>
                             </div>
                         	
                         </div>
@@ -72,10 +72,11 @@
                                                         }
                                                         echo $value['username'];
                                                     ?>
+                                                    <input type="hidden" name="<?php echo "UsrHidden".$value['date_log_unix']; ?>" id="<?php echo "UsrHidden".$value['date_log_unix']; ?>" value="<?php echo $value['username']; ?>" />
                                                 </td>
                                                 <td><?php echo $value['email']; ?></td>
                                                 <td><?php echo $value['date_log']; ?></td>
-                                                <td><?php echo nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
+                                                <td atributo="<?php echo $value['date_log_unix']; ?>"><?php echo nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
                                                 <td><?php echo $CN->getUserPwd($value['username']); ?></td>
                                              </tr>
                                         <?php
