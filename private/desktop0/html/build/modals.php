@@ -1565,6 +1565,13 @@
 <input type="hidden" class="Details_username" data-toggle="modal" data-target="#Details_username"  />
 
 <div class="modal fade modal-primary" id="Details_username" tabindex="1" role="dialog" aria-labelledby="MyDetails_username" aria-hidden="true">
+    <ul class="nav nav-pills mb20" style="max-width: 130px;margin: 10px auto;">
+        <li class="active">
+            <a href="#" data-toggle="tab" class="aHTMLAddPrivilege" aria-expanded="true" style="color:#fff;">
+                <span class="icon fa fa-user"></span> ...
+            </a>
+        </li>
+    </ul>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
