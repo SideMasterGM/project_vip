@@ -22,10 +22,6 @@
                         </div>
                     </div>
                     
-                    <?php
-                        $LogUser = $CN->getAllActivity();
-                    ?>
-
                     <div class="card-body">
                         <table class="datatable table table-striped" cellspacing="0" width="100%">
                             <thead>
@@ -51,10 +47,32 @@
                             <tbody id="tbody_listArticle">
                                 <?php
                                     foreach ($CN->getUsersAll() as $value) {
+
+                                        $LastStartSession = $CN->getActivityLastStartSession($value['username']);
+                                        foreach ($LastStartSession as $LSS) {
+                                            $LastSS = $LSS['date_log_unix'];
+                                        }
+
+                                        $LastCloseSession = $CN->getActivityLastCloseSession($value['username']);
+                                        foreach ($LastCloseSession as $LCS) {
+                                            $LastCS = $LCS['date_log_unix'];
+                                        }
+
                                         ?>
                                             <tr onclick="javascript: OnItemClickTrUser(this);">
                                                 <td>
-                                                    <span class="fs11 text-muted"><i class="fa fa-circle text-success fs12 pr5"></i> </span><?php echo $value['username']; ?>                                         
+                                                    <?php
+                                                        if ($LastSS > $LastCS){
+                                                            ?>
+                                                                <span class="fs11 text-muted ml10"><i class="fa fa-circle text-info fs12 pr5"></i></span> 
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                                <span class="fs11 text-muted ml10"><i class="fa fa-circle text-alert fs12 pr5"></i></span> 
+                                                            <?php
+                                                        }
+                                                        echo $value['username'];
+                                                    ?>
                                                 </td>
                                                 <td><?php echo $value['email']; ?></td>
                                                 <td><?php echo $value['date_log']; ?></td>
