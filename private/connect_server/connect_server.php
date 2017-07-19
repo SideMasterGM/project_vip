@@ -125,6 +125,42 @@
 	    	#Si algo ha fallado, se retorna un valor booleano falso.
 	    	return false;
 	    }
+	    /**
+			* Obtener todas las actividades de los usuarios
+		*/
+	    public function getAllActivity(){
+	    	#Statement: Consulta directa sin preparación. 
+	    	#Tabla: vip_user_activity.
+	    	#Atributos: id_activity y cláusula LIMIT afectada.
+
+	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity;");
+
+	    	#Si tiene datos.
+	    	if ($stmt->rowCount() > 0){
+	    		$UsersData = []; #Definición de una array multidimensional.
+
+	    		#Recorrido de las filas devueltas por la consulta anterior.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
+	    			$UsersData[] = [
+	    				'id_activity' 	=> $row['id_activity'], 
+	    				'username' 		=> $row['username'], 
+	    				'code' 			=> $row['code'], 
+	    				'description' 	=> $row['description'], 
+	    				'date_log' 		=> $row['date_log'], 
+	    				'date_log_unix' => $row['date_log_unix'],
+	    				'favorite' 		=> $row['favorite']
+	    			];
+	    			#Se agregan toda la información devuelta, recordar el * de la consulta.
+	    		}
+
+	    		#Finalizado el recorrido, se devuelve el array que contiene toda la información.
+	    		return $UsersData;
+	    	}
+
+	    	#Si algo ha fallado, se devuelve un booleano falso.
+	    	return false;
+	    }
 		
 	    /**
 			* Método que obtiene una actividad de usuario.
