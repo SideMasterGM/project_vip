@@ -21,6 +21,11 @@
                         	</div>
                         </div>
                     </div>
+                    
+                    <?php
+                        $LogUser = $CN->getAllActivity();
+                    ?>
+
                     <div class="card-body">
                         <table class="datatable table table-striped" cellspacing="0" width="100%">
                             <thead>
@@ -48,7 +53,9 @@
                                     foreach ($CN->getUsersAll() as $value) {
                                         ?>
                                             <tr onclick="javascript: OnItemClickTrUser(this);">
-                                                <td><?php echo $value['username']; ?></td>
+                                                <td>
+                                                    <span class="fs11 text-muted"><i class="fa fa-circle text-success fs12 pr5"></i> </span><?php echo $value['username']; ?>                                         
+                                                </td>
                                                 <td><?php echo $value['email']; ?></td>
                                                 <td><?php echo $value['date_log']; ?></td>
                                                 <td><?php echo nicetime(date("Y-m-d H:i", $value['date_log_unix'])); ?></td>
