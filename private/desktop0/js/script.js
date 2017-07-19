@@ -903,10 +903,11 @@ function CreateTheUser(){
 }
 
 function OnItemClickTrUser(value){
-	var username 		= value.getElementsByTagName("td")[0].innerHTML;
+	// var username 		= value.getElementsByTagName("td")[0].innerHTML;
 	var email 			= value.getElementsByTagName("td")[1].innerHTML;
 	var date_log 		= value.getElementsByTagName("td")[2].innerHTML;
-	var date_log_unix 	= value.getElementsByTagName("td")[3].innerHTML;
+	var date_log_unix 	= value.getElementsByTagName("td")[3];
+	var username 		= $("#UsrHidden"+$(date_log_unix).attr("atributo")+"").val();
 	var password 		= value.getElementsByTagName("td")[4].innerHTML;
 
 	$(".Details_username").click();
