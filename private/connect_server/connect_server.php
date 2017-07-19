@@ -554,14 +554,14 @@
 			* Método que agrega la información del nuevo usuario.
 			*@param: $usr (Nombre de usuario), $email (Dirección de correo).
 		*/
-	    public function addNewUserInfo($usr, $email){
+	    public function addNewUserInfo($usr, $email, $privilege){
 	    	#Statement: Consulta preparada. 
 	    	#Tabla: vip_user_info.
 	    	#Atributos: username, email, date_log, date_log_unix.
 	    	#Valores devueltos: Ninguno ya que se trata de insertar datos.
 
 	    	#Se alamacenan las instrucciones en esta variable.
-	    	$q = "INSERT INTO vip_user_info (username, email, date_log, date_log_unix) VALUES (:username,:email,:date_log,:date_log_unix);";
+	    	$q = "INSERT INTO vip_user_info (username, email, date_log, date_log_unix, privilege) VALUES (:username,:email,:date_log,:date_log_unix,:privilege);";
 	    
 	    	#Se prepara la consulta.
 	    	$stmt = $this->db->prepare($q);
@@ -571,6 +571,7 @@
 	    	$stmt->bindValue(":email", 			$email);
 	    	$stmt->bindValue(":date_log", 		date('Y-n-j'));
 	    	$stmt->bindValue(":date_log_unix", 	time());
+	    	$stmt->bindValue(":privilege", 		$privilege);
 
 	    	#Se ejecuta la consulta preparada.
 	    	if ($stmt->execute())
@@ -1160,7 +1161,8 @@
 	    				'username' 		=> $row['username'],
 	    				'email' 		=> $row['email'],
 	    				'date_log' 		=> $row['date_log'], 
-	    				'date_log_unix' => $row['date_log_unix']
+	    				'date_log_unix' => $row['date_log_unix'],
+	    				'privilege' 	=> $row['privilege']
 	    			];
 	    		}
 
@@ -1219,6 +1221,44 @@
 
 	    			#Se retorna el valor que contiene el índice: email.
 	    			return $value['email'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que obtiene el privilegio de un usuario.
+			*@param: $usr (Nombre de usuario).
+		*/
+	    public function getUserPrivilege($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_info.
+		    #Atributos: username.
+		    #Valores devueltos: privilege.
+
+	    	$stmt = $this->db->query("SELECT privilege FROM vip_user_info WHERE username='".$usr."'");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$UserPrivilege = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$UserPrivilege[] = [
+	    				'privilege' => $row['privilege']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo privilege.
+	    		foreach ($UserPrivilege as $value) {
+
+	    			#Se retorna el valor que contiene el índice: privilege.
+	    			return $value['privilege'];
 	    		}
 	    	}
 
