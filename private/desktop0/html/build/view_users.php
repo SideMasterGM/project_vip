@@ -13,12 +13,11 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                        	<div class="title">
-                        		<i class="fa fa-pencil"></i> Registro de usuarios
-                        	</div>
-                        	<div class="icon-addAgent-right">
-                        		<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" title="Crear un nuevo artículo" onclick="javascript: CreateUserNow();" ></i>
-                        	</div>
+                            <div class="title">
+                                <i class="fa fa-pencil"></i> Registro de usuarios
+                                <button type="button" class="btn btn-primary" style="position: absolute; top: 7px; right: 15px;" onclick="javascript: CreateUserNow();" title="Crear un nuevo usuario"><span class="fa fa-user-md"></span> Nuevo usuario</button>
+                            </div>
+                        	
                         </div>
                     </div>
                     
@@ -64,11 +63,11 @@
                                                     <?php
                                                         if ($LastSS > $LastCS){
                                                             ?>
-                                                                <span class="fs11 text-muted ml10"><i class="fa fa-circle text-info fs12 pr5"></i></span> 
+                                                                <span class="fs11 text-muted ml10" title="Conectado"><i class="fa fa-circle text-info fs12 pr5"></i></span> 
                                                             <?php
                                                         } else {
                                                             ?>
-                                                                <span class="fs11 text-muted ml10"><i class="fa fa-circle text-alert fs12 pr5"></i></span> 
+                                                                <span class="fs11 text-muted ml10" title="Desconectado"><i class="fa fa-circle text-alert fs12 pr5"></i></span> 
                                                             <?php
                                                         }
                                                         echo $value['username'];
