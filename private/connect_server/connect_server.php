@@ -498,7 +498,7 @@
 	    	if ($stmt->execute())
 	    		if ($this->addNewUserInfo($usr, $email, $privilege))#Agrega la información al nuevo usuario (usr, email).
 	    			if ($this->DirUser($usr))				#Crea el árbol de directorios del nuevo usuario.
-	    				if ($this->addActivity($usr_author, 7, "Agregando nuevo usuario: ".$usr." con privilegio de ".$privilege)) #Agrega una actividad.
+	    				if ($this->addActivity($usr_author, 7, "Agregando nuevo usuario: ".$usr)) #Agrega una actividad.
 	    					return true;	#Si todo marcha bien hasta acá, se retorna un valor booleano exitoso.
 
 	    	#Se algo falla, re retorna un valor booleano falso.
