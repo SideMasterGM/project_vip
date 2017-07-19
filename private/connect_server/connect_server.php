@@ -475,7 +475,7 @@
 			* Método que agrega un nuevo usuario.
 			*@param: $usr (Nombre de usuario a agregar), $pwd (Password), $email (Dirección de correo), $usr_author (¿Quién lo registra?).
 		*/
-	    public function addNewUser($usr, $pwd, $email, $usr_author){
+	    public function addNewUser($usr, $pwd, $email, $usr_author, $privilege){
 	    	#Variable que almacena las instrucciones de la consulta.    	
 	    	$q = "INSERT INTO vip_user (username, password) VALUES (:username,:password);";
 
@@ -496,7 +496,7 @@
 
 	    	#Se ejecuta la consulta preparada.
 	    	if ($stmt->execute())
-	    		if ($this->addNewUserInfo($usr, $email))	#Agrega la información al nuevo usuario (usr, email).
+	    		if ($this->addNewUserInfo($usr, $email, $privilege))#Agrega la información al nuevo usuario (usr, email).
 	    			if ($this->DirUser($usr))				#Crea el árbol de directorios del nuevo usuario.
 	    				if ($this->addActivity($usr_author, 7, "Agregando nuevo usuario: ".$usr)) #Agrega una actividad.
 	    					return true;	#Si todo marcha bien hasta acá, se retorna un valor booleano exitoso.
