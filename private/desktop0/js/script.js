@@ -1603,3 +1603,7 @@ function ChangeTagMoney(){
 		$("#monto_financiado").attr("placeholder", "Cantidad en córdobas");
 	}
 }
+
+function AssignPrivilege(value){
+	$("#ValuePrivilege").val(value);
+}
