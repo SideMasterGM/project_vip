@@ -1470,10 +1470,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="MyCreateUserNow"><span class="icon fa fa-user"></span> Crear usuario</h4>
                 <ul class="nav nav-pills mb20" style="position: absolute; right: 66px; top: 8px;">
-                  <li class="active" onclick="javascript: AssignPrivilege('Limitado');" ><a href="#tab18_1" data-toggle="tab" aria-expanded="true" style="color:#fff;"><span class="icon fa fa-user"></span> Limitado</a></li>
-                  <li class="" onclick="javascript: AssignPrivilege('Administrador');">
-                    <a href="#tab18_2" data-toggle="tab" aria-expanded="false" style="color:#fff;"><span class="icon fa fa-user"></span> Administrador</a>
-                  </li>
+                    <li class="active" onclick="javascript: AssignPrivilege('Limitado');" >
+                        <a href="#tab18_1" data-toggle="tab" aria-expanded="true" style="color:#fff;">
+                            <span class="icon fa fa-user"></span> Limitado
+                        </a>
+                    </li>
+                  
+                    <li class="" onclick="javascript: AssignPrivilege('Administrador');">
+                        <a href="#tab18_2" data-toggle="tab" aria-expanded="false" style="color:#fff;">
+                            <span class="icon fa fa-user"></span> Administrador
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="modal-body">
@@ -1503,6 +1510,8 @@
                                 </div>
                             </div>
                          </div>
+
+                         <input type="hidden" id="ValuePrivilege" name="ValuePrivilege" value="Limitado" />
 
                           <div class="panel-body">
                             <div class="tab-content br-n pn">
