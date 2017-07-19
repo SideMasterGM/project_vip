@@ -405,6 +405,8 @@
 	    	#Atributos: username y cláusula LIMIT afectada.
 	    	#Valores devueltos: todos los posibles (*).
 
+	    	$privilege = @$_SESSION['privilege'];
+
 	    	#Se utiliza la variable de sesión $_SESSION['usr'] para operar en diferencia a él y mostrar los demás usuarios.
 	    	$stmt = $this->db->query("SELECT * FROM vip_user_activity WHERE username!='".@$_SESSION['usr']."' ORDER BY date_log_unix DESC LIMIT ".$Quantity.";");
 
@@ -415,15 +417,33 @@
 
 	    		#Agrega la información temporal de $row al array, dejando los índices como nombres de atributos.
 	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
-	    			$UsersData[] = [
-	    				'id_activity' 	=> $row['id_activity'], 
-	    				'username' 		=> $row['username'], 
-	    				'code' 			=> $row['code'], 
-	    				'description' 	=> $row['description'], 
-	    				'date_log' 		=> $row['date_log'], 
-	    				'date_log_unix' => $row['date_log_unix'], 
-	    				'favorite' 		=> $row['favorite'] 
-	    			];
+	    			if ($privilege == "Limitado"){
+	    				$getPrivilegeUser = $this->getUserPrivilege($row['username']);
+		    			
+		    			if (!is_bool($getPrivilegeUser)){
+		    				if ($getPrivilegeUser == "Limitado"){
+				    			$UsersData[] = [
+				    				'id_activity' 	=> $row['id_activity'], 
+				    				'username' 		=> $row['username'], 
+				    				'code' 			=> $row['code'], 
+				    				'description' 	=> $row['description'], 
+				    				'date_log' 		=> $row['date_log'], 
+				    				'date_log_unix' => $row['date_log_unix'], 
+				    				'favorite' 		=> $row['favorite'] 
+				    			];
+		    				}
+		    			}
+	    			} else if ($privilege == "Administrador"){
+	    				$UsersData[] = [
+		    				'id_activity' 	=> $row['id_activity'], 
+		    				'username' 		=> $row['username'], 
+		    				'code' 			=> $row['code'], 
+		    				'description' 	=> $row['description'], 
+		    				'date_log' 		=> $row['date_log'], 
+		    				'date_log_unix' => $row['date_log_unix'], 
+		    				'favorite' 		=> $row['favorite'] 
+		    			];
+	    			}
 	    		}
 
 	    		#Se retorna el array con la información almacenada.
