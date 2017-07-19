@@ -905,20 +905,20 @@ function CreateTheUser(){
 function OnItemClickTrUser(value){
 	// var username 		= value.getElementsByTagName("td")[0].innerHTML;
 	var email 			= value.getElementsByTagName("td")[1].innerHTML;
-	var date_log 		= value.getElementsByTagName("td")[2].innerHTML;
-	var date_log_unix 	= value.getElementsByTagName("td")[3];
-	var username 		= $("#UsrHidden"+$(date_log_unix).attr("atributo")+"").val();
+	var date_log 		= value.getElementsByTagName("td")[2];
+	var privilege 		= value.getElementsByTagName("td")[3];
+	var username 		= $("#UsrHidden"+$(date_log).attr("atributo")+"").val();
 	var password 		= value.getElementsByTagName("td")[4].innerHTML;
 
 	$(".Details_username").click();
 
 	$("#MyDetails_username").html("<span class='icon fa fa-user'></span> Usuario | " + username);
-
+	$(".aHTMLAddPrivilege").html("<span class='icon fa fa-user'></span> " + privilege.innerHTML);
 	$("#DataDel_UserName").val(username);
 	$("#nombre_de_usuario").val(username);
 
 	$("#DataDel_Email").val(email);
-	$("#DataDel_Publish").val(date_log);
+	$("#DataDel_Publish").val(date_log.innerHTML);
 
 	if ($("#objt_username").val() == username){
 		$(".modal_footer_ya").html("<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>");
