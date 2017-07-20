@@ -739,6 +739,39 @@
 	    }
 
 	    /**
+			* Método que actualiza el privilegio o estado.
+			*@param: $usr (Nombre de usuario al que hace referencia), $privilege (Estado de cuenta).
+		*/
+	    public function UpdateUserPrivilege($usr, $privilege){
+	    	#Se limpia la variable $privilege.
+	    	$privilege = $this->CleanString($privilege);
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user_info.
+	    	#Atributos: privilege, username.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#Se prepara la consulta.
+	    	$Reason = $this->db->prepare('UPDATE vip_user_info '
+                . 'SET privilege = :privilege '
+                . 'WHERE username = :usr');
+
+	    	#Se vincula el valor con el parámetro.
+	    	$Reason->bindValue(':privilege', $privilege);
+        	$Reason->bindValue(':usr', $usr);
+
+        	@session_start();
+
+        	#Se crea una nueva actividad.
+        	if ($this->addActivity(@$_SESSION['usr'], 4, "Actualización del privilegio del usuario ".$usr." a ".$privilege))
+		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    		return true;		#Si llega hasta acá, todo se ha relizado correctamente.
+
+		    #Se devuelve un valor booleano falso cuando algo ha fallado.
+		    return false;
+	    }
+
+	    /**
 			* Método que actualiza la acción de favorito a una actividad.
 			*@param: $usr (Nombre de usuario al que hace referencia), $id_activity(ID de actividad) $favorite (Favorito 0,1).
 		*/
