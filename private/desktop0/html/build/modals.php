@@ -1247,8 +1247,13 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
-
+                <?php
+                    if (@$_SESSION['privilege'] == "Administrador"){
+                        ?>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+                        <?php
+                    }
+                ?>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgEmail();">Aplicar</button>
             </div>
@@ -1315,8 +1320,15 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
-
+                
+                <?php
+                    if (@$_SESSION['privilege'] == "Administrador"){
+                        ?>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+                        <?php
+                    }
+                ?>
+            
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgUserName();">Aplicar</button>
             </div>
@@ -1450,7 +1462,13 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+                <?php
+                    if (@$_SESSION['privilege'] == "Administrador"){
+                        ?>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+                        <?php
+                    }
+                ?>
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgPW();">Aplicar</button>
@@ -1461,104 +1479,112 @@
 
 
 <!-- Crear un nuevo usuario -->
-<input type="hidden" class="CreateUserNow" data-toggle="modal" data-target="#CreateUserNow"  />
 
-<div class="modal fade modal-primary" id="CreateUserNow" tabindex="1" role="dialog" aria-labelledby="MyCreateUserNow" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="MyCreateUserNow"><span class="icon fa fa-user"></span> Crear usuario</h4>
-                <ul class="nav nav-pills mb20" style="position: absolute; right: 66px; top: 8px;">
-                    <li class="active" onclick="javascript: AssignPrivilege('Limitado');" >
-                        <a href="#tab18_1" data-toggle="tab" aria-expanded="true" style="color:#fff;">
-                            <span class="icon fa fa-user"></span> Limitado
-                        </a>
-                    </li>
-                  
-                    <li class="" onclick="javascript: AssignPrivilege('Administrador');">
-                        <a href="#tab18_2" data-toggle="tab" aria-expanded="false" style="color:#fff;">
-                            <span class="icon fa fa-user"></span> Administrador
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal-body">
-                
-                <form id="SendEnterNewUser">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-tag" aria-hidden="true"></i> Nombre de usuario, E-mail</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <input type="text" class="form-control" name="Enter_UserName" id="Enter_UserName" placeholder="* Nombre de usuario" /><br/>
-                                    <input type="text" class="form-control" name="Enter_Email" id="Enter_Email" placeholder="* Correo electrónico" />
-                                    
-                                </div>
-                            </div>
-                         </div>
-                         <div class="col-xs-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-key" aria-hidden="true"></i> Escriba la clave</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <input type="password" class="form-control" name="Enter_PassWord" id="Enter_PassWord" placeholder="* Contraseña" /><br/>
-                                    <input type="password" class="form-control" name="Enter_RepeatPassWord" id="Enter_RepeatPassWord" placeholder="* Repita la contraseña" />
-                                </div>
-                            </div>
-                         </div>
+<?php
+    if (@$_SESSION['privilege'] == "Administrador"){
+        ?>
+            <input type="hidden" class="CreateUserNow" data-toggle="modal" data-target="#CreateUserNow"  />
 
-                         <input type="hidden" id="ValuePrivilege" name="ValuePrivilege" value="Limitado" />
-
-                          <div class="panel-body">
-                            <div class="tab-content br-n pn">
-                              <div id="tab18_1" class="tab-pane active">
+            <div class="modal fade modal-primary" id="CreateUserNow" tabindex="1" role="dialog" aria-labelledby="MyCreateUserNow" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="MyCreateUserNow"><span class="icon fa fa-user"></span> Crear usuario</h4>
+                            <ul class="nav nav-pills mb20" style="position: absolute; right: 66px; top: 8px;">
+                                <li class="active" onclick="javascript: AssignPrivilege('Limitado');" >
+                                    <a href="#tab18_1" data-toggle="tab" aria-expanded="true" style="color:#fff;">
+                                        <span class="icon fa fa-user"></span> Limitado
+                                    </a>
+                                </li>
+                              
+                                <li class="" onclick="javascript: AssignPrivilege('Administrador');">
+                                    <a href="#tab18_2" data-toggle="tab" aria-expanded="false" style="color:#fff;">
+                                        <span class="icon fa fa-user"></span> Administrador
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <form id="SendEnterNewUser">
                                 <div class="row">
-                                  <div class="col-md-12">
-                                   
-                                    <div class="alert alert-micro alert-border-left alert-primary alert-dismissable">
-                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                      <i class="fa fa-trophy pr10"></i>
-                                      <strong>!Bien hecho!</strong> Ha seleccionado el privilegio Limitado para este usuario.
-                                      <a href="#" class="alert-link">Échale un vistazo a sus derechos</a>.
-                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><i class="fa fa-tag" aria-hidden="true"></i> Nombre de usuario, E-mail</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <input type="text" class="form-control" name="Enter_UserName" id="Enter_UserName" placeholder="* Nombre de usuario" /><br/>
+                                                <input type="text" class="form-control" name="Enter_Email" id="Enter_Email" placeholder="* Correo electrónico" />
+                                                
+                                            </div>
+                                        </div>
+                                     </div>
+                                     <div class="col-xs-6">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><i class="fa fa-key" aria-hidden="true"></i> Escriba la clave</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <input type="password" class="form-control" name="Enter_PassWord" id="Enter_PassWord" placeholder="* Contraseña" /><br/>
+                                                <input type="password" class="form-control" name="Enter_RepeatPassWord" id="Enter_RepeatPassWord" placeholder="* Repita la contraseña" />
+                                            </div>
+                                        </div>
+                                     </div>
 
-                                  </div>
-                                </div>
-                              </div>
+                                     <input type="hidden" id="ValuePrivilege" name="ValuePrivilege" value="Limitado" />
 
-                              <div id="tab18_2" class="tab-pane">
-                                <div class="row">
-                                  <div class="col-md-12">
-                                     <div class="alert alert-micro alert-border-left alert-primary alert-dismissable">
-                                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                      <i class="fa fa-trophy pr10"></i>
-                                      <strong>!Bien hecho!</strong> Ha seleccionado el privilegio Administrador para este usuario.
-                                      <a href="#" class="alert-link">Échale un vistazo a sus derechos</a>.
+                                      <div class="panel-body">
+                                        <div class="tab-content br-n pn">
+                                          <div id="tab18_1" class="tab-pane active">
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                               
+                                                <div class="alert alert-micro alert-border-left alert-primary alert-dismissable">
+                                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                  <i class="fa fa-trophy pr10"></i>
+                                                  <strong>!Bien hecho!</strong> Ha seleccionado el privilegio Limitado para este usuario.
+                                                  <a href="#" class="alert-link">Échale un vistazo a sus derechos</a>.
+                                                </div>
+
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                          <div id="tab18_2" class="tab-pane">
+                                            <div class="row">
+                                              <div class="col-md-12">
+                                                 <div class="alert alert-micro alert-border-left alert-primary alert-dismissable">
+                                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                  <i class="fa fa-trophy pr10"></i>
+                                                  <strong>!Bien hecho!</strong> Ha seleccionado el privilegio Administrador para este usuario.
+                                                  <a href="#" class="alert-link">Échale un vistazo a sus derechos</a>.
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
                                     </div>
-                                  </div>
                                 </div>
-                              </div>
+                            </form>
+
+                            <div class="Incrustar_User">
+                                
                             </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" onclick="javascript: CreateTheUser();">Crear</button>
                         </div>
                     </div>
-                </form>
-
-                <div class="Incrustar_User">
-                    
                 </div>
+            </div>
+        <?php
+    }
+?>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="javascript: CreateTheUser();">Crear</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- Detalles del usuario -->
