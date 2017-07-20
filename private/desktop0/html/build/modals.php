@@ -1066,8 +1066,13 @@
                 </form>
                 
                 <button type="button" class="btn btn-info" style="float: left;" onclick="javascript: ProjectResult();" title="Agregar resultados finales al proyecto">Agregar resultados</button>
-                
-                <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();" title="Eliminar el proyecto">Eliminar</button>
+                <?php
+                    if (@$_SESSION['privilege'] == "Administrador"){
+                        ?>
+                            <button type="button" class="btn btn-danger" onclick="javascript: DelArtModal();" title="Eliminar el proyecto">Eliminar</button>
+                        <?php
+                    }
+                ?>
                 <button type="button" class="btn btn-info" onclick="javascript: UpdateListItemArt();" title="Actualizar información del proyecto">Actualizar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
             </div>
@@ -1605,7 +1610,38 @@
                 <h4 class="modal-title" id="MyDetails_username"></h4>
             </div>
             <div class="modal-body">
-                
+
+                <div class="panel">
+                  <div class="panel-heading panel-visible">
+                    <div class="widget-menu pull-right mr10" style="position: absolute;right: 70px;top: -45px;">
+                      
+                      
+                      <div class="btn-group">
+                        <button type="button" style="padding: 5px;" class="btn btn-xs btn-success dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-globe"></span> Estado de la cuenta</button>
+                      
+                        <ul class="dropdown-menu checkbox-persist pull-right text-left" role="menu">
+                          <li onclick="javascript: ChangePrivilegeState('Administrador');">
+                            <a style="cursor: pointer;"><span class="fa fa-user-md"></span> Administrador </a>
+                          </li>
+                          <li onclick="javascript: ChangePrivilegeState('Limitado');">
+                            <a style="cursor: pointer;"><span class="fa fa-tachometer"></span> Limitado </a>
+                          </li>
+                          <li onclick="javascript: ChangePrivilegeState('Suspendido');">
+                            <a style="cursor: pointer;"><span class="fa fa-exclamation-triangle"></span> Suspendido </a>
+                          </li>
+                        </ul>
+                      
+                        <form id="ChangePrivilegeForm">
+                            <input type="hidden" id="InputUsrPrivilege" name="InputUsrPrivilege" />
+                            <input type="hidden" id="InputPrivilege" name="InputPrivilege" />
+                        </form>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <form id="DataEnterDelUser">
                     <div class="row">
                         <div class="col-xs-6">
