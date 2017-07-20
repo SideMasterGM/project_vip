@@ -115,21 +115,27 @@
                     </a>
                 </li> -->
 
-                <li class="panel panel-default dropdown two__item">
-                    <a data-toggle="collapse" href="#dropdown-table">
-                        <span class="icon fa fa-user-secret"></span><span class="title">Usuarios</span>
-                    </a>
-                    <!-- Dropdown level 1 -->
-                    <div id="dropdown-table" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#" onclick="javascript: CreateUserNow();">Crear usuario</a></li>
-                                <li><a href="users">Lista de usuarios</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-
+                <?php
+                     if (@$_SESSION['privilege'] == "Administrador"){
+                        ?>
+                            <li class="panel panel-default dropdown two__item">
+                                <a data-toggle="collapse" href="#dropdown-table">
+                                    <span class="icon fa fa-user-secret"></span><span class="title">Usuarios</span>
+                                </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="dropdown-table" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="#" onclick="javascript: CreateUserNow();">Crear usuario</a></li>
+                                            <li><a href="users">Lista de usuarios</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php
+                     }
+                ?>
+                
                 <li class="panel panel-default dropdown three__item">
                     <a data-toggle="collapse" href="#dropdown-icon">
                         <span class="icon fa fa-cogs"></span><span class="title">Configuración de mi cuenta</span>
