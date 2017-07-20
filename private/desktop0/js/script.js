@@ -1612,14 +1612,12 @@ function ChangePrivilegeState(value){
 	$("#InputPrivilege").val(value);
 
 	$.ajax({
-	    url: "private/desktop0/html/build/AddNowAboutUs.php",
+	    url: "private/desktop0/html/build/UpdatePrivilege.php",
 	    type: "POST",
-	    data: $("#FormAddNowAboutUs").serialize(),
+	    data: $("#ChangePrivilegeForm").serialize(),
 	    success: function(data){
 	    	if (data == "OK"){
-	    		$(".OpenModalAboutUs").click();
-	    	} else {
-	    		$(".OMAboutUsError").click();
+	    		$(".aHTMLAddPrivilege").html("<span class='icon fa fa-user'></span> " + value);
 	    	}
 	    }
   	});
