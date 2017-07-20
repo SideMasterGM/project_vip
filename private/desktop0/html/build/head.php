@@ -7,6 +7,17 @@
 
 	include ("private/desktop0/connect_server/connect_server.php");
 	include ("private/connect_server/connect_server.php");
+    
+	$CN = CDB("vip");
+
+    $getUserPrivilege = $CN->getUserPrivilege(@$_SESSION['usr']);
+	if (!is_bool($getUserPrivilege))
+	  	@$_SESSION['privilege'] = $getUserPrivilege;
+
+	if (@$_SESSION['privilege'] == "Suspendido"){
+		header("Location: private/desktop0/php/logout.php");
+	}
+
     ?>
         <title><?php echo @$_SESSION['usr']; ?> | VIP-PS </title>
     <?php
