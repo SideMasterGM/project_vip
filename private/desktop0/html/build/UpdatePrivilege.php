@@ -8,9 +8,10 @@
 	include ("../../../connect_server/connect_server.php");
 	$CN = CDB("vip");
 
-	$usr = $_POST['nombre_de_usuario'];
+	$usr 		= $_POST['InputUsrPrivilege'];
+	$privilege 	= $_POST['InputPrivilege'];
 
-	if ($CN->deleteUser($usr))
+	if ($CN->UpdateUserPrivilege($usr, $privilege))
 		echo "OK";
 	else
 		echo "Fail";
