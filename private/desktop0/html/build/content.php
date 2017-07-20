@@ -10,22 +10,34 @@
     <div class="side-body padding-top">
         <div class="row">
             
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" title="Todos los usuarios registrados">
-                <a href="users">
-                    <div class="card red summary-inline">
-                        <div class="card-body">
-                            <!-- <i class="icon fa fa-comments fa-4x"></i> -->
-                            <i class="icon fa fa-users fa-4x"></i>
-                            <div class="content">
-                                <div class="title"><?php echo $CN->getUserCount(); ?></div>
-                                <div class="sub-title">Usuarios Registrados</div>
-                            </div>
-                            <div class="clear-both"></div>
+            <?php
+                $SizeTeam = 2;
+                $SizeProject = 3;
+                if (@$_SESSION['privilege'] == "Administrador"){
+                    ?>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" title="Todos los usuarios registrados">
+                            <a href="users">
+                                <div class="card red summary-inline">
+                                    <div class="card-body">
+                                        <!-- <i class="icon fa fa-comments fa-4x"></i> -->
+                                        <i class="icon fa fa-users fa-4x"></i>
+                                        <div class="content">
+                                            <div class="title"><?php echo $CN->getUserCount(); ?></div>
+                                            <div class="sub-title">Usuarios Registrados</div>
+                                        </div>
+                                        <div class="clear-both"></div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" title="Proyectos Registrados">
+                    <?php
+                    $SizeTeam = 2;  $SizeProject = 3;
+                } else if (@$_SESSION['privilege'] == "Limitado"){
+                    $SizeTeam = 4;  $SizeProject = 4;
+                }
+            ?>
+
+            <div class="col-lg-<?php echo $SizeProject; ?> col-md-6 col-sm-6 col-xs-12" title="Proyectos Registrados">
                 <a href="projects">
                     <div class="card green summary-inline">
                         <div class="card-body">
@@ -39,7 +51,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12" title="Equipos y miembros">
+            <div class="col-lg-<?php echo $SizeTeam; ?> col-md-6 col-sm-6 col-xs-12" title="Equipos y miembros">
                 <a href="team">
                     <div class="card blue summary-inline">
                         <div class="card-body">
@@ -53,7 +65,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12" title="Mostrar la tabla de coordinadores">
+            <div class="col-lg-<?php echo $SizeTeam; ?> col-md-6 col-sm-6 col-xs-12" title="Mostrar la tabla de coordinadores">
                 <a href="#" onclick="javascript: viewAllCoordinators()">
                     <div class="card yellow summary-inline">
                         <div class="card-body">
@@ -67,20 +79,27 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12" title="Total de inicios de sesión">
-                <a href="#">
-                    <div class="card red summary-inline">
-                        <div class="card-body">
-                            <i class="icon fa fa-inbox fa-4x"></i>
-                            <div class="content">
-                                <div class="title"><?php echo $CN->getUserSession(); ?></div>
-                                <div class="sub-title">Inicios de sesión</div>
-                            </div>
-                            <div class="clear-both"></div>
+            
+            <?php
+                if (@$_SESSION['privilege'] == "Administrador"){
+                    ?>
+                        <div class="col-lg-<?php echo $SizeTeam; ?> col-md-6 col-sm-6 col-xs-12" title="Total de inicios de sesión">
+                            <a href="#">
+                                <div class="card red summary-inline">
+                                    <div class="card-body">
+                                        <i class="icon fa fa-inbox fa-4x"></i>
+                                        <div class="content">
+                                            <div class="title"><?php echo $CN->getUserSession(); ?></div>
+                                            <div class="sub-title">Inicios de sesión</div>
+                                        </div>
+                                        <div class="clear-both"></div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    <?php
+                }
+            ?>
         </div>
 
         <div class="row  no-margin-bottom">
