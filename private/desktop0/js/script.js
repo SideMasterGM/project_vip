@@ -903,7 +903,6 @@ function CreateTheUser(){
 }
 
 function OnItemClickTrUser(value){
-	// var username 		= value.getElementsByTagName("td")[0].innerHTML;
 	var email 			= value.getElementsByTagName("td")[1].innerHTML;
 	var date_log 		= value.getElementsByTagName("td")[2];
 	var privilege 		= value.getElementsByTagName("td")[3];
@@ -911,6 +910,7 @@ function OnItemClickTrUser(value){
 	var password 		= value.getElementsByTagName("td")[4].innerHTML;
 
 	$(".Details_username").click();
+	$("#InputUsrPrivilege").val(username);
 
 	$("#MyDetails_username").html("<span class='icon fa fa-user'></span> Usuario | " + username);
 	$(".aHTMLAddPrivilege").html("<span class='icon fa fa-user'></span> " + privilege.innerHTML);
@@ -1606,4 +1606,21 @@ function ChangeTagMoney(){
 
 function AssignPrivilege(value){
 	$("#ValuePrivilege").val(value);
+}
+
+function ChangePrivilegeState(value){
+	$("#InputPrivilege").val(value);
+
+	$.ajax({
+	    url: "private/desktop0/html/build/AddNowAboutUs.php",
+	    type: "POST",
+	    data: $("#FormAddNowAboutUs").serialize(),
+	    success: function(data){
+	    	if (data == "OK"){
+	    		$(".OpenModalAboutUs").click();
+	    	} else {
+	    		$(".OMAboutUsError").click();
+	    	}
+	    }
+  	});
 }
