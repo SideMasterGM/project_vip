@@ -1573,11 +1573,6 @@
                                     </div>
                                 </div>
                             </form>
-
-                            <div class="Incrustar_User">
-                                
-                            </div>
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
