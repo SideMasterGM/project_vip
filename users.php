@@ -25,7 +25,13 @@
                 </body>
             <?php
         } else {
-            include ("private/desktop0/html/users.php");
+
+            if (@$_SESSION['privilege'] == "Administrador"){
+                include ("private/desktop0/html/users.php");
+            } else {
+                include ("private/desktop0/html/index.php");
+            }
+
         }
 
     ?>
