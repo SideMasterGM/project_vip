@@ -100,15 +100,15 @@
 			$vip = utf8_decode($fecha_aprobacion);
 			$this->Cell(30, 20, $vip, 'C');
 
-			$this->Ln(30);
+			$this->Ln(25);
 		}
 
 		function TableIDProject($id, $ProjectIDFacCurEsc, $ProjectFechaAprobacion, $ProjectCodDictamenEcon, $ProjectIDInstanciaApro){
 			// Identificación del proyecto
-			$this->Image('../../../source/img/id_project.png',9.8,77,75.5);
+			$this->Image('../../../source/img/id_project.png',9.8,72.5,70.6);
 			// Anchuras de las columnas
 		    $this->SetFont('Times','B',9);
-		    $w = array(50, 25);
+		    $w = array(50, 20);
 		   
 		    $this->Cell($w[0],6,'Identificador','LR');
 		    $this->Cell($w[1],6,utf8_decode($id),'LR');
@@ -117,7 +117,7 @@
 		    $this->Cell(array_sum($w),0,'','T');
 
 
-		    $x = array(50, 25);
+		    $x = array(50, 20);
 		   	
 		    $this->Ln();
 		    $this->Cell($x[0],6,'ID Facultar | CUR | Escuela','LR');
@@ -126,7 +126,7 @@
 		    $this->Ln();
 		    $this->Cell(array_sum($x),0,'','T');
 
-		    $c = array(50, 25);
+		    $c = array(50, 20);
 		   	
 		    $this->Ln();
 		    $this->Cell($c[0],6,utf8_decode('Fecha de Aprobación'),'LR');
@@ -135,7 +135,7 @@
 		    $this->Ln();
 		    $this->Cell(array_sum($c),0,'','T');
 
-		    $a = array(50, 25);
+		    $a = array(50, 20);
 		   	
 		    $this->Ln();
 		    $this->Cell($a[0],6,utf8_decode('Código de Dictámen Económico'),'LR');
@@ -144,7 +144,7 @@
 		    $this->Ln();
 		    $this->Cell(array_sum($a),0,'','T');
 
-		    $b = array(50, 25);
+		    $b = array(50, 20);
 		   	
 		    $this->Ln();
 		    $this->Cell($b[0],6,utf8_decode('ID de Instancia de Aprobación'),'LR');
@@ -152,62 +152,314 @@
 
 		    $this->Ln();
 		    $this->Cell(array_sum($b),0,'','T');
-			$this->Ln(5);
+			$this->Ln(15);
 		}
 
-		function TableDetailsFinances($id, $ProjectIDFacCurEsc, $ProjectFechaAprobacion, $ProjectCodDictamenEcon, $ProjectIDInstanciaApro){
+		function TableTeamLink($id_project, $ProjectTeams){
 			// Identificación del proyecto
-			$this->Image('../../../source/img/id_project.png',9.8,77,75.5);
-			// Anchuras de las columnas
-		    $this->SetFont('Times','B',9);
-		    $w = array(50, 25);
-		   
-		    $this->Cell($w[0],6,'Identificador','LR');
-		    $this->Cell($w[1],6,utf8_decode($id),'LR');
+			$this->Image('../../../source/img/TeamLink.png',9.8,117.5,70.6);
 
-		    $this->Ln();
-		    $this->Cell(array_sum($w),0,'','T');
+            $ProjectTeamsCount = 0;
+            if (is_array($ProjectTeams)){
+                foreach ($ProjectTeams as $value) { 
+                    if ($value['id_project'] == $id_project){
+                        $ProjectTeamsCount++;
+                       
+                        if ($ProjectTeamsCount <= 1){
+							// Anchuras de las columnas
+						    $this->SetFont('Times','B',9);
+						    $w = array(20, 50);
+						   
+						    $this->Cell($w[0],6,'Equipo '.$ProjectTeamsCount,'LR');
+						    $this->Cell($w[1],6,utf8_decode($value['nombre']),'LR');
 
-		    $x = array(50, 25);
-		   	
-		    $this->Ln();
-		    $this->Cell($x[0],6,'ID Facultar | CUR | Escuela','LR');
-		    $this->Cell($x[1],6,utf8_decode($ProjectIDFacCurEsc),'LR');
+						    $this->Ln();
+						    $this->Cell(array_sum($w),0,'','T');
+                        } else if ($ProjectTeamsCount > 1){
+						    $x = array(20, 50);
+						   	
+						    $this->Ln();
+						    $this->Cell($x[0],6,'Equipo '.$ProjectTeamsCount,'LR');
+						    $this->Cell($x[1],6,utf8_decode($value['nombre']),'LR');
 
-		    $this->Ln();
-		    $this->Cell(array_sum($x),0,'','T');
+						    $this->Ln();
+						    $this->Cell(array_sum($x),0,'','T');
+                        }                                   
+                    }
+                }
+            }
 
-		    $c = array(50, 25);
-		   	
-		    $this->Ln();
-		    $this->Cell($c[0],6,utf8_decode('Fecha de Aprobación'),'LR');
-		    $this->Cell($c[1],6,utf8_decode($ProjectFechaAprobacion),'LR');
+			$this->Ln(15);
+		}
 
-		    $this->Ln();
-		    $this->Cell(array_sum($c),0,'','T');
+		function TableTeamCoordsLink($Counter, $ValTeam, $ValMember){
+            if ($Counter <= 1){
+            	$this->Image('../../../source/img/TeamCoords.png',9.8,155.5,70.6);
+				// Anchuras de las columnas
+			    $this->SetFont('Times','B',9);
+			    $w = array(40, 30);
+			   
+			    $this->Cell($w[0],6,$ValTeam,'LR');
+			    $this->Cell($w[1],6,utf8_decode($ValMember),'LR');
 
-		    $a = array(50, 25);
-		   	
-		    $this->Ln();
-		    $this->Cell($a[0],6,utf8_decode('Código de Dictámen Económico'),'LR');
-		    $this->Cell($a[1],6,utf8_decode($ProjectCodDictamenEcon),'LR');
+			    $this->Ln();
+			    $this->Cell(array_sum($w),0,'','T');
+            } else if ($Counter > 1){
+			    $x = array(40, 30);
+			   	
+			    $this->Ln();
+			    $this->Cell($x[0],6,$ValTeam,'LR');
+			    $this->Cell($x[1],6,utf8_decode($ValMember),'LR');
 
-		    $this->Ln();
-		    $this->Cell(array_sum($a),0,'','T');
+			    $this->Ln();
+			    $this->Cell(array_sum($x),0,'','T');
+            }                                   
+		}
 
-		    $b = array(50, 25);
-		   	
-		    $this->Ln();
-		    $this->Cell($b[0],6,utf8_decode('ID de Instancia de Aprobación'),'LR');
-		    $this->Cell($b[1],6,utf8_decode($ProjectIDInstanciaApro),'LR');
+		function ProjectDetailsFacCurEsc($ProjectIDFacCurEsc){
+			$this->Image('../../../source/img/FacCurEsc.png',83,72.6,62);
 
-		    $this->Ln();
-		    $this->Cell(array_sum($b),0,'','T');
-			
-			$this->Ln(20);
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(73);
+			// Título
+			$vip = utf8_decode($ProjectIDFacCurEsc);
+			$this->Cell(30, -80, $vip, 'C');
+		}
+
+		function ProjectDetailsInstanciaAprobacion($InstanciaAprobacion){
+			$this->Image('../../../source/img/InstanciaAprobacion.png',135,72.6,62);
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(30);
+			// Título
+			$vip = utf8_decode($InstanciaAprobacion);
+			$this->Cell(30, -80, $vip, 'C');
+		}
+
+		function ProjectDetailsInformacionFinanciera($IFnombre_organismo, $IFmonto_financiado, $IFaporte_unan, $IFPro_Moneda){
+			$this->Image('../../../source/img/InformacionFinanciera.png',83,94,62);
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-90);
+			// Título
+			$vip = utf8_decode("Nombre del organismo: ");
+			$this->Cell(30, -40, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-25);
+			// Título
+			$vip = utf8_decode($IFnombre_organismo);
+			$this->Cell(30, -30, $vip, 'C');
+
+			####################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-35);
+			// Título
+			$vip = utf8_decode("Monto financiado: ");
+			$this->Cell(30, -20, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-1);
+			// Título
+			$vip = utf8_decode($IFPro_Moneda.number_format($IFmonto_financiado, 2, '.', ','));
+			$this->Cell(30, -20, $vip, 'C');
+
+			####################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-59);
+			// Título
+			$vip = utf8_decode("Aporte UNAN: ");
+			$this->Cell(30, -10, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-1);
+			// Título
+			$vip = utf8_decode($IFPro_Moneda.number_format($IFaporte_unan, 2, '.', ','));
+			$this->Cell(30, -10, $vip, 'C');
+		}
+
+		function ProjectDetailsTemporalidad($Tmpduracion_meses, $Tmpfecha_inicio, $Tmpfecha_finalizacion, $Tmpfecha_monitoreo){
+			$this->Image('../../../source/img/Temporalidad.png',135,94,62);
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(1);
+			// Título
+			$vip = utf8_decode("Duración en meses: ");
+			$this->Cell(30, -40, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(5);
+			// Título
+			$vip = utf8_decode($Tmpduracion_meses);
+			$this->Cell(30, -40, $vip, 'C');
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-65);
+			// Título
+			$vip = utf8_decode("Fecha de inicio: ");
+			$this->Cell(30, -30, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(5);
+			// Título
+			$vip = utf8_decode($Tmpfecha_inicio);
+			$this->Cell(30, -30, $vip, 'C');
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-65);
+			// Título
+			$vip = utf8_decode("Fecha de finalización: ");
+			$this->Cell(30, -20, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(5);
+			// Título
+			$vip = utf8_decode($Tmpfecha_finalizacion);
+			$this->Cell(30, -20, $vip, 'C');
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-65);
+			// Título
+			$vip = utf8_decode("Fecha de monitoreo: ");
+			$this->Cell(30, -10, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(5);
+			// Título
+			$vip = utf8_decode($Tmpfecha_monitoreo);
+			$this->Cell(30, -10, $vip, 'C');
 
 		}
 
+		function ProjectDetailsComunidadPoblacion($ZGPersonasAtendidas, $ZGNombreZonaGeografica, $ProjectComunidadPoblacion){
+			$this->Image('../../../source/img/InformacionFinanciera.png',83,130,62);
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-125);
+			// Título
+			$vip = utf8_decode("Nº de personas atendidas: ");
+			$this->Cell(30, 35, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-20);
+			// Título
+			$vip = utf8_decode($ZGPersonasAtendidas);
+			$this->Cell(30, 45, $vip, 'C');
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-40);
+			// Título
+			$vip = utf8_decode("Comunidad: ");
+			$this->Cell(30, 55, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-22);
+			// Título
+			$vip = utf8_decode($ProjectComunidadPoblacion);
+			$this->Cell(30, 65, $vip, 'C');
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-38);
+			// Título
+			$vip = utf8_decode("Zona geográfica: ");
+			$this->Cell(30, 75, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-20);
+			// Título
+			$vip = utf8_decode($ZGNombreZonaGeografica);
+			$this->Cell(30, 85, $vip, 'C');
+		}
+
+		function ProjectDetailsResultados($RTipoPublicacion, $Rdatos_publicacion, $Rotros_resultados){
+			$this->Image('../../../source/img/Resultados.png',135,130,62);
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(20);
+			// Título
+			$vip = utf8_decode("Tipo de publicación: ");
+			$this->Cell(30, 35, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-25);
+			// Título
+			$vip = utf8_decode($RTipoPublicacion);
+			$this->Cell(30, 45, $vip, 'C');
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-35);
+			// Título
+			$vip = utf8_decode("Datos de publicación: ");
+			$this->Cell(30, 55, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-25);
+			// Título
+			$vip = utf8_decode($Rdatos_publicacion);
+			$this->Cell(30, 65, $vip, 'C');
+
+			#################################################
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-35);
+			// Título
+			$vip = utf8_decode("Otros resultados: ");
+			$this->Cell(30, 75, $vip, 'C');
+
+			$this->SetFont('Times','B',9);
+			// Movernos a la derecha
+			$this->Cell(-25);
+			// Título
+			$vip = utf8_decode($Rotros_resultados);
+			$this->Cell(30, 85, $vip, 'C');
+
+		}
+		
 		// Pie de página
 		function Footer() {
 			// Posición: a 1,5 cm del final
@@ -234,6 +486,63 @@
         }
     }
 
+    $ProjectFacCurEsc = $CN_VIP->getOnlyFacCurEsc($ProjectIDFacCurEsc);
+
+    #Expulsar la información de Instancia de Aprobación
+    if (!is_bool($CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro))){
+        $InstanciaAprobacion = $CN_VIP->getOnlyInstanciaAprobacion($ProjectIDInstanciaApro);
+    } else {
+        $InstanciaAprobacion = "No hay información";
+    }
+
+    $ProjectTeams = $CN_VIP->getTeamProject();
+	
+    #Información Financiera
+    $ProjectInfoFinanciera = $CN_VIP->getProyectoFinancieraOnlyById($id);
+    if (is_array($ProjectInfoFinanciera)){
+        
+        foreach ($ProjectInfoFinanciera as $value) { 
+            $IFnombre_organismo = $value['nombre_organismo'];
+            $IFmonto_financiado = $value['monto_financiado'];
+            $IFaporte_unan      = $value['aporte_unan'];
+            $IFPro_Moneda       = $value['moneda'];
+        }
+    }
+
+    #Datos de Temporalidad
+	$ProjectTemporalidad = $CN_VIP->getProyectoTemporalidadOnlyById($id);
+    if (is_array($ProjectTemporalidad)){
+        foreach ($ProjectTemporalidad as $value) { 
+            $Tmpduracion_meses      = $value['duracion_meses'];
+            $Tmpfecha_inicio        = $value['fecha_inicio'];
+            $Tmpfecha_finalizacion  = $value['fecha_finalizacion'];
+            $Tmpfecha_monitoreo     = $value['fecha_monitoreo'];
+        }
+    }
+
+    #Datos de zonas geográficas.
+    $ProjectZonaGeografica = $CN_VIP->getProyectoZonaGeoBeneficiariosOnlyById($id);
+                                                                                        
+    if (is_array($ProjectZonaGeografica)){
+        foreach ($ProjectZonaGeografica as $value) {
+            $ZGidComunidadPoblacion = $value['id_comunidad_poblacion'];
+            $ZGPersonasAtendidas    = $value['cantidad_personas_atendidas'];
+            $ZGNombreZonaGeografica = $value['nombre_zona_geografica'];
+        
+            $ProjectComunidadPoblacion = $CN_VIP->getOnlyComunidadPoblacion($ZGidComunidadPoblacion);
+        }
+    }
+
+    #Datos de Resultados
+    $ProjectResultados = $CN_VIP->getProyectoResultadosOnlyById($id);
+                                                                                        
+    if (is_array($ProjectResultados)){
+        foreach ($ProjectResultados as $value) {
+            $RTipoPublicacion   = $value['tipo_publicacion'];
+            $Rdatos_publicacion = $value['datos_publicacion'];
+            $Rotros_resultados  = $value['otros_resultados'];        
+        }
+    }
 
 	// Creación del objeto de la clase heredada
 	$pdf = new PDF();
@@ -243,10 +552,48 @@
 	$pdf->TitleDesign();
 	$pdf->ProjectTitle($ProjectNombre, $ProjectFechaAprobacion);
 	$pdf->TableIDProject($id, $ProjectIDFacCurEsc, $ProjectFechaAprobacion, $ProjectCodDictamenEcon, $ProjectIDInstanciaApro);
-	$pdf->TableDetailsFinances($id, $ProjectIDFacCurEsc, $ProjectFechaAprobacion, $ProjectCodDictamenEcon, $ProjectIDInstanciaApro);
+	$pdf->ProjectDetailsFacCurEsc($ProjectFacCurEsc);
+	$pdf->ProjectDetailsInstanciaAprobacion($InstanciaAprobacion);
 
+	$pdf->ProjectDetailsInformacionFinanciera($IFnombre_organismo, $IFmonto_financiado, $IFaporte_unan, $IFPro_Moneda);
+	$pdf->ProjectDetailsTemporalidad($Tmpduracion_meses, $Tmpfecha_inicio, $Tmpfecha_finalizacion, $Tmpfecha_monitoreo);
+	$pdf->ProjectDetailsComunidadPoblacion($ZGPersonasAtendidas, $ZGNombreZonaGeografica, $ProjectComunidadPoblacion);
+	$pdf->ProjectDetailsResultados($RTipoPublicacion, $Rdatos_publicacion, $Rotros_resultados);
+
+	$pdf->Ln(-1);
+	$pdf->TableTeamLink($id, $ProjectTeams);
 	// for($i=1;$i<=40;$i++)
 	// 	$pdf->Cell(0,10,'Imprimiendo línea número '.$i,1,1);
 
+    $ProjectTeamsCoords = $CN_VIP->getTeamProject();
+    $Counter = 0;                                                         
+    if (is_array($ProjectTeamsCoords)){
+        foreach ($ProjectTeamsCoords as $ValTeam) {
+            if ($ValTeam['id_project'] == $id){
+
+                $ProjectTeamsMember = $CN_VIP->getTeamMembersAll($ValTeam['id_team']);
+
+                if (is_array($ProjectTeamsMember)){
+                    foreach ($ProjectTeamsMember as $ValMember) {
+
+                        $ProjectTeamsCoord = $CN_VIP->getCoordinators();
+
+                        if (is_array($ProjectTeamsCoord)){
+                            foreach ($ProjectTeamsCoord as $ValCoord) {
+
+                                if ($ValCoord['id_member'] == $ValMember['id_member']){
+                                	$Counter++;
+                                   	$pdf->TableTeamCoordsLink($Counter, $ValTeam['nombre'], $ValMember['firts_name']);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    $pdf->Ln(5);
+	
 	$pdf->Output();
 ?>
