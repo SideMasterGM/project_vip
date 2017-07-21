@@ -356,56 +356,56 @@
                                                                                     <div class="row">
                                                                                         <div class="col-xs-12">
                                                                                             <div class="row">
-                                                                                                    <?php 
-                                                                                                        $getProjectImages = $CN_VIP->getProjectImgOnlyById($id);
-                                                                                                        $CountParts = count($getProjectImages);
-                                                                                                        $FirstPart  = floor($CountParts / 2);
-                                                                                                        $SecondPart = $CountParts - $FirstPart;
+                                                                                                <?php 
+                                                                                                    $getProjectImages = $CN_VIP->getProjectImgOnlyById($id);
+                                                                                                    $CountParts = count($getProjectImages);
+                                                                                                    $FirstPart  = floor($CountParts / 2);
+                                                                                                    $SecondPart = $CountParts - $FirstPart;
 
-                                                                                                        if (is_array($getProjectImages)){
-                                                                                                            $CounterInit = 0;
-                                                                                                            foreach ($getProjectImages as $value) {
+                                                                                                    if (is_array($getProjectImages)){
+                                                                                                        $CounterInit = 0;
+                                                                                                        foreach ($getProjectImages as $value) {
 
-                                                                                                                if ($CounterInit < $FirstPart){
-                                                                                                                    if ($CounterInit == 0){
-                                                                                                                        ?>
-                                                                                                                            <div class="col-xs-6">
-                                                                                                                                <div class="container_imgnowtest">
-                                                                                                                                    <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
-                                                                                                                                </div>
-                                                                                                                        <?php
-                                                                                                                    } else {
-                                                                                                                        ?>
-                                                                                                                            <div class="container_imgnowtest">
-                                                                                                                                <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
-                                                                                                                            </div>
-                                                                                                                        <?php
-                                                                                                                    }
-                                                                                                                } else if ($CounterInit == $FirstPart) {
-
+                                                                                                            if ($CounterInit < $FirstPart){
+                                                                                                                if ($CounterInit == 0){
                                                                                                                     ?>
-                                                                                                                        </div>
                                                                                                                         <div class="col-xs-6">
                                                                                                                             <div class="container_imgnowtest">
                                                                                                                                 <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
                                                                                                                             </div>
                                                                                                                     <?php
-                                                                                                                } else if ($CounterInit > $FirstPart && $CounterInit < $CountParts){
+                                                                                                                } else {
                                                                                                                     ?>
                                                                                                                         <div class="container_imgnowtest">
                                                                                                                             <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
                                                                                                                         </div>
                                                                                                                     <?php
-                                                                                                                } else {
-                                                                                                                    ?>
-                                                                                                                        </div>
-                                                                                                                    <?php
                                                                                                                 }
+                                                                                                            } else if ($CounterInit == $FirstPart) {
 
-                                                                                                                $CounterInit++;
+                                                                                                                ?>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-xs-6">
+                                                                                                                        <div class="container_imgnowtest">
+                                                                                                                            <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
+                                                                                                                        </div>
+                                                                                                                <?php
+                                                                                                            } else if ($CounterInit > $FirstPart && $CounterInit < $CountParts){
+                                                                                                                ?>
+                                                                                                                    <div class="container_imgnowtest">
+                                                                                                                        <img onclick="javascript: SelectImgArticle(this);" src="<?php echo "private/desktop0/".$value['folder'].$value['src']; ?>" />
+                                                                                                                    </div>
+                                                                                                                <?php
+                                                                                                            } else {
+                                                                                                                ?>
+                                                                                                                    </div>
+                                                                                                                <?php
                                                                                                             }
+
+                                                                                                            $CounterInit++;
                                                                                                         }
-                                                                                                    ?>
+                                                                                                    }
+                                                                                                ?>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
