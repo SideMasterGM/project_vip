@@ -15,6 +15,7 @@
             <ol class="breadcrumb navbar-breadcrumb">
                 <li class="active">VIP - PS | <b>Administración</b></li>
             </ol>
+            <img src="source/img/logo.png" class="img_logo_unanleon" alt="UNAN - León" title="Universidad Nacional Autónoma de Nicaragua (UNAN - León)" />
             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                 <i class="fa fa-th icon"></i>
             </button>
