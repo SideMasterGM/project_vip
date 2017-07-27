@@ -1622,3 +1622,7 @@ function ChangePrivilegeState(value){
 	    }
   	});
 }
+
+function GenerateReportPDF(){
+	document.getElementById("FormReportPDF").submit();
+}

@@ -17,13 +17,19 @@
 			$title = utf8_decode('UNAN - León');
 			$this->Cell(30, 15, $title, 'C');
 
+			$this->SetFont('Times','B',8);
+			// Movernos a la derecha
+			$this->Cell(123);
+			// Título
+			$title = utf8_decode(date("Y/m/d H:i"));
+			$this->Cell(30, -7, $title, 'C');
 
 			// Logo
 			$this->Image('../../../source/img/page.png',169,8,32);
 
 			$this->SetFont('Times','B',11);
 			// Movernos a la derecha
-			$this->Cell(134);
+			$this->Cell(-17);
 			// Título
 			#Texto de paginación en color blanco
 		    $this->SetTextColor(255,255,255);
@@ -199,7 +205,7 @@
 			    $this->SetFont('Times','B',9);
 			    $w = array(40, 30);
 			   
-			    $this->Cell($w[0],6,$ValTeam,'LR');
+			    $this->Cell($w[0],6,utf8_decode($ValTeam),'LR');
 			    $this->Cell($w[1],6,utf8_decode($ValMember),'LR');
 
 			    $this->Ln();
@@ -208,7 +214,7 @@
 			    $x = array(40, 30);
 			   	
 			    $this->Ln();
-			    $this->Cell($x[0],6,$ValTeam,'LR');
+			    $this->Cell($x[0],6,utf8_decode($ValTeam),'LR');
 			    $this->Cell($x[1],6,utf8_decode($ValMember),'LR');
 
 			    $this->Ln();
@@ -465,13 +471,15 @@
 			// Posición: a 1,5 cm del final
 			$this->SetY(-15);
 			// Times italic 8
-			$this->SetFont('Times','I',8);
+			$this->SetFont('Times','I',10);
 			// Número de página
 			$this->Cell(0,10,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
 		}
 	}
 
-	$id = 3;
+	require('fpdf/html2pdf.php');
+
+	$id = $_POST['id_project_now'];
 	$CN_VIP = CDB("vip");
     
     if (is_array($CN_VIP->getProjectsOnlyById($id))){
@@ -540,12 +548,12 @@
         foreach ($ProjectResultados as $value) {
             $RTipoPublicacion   = $value['tipo_publicacion'];
             $Rdatos_publicacion = $value['datos_publicacion'];
-            $Rotros_resultados  = $value['otros_resultados'];        
+            $Rotros_resultados  = $value['otros_resultados']; 
         }
     }
 
 	// Creación del objeto de la clase heredada
-	$pdf = new PDF();
+	$pdf = new PDF_HTML();
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
 	$pdf->SetFont('Times','',12);
@@ -562,7 +570,8 @@
 
 	$pdf->Ln(-1);
 	$pdf->TableTeamLink($id, $ProjectTeams);
-	// for($i=1;$i<=40;$i++)
+	
+		// for($i=1;$i<=40;$i++)
 	// 	$pdf->Cell(0,10,'Imprimiendo línea número '.$i,1,1);
 
     $ProjectTeamsCoords = $CN_VIP->getTeamProject();
@@ -593,7 +602,27 @@
         }
     }
 
-    $pdf->Ln(5);
+    // $ProjectResultadosFinales = $CN_VIP->getProjectsResultById($id);
+                                                                                            
+    // if (is_array($ProjectResultadosFinales)){
+    //     foreach ($ProjectResultadosFinales as $value) {
+    //         $ValorFinal = utf8_decode($value['otros']);
+    //     }
+    // }
+
+    $ProjectContentObjects = $CN_VIP->getProjectsOnlyById($id);
+    if (is_array($ProjectContentObjects)){
+        foreach ($ProjectContentObjects as $value) { 
+           	$ValorFinal = utf8_decode($value['contenido']);
+        }
+    }
+
+    $pdf->Ln(1);
+    $pdf->Image('../../../source/img/Redaccion.png',83,173.6,115);
+    $pdf->SetFont('Arial','',11);
+	$pdf->AddPage();
+	$pdf->Ln(5);
+	$pdf->WriteHTML($ValorFinal);
 	
-	$pdf->Output();
+	$pdf->Output(utf8_decode($ProjectNombre).".pdf", 'D');
 ?>

@@ -57,13 +57,18 @@
                                         $ProjectFacCurEsc = $CN_VIP->getOnlyFacCurEsc($ProjectIDFacCurEsc);
 
                                         ?>
+
+                                            <form action="private/desktop0/html/ReportPDF.php" method="POST" id="FormReportPDF">
+                                                <input type="hidden" id="id_project_now" name="id_project_now" value="<?php echo $id; ?>" />
+                                            </form>
+
                                             <div class="card-header">
                                                 <div class="card-title">
                                                     <div class="title">
                                                         <i class="fa fa-pencil-square-o"></i> <?php echo $ProjectNombre; ?>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-primary" style="float: right; margin: 12px;" onclick="javascript: GenerateReport();" title="Generar un reporte completo del proyecto"><span class="fa fa-download"></span> Descargar en PDF</button>
+                                                <button type="button" class="btn btn-primary" style="float: right; margin: 12px;" onclick="javascript: GenerateReportPDF();" title="Generar un reporte completo del proyecto"><span class="fa fa-download"></span> Descargar en PDF</button>
                                             </div>
                                             <div class="card-body">
                                                 
