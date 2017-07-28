@@ -113,7 +113,20 @@
                     </li>
                     <li>
                         <div class="profile-info">
-                            <h4 class="username"><?php echo @$_SESSION['usr']; ?></h4>
+                            <h4 class="username">
+                                <a href="#" onclick="javascript: ShowModalPersonalForm();" class="FirstnameAndLastname">
+                                    <?php 
+                                        $Firstname_Lastname = $CN->getUserFirstname_Lastname($_SESSION['usr']);
+                                        if (is_bool($Firstname_Lastname) || $Firstname_Lastname == ""){
+                                            echo @$_SESSION['usr'];
+                                        } else {
+                                            echo $Firstname_Lastname;
+                                        }
+
+                                        // echo @$_SESSION['usr']; 
+                                    ?>
+                                </a>
+                            </h4>
                             <p id="pEmail_user"><?php echo $CN->getUserEmail(@$_SESSION['usr']); ?></p>
                             <div class="btn-group margin-bottom-2x" role="group">
                                 <button type="button" class="btn btn-primary" onclick="javascript: MenuConfig();"><i class="fa fa-cogs"></i>Configuración</button>
