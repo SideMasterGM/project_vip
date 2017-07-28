@@ -1785,7 +1785,7 @@
             </div>
             <div class="modal-body">
                 <p><b>Firma del reporte</b></p>
-                <p>Por favor, agregue el nombre y cargo del autor, del personaje que firmará este reporte.</p>
+                <p>Por favor, agregue el nombre y título del autor, del personaje que firmará este reporte.</p>
                 <input type="text" id="AutorReporte" style="width: 100%; padding: 10px;" placeholder="Agregar nombre del autor a firmar" name="AutorReporte" value="" />
             </div>
             <div class="modal-footer">
