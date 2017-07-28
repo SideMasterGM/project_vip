@@ -1772,6 +1772,29 @@
     </div>
 </div>
 
+<!-- Ventana modal que sirve para agregar un autor al reporte-->
+<input type="hidden" class="OpenModalAutorReporte" data-toggle="modal" data-target="#OpenModalAutorReporte"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="OpenModalAutorReporte" tabindex="1" role="dialog" aria-labAutorReporte" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="MyOpenModalAutorReporte"><span class="icon fa fa-info"></span> Generación de reporte</h4>
+            </div>
+            <div class="modal-body">
+                <p><b>Firma del reporte</b></p>
+                <p>Por favor, agregue el nombre y cargo del autor, del personaje que firmará este reporte.</p>
+                <input type="text" id="AutorReporte" style="width: 100%; padding: 10px;" placeholder="Agregar nombre del autor a firmar" name="AutorReporte" value="" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: GenerateReportPDF();">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div
 
 
 <!-- Mostra la lista de suscripciones -->
