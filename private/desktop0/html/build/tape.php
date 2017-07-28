@@ -13,7 +13,15 @@
                 <i class="fa fa-bars icon"></i>
             </button>
             <ol class="breadcrumb navbar-breadcrumb">
-                <li class="active">VIP - PS | <b>Administración</b></li>
+                <li class="active">VIP - PS 
+                    <?php
+                        if (@$_SESSION['privilege'] == "Administrador"){
+                            ?>
+                                | <b>Administración</b>
+                            <?php
+                        }
+                    ?>
+                </li>
             </ol>
             <img src="source/img/logo.png" class="img_logo_unanleon" alt="UNAN - León" title="Universidad Nacional Autónoma de Nicaragua (UNAN - León)" />
             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
