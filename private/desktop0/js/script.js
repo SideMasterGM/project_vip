@@ -1624,7 +1624,12 @@ function ChangePrivilegeState(value){
 }
 
 function GenerateReportPDF(){
+	$("#FirmaFinal").val($("#AutorReporte").val());
 	document.getElementById("FormReportPDF").submit();
+}
+
+function GRPDFModal(){
+	$(".OpenModalAutorReporte").click();
 }
 
 function ShowModalPersonalForm(){
