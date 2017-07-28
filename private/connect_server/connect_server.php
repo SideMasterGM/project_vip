@@ -663,6 +663,7 @@
         	return false;
 	    }
 
+	  
 	    /**
 			* Método que actualiza el nombre de usuario de un usuario y el árbol de directorios.
 			*@param: $new_usr (El nuevo nombre de usuario), $usr (Nombre de usuario al que hace referencia).
@@ -702,6 +703,35 @@
 		    	if ($Reason->execute())	#Se ejecuta la consulta preparada.
 		    		if ($this->updateUserPathImg($new_usr, $usr))	#Se actualiza la ruta del directorio de imágenes.
 		    			return true;	#Todo el proceso ha sido correcto.
+
+		    #Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	  /**
+			* Método que actualiza los nombres y apellidos de un usuario
+			*@param: $new_usr (Nombres y apellidos), $usr (Nombre de usuario al que hace referencia).
+		*/
+	    public function updateUserFirstname_Lastname($firstname_lastname, $usr){
+	    	#Se limpia el contenido de la variable $new_user.
+	    	$firstname_lastname = $this->CleanString($firstname_lastname);
+
+	    	#Statement: Consulta preparada. 
+	    	#Tabla: vip_user_info.
+	    	#Atributos: username.
+	    	#Valores devueltos: Ninguno ya que se trata de actualizar datos.
+
+	    	#La actualización se hace en cascada con respecto a las demás tablas relacionadas a esta.
+	    	$Reason = $this->db->prepare('UPDATE vip_user_info '
+                . 'SET firstname_lastname = :firstname_lastname '
+                . 'WHERE username = :current_usr');
+
+	    	#Se vincula el valor con el parámetro.
+        	$Reason->bindValue(':firstname_lastname', $firstname_lastname);
+        	$Reason->bindValue(':current_usr', $usr);
+
+		    if ($Reason->execute())	#Se ejecuta la consulta preparada.
+		    	return true;	#Todo el proceso ha sido correcto.
 
 		    #Si algo falla, se retorna un valor booleano falso.
 	    	return false;
@@ -1312,6 +1342,44 @@
 
 	    			#Se retorna el valor que contiene el índice: privilege.
 	    			return $value['privilege'];
+	    		}
+	    	}
+
+	    	#Si algo falla, se retorna un valor booleano falso.
+	    	return false;
+	    }
+
+	    /**
+			* Método que obtiene los nombres y apellidos de un usuario.
+			*@param: $usr (Nombre de usuario).
+		*/
+	    public function getUserFirstname_Lastname($usr){
+	    	#Statement: Consulta no preparada. 
+		    #Tabla: vip_user_info.
+		    #Atributos: username.
+		    #Valores devueltos: firstname_lastname.
+
+	    	$stmt = $this->db->query("SELECT firstname_lastname FROM vip_user_info WHERE username='".$usr."'");
+
+	    	#Si existen registros.
+	    	if ($stmt->rowCount() > 0){
+	    		#Se define un array multidimensional.
+	    		$Userfirstname_lastname = [];
+
+	    		#Se recorren las filas devueltas.
+	    		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)){
+	    			#Se agrega la información en forma de atributo sobre los índices del array.
+	    			$Userfirstname_lastname[] = [
+	    				'firstname_lastname' => $row['firstname_lastname']
+	    			];
+	    		}
+
+	    		#Se recorre el Array multidimensional para obtener la información y retornarla.
+	    		#Se obtiene precisamente el campo firstname_lastname.
+	    		foreach ($Userfirstname_lastname as $value) {
+
+	    			#Se retorna el valor que contiene el índice: firstname_lastname.
+	    			return $value['firstname_lastname'];
 	    		}
 	    	}
 
