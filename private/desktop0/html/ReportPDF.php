@@ -465,6 +465,28 @@
 			$this->Cell(30, 85, $vip, 'C');
 
 		}
+
+		function firmaFinal($firma){
+			$this->SetFont('Times','B',11);
+			// Movernos a la derecha
+			$this->Cell(63);
+			// Título
+			$this->Cell(30, 15, '____________________________________', 'C');
+			$this->Ln(6);
+			$this->Cell(80);
+			// Título
+			$this->Cell(30, 15, utf8_decode($firma), 'C');
+			$this->Ln(4);
+			$this->Cell(48);
+			// Título
+			$this->Cell(30, 15, utf8_decode("Vicerrector de Investigación, Posgrado y Proyección Social"), 'C');
+			
+			$this->Ln(5);
+			$this->Cell(85);
+			// Título
+			$this->Cell(30, 15, utf8_decode("UNAN - León"), 'C');
+		}
+
 		
 		// Pie de página
 		function Footer() {
@@ -479,7 +501,8 @@
 
 	require('fpdf/html2pdf.php');
 
-	$id = $_POST['id_project_now'];
+	$id     = $_POST['id_project_now'];
+	$Firma  = $_POST['FirmaFinal'];
 	$CN_VIP = CDB("vip");
     
     if (is_array($CN_VIP->getProjectsOnlyById($id))){
@@ -623,6 +646,9 @@
 	$pdf->AddPage();
 	$pdf->Ln(5);
 	$pdf->WriteHTML($ValorFinal);
+	$pdf->Ln(15);
+
+	$pdf->firmaFinal($Firma);
 	
 	$pdf->Output(utf8_decode($ProjectNombre).".pdf", 'D');
 ?>
