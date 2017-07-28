@@ -60,6 +60,7 @@
 
                                             <form action="private/desktop0/html/ReportPDF.php" method="POST" id="FormReportPDF">
                                                 <input type="hidden" id="id_project_now" name="id_project_now" value="<?php echo $id; ?>" />
+                                                <input type="hidden" id="FirmaFinal" name="FirmaFinal" value="" />
                                             </form>
 
                                             <div class="card-header">
@@ -68,7 +69,7 @@
                                                         <i class="fa fa-pencil-square-o"></i> <?php echo $ProjectNombre; ?>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-primary" style="float: right; margin: 12px;" onclick="javascript: GenerateReportPDF();" title="Generar un reporte completo del proyecto"><span class="fa fa-download"></span> Descargar en PDF</button>
+                                                <button type="button" class="btn btn-primary" style="float: right; margin: 12px;" onclick="javascript: GRPDFModal();" title="Generar un reporte completo del proyecto"><span class="fa fa-download"></span> Descargar en PDF</button>
                                             </div>
                                             <div class="card-body">
                                                 
