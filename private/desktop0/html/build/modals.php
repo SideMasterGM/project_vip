@@ -6,7 +6,7 @@
     */
 ?>
 
-<input type="hidden" class="change-img_perfil" data-toggle="modal" data-target="#ChangeImgPerfil"  />
+<input type="hidden" class="change-img_perfil" data-toggle="modal" data-target="#ChangeImgPerfil" />
 
 <!-- Modal -->
 <div class="modal fade modal-primary" id="ChangeImgPerfil" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1336,6 +1336,86 @@
             
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgUserName();">Aplicar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" class="ChgPersonalForm" data-toggle="modal" data-target="#ChgPersonalForm"  />
+
+<!-- Modal -->
+<div class="modal fade modal-primary" id="ChgPersonalForm" tabindex="1" role="dialog" aria-labelledby="MyChgPersonalForm" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="MyChgPersonalForm"><i class="fa fa-pencil"></i> Modificar identificación personal</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel-heading">
+
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <span class="panel-icon">
+                                 <i class="fa fa-pencil"></i>
+                            </span>
+                            <span class="panel-title">Escriba nombres y apellidos.</span>
+                            
+                            <h5 id="h5_usernameFirstname_Lastname" style="margin-left: 50px; background-color: #F0F0F0; padding: 10px; border-radius: 12px; width: -moz-max-content;">
+                                <span class="icon fa fa-user"></span>
+                                <?php
+                                    $Firstname_Lastname = $CNEx->getUserFirstname_Lastname($_SESSION['usr']);
+                                    if (is_bool($Firstname_Lastname) || $Firstname_Lastname == ""){
+                                        echo @$_SESSION['usr'];
+                                    } else {
+                                        echo $Firstname_Lastname;
+                                    }
+
+                                ?>
+                            </h5>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <?php
+                               if (is_array($QImg)){
+                                    foreach ($QImg as $value) {
+                                        ?>
+                                            <div style="background: url('private/desktop0/<?php echo $value['folder'].$value['src']; ?>'); width: 80px; height:80px; border-radius: 50% 50%; background-size: 100% 100%; border: 3px solid lightgrey; float: right;">
+                                            </div>
+                                        <?php
+                                    }
+                                } else if (is_bool($QImg)) {
+                                    ?>
+                                        <div style="background: url('<?php echo "../".$src_img_ext['folder'].$src_img_ext['src']; ?>'); width: 80px; height:80px; border-radius: 50% 50%; background-size: 100% 100%; border: 3px solid lightgrey; float: right;">
+                                        </div>
+                                    <?php
+                                }
+                            ?>
+                        </div>
+
+                        
+                    </div>
+                </div>
+
+                <form id="ChgUserFirstname_Lastname">
+                    <input type="text" class="form-control" id="new_user_firstname_lastname" name="new_user_firstname_lastname" placeholder="* Escriba los nombres y apellidos del usuario" />
+                </form>
+                <div class="Incrustar">
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                
+                <?php
+                    if (@$_SESSION['privilege'] == "Administrador"){
+                        ?>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;" onclick="javascript: CreateUserNow();">Crear usuario</button>
+                        <?php
+                    }
+                ?>
+            
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="javascript: ApplyChgFirstname_Lastname();">Aplicar</button>
             </div>
         </div>
     </div>
