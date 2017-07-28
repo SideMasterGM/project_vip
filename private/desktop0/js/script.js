@@ -1626,3 +1626,31 @@ function ChangePrivilegeState(value){
 function GenerateReportPDF(){
 	document.getElementById("FormReportPDF").submit();
 }
+
+function ShowModalPersonalForm(){
+	$(".ChgPersonalForm").click();
+}
+
+function ApplyChgFirstname_Lastname(){
+	$.ajax({
+	    url: "private/desktop0/html/build/ApplyChgUserFirstname_Lastname.php",
+	    type: "POST",
+	    data: $("#ChgUserFirstname_Lastname").serialize(),
+	    success: function(data){
+   			if (data == "OK"){
+
+   				setTimeout(function(){
+	    			$(".username").html("<a href='#' onclick='javascript: ShowModalPersonalForm();' class='FirstnameAndLastname'>" + $("#new_user_firstname_lastname").val() + "</a>");
+
+	   				$(".FirstnameAndLastname").val($("#new_user_firstname_lastname").val());
+		    		$("#ChgPersonalForm").click();
+	    			$("#h5_usernameFirstname_Lastname").html("<span class='icon fa fa-user'></span>" + $("#new_user_firstname_lastname").val());
+	    			OpenA();
+	    		}, 100);
+
+	    	} else if (data == "Fail") {
+	    		$(".Incrustar").html("<div class='row'><div class='col-xs-12'><br/><div class='alert alert-warning alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>×</span></button><strong>Advertencia!</strong> Ha ocurrido un problema, por favor, intentelo más tarde.</div></div></div>");
+	    	}
+	    }
+  	});
+}
